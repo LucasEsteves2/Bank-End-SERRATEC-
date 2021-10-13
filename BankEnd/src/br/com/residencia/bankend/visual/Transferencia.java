@@ -1,4 +1,4 @@
-package br.com.residencia.telas;
+package br.com.residencia.bankend.visual;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -29,7 +29,7 @@ import java.awt.ComponentOrientation;
 import java.awt.Panel;
 import java.awt.Label;
 
-public class aa extends JFrame {
+public class Transferencia extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
@@ -39,12 +39,12 @@ public class aa extends JFrame {
 	private JTextField txtCartao;
 	private JTextField textField_1;
 
-	public aa(Connection con) {
+	public Transferencia(Connection con) {
 		this.con = con;
 		
 		
 		setIconImage(Toolkit.getDefaultToolkit()
-				.getImage(aa.class.getResource("/br/com/residencia/imagens/cadeado-trancado.png")));
+				.getImage(Transferencia.class.getResource("/br/com/residencia/imagens/cadeado-trancado.png")));
 		setExtendedState(Frame.MAXIMIZED_BOTH);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);

@@ -2,8 +2,8 @@ package br.com.residencia.bankend.principal;
 
 import java.sql.Connection;
 
-import br.com.residencia.banco.Conexao;
-import br.com.residencia.telas.Transferencia;
+import br.com.residencia.bankend.bd.Conexao;
+import br.com.residencia.bankend.visual.Transferencia;
 
 public class SistemaInterno {
 

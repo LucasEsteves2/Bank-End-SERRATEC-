@@ -1,4 +1,4 @@
-package br.com.residencia.telas;
+package br.com.residencia.bankend.visual;
 
 import java.awt.Color;
 import java.awt.Font;

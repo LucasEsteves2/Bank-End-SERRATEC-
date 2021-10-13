@@ -1,4 +1,4 @@
-package br.com.residencia.banco;
+package br.com.residencia.bankend.bd;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
