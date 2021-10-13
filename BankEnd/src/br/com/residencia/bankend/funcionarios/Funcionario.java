@@ -8,9 +8,10 @@ public abstract class Funcionario {
 	private String email;
 	private String senha;
 	private Double salario;
+	private Integer acesso ;
 
 	public Funcionario(String nome, String sobreNome, String cargo, String cpf, String email, String senha,
-			Double salario) {
+			Double salario,Integer acesso) {
 		this.nome = nome;
 		this.sobreNome = sobreNome;
 		this.cargo = cargo;
@@ -18,6 +19,7 @@ public abstract class Funcionario {
 		this.email = email;
 		this.senha = senha;
 		this.salario = salario;
+		this.acesso =acesso;
 	}
 
 	public String getNome() {
