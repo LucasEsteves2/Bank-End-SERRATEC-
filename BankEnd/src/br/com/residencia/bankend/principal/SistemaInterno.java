@@ -9,7 +9,7 @@ public class SistemaInterno {
 
 	public static void main(String[] args) {
 		//aguarde o processo
-		//aguarde o processo
+		//polvo lazinhooo
 
 		Connection conexao = new Conexao().conectar();
 
