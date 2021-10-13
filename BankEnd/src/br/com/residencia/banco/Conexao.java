@@ -8,17 +8,19 @@ public class Conexao {
 	private String usuario = "yadwoiqqhkoubd";
 	private String senha = "717a7c41f8b5153c1faad21d0357cdd3ede9d99dbb55c5210a0a10d3bc50507c";
 
+	
 	public Connection conectar() {
 		Connection con = null;
 
 		try {
 			con = DriverManager.getConnection(url, usuario, senha);
-			System.out.println("Conectado");
+			System.out.println("Conexão Feita com sucesso");
 		} catch (Exception e) {
 			System.out.println("Falha ao se conectar com o banco de dados");
 		}
-
+		
 		return con;
 	}
 
+	
 }

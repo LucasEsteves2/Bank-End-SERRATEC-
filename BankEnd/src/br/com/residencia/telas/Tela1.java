@@ -37,20 +37,7 @@ public class Tela1 extends JFrame {
 
 	public Tela1(Connection con) {
 		this.con = con;
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
+
 		setIconImage(Toolkit.getDefaultToolkit()
 				.getImage(Tela1.class.getResource("/br/com/residencia/imagens/cadeado-trancado.png")));
 		setExtendedState(Frame.MAXIMIZED_BOTH);

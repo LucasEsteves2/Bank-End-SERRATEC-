@@ -11,8 +11,8 @@ public class Query {
 	private Connection con;
 
 	public Query(Connection conexao) {
-		this.con=conexao;
-		
+		this.con = conexao;
+
 	}
 
 	public void mostra() {
