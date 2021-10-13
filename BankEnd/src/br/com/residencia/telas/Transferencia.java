@@ -180,7 +180,7 @@ public class Transferencia extends JFrame {
 		lblNewLabel_3.setBounds(921, -538, 1026, 1913);
 		contentPane.add(lblNewLabel_3);
 
-		JLabel lblCartao = new JLabel("Conta:");
+		JLabel lblCartao = new JLabel("Contaa:");
 		lblCartao.setForeground(Color.WHITE);
 		lblCartao.setBackground(Color.WHITE);
 		lblCartao.setBounds(797, 331, 158, 14);
