@@ -10,9 +10,7 @@ public class SistemaInterno {
 	public static void main(String[] args) {
 
 		//machado98
-		//aabcvsdsd
-		//machado98
-		//machado98
+		//hohohohohoohho
 		Connection conexao = new Conexao().conectar();
 
 		Transferencia tela1 = new Transferencia(conexao);
