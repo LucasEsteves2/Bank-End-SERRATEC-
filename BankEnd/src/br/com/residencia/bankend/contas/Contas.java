@@ -2,7 +2,7 @@ package br.com.residencia.bankend.contas;
 
 import br.com.residencia.bankend.clientes.Cliente;
 
- public class Contas {
+ public abstract class Contas {
 
 	private String agencia;
 	private String numero;

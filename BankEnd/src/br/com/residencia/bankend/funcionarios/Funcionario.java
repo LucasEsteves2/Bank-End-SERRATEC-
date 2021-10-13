@@ -1,6 +1,6 @@
 package br.com.residencia.bankend.funcionarios;
 
-public class Funcionario {
+public abstract class Funcionario {
 	private String nome;
 	private String sobreNome;
 	private String cargo;
