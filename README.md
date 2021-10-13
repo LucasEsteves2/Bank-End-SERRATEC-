@@ -52,7 +52,15 @@
  
  </div>
 <br> 
-<br>
 </p>
 
+<div align="center"> 
+<img height="445px" align="center" src="https://i.imgur.com/agWL9wR.jpeg"> 
+</div>
+<br>
+
+
 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;⬆️[**Voltar ao Topo**](#back-to-top)⬆️
+
+
+
