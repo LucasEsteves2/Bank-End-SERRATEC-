@@ -34,6 +34,12 @@ public class ContaCorrente extends Contas {
 		}
 
 	}
+
+	@Override
+	public boolean transferencia(Contas destinatario, double valor) {
+		// TODO Auto-generated method stub
+		return super.transferencia(destinatario, valor);
+	}
 	
 
 }
