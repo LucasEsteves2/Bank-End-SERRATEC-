@@ -142,7 +142,7 @@ public class TelaLogin extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 			
-
+//polvo lazer
 				login = txtNome.getText();
 				senha = String.valueOf(txtSenha.getPassword());
 				

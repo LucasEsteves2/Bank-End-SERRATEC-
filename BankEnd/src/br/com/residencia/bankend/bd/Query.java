@@ -25,8 +25,8 @@ public class Query {
 	}
 
 	public Funcionario verifica(String login, String senha, Cliente clientes) {
-
-			Funcionario fun=null;
+		Funcionario fun = null;
+			
 		int idAdmin = 0;
 
 		// pega o login e a senha do admin
@@ -50,7 +50,7 @@ public class Query {
 			// chama o metodo que verifica o cliente
 			
 			
-			verificaFuncionario(idAdmin,fun);
+		 fun= verificaFuncionario(idAdmin,fun);
 			
 
 		} catch (Exception e) {
@@ -97,7 +97,7 @@ public class Query {
 		}
 	}
 
-	public void verificaFuncionario(int id, Funcionario fun) {
+	public Funcionario verificaFuncionario(int id, Funcionario fun) {
 
 		try {
 			st = conexao.prepareStatement("select *from funcionario where id_admin = ?");
@@ -142,18 +142,19 @@ public class Query {
 					break;
 
 				}
-
+					return fun;
 			}
-
+		
 			else {
 				JOptionPane.showMessageDialog(null, "FODEU CARALHO");
+return fun;
 			}
 
 		} catch (SQLException e) {
 
 			e.printStackTrace();
 		}
-
+		return fun;
 	}
 
 }
