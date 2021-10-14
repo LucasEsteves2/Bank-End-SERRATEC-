@@ -29,7 +29,7 @@ import java.awt.ComponentOrientation;
 import java.awt.Panel;
 import java.awt.Label;
 
-public class Transferencia extends JFrame {
+public class login extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
@@ -39,12 +39,12 @@ public class Transferencia extends JFrame {
 	private JTextField txtCartao;
 	private JTextField textField_1;
 
-	public Transferencia(Connection con) {
+	public login(Connection con) {
 		this.con = con;
 		
 		
 		setIconImage(Toolkit.getDefaultToolkit()
-				.getImage(Transferencia.class.getResource("/br/com/residencia/imagens/cadeado-trancado.png")));
+				.getImage(login.class.getResource("/br/com/residencia/imagens/cadeado-trancado.png")));
 		setExtendedState(Frame.MAXIMIZED_BOTH);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
@@ -58,8 +58,6 @@ public class Transferencia extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		
-
 		
 		JButton btnNewButton_3_1_2 = new JButton("");
 		btnNewButton_3_1_2.setIcon(new ImageIcon("C:\\Users\\Esteves\\Downloads\\atencao.png"));
@@ -205,15 +203,5 @@ public class Transferencia extends JFrame {
 		ImgBackground.setIcon(new ImageIcon("C:\\Users\\Esteves\\Pictures\\2133232232323.jpg"));
 		contentPane.add(ImgBackground);
 
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
 	}
 }
