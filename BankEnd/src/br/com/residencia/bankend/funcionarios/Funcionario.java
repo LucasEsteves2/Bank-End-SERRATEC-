@@ -21,6 +21,26 @@ public abstract class Funcionario {
 		this.salario = salario;
 		this.acesso =acesso;
 	}
+	
+	
+	public void trocaFuncionario(String nome, String sobreNome, String cargo, String cpf, String email, String senha,
+			Double salario,Integer acesso) {
+		this.nome = nome;
+		this.sobreNome = sobreNome;
+		this.cargo = cargo;
+		this.cpf = cpf;
+		this.email = email;
+		this.senha = senha;
+		this.salario = salario;
+		this.acesso =acesso;
+	}
+	
+	
+	
+	public Funcionario()
+	{
+		
+	}
 
 	public String getNome() {
 		return nome;

@@ -9,6 +9,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.Connection;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 
 
@@ -25,6 +26,9 @@ import javax.swing.border.EmptyBorder;
 
 import br.com.residencia.bankend.bd.Conexao;
 import br.com.residencia.bankend.bd.Query;
+import br.com.residencia.bankend.clientes.Cliente;
+import br.com.residencia.bankend.funcionarios.Funcionario;
+import br.com.residencia.bankend.funcionarios.Presidente;
 
 public class TelaLogin extends JFrame {
 
@@ -127,6 +131,11 @@ public class TelaLogin extends JFrame {
 		ImgBackground.setIcon(new ImageIcon("C:\\Users\\Esteves\\Pictures\\2133232232323.jpg"));
 		contentPane.add(ImgBackground);
 	
+		
+		Cliente clientes = new Cliente();
+	
+				
+				
 		Query bd = new Query(con);
 		btnAcessar.addActionListener(new ActionListener() {
 			
@@ -137,20 +146,12 @@ public class TelaLogin extends JFrame {
 				login = txtNome.getText();
 				senha = String.valueOf(txtSenha.getPassword());
 				
-				boolean resultado =	bd.verifica(login, senha);
+				Funcionario fun = null;
 				
-				System.out.println(resultado);
-				if(resultado) {
-					
-					Menu menu = new Menu(con);
-					menu.setVisible(true);
-					dispose();
-				}else {
-					JOptionPane.showMessageDialog(null, "tururururu");
-					System.out.println("kk");
-				}
-
+				fun=bd.verifica(login, senha,clientes);
 				
+				
+				System.out.println(fun.getNome());
 			}
 		}); 
 		

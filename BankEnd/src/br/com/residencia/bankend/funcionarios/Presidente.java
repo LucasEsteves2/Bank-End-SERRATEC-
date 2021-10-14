@@ -13,7 +13,10 @@ public class Presidente  extends Funcionario{
 		super(nome, sobreNome, cargo, cpf, email, senha, salario, acesso);
 
 	}
-
+	
+	public Presidente() {
+		super();
+	}
 
 
 

@@ -16,13 +16,14 @@ import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
 import javax.swing.border.MatteBorder;
+
+import br.com.residencia.bankend.utility.Mouse;
+
 import javax.swing.UIManager;
 
 public class Menu extends JFrame {
 
-	/**
-	 * 
-	 */
+
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 
@@ -44,7 +45,7 @@ public class Menu extends JFrame {
 		panel.setLayout(null);
 
 		JLabel lblLogo = new JLabel("New label");
-		lblLogo.setBounds(-55, -29, 421, 225);
+		lblLogo.setBounds(-55, -65, 421, 225);
 		lblLogo.setIcon(new ImageIcon(Menu.class.getResource("/br/com/residencia/bankend/imagens/asx.png")));
 		panel.add(lblLogo);
 
@@ -85,7 +86,7 @@ public class Menu extends JFrame {
 		lblInicio.setIcon(new ImageIcon(Menu.class.getResource("/br/com/residencia/bankend/imagens/pagina-inicial (1).png")));
 		lblInicio.setBounds(10, -1, 29, 30);
 		PainelVoltar.add(lblInicio);
-
+		
 		JLabel lblNewLabel_5 = new JLabel("Home");
 		lblNewLabel_5.setForeground(UIManager.getColor("Button.foreground"));
 		lblNewLabel_5.setBackground(new Color(0, 0, 255));
@@ -176,6 +177,19 @@ public class Menu extends JFrame {
 		lblMenu.setBounds(6, 11, 232, 714);
 		panel.add(lblMenu);
 
+		
+		
+		
+		
+		
+		
+		
+		PainelConsulta.addMouseListener(new Mouse(PainelConsulta));
+		
+		
+		
+		
+		
 		
 		
 		
