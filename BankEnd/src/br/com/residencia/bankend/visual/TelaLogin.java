@@ -132,7 +132,7 @@ public class TelaLogin extends JFrame {
 		contentPane.add(ImgBackground);
 	
 		
-		Cliente clientes = new Cliente();
+
 	
 				
 				
@@ -142,16 +142,30 @@ public class TelaLogin extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 			
-//polvo lazer
+
 				login = txtNome.getText();
 				senha = String.valueOf(txtSenha.getPassword());
-				
+				Cliente cliente = null;
 				Funcionario fun = null;
+				fun = bd.funcionario(login,senha);
+				cliente =bd.cliente(login, senha);
 				
-				fun=bd.verifica(login, senha,clientes);
+				if(fun != null) {
+					System.out.println(fun.getNome());
+				}
+				
+				if(cliente != null) {
+					System.out.println(cliente.getNome());
+					
+				}
+				
+
 				
 				
-				System.out.println(fun.getNome());
+				
+				
+				
+	
 			}
 		}); 
 		
