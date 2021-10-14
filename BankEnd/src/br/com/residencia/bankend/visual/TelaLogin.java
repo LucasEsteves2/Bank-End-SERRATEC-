@@ -7,10 +7,11 @@ import java.awt.Insets;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.Connection;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
-import javax.management.Query;
+
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -22,6 +23,9 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
+import br.com.residencia.bankend.bd.Conexao;
+import br.com.residencia.bankend.bd.Query;
+
 public class TelaLogin extends JFrame {
 
 	private static final long serialVersionUID = 1L;
@@ -30,11 +34,15 @@ public class TelaLogin extends JFrame {
 	private JPasswordField txtSenha;
 	private String login;
 	private String senha;
-	private Query conexao;
+	private Connection con;
 	private JTextField textField;
+	
 
-	public TelaLogin() {
 
+	public TelaLogin(Connection con) {
+		this.con = con;
+		
+		
 		setIconImage(Toolkit.getDefaultToolkit()
 				.getImage(TelaLogin.class.getResource("/br/com/residencia/bankend/imagens/cadeado-trancado.png")));
 		setExtendedState(Frame.MAXIMIZED_BOTH);
@@ -71,12 +79,14 @@ public class TelaLogin extends JFrame {
 		btnAcessar.setMargin(new Insets(2, 7, 2, 14));
 		btnAcessar.setHorizontalAlignment(SwingConstants.LEFT);
 		btnAcessar.setIconTextGap(10);
-		btnAcessar.setIcon(new ImageIcon(TelaLogin.class.getResource("/br/com/residencia/bankend/imagens/cadeado-aberto (4).png")));
+		btnAcessar.setIcon(new ImageIcon(
+				TelaLogin.class.getResource("/br/com/residencia/bankend/imagens/cadeado-aberto (4).png")));
 		btnAcessar.setBounds(1145, 434, 121, 44);
 		contentPane.add(btnAcessar);
 
 		JLabel imgCadeado = new JLabel("");
-		imgCadeado.setIcon(new ImageIcon(TelaLogin.class.getResource("/br/com/residencia/bankend/imagens/cadeado-trancado.png")));
+		imgCadeado.setIcon(
+				new ImageIcon(TelaLogin.class.getResource("/br/com/residencia/bankend/imagens/cadeado-trancado.png")));
 		imgCadeado.setForeground(new Color(0, 255, 0));
 		imgCadeado.setBounds(1061, 157, 87, 105);
 		imgCadeado.setFont(new Font("Tahoma", Font.BOLD, 29));
@@ -100,7 +110,6 @@ public class TelaLogin extends JFrame {
 
 		String timeStamp = new SimpleDateFormat("dd/MM/yyyy").format(Calendar.getInstance().getTime());
 		JLabel lblCadastrarNovo = new JLabel(timeStamp);
-	
 
 		lblCadastrarNovo.setFont(new Font("Tahoma", Font.BOLD, 12));
 		lblCadastrarNovo.setBounds(899, 507, 156, 32);
@@ -109,20 +118,39 @@ public class TelaLogin extends JFrame {
 
 		JLabel lblfundoTransparente = new JLabel("");
 		lblfundoTransparente.setBounds(883, 157, 416, 390);
-		lblfundoTransparente
-				.setIcon(new ImageIcon(TelaLogin.class.getResource("/br/com/residencia/bankend/imagens/FUNDO PRA TELA.png")));
+		lblfundoTransparente.setIcon(
+				new ImageIcon(TelaLogin.class.getResource("/br/com/residencia/bankend/imagens/FUNDO PRA TELA.png")));
 		contentPane.add(lblfundoTransparente);
 
 		JLabel ImgBackground = new JLabel("");
 		ImgBackground.setBounds(0, 0, 1375, 705);
 		ImgBackground.setIcon(new ImageIcon("C:\\Users\\Esteves\\Pictures\\2133232232323.jpg"));
 		contentPane.add(ImgBackground);
+	
+		Query bd = new Query(con);
+		btnAcessar.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+			
 
-		login = txtNome.getText();
-		senha = String.valueOf(txtSenha.getPassword());
+				login = txtNome.getText();
+				senha = String.valueOf(txtSenha.getPassword());
+				
+				boolean resultado =	bd.verifica(login, senha);
+				
+				System.out.println(resultado);
+				if(resultado) {
+					telateste telina = new telateste();
+					telina.setVisible(true);
+					dispose();
+				}else {
+					JOptionPane.showMessageDialog(null, "tururururu");
+				}
 
-		
-		
+				
+			}
+		}); 
 		
 		
 
