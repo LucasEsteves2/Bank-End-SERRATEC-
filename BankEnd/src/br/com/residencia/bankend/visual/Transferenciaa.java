@@ -29,7 +29,7 @@ import java.awt.ComponentOrientation;
 import java.awt.Panel;
 import java.awt.Label;
 
-public class login extends JFrame {
+public class Transferenciaa extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
@@ -39,12 +39,12 @@ public class login extends JFrame {
 	private JTextField txtCartao;
 	private JTextField textField_1;
 
-	public login(Connection con) {
+	public Transferenciaa(Connection con) {
 		this.con = con;
 		
 		
 		setIconImage(Toolkit.getDefaultToolkit()
-				.getImage(login.class.getResource("/br/com/residencia/imagens/cadeado-trancado.png")));
+				.getImage(Transferenciaa.class.getResource("/br/com/residencia/bankend/imagens/cadeado-trancado.png")));
 		setExtendedState(Frame.MAXIMIZED_BOTH);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
@@ -58,6 +58,8 @@ public class login extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
+		
+
 		
 		JButton btnNewButton_3_1_2 = new JButton("");
 		btnNewButton_3_1_2.setIcon(new ImageIcon("C:\\Users\\Esteves\\Downloads\\atencao.png"));
@@ -180,7 +182,7 @@ public class login extends JFrame {
 		lblNewLabel_3.setBounds(921, -538, 1026, 1913);
 		contentPane.add(lblNewLabel_3);
 
-		JLabel lblCartao = new JLabel("Contaa:");
+		JLabel lblCartao = new JLabel("Conta:");
 		lblCartao.setForeground(Color.WHITE);
 		lblCartao.setBackground(Color.WHITE);
 		lblCartao.setBounds(797, 331, 158, 14);
@@ -203,5 +205,15 @@ public class login extends JFrame {
 		ImgBackground.setIcon(new ImageIcon("C:\\Users\\Esteves\\Pictures\\2133232232323.jpg"));
 		contentPane.add(ImgBackground);
 
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 	}
 }

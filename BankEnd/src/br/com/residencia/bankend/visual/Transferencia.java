@@ -44,7 +44,7 @@ public class Transferencia extends JFrame {
 		
 		
 		setIconImage(Toolkit.getDefaultToolkit()
-				.getImage(Transferencia.class.getResource("/br/com/residencia/imagens/cadeado-trancado.png")));
+				.getImage(Transferencia.class.getResource("/br/com/residencia/bankend/imagens/cadeado-trancado.png")));
 		setExtendedState(Frame.MAXIMIZED_BOTH);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);

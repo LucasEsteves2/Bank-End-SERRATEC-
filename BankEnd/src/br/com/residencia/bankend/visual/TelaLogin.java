@@ -141,8 +141,7 @@ public class TelaLogin extends JFrame {
 				
 				System.out.println(resultado);
 				if(resultado) {
-					telateste telina = new telateste();
-					telina.setVisible(true);
+	
 					dispose();
 				}else {
 					JOptionPane.showMessageDialog(null, "tururururu");
