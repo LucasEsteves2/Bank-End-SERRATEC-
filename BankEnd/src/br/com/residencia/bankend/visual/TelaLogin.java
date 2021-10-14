@@ -146,6 +146,7 @@ public class TelaLogin extends JFrame {
 					dispose();
 				}else {
 					JOptionPane.showMessageDialog(null, "tururururu");
+					System.out.println("kk");
 				}
 
 				
