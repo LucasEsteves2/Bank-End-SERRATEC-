@@ -141,7 +141,9 @@ public class TelaLogin extends JFrame {
 				
 				System.out.println(resultado);
 				if(resultado) {
-	
+					
+					Menu menu = new Menu(con);
+					menu.setVisible(true);
 					dispose();
 				}else {
 					JOptionPane.showMessageDialog(null, "tururururu");

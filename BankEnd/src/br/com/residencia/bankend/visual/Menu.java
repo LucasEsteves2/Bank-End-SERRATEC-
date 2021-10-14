@@ -176,5 +176,16 @@ public class Menu extends JFrame {
 		lblMenu.setBounds(6, 11, 232, 714);
 		panel.add(lblMenu);
 
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 	}
 }
