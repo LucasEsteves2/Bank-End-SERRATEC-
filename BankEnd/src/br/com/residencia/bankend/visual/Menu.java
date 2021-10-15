@@ -24,6 +24,19 @@ import br.com.residencia.bankend.utility.Mouse;
 import javax.swing.UIManager;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.Label;
+import java.awt.SystemColor;
+import javax.swing.border.LineBorder;
+import javax.swing.border.EtchedBorder;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.ListSelectionModel;
+import javax.swing.DropMode;
+import javax.swing.JTextPane;
+import javax.swing.JList;
+import javax.swing.JScrollPane;
+import java.awt.TextArea;
+import javax.swing.JComboBox;
 
 public class Menu extends JFrame {
 
@@ -49,7 +62,7 @@ public class Menu extends JFrame {
 		panel.setLayout(null);
 
 		JLabel lblLogo = new JLabel("New label");
-		lblLogo.setBounds(-55, -65, 421, 225);
+		lblLogo.setBounds(-55, -34, 421, 225);
 		lblLogo.setIcon(new ImageIcon(Menu.class.getResource("/br/com/residencia/bankend/imagens/asx.png")));
 		panel.add(lblLogo);
 
@@ -168,10 +181,163 @@ public class Menu extends JFrame {
 		txtMedico_1.setFont(new Font("Segoe UI", Font.BOLD, 16));
 		txtMedico_1.setBounds(68, 16, 103, 22);
 		PainelPaciente.add(txtMedico_1);
+		
+		Panel panel_1 = new Panel();
+	
+		panel_1.setBackground(UIManager.getColor("CheckBox.background"));
+		panel_1.setBounds(235, 32, 1142, 675);
+		contentPane.add(panel_1);
+		panel_1.setLayout(null);
+		
+		Panel panel_2 = new Panel();
+		panel_2.setFont(new Font("Franklin Gothic Medium", Font.BOLD, 12));
+		panel_2.setBounds(38, 148, 328, 120);
+		panel_1.add(panel_2);
+		panel_2.setLayout(null);
+		panel_2.setBackground(Color.WHITE);
+		
+		Label label = new Label("Conta:");
+		label.setFont(new Font("Franklin Gothic Medium", Font.BOLD, 22));
+		label.setBounds(11, 9, 113, 30);
+		panel_2.add(label);
+		
+		JLabel lblNewLabel = new JLabel("1234");
+		lblNewLabel.setForeground(SystemColor.inactiveCaption);
+		lblNewLabel.setFont(new Font("Franklin Gothic Medium", Font.BOLD, 29));
+		lblNewLabel.setBackground(Color.GREEN);
+		lblNewLabel.setBounds(17, 63, 98, 46);
+		panel_2.add(lblNewLabel);
+		
+		JLabel lblNewLabel_3 = new JLabel("AGENCIA");
+		lblNewLabel_3.setBounds(33, 51, 46, 14);
+		panel_2.add(lblNewLabel_3);
+		
+		JLabel lblNewLabel_4 = new JLabel("12345678-9");
+		lblNewLabel_4.setForeground(SystemColor.textHighlight);
+		lblNewLabel_4.setFont(new Font("Franklin Gothic Medium", Font.BOLD, 30));
+		lblNewLabel_4.setBackground(Color.GREEN);
+		lblNewLabel_4.setBounds(121, 61, 210, 46);
+		panel_2.add(lblNewLabel_4);
+		
+		JLabel lblNewLabel_3_1 = new JLabel("NUMERO DA CONTA");
+		lblNewLabel_3_1.setBounds(166, 49, 98, 14);
+		panel_2.add(lblNewLabel_3_1);
+		
+		Panel panel_2_1 = new Panel();
+		panel_2_1.setLayout(null);
+		panel_2_1.setFont(new Font("Franklin Gothic Medium", Font.BOLD, 12));
+		panel_2_1.setBackground(Color.WHITE);
+		panel_2_1.setBounds(399, 148, 328, 120);
+		panel_1.add(panel_2_1);
+		
+		Label label_1 = new Label("Status:");
+		label_1.setFont(new Font("Franklin Gothic Medium", Font.BOLD, 22));
+		label_1.setBounds(11, 10, 126, 34);
+		panel_2_1.add(label_1);
+		
+		JLabel lblNewLabel_1 = new JLabel("ATIVO");
+		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_1.setForeground(new Color(153, 0, 204));
+		lblNewLabel_1.setFont(new Font("Franklin Gothic Medium", Font.BOLD, 37));
+		lblNewLabel_1.setBackground(Color.GREEN);
+		lblNewLabel_1.setBounds(3, 48, 325, 46);
+		panel_2_1.add(lblNewLabel_1);
+		
+		Panel panel_2_1_1 = new Panel();
+		panel_2_1_1.setLayout(null);
+		panel_2_1_1.setFont(new Font("Franklin Gothic Medium", Font.BOLD, 12));
+		panel_2_1_1.setBackground(Color.WHITE);
+		panel_2_1_1.setBounds(764, 148, 328, 120);
+		panel_1.add(panel_2_1_1);
+		
+		Label label_1_1 = new Label("Saldo total:");
+		label_1_1.setFont(new Font("Franklin Gothic Medium", Font.BOLD, 22));
+		label_1_1.setBounds(12, 10, 126, 34);
+		panel_2_1_1.add(label_1_1);
+		
+		JLabel lblNewLabel_1_1 = new JLabel("R$ - - - - - - -");
+		lblNewLabel_1_1.setForeground(new Color(34, 139, 34));
+		lblNewLabel_1_1.setFont(new Font("Franklin Gothic Medium", Font.BOLD, 39));
+		lblNewLabel_1_1.setBackground(Color.GREEN);
+		lblNewLabel_1_1.setBounds(26, 49, 210, 46);
+		panel_2_1_1.add(lblNewLabel_1_1);
+		
+		JLabel lblNewLabel_8 = new JLabel("R$ : ***");
+		lblNewLabel_8.setForeground(new Color(255, 102, 0));
+		lblNewLabel_8.setFont(new Font("Franklin Gothic Medium", Font.BOLD, 19));
+		lblNewLabel_8.setBounds(943, 55, 91, 22);
+		panel_1.add(lblNewLabel_8);
+		
+		JLabel lblNewLabel_7 = new JLabel("Saldo:");
+		lblNewLabel_7.setFont(new Font("Franklin Gothic Medium", Font.PLAIN, 19));
+		lblNewLabel_7.setBounds(884, 54, 69, 23);
+		panel_1.add(lblNewLabel_7);
+		
+		JLabel lblNewLabel_6 = new JLabel("");
+		lblNewLabel_6.setBorder(new EtchedBorder(EtchedBorder.RAISED, new Color(255, 153, 51), null));
+		lblNewLabel_6.setBounds(871, 40, 188, 50);
+		panel_1.add(lblNewLabel_6);
+		
+		JLabel lblNewLabel_9 = new JLabel("Status");
+		lblNewLabel_9.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		lblNewLabel_9.setBounds(82, 416, 52, 23);
+		panel_1.add(lblNewLabel_9);
+		
+		JLabel lblNewLabel_9_1 = new JLabel("Nome do Cliente");
+		lblNewLabel_9_1.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		lblNewLabel_9_1.setBounds(239, 416, 131, 22);
+		panel_1.add(lblNewLabel_9_1);
+		
+		JLabel lblNewLabel_10 = new JLabel("ATIVO");
+		lblNewLabel_10.setForeground(new Color(0, 102, 51));
+		lblNewLabel_10.setFont(new Font("Tahoma", Font.BOLD, 13));
+		lblNewLabel_10.setBounds(83, 466, 40, 16);
+		panel_1.add(lblNewLabel_10);
+		
+		JLabel lblNewLabel_11 = new JLabel("Lucas Esteves");
+		lblNewLabel_11.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblNewLabel_11.setBounds(244, 464, 213, 19);
+		panel_1.add(lblNewLabel_11);
+		
+		JLabel lblNewLabel_11_1 = new JLabel("Natalino Esteves");
+		lblNewLabel_11_1.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblNewLabel_11_1.setBounds(244, 516, 153, 14);
+		panel_1.add(lblNewLabel_11_1);
+		
+		JLabel lblNewLabel_10_1 = new JLabel("ATIVO");
+		lblNewLabel_10_1.setForeground(new Color(0, 102, 51));
+		lblNewLabel_10_1.setFont(new Font("Tahoma", Font.BOLD, 13));
+		lblNewLabel_10_1.setBounds(82, 516, 40, 16);
+		panel_1.add(lblNewLabel_10_1);
+		
+		JLabel lblNewLabel_9_1_1 = new JLabel("Saldo");
+		lblNewLabel_9_1_1.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		lblNewLabel_9_1_1.setBounds(473, 417, 131, 22);
+		panel_1.add(lblNewLabel_9_1_1);
+		
+		JLabel lblNewLabel_12 = new JLabel("R$  950,00");
+		lblNewLabel_12.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblNewLabel_12.setBounds(461, 464, 69, 17);
+		panel_1.add(lblNewLabel_12);
+		
+		JLabel lblNewLabel_12_1 = new JLabel("R$  920,00");
+		lblNewLabel_12_1.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblNewLabel_12_1.setBounds(461, 515, 69, 17);
+		panel_1.add(lblNewLabel_12_1);
+		
+		JLabel lblNewLabel_13 = new JLabel("HISTORICO ");
+		lblNewLabel_13.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblNewLabel_13.setBounds(516, 346, 91, 20);
+		panel_1.add(lblNewLabel_13);
+		
+		JLabel lblNewLabel_14 = new JLabel("");
+		lblNewLabel_14.setIcon(new ImageIcon("C:\\Users\\Esteves\\Downloads\\seo.png"));
+		lblNewLabel_14.setBounds(1026, 48, 82, 32);
+		panel_1.add(lblNewLabel_14);
 
+		
 		JLabel lblBackground = new JLabel("");
-		lblBackground.setIcon(
-				new ImageIcon(Menu.class.getResource("/br/com/residencia/bankend/imagens/backgroundvddd.jpg")));
+		lblBackground.setIcon(new ImageIcon("C:\\Users\\Esteves\\Pictures\\bg.png"));
 		lblBackground.setBounds(235, 28, 1134, 711);
 		contentPane.add(lblBackground);
 
