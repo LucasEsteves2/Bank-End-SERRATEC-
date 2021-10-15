@@ -9,6 +9,7 @@ import java.awt.SystemColor;
 import java.awt.Toolkit;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.sql.Connection;
 
 import javax.swing.ImageIcon;
@@ -194,6 +195,21 @@ public class Menu extends JFrame {
 				dispose();
 			}
 		});
+		
+		
+		//evento click botao transferencia
+		
+		painelTransferencia.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				
+				Transferencia telaTransferencia = new Transferencia(con);
+		
+				telaTransferencia.setVisible(true);
+				
+			}
+		});
+		
 
 		painelConta.addMouseListener(new Mouse(painelConta));
 

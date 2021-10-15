@@ -13,6 +13,12 @@ public class Cliente {
 
 
 
+	public void setId(int id) {
+		this.id = id;
+	}
+
+
+
 	public  Cliente(String nome, String sobreNome, String email, String cpf, String senha, int id) {
 		this.nome = nome;
 		this.sobreNome = sobreNome;

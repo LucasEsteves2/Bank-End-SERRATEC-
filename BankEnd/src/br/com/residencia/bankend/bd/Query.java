@@ -135,10 +135,10 @@ public class Query {
 				int IdConta = rs.getInt("IdConta");
 
 				if (tipo.equals("corrente")) {
-					ContaCorrente corrente = new ContaCorrente(agencia, numero, tipo, 2000.00, cliente, null);
+					ContaCorrente corrente = new ContaCorrente(agencia, numero, tipo, 2000.00, cliente, null, IdConta);
 					continha = corrente;
 				} else {
-					ContaPoupanca poupanca = new ContaPoupanca(agencia, numero, tipo, 1500.00, cliente, null);
+					ContaPoupanca poupanca = new ContaPoupanca(agencia, numero, tipo, 1500.00, cliente, null, IdConta);
 					continha = poupanca;
 				}
 
@@ -151,6 +151,87 @@ public class Query {
 			e.printStackTrace();
 		}
 		return continha;
+	}
+
+	public Contas verificaConta(String conta) {
+
+		Contas continha = null;
+
+		try {
+
+			st = conexao.prepareStatement("select *from contas where numero = ?  ");
+
+			st.setString(1, conta);
+
+			st.execute();
+
+			rs = st.getResultSet();
+
+			if (rs.next()) {
+				int idConta = rs.getInt("IDConta");
+				String numero = rs.getString("numero");
+				double saldo = rs.getDouble("saldo");
+				String tipo = rs.getString("tipo");
+				String agencia = rs.getString("agencia");
+
+				if (tipo.equals("corrente")) {
+					Cliente cliente = descobreCliente(idConta);
+					ContaCorrente corrente = new ContaCorrente(agencia, numero, tipo, saldo, cliente, null, idConta);
+
+					continha = corrente;
+				}
+
+				 {
+					Cliente cliente = descobreCliente(idConta);
+					
+					ContaPoupanca poupanca = new ContaPoupanca(agencia, numero, tipo, saldo, cliente, null, idConta);
+					continha = poupanca;
+					
+				}
+
+			}
+
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+		}
+
+		return continha;
+
+	}
+
+	public Cliente descobreCliente(int id) {
+
+		Cliente clientee = null;
+		
+		
+		try {
+			st = conexao.prepareStatement("Select *from cliente where idCliente = ?");
+
+			st.setInt(1, id);
+
+			st.execute();
+
+			rs = st.getResultSet();
+
+			if (rs.next()) {
+				int idCliente = rs.getInt("IdCliente");
+				String nome = rs.getString("nome");
+				String sobrenome = rs.getString("sobrenome");
+				String email = rs.getString("email");
+				String cpf = rs.getString("cpf");
+				String senha = rs.getString("senha");
+
+				Cliente cliente = new Cliente(nome, sobrenome, email, cpf, senha, idCliente);
+				clientee=cliente;
+			}
+
+		} catch (SQLException e) {
+			System.out.println("DEU MERDA");
+			e.printStackTrace();
+		}
+		return clientee;
+
 	}
 
 }

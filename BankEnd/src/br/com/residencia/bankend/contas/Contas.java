@@ -10,18 +10,25 @@ import br.com.residencia.bankend.clientes.Cliente;
 	protected Double saldo;
 	private Cliente cliente;
 	private SeguroVida seguro;
+	private Integer id;
+	
 
-	public Contas(String agencia, String numero, String tipo, Double saldo, Cliente cliente, SeguroVida seguro) {
+	public Contas(String agencia, String numero, String tipo, Double saldo, Cliente cliente, SeguroVida seguro,Integer id) {
 		this.agencia = agencia;
 		this.numero = numero;
 		this.tipo = tipo;
 		this.saldo = saldo;
 		this.cliente = cliente;
 		this.seguro = seguro;
+		this.id=id;
 	}
 
 	public Double getSaldo() {
 		return saldo;
+	}
+
+	public Integer getId() {
+		return id;
 	}
 
 	public boolean saque(double valor) {
@@ -75,4 +82,7 @@ import br.com.residencia.bankend.clientes.Cliente;
 		return cliente;
 	}
 
+	
+	
+	
 }

@@ -7,8 +7,8 @@ import br.com.residencia.bankend.clientes.Cliente;
 public class ContaCorrente extends Contas {
 	private ArrayList<Tributos> tributos = new ArrayList<>();
 
-	public ContaCorrente(String agencia, String numero, String tipo, Double saldo, Cliente cliente, SeguroVida seguro) {
-		super(agencia, numero, tipo, saldo, cliente, seguro);
+	public ContaCorrente(String agencia, String numero, String tipo, Double saldo, Cliente cliente, SeguroVida seguro,Integer id) {
+		super(agencia, numero, tipo, saldo, cliente, seguro, id);
 
 	}
 

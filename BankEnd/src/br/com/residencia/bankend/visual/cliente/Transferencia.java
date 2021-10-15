@@ -1,35 +1,26 @@
-package br.com.residencia.bankend.visual;
+package br.com.residencia.bankend.visual.cliente;
 
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Frame;
-import java.awt.Insets;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import java.sql.Connection;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
-import javax.swing.border.LineBorder;
-import javax.swing.border.MatteBorder;
-import java.awt.ComponentOrientation;
-import java.awt.Panel;
-import java.awt.Label;
 
-public class Transferenciaa extends JFrame {
+import br.com.residencia.bankend.bd.Query;
+import br.com.residencia.bankend.contas.Contas;
+
+public class Transferencia extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
@@ -39,12 +30,11 @@ public class Transferenciaa extends JFrame {
 	private JTextField txtCartao;
 	private JTextField textField_1;
 
-	public Transferenciaa(Connection con) {
+	public Transferencia(Connection con) {
 		this.con = con;
-		
-		
+
 		setIconImage(Toolkit.getDefaultToolkit()
-				.getImage(Transferenciaa.class.getResource("/br/com/residencia/bankend/imagens/cadeado-trancado.png")));
+				.getImage(Transferencia.class.getResource("/br/com/residencia/bankend/imagens/cadeado-trancado.png")));
 		setExtendedState(Frame.MAXIMIZED_BOTH);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
@@ -52,21 +42,19 @@ public class Transferenciaa extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
+
 		JButton btnNewButton_4_1 = new JButton("6");
 		btnNewButton_4_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		
 
-		
 		JButton btnNewButton_3_1_2 = new JButton("");
 		btnNewButton_3_1_2.setIcon(new ImageIcon("C:\\Users\\Esteves\\Downloads\\atencao.png"));
 		btnNewButton_3_1_2.setBackground(Color.YELLOW);
 		btnNewButton_3_1_2.setBounds(1170, 534, 48, 22);
 		contentPane.add(btnNewButton_3_1_2);
-		
+
 		JButton btnNewButton_3_1_2_1 = new JButton("");
 		btnNewButton_3_1_2_1.setIcon(new ImageIcon("C:\\Users\\Esteves\\Downloads\\marca-de-verificacao (2).png"));
 		btnNewButton_3_1_2_1.setBackground(new Color(50, 205, 50));
@@ -75,58 +63,58 @@ public class Transferenciaa extends JFrame {
 		btnNewButton_4_1.setBackground(Color.LIGHT_GRAY);
 		btnNewButton_4_1.setBounds(1231, 445, 48, 22);
 		contentPane.add(btnNewButton_4_1);
-		
+
 		JButton btnNewButton_4_1_1 = new JButton("0");
 		btnNewButton_4_1_1.setBackground(Color.LIGHT_GRAY);
 		btnNewButton_4_1_1.setBounds(1170, 505, 48, 22);
 		contentPane.add(btnNewButton_4_1_1);
-		
+
 		JButton btnNewButton_3_1_1 = new JButton("#");
 		btnNewButton_3_1_1.setBackground(Color.LIGHT_GRAY);
 		btnNewButton_3_1_1.setBounds(1231, 505, 48, 22);
 		contentPane.add(btnNewButton_3_1_1);
-		
+
 		JButton btnNewButton_6 = new JButton("*");
 		btnNewButton_6.setBackground(Color.LIGHT_GRAY);
 		btnNewButton_6.setBounds(1111, 505, 48, 22);
 		contentPane.add(btnNewButton_6);
-		
+
 		JButton btnNewButton_3_1 = new JButton("");
 		btnNewButton_3_1.setIcon(new ImageIcon("C:\\Users\\Esteves\\Downloads\\cancelar.png"));
 		btnNewButton_3_1.setBackground(new Color(220, 20, 60));
 		btnNewButton_3_1.setBounds(1111, 534, 50, 22);
 		contentPane.add(btnNewButton_3_1);
-		
+
 		JButton btnNewButton = new JButton("1");
 		btnNewButton.setBackground(Color.LIGHT_GRAY);
 		btnNewButton.setBounds(1111, 416, 48, 22);
 		contentPane.add(btnNewButton);
-		
+
 		JButton btnNewButton_5 = new JButton("8");
 		btnNewButton_5.setBackground(Color.LIGHT_GRAY);
 		btnNewButton_5.setBounds(1170, 476, 48, 22);
 		contentPane.add(btnNewButton_5);
-		
+
 		JButton btnNewButton_1_1 = new JButton("9");
 		btnNewButton_1_1.setBackground(Color.LIGHT_GRAY);
 		btnNewButton_1_1.setBounds(1231, 476, 48, 22);
 		contentPane.add(btnNewButton_1_1);
-		
+
 		JButton btnNewButton_2_1 = new JButton("7");
 		btnNewButton_2_1.setBackground(Color.LIGHT_GRAY);
 		btnNewButton_2_1.setBounds(1111, 475, 48, 22);
 		contentPane.add(btnNewButton_2_1);
-		
+
 		JButton btnNewButton_1 = new JButton("2");
 		btnNewButton_1.setBackground(Color.LIGHT_GRAY);
 		btnNewButton_1.setBounds(1170, 416, 48, 22);
 		contentPane.add(btnNewButton_1);
-		
+
 		JButton btnNewButton_2 = new JButton("3");
 		btnNewButton_2.setBackground(Color.LIGHT_GRAY);
 		btnNewButton_2.setBounds(1231, 416, 48, 22);
 		contentPane.add(btnNewButton_2);
-		
+
 		JButton btnNewButton_3 = new JButton("4");
 		btnNewButton_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -135,7 +123,7 @@ public class Transferenciaa extends JFrame {
 		btnNewButton_3.setBackground(Color.LIGHT_GRAY);
 		btnNewButton_3.setBounds(1110, 445, 48, 22);
 		contentPane.add(btnNewButton_3);
-		
+
 		JButton btnNewButton_4 = new JButton("5");
 		btnNewButton_4.setBackground(Color.LIGHT_GRAY);
 		btnNewButton_4.setBounds(1170, 445, 48, 22);
@@ -198,22 +186,29 @@ public class Transferenciaa extends JFrame {
 		lblNewLabel.setBounds(512, 143, 638, 365);
 		contentPane.add(lblNewLabel);
 
-		String timeStamp = new SimpleDateFormat("dd/MM/yyyy").format(Calendar.getInstance().getTime());
-
 		JLabel ImgBackground = new JLabel("");
 		ImgBackground.setBounds(0, 0, 1375, 705);
 		ImgBackground.setIcon(new ImageIcon("C:\\Users\\Esteves\\Pictures\\2133232232323.jpg"));
 		contentPane.add(ImgBackground);
 
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
+		Query bd = new Query(con);
+
+		btnVerificar.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+
+				// pegando conta informada
+				String numConta = txtCartao.getText();
+
+				Contas continha = null;
+
+				continha = bd.verificaConta(numConta);
+			
+				
+				
+			}
+		});
+
 	}
 }
