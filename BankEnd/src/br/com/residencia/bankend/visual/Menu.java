@@ -265,7 +265,7 @@ public class Menu extends JFrame {
 		JLabel lblNewLabel_8 = new JLabel("R$ : ***");
 		lblNewLabel_8.setForeground(new Color(255, 102, 0));
 		lblNewLabel_8.setFont(new Font("Franklin Gothic Medium", Font.BOLD, 19));
-		lblNewLabel_8.setBounds(943, 55, 91, 22);
+		lblNewLabel_8.setBounds(946, 55, 91, 22);
 		panel_1.add(lblNewLabel_8);
 		
 		JLabel lblNewLabel_7 = new JLabel("Saldo:");
@@ -275,7 +275,7 @@ public class Menu extends JFrame {
 		
 		JLabel lblNewLabel_6 = new JLabel("");
 		lblNewLabel_6.setBorder(new EtchedBorder(EtchedBorder.RAISED, new Color(255, 153, 51), null));
-		lblNewLabel_6.setBounds(871, 40, 188, 50);
+		lblNewLabel_6.setBounds(871, 40, 200, 50);
 		panel_1.add(lblNewLabel_6);
 		
 		JLabel lblNewLabel_9 = new JLabel("Status");
@@ -331,8 +331,8 @@ public class Menu extends JFrame {
 		panel_1.add(lblNewLabel_13);
 		
 		JLabel lblNewLabel_14 = new JLabel("");
-		lblNewLabel_14.setIcon(new ImageIcon("C:\\Users\\Esteves\\Downloads\\seo.png"));
-		lblNewLabel_14.setBounds(1026, 48, 82, 32);
+		lblNewLabel_14.setIcon(new ImageIcon("C:\\Users\\Esteves\\Downloads\\view.png"));
+		lblNewLabel_14.setBounds(1034, 48, 82, 32);
 		panel_1.add(lblNewLabel_14);
 
 		
