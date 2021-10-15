@@ -187,7 +187,8 @@ public class TelaLogin extends JFrame {
 		txtSenha.setBorder(new LineBorder(Color.green));
 		JOptionPane.showMessageDialog(null, "Bem Vindo,"+ cliente.getNome() +"!!", "Sucess", JOptionPane.INFORMATION_MESSAGE);
 
-
+		System.out.println(cliente);
+		
 		Menu menu = new Menu(con,cliente);
 		menu.setVisible(true);
 		dispose();

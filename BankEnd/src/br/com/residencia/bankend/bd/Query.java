@@ -87,14 +87,14 @@ public class Query {
 				rs = st.getResultSet();
 
 				if (rs.next()) {
-
+					int id = rs.getInt("IdCliente");
 					String nome = rs.getString("nome");
 					String sobrenome = rs.getString("sobrenome");
 					String email = rs.getString("email");
 					String cpf = rs.getString("cpf");
 					String senha = rs.getString("senha");
 
-					cliente = new Cliente(nome, sobrenome, email, cpf, senha);
+					cliente = new Cliente(nome, sobrenome, email, cpf, senha, id);
 
 					return cliente;
 				}
@@ -110,6 +110,42 @@ public class Query {
 			return cliente;
 		}
 
+	}
+
+	public void descobreConta(int idCliente,Cliente cliente) {
+
+		try {
+			st = conexao.prepareStatement("select * from contas,cliente where id_cliente=?");
+
+			st.setInt(1, idCliente);
+			st.execute();
+
+
+			rs = st.getResultSet();
+			
+			if(rs.next())
+			{
+				String numero=rs.getString("numero");
+				double saldo= rs.getFloat("saldo");
+				String tipo = rs.getString("tipo");
+				String agencia = rs.getString("agencia");
+				int IdConta = rs.getInt("IdConta");
+				
+				
+				
+				
+				
+			}
+			
+			
+			
+			
+			
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 }

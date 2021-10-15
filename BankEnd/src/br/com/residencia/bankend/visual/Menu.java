@@ -183,7 +183,6 @@ public class Menu extends JFrame {
 		
 		
 		
-		
 		PainelMedico.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
