@@ -11,15 +11,17 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JSeparator;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
 import javax.swing.border.MatteBorder;
 
+import br.com.residencia.bankend.clientes.Cliente;
 import br.com.residencia.bankend.utility.Mouse;
 
 import javax.swing.UIManager;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class Menu extends JFrame {
 
@@ -27,7 +29,7 @@ public class Menu extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 
-	public Menu(Connection con) {
+	public Menu(Connection con, Cliente cliente) {
 		setIconImage(Toolkit.getDefaultToolkit().getImage(Menu.class.getResource("/br/com/residencia/bankend/imagens/hospital.png")));
 		setExtendedState(Frame.MAXIMIZED_BOTH);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -50,6 +52,7 @@ public class Menu extends JFrame {
 		panel.add(lblLogo);
 
 		JPanel PainelMedico = new JPanel();
+		
 		PainelMedico.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 0)));
 		PainelMedico.setBounds(-1, 252, 243, 56);
 		PainelMedico.setBackground(Color.WHITE);
@@ -68,7 +71,7 @@ public class Menu extends JFrame {
 		PainelMedico.add(lblNewLabel_2);
 		lblNewLabel_2.setBackground(new Color(0, 255, 0));
 
-		JLabel txtMedico = new JLabel("PROFISSIONAL");
+		JLabel txtMedico = new JLabel("SALDO");
 		txtMedico.setHorizontalTextPosition(SwingConstants.CENTER);
 		txtMedico.setHorizontalAlignment(SwingConstants.CENTER);
 		txtMedico.setBounds(68, 16, 112, 22);
@@ -133,7 +136,7 @@ public class Menu extends JFrame {
 		lblNewLabel_2_1_1.setBounds(79, 16, 0, 0);
 		PainelConsulta.add(lblNewLabel_2_1_1);
 
-		JLabel txtMedico_1_1 = new JLabel("AGENDA");
+		JLabel txtMedico_1_1 = new JLabel("Deposito");
 		txtMedico_1_1.setFont(new Font("Segoe UI", Font.BOLD, 16));
 		txtMedico_1_1.setBounds(68, 16, 115, 22);
 		PainelConsulta.add(txtMedico_1_1);
@@ -155,9 +158,9 @@ public class Menu extends JFrame {
 		lblNewLabel_2_1.setBounds(79, 16, 0, 0);
 		PainelPaciente.add(lblNewLabel_2_1);
 
-		JLabel txtMedico_1 = new JLabel("PACIENTE");
+		JLabel txtMedico_1 = new JLabel("Transferencia");
 		txtMedico_1.setFont(new Font("Segoe UI", Font.BOLD, 16));
-		txtMedico_1.setBounds(68, 16, 90, 22);
+		txtMedico_1.setBounds(68, 16, 103, 22);
 		PainelPaciente.add(txtMedico_1);
 
 		JLabel lblBackground = new JLabel("");
@@ -181,7 +184,16 @@ public class Menu extends JFrame {
 		
 		
 		
-		
+		PainelMedico.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				
+			
+				Saldo kk = new Saldo(cliente);
+				
+				kk.setVisible(true);
+			}
+		});
 		
 		
 		PainelConsulta.addMouseListener(new Mouse(PainelConsulta));

@@ -12,7 +12,6 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 
-
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -23,6 +22,7 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
+import javax.swing.border.LineBorder;
 
 import br.com.residencia.bankend.bd.Conexao;
 import br.com.residencia.bankend.bd.Query;
@@ -40,13 +40,11 @@ public class TelaLogin extends JFrame {
 	private String senha;
 	private Connection con;
 	private JTextField textField;
-	
 
 //laser
 	public TelaLogin(Connection con) {
 		this.con = con;
-		
-		
+
 		setIconImage(Toolkit.getDefaultToolkit()
 				.getImage(TelaLogin.class.getResource("/br/com/residencia/bankend/imagens/cadeado-trancado.png")));
 		setExtendedState(Frame.MAXIMIZED_BOTH);
@@ -130,46 +128,70 @@ public class TelaLogin extends JFrame {
 		ImgBackground.setBounds(0, 0, 1375, 705);
 		ImgBackground.setIcon(new ImageIcon("C:\\Users\\Esteves\\Pictures\\2133232232323.jpg"));
 		contentPane.add(ImgBackground);
-	
-		
 
-	
-				
-				
 		Query bd = new Query(con);
 		btnAcessar.addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
-			
 
 				login = txtNome.getText();
 				senha = String.valueOf(txtSenha.getPassword());
 				Cliente cliente = null;
-				Funcionario fun = null;
-				fun = bd.funcionario(login,senha);
-				cliente =bd.cliente(login, senha);
-				
-				if(fun != null) {
-					System.out.println(fun.getNome());
-				}
-				
-				if(cliente != null) {
-					System.out.println(cliente.getNome());
-					
-				}
-				
+				Funcionario funcionario = null;
+				funcionario = bd.funcionario(login, senha);
+				cliente = bd.cliente(login, senha);
 
-				
-				
-				
-				
-				
-	
+				// instancia Tela funcionario
+				if (funcionario != null) {
+					telaFuncionario(funcionario);
+				}
+
+				// instancia Tela cliente
+				if (cliente != null) {
+					telaCliente(cliente);
+				}
+
+				if (cliente == null && funcionario == null) {
+
+					txtNome.setBorder(new LineBorder(Color.RED));
+					txtSenha.setBorder(new LineBorder(Color.RED));
+
+					JOptionPane.showMessageDialog(null, "CONTA INVALIDA!!", "#ERRO404", JOptionPane.ERROR_MESSAGE);
+
+				}
+
 			}
-		}); 
-		
-		
+
+		});
 
 	}
+
+	private void telaFuncionario(Funcionario funcionario) {
+		
+		txtNome.setBorder(new LineBorder(Color.GREEN));
+		txtSenha.setBorder(new LineBorder(Color.green));
+		JOptionPane.showMessageDialog(null, "Bem Vindo,"+ funcionario.getNome() +"!!", "Sucess", JOptionPane.INFORMATION_MESSAGE);
+		
+		/*
+		Menu ak = new Menu(con);
+		ak.setVisible(true);
+		dispose();
+
+*/
+	}
+
+	public void telaCliente(Cliente cliente) {
+		
+		txtNome.setBorder(new LineBorder(Color.GREEN));
+		txtSenha.setBorder(new LineBorder(Color.green));
+		JOptionPane.showMessageDialog(null, "Bem Vindo,"+ cliente.getNome() +"!!", "Sucess", JOptionPane.INFORMATION_MESSAGE);
+
+
+		Menu menu = new Menu(con,cliente);
+		menu.setVisible(true);
+		dispose();
+		
+	}
+
 }
