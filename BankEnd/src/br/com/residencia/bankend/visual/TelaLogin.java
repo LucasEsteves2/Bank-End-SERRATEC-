@@ -42,7 +42,8 @@ public class TelaLogin extends JFrame {
 	private Connection con;
 	private JTextField textField;
 	private Contas conta;
-//laser
+	
+//polvo laser
 	public TelaLogin(Connection con) {
 		this.con = con;
 
@@ -130,6 +131,7 @@ public class TelaLogin extends JFrame {
 		ImgBackground.setIcon(new ImageIcon("C:\\Users\\Esteves\\Pictures\\2133232232323.jpg"));
 		contentPane.add(ImgBackground);
 
+		
 		Query bd = new Query(con);
 		btnAcessar.addActionListener(new ActionListener() {
 
@@ -168,6 +170,8 @@ public class TelaLogin extends JFrame {
 
 		});
 
+		
+		
 	}
 
 	private void telaFuncionario(Funcionario funcionario) {

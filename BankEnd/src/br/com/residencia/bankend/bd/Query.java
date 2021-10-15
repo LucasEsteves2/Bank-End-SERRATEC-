@@ -116,45 +116,35 @@ public class Query {
 	}
 
 	public Contas descobreConta(Cliente cliente) {
-		
-		Contas continha =null;
-		
+
+		Contas continha = null;
+
 		try {
 			st = conexao.prepareStatement("select * from contas,cliente where id_cliente=?");
 
 			st.setInt(1, cliente.getId());
 			st.execute();
 
-
 			rs = st.getResultSet();
-			
-			if(rs.next())
-			{
-				String numero=rs.getString("numero");
-				double saldo= rs.getFloat("saldo");
+
+			if (rs.next()) {
+				String numero = rs.getString("numero");
+				double saldo = rs.getFloat("saldo");
 				String tipo = rs.getString("tipo");
 				String agencia = rs.getString("agencia");
 				int IdConta = rs.getInt("IdConta");
-				
-				
-				
-				if(tipo.equals("corrente"))
-				{
+
+				if (tipo.equals("corrente")) {
 					ContaCorrente corrente = new ContaCorrente(agencia, numero, tipo, 2000.00, cliente, null);
-					continha=corrente;
-				}
-				else
-				{
+					continha = corrente;
+				} else {
 					ContaPoupanca poupanca = new ContaPoupanca(agencia, numero, tipo, 1500.00, cliente, null);
-					continha=poupanca;
+					continha = poupanca;
 				}
-				
+
 			}
-			
-			
+
 			return continha;
-			
-			
 
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
