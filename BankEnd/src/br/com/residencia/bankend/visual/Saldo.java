@@ -8,6 +8,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import br.com.residencia.bankend.clientes.Cliente;
+import br.com.residencia.bankend.contas.Contas;
 
 import javax.swing.JLabel;
 
@@ -15,7 +16,7 @@ public class Saldo extends JFrame {
 
 	private JPanel contentPane;
 
-	public Saldo(Cliente cliente) {
+	public Saldo(Contas continha) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -23,22 +24,35 @@ public class Saldo extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 
-		JLabel lblNewLabel_1 = new JLabel("Seu saldo \u00E9 ");
-		lblNewLabel_1.setBounds(82, 43, 102, 14);
-		contentPane.add(lblNewLabel_1);
-
-		JLabel lblSaldo = new JLabel("");
-		lblSaldo.setVisible(false);
-		lblSaldo.setBounds(156, 42, 60, 14);
+		JLabel lblSaldo = new JLabel("Seu saldo \u00E9 ");
+		lblSaldo.setBounds(82, 43, 235, 14);
 		contentPane.add(lblSaldo);
 
 		JLabel lblNome = new JLabel("NOME:");
-		lblNome.setBounds(177, 7, 46, 14);
+		lblNome.setBounds(160, 11, 147, 21);
 		contentPane.add(lblNome);
 
-		lblSaldo.setVisible(true);
-
-		lblNome.setText(cliente.getNome());
-
+		
+		JLabel lblTipo = new JLabel("New label");
+		lblTipo.setBounds(82, 92, 289, 14);
+		contentPane.add(lblTipo);
+		
+		JLabel lblAgencia = new JLabel("New label");
+		lblAgencia.setBounds(82, 141, 272, 14);
+		contentPane.add(lblAgencia);
+		
+		JLabel lblNumero = new JLabel("New label");
+		lblNumero.setBounds(82, 192, 209, 14);
+		contentPane.add(lblNumero);
+		
+		
+		
+		
+		lblNome.setText("NOME: "+ continha.getCliente().getNome());
+		lblAgencia.setText("AGENCIA: "+continha.getAgencia());
+		lblSaldo.setText("SALDO: "+continha.getSaldo().toString());
+		lblTipo.setText("TIPO: "+continha.getTipo());
+		lblNumero.setText("NUMERO: "+ continha.getNumero());
+		
 	}
 }

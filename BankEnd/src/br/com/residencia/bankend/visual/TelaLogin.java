@@ -27,6 +27,7 @@ import javax.swing.border.LineBorder;
 import br.com.residencia.bankend.bd.Conexao;
 import br.com.residencia.bankend.bd.Query;
 import br.com.residencia.bankend.clientes.Cliente;
+import br.com.residencia.bankend.contas.Contas;
 import br.com.residencia.bankend.funcionarios.Funcionario;
 import br.com.residencia.bankend.funcionarios.Presidente;
 
@@ -40,7 +41,7 @@ public class TelaLogin extends JFrame {
 	private String senha;
 	private Connection con;
 	private JTextField textField;
-
+	private Contas conta;
 //laser
 	public TelaLogin(Connection con) {
 		this.con = con;
@@ -149,7 +150,9 @@ public class TelaLogin extends JFrame {
 
 				// instancia Tela cliente
 				if (cliente != null) {
-					telaCliente(cliente);
+					//metodo que retorna a conta do cliente
+					conta = bd.descobreConta(cliente);
+					telaCliente();
 				}
 
 				if (cliente == null && funcionario == null) {
@@ -168,31 +171,32 @@ public class TelaLogin extends JFrame {
 	}
 
 	private void telaFuncionario(Funcionario funcionario) {
-		
+
 		txtNome.setBorder(new LineBorder(Color.GREEN));
 		txtSenha.setBorder(new LineBorder(Color.green));
-		JOptionPane.showMessageDialog(null, "Bem Vindo,"+ funcionario.getNome() +"!!", "Sucess", JOptionPane.INFORMATION_MESSAGE);
-		
-		/*
-		Menu ak = new Menu(con);
-		ak.setVisible(true);
-		dispose();
+		JOptionPane.showMessageDialog(null, "Bem Vindo," + funcionario.getNome() + "!!", "Sucess",
+				JOptionPane.INFORMATION_MESSAGE);
 
-*/
+		/*
+		 * Menu ak = new Menu(con); ak.setVisible(true); dispose();
+		 * 
+		 */
 	}
 
-	public void telaCliente(Cliente cliente) {
-		
+	public void telaCliente() {
+
+		// Troca a cor do txt para verde
 		txtNome.setBorder(new LineBorder(Color.GREEN));
 		txtSenha.setBorder(new LineBorder(Color.green));
-		JOptionPane.showMessageDialog(null, "Bem Vindo,"+ cliente.getNome() +"!!", "Sucess", JOptionPane.INFORMATION_MESSAGE);
+		// mensagem de bem vindo
+		JOptionPane.showMessageDialog(null, "Bem Vindo," + conta.getCliente().getNome() + "!!", "Sucess",
+				JOptionPane.INFORMATION_MESSAGE);
 
-		System.out.println(cliente);
-		
-		Menu menu = new Menu(con,cliente);
+		//instancia da janela
+		Menu menu = new Menu(con, conta);
 		menu.setVisible(true);
 		dispose();
-		
+
 	}
 
 }

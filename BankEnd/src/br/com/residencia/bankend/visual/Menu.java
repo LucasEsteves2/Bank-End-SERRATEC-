@@ -16,7 +16,9 @@ import javax.swing.border.EmptyBorder;
 
 import javax.swing.border.MatteBorder;
 
+import br.com.residencia.bankend.bd.Query;
 import br.com.residencia.bankend.clientes.Cliente;
+import br.com.residencia.bankend.contas.Contas;
 import br.com.residencia.bankend.utility.Mouse;
 
 import javax.swing.UIManager;
@@ -25,12 +27,12 @@ import java.awt.event.MouseEvent;
 
 public class Menu extends JFrame {
 
-
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 
-	public Menu(Connection con, Cliente cliente) {
-		setIconImage(Toolkit.getDefaultToolkit().getImage(Menu.class.getResource("/br/com/residencia/bankend/imagens/hospital.png")));
+	public Menu(Connection con, Contas conta) {
+		setIconImage(Toolkit.getDefaultToolkit()
+				.getImage(Menu.class.getResource("/br/com/residencia/bankend/imagens/hospital.png")));
 		setExtendedState(Frame.MAXIMIZED_BOTH);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
@@ -52,7 +54,7 @@ public class Menu extends JFrame {
 		panel.add(lblLogo);
 
 		JPanel PainelMedico = new JPanel();
-		
+
 		PainelMedico.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 0)));
 		PainelMedico.setBounds(-1, 252, 243, 56);
 		PainelMedico.setBackground(Color.WHITE);
@@ -86,10 +88,11 @@ public class Menu extends JFrame {
 
 		JLabel lblInicio = new JLabel("");
 
-		lblInicio.setIcon(new ImageIcon(Menu.class.getResource("/br/com/residencia/bankend/imagens/pagina-inicial (1).png")));
+		lblInicio.setIcon(
+				new ImageIcon(Menu.class.getResource("/br/com/residencia/bankend/imagens/pagina-inicial (1).png")));
 		lblInicio.setBounds(10, -1, 29, 30);
 		PainelVoltar.add(lblInicio);
-		
+
 		JLabel lblNewLabel_5 = new JLabel("Home");
 		lblNewLabel_5.setForeground(UIManager.getColor("Button.foreground"));
 		lblNewLabel_5.setBackground(new Color(0, 0, 255));
@@ -105,7 +108,8 @@ public class Menu extends JFrame {
 		panel.add(PainelFechar);
 
 		JLabel imgPaciente_1_1_1 = new JLabel("");
-		imgPaciente_1_1_1.setIcon(new ImageIcon(Menu.class.getResource("/br/com/residencia/bankend/imagens/cancelar.png")));
+		imgPaciente_1_1_1
+				.setIcon(new ImageIcon(Menu.class.getResource("/br/com/residencia/bankend/imagens/cancelar.png")));
 		imgPaciente_1_1_1.setBounds(23, 12, 32, 32);
 		PainelFechar.add(imgPaciente_1_1_1);
 
@@ -127,7 +131,8 @@ public class Menu extends JFrame {
 		panel.add(PainelConsulta);
 
 		JLabel imgPaciente_1_1 = new JLabel("");
-		imgPaciente_1_1.setIcon(new ImageIcon(Menu.class.getResource("/br/com/residencia/bankend/imagens/health-check.png")));
+		imgPaciente_1_1
+				.setIcon(new ImageIcon(Menu.class.getResource("/br/com/residencia/bankend/imagens/health-check.png")));
 		imgPaciente_1_1.setBounds(23, 12, 32, 32);
 		PainelConsulta.add(imgPaciente_1_1);
 
@@ -149,7 +154,8 @@ public class Menu extends JFrame {
 		panel.add(PainelPaciente);
 
 		JLabel imgPaciente_1 = new JLabel("");
-		imgPaciente_1.setIcon(new ImageIcon(Menu.class.getResource("/br/com/residencia/bankend/imagens/examination.png")));
+		imgPaciente_1
+				.setIcon(new ImageIcon(Menu.class.getResource("/br/com/residencia/bankend/imagens/examination.png")));
 		imgPaciente_1.setBounds(23, 12, 32, 32);
 		PainelPaciente.add(imgPaciente_1);
 
@@ -164,53 +170,40 @@ public class Menu extends JFrame {
 		PainelPaciente.add(txtMedico_1);
 
 		JLabel lblBackground = new JLabel("");
-		lblBackground.setIcon(new ImageIcon(Menu.class.getResource("/br/com/residencia/bankend/imagens/backgroundvddd.jpg")));
+		lblBackground.setIcon(
+				new ImageIcon(Menu.class.getResource("/br/com/residencia/bankend/imagens/backgroundvddd.jpg")));
 		lblBackground.setBounds(235, 28, 1134, 711);
 		contentPane.add(lblBackground);
 
 		// ANIMAÇÃO AO PASSAR O MOUSE ( Escutador de click-mouse)
-/*
-		PainelMedico.addMouseListener(new MouseFunction(PainelMedico, "medico", this, con));
-		PainelConsulta.addMouseListener(new MouseFunction(PainelConsulta, "consulta", this, con));
-		PainelPaciente.addMouseListener(new MouseFunction(PainelPaciente, "paciente", this, con));
-		PainelFechar.addMouseListener(new MouseFunction(PainelFechar, "fechar", this, con));
-*/
+		/*
+		 * PainelMedico.addMouseListener(new MouseFunction(PainelMedico, "medico", this,
+		 * con)); PainelConsulta.addMouseListener(new MouseFunction(PainelConsulta,
+		 * "consulta", this, con)); PainelPaciente.addMouseListener(new
+		 * MouseFunction(PainelPaciente, "paciente", this, con));
+		 * PainelFechar.addMouseListener(new MouseFunction(PainelFechar, "fechar", this,
+		 * con));
+		 */
+		
 		JLabel lblMenu = new JLabel("New label");
 		lblMenu.setIcon(new ImageIcon(Menu.class.getResource("/br/com/residencia/bankend/imagens/2.jpg")));
 		lblMenu.setBounds(6, 11, 232, 714);
 		panel.add(lblMenu);
 
 		
-		
-		
+
 		PainelMedico.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				
-			
-				Saldo kk = new Saldo(cliente);
-				
+
+				Saldo kk = new Saldo(conta);
+
 				kk.setVisible(true);
+
 			}
 		});
-		
-		
+
 		PainelConsulta.addMouseListener(new Mouse(PainelConsulta));
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
+
 	}
 }

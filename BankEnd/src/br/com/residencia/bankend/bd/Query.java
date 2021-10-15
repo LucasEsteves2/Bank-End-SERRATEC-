@@ -9,6 +9,9 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 import br.com.residencia.bankend.clientes.Cliente;
+import br.com.residencia.bankend.contas.ContaCorrente;
+import br.com.residencia.bankend.contas.ContaPoupanca;
+import br.com.residencia.bankend.contas.Contas;
 import br.com.residencia.bankend.funcionarios.Diretor;
 import br.com.residencia.bankend.funcionarios.Funcionario;
 import br.com.residencia.bankend.funcionarios.Gerente;
@@ -112,12 +115,14 @@ public class Query {
 
 	}
 
-	public void descobreConta(int idCliente,Cliente cliente) {
-
+	public Contas descobreConta(Cliente cliente) {
+		
+		Contas continha =null;
+		
 		try {
 			st = conexao.prepareStatement("select * from contas,cliente where id_cliente=?");
 
-			st.setInt(1, idCliente);
+			st.setInt(1, cliente.getId());
 			st.execute();
 
 
@@ -133,12 +138,21 @@ public class Query {
 				
 				
 				
-				
+				if(tipo.equals("corrente"))
+				{
+					ContaCorrente corrente = new ContaCorrente(agencia, numero, tipo, 2000.00, cliente, null);
+					continha=corrente;
+				}
+				else
+				{
+					ContaPoupanca poupanca = new ContaPoupanca(agencia, numero, tipo, 1500.00, cliente, null);
+					continha=poupanca;
+				}
 				
 			}
 			
 			
-			
+			return continha;
 			
 			
 
@@ -146,6 +160,7 @@ public class Query {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		return continha;
 	}
 
 }
