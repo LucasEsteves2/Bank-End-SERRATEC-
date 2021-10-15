@@ -5,7 +5,7 @@ import java.awt.event.MouseEvent;
 
 import javax.swing.JPanel;
 
-import br.com.residencia.bankend.visual.Menu;
+import br.com.residencia.bankend.visual.cliente.Menu;
 
 public class Mouse extends MouseAdapter {
 
