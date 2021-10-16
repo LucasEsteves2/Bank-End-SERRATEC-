@@ -204,6 +204,18 @@ public class Menu extends JFrame {
 
 			}
 		});
+		
+		
+		
+		
+
+		painelSeguro.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				Deposito telaDeposito = new Deposito(con, conta);
+				telaDeposito.setVisible(true);
+			}
+		});
 
 		painelConta.addMouseListener(new Mouse(painelConta));
 
