@@ -181,11 +181,7 @@ public class Menu extends JFrame {
 		lblMenu.setBounds(6, 11, 232, 714);
 		panel.add(lblMenu);
 
-		painelTransferencia.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-			}
-		});
+		// Click no botao Conta
 
 		painelConta.addMouseListener(new MouseAdapter() {
 			@Override
@@ -195,21 +191,19 @@ public class Menu extends JFrame {
 				dispose();
 			}
 		});
-		
-		
-		//evento click botao transferencia
-		
+
+		// evento click botao transferencia
+
 		painelTransferencia.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				
-				Transferencia telaTransferencia = new Transferencia(con);
-		
+
+				Transferencia telaTransferencia = new Transferencia(con,conta);
+
 				telaTransferencia.setVisible(true);
-				
+
 			}
 		});
-		
 
 		painelConta.addMouseListener(new Mouse(painelConta));
 

@@ -135,10 +135,10 @@ public class Query {
 				int IdConta = rs.getInt("IdConta");
 
 				if (tipo.equals("corrente")) {
-					ContaCorrente corrente = new ContaCorrente(agencia, numero, tipo, 2000.00, cliente, null, IdConta);
+					ContaCorrente corrente = new ContaCorrente(agencia, numero, tipo, saldo, cliente, null, IdConta);
 					continha = corrente;
 				} else {
-					ContaPoupanca poupanca = new ContaPoupanca(agencia, numero, tipo, 1500.00, cliente, null, IdConta);
+					ContaPoupanca poupanca = new ContaPoupanca(agencia, numero, tipo, saldo, cliente, null, IdConta);
 					continha = poupanca;
 				}
 

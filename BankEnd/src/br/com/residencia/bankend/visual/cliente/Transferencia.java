@@ -12,12 +12,15 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
 import br.com.residencia.bankend.bd.Query;
+import br.com.residencia.bankend.contas.ContaCorrente;
+import br.com.residencia.bankend.contas.ContaPoupanca;
 import br.com.residencia.bankend.contas.Contas;
 
 public class Transferencia extends JFrame {
@@ -28,10 +31,14 @@ public class Transferencia extends JFrame {
 	private String senha;
 	private Connection con;
 	private JTextField txtCartao;
-	private JTextField textField_1;
+	private JTextField txtValor;
+	private Contas contaDestinatario = null;
+	private Contas contaRemetente = null;
+	ContaCorrente corrente = null;
 
-	public Transferencia(Connection con) {
-		this.con = con;
+	public Transferencia(Connection conexao, Contas contaAtual) {
+		this.con = conexao;
+		this.contaRemetente = contaAtual;
 
 		setIconImage(Toolkit.getDefaultToolkit()
 				.getImage(Transferencia.class.getResource("/br/com/residencia/bankend/imagens/cadeado-trancado.png")));
@@ -55,11 +62,16 @@ public class Transferencia extends JFrame {
 		btnNewButton_3_1_2.setBounds(1170, 534, 48, 22);
 		contentPane.add(btnNewButton_3_1_2);
 
-		JButton btnNewButton_3_1_2_1 = new JButton("");
-		btnNewButton_3_1_2_1.setIcon(new ImageIcon("C:\\Users\\Esteves\\Downloads\\marca-de-verificacao (2).png"));
-		btnNewButton_3_1_2_1.setBackground(new Color(50, 205, 50));
-		btnNewButton_3_1_2_1.setBounds(1231, 534, 48, 22);
-		contentPane.add(btnNewButton_3_1_2_1);
+		JLabel lblNome = new JLabel("New label");
+		lblNome.setFont(new Font("Tahoma", Font.PLAIN, 28));
+		lblNome.setBounds(796, 323, 197, 63);
+		contentPane.add(lblNome);
+
+		JButton btnVerde = new JButton("");
+		btnVerde.setIcon(new ImageIcon("C:\\Users\\Esteves\\Downloads\\marca-de-verificacao (2).png"));
+		btnVerde.setBackground(new Color(50, 205, 50));
+		btnVerde.setBounds(1231, 534, 48, 22);
+		contentPane.add(btnVerde);
 		btnNewButton_4_1.setBackground(Color.LIGHT_GRAY);
 		btnNewButton_4_1.setBounds(1231, 445, 48, 22);
 		contentPane.add(btnNewButton_4_1);
@@ -129,12 +141,12 @@ public class Transferencia extends JFrame {
 		btnNewButton_4.setBounds(1170, 445, 48, 22);
 		contentPane.add(btnNewButton_4);
 
-		JLabel lblCartao_1 = new JLabel("LUCAS ESTEVES DE ABREU");
-		lblCartao_1.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		lblCartao_1.setForeground(Color.WHITE);
-		lblCartao_1.setBackground(Color.WHITE);
-		lblCartao_1.setBounds(736, 424, 158, 14);
-		contentPane.add(lblCartao_1);
+		JLabel lblNomeCartao = new JLabel("LUCAS ESTEVES DE ABREU");
+		lblNomeCartao.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNomeCartao.setForeground(Color.WHITE);
+		lblNomeCartao.setBackground(Color.WHITE);
+		lblNomeCartao.setBounds(736, 424, 158, 14);
+		contentPane.add(lblNomeCartao);
 
 		JLabel lblNewLabel_1 = new JLabel("");
 		lblNewLabel_1.setIcon(new ImageIcon("C:\\Users\\Esteves\\Downloads\\A23.png"));
@@ -146,23 +158,23 @@ public class Transferencia extends JFrame {
 		btnVerificar.setBounds(818, 381, 97, 23);
 		contentPane.add(btnVerificar);
 
-		JLabel lblNewLabel_6 = new JLabel("INFORME UM VALOR");
-		lblNewLabel_6.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		lblNewLabel_6.setBounds(1140, 284, 113, 15);
-		contentPane.add(lblNewLabel_6);
+		JLabel lblValor = new JLabel("INFORME UM VALOR");
+		lblValor.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblValor.setBounds(1140, 284, 113, 15);
+		contentPane.add(lblValor);
 
-		textField_1 = new JTextField();
-		textField_1.setColumns(10);
-		textField_1.setBounds(1145, 309, 97, 20);
-		contentPane.add(textField_1);
+		txtValor = new JTextField();
+		txtValor.setColumns(10);
+		txtValor.setBounds(1145, 309, 97, 20);
+		contentPane.add(txtValor);
 
-		JLabel lblNewLabel_4 = new JLabel("Cliente: Lucas Esteves");
-		lblNewLabel_4.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_4.setHorizontalTextPosition(SwingConstants.CENTER);
-		lblNewLabel_4.setForeground(Color.DARK_GRAY);
-		lblNewLabel_4.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		lblNewLabel_4.setBounds(1117, 165, 151, 17);
-		contentPane.add(lblNewLabel_4);
+		JLabel lblNomeMaquina = new JLabel("Cliente: Lucas Esteves");
+		lblNomeMaquina.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNomeMaquina.setHorizontalTextPosition(SwingConstants.CENTER);
+		lblNomeMaquina.setForeground(Color.DARK_GRAY);
+		lblNomeMaquina.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		lblNomeMaquina.setBounds(1117, 165, 151, 17);
+		contentPane.add(lblNomeMaquina);
 
 		JLabel lblNewLabel_3 = new JLabel("");
 		lblNewLabel_3.setBackground(Color.WHITE);
@@ -170,11 +182,11 @@ public class Transferencia extends JFrame {
 		lblNewLabel_3.setBounds(921, -538, 1026, 1913);
 		contentPane.add(lblNewLabel_3);
 
-		JLabel lblCartao = new JLabel("Conta:");
-		lblCartao.setForeground(Color.WHITE);
-		lblCartao.setBackground(Color.WHITE);
-		lblCartao.setBounds(797, 331, 158, 14);
-		contentPane.add(lblCartao);
+		JLabel lbl1 = new JLabel("Conta:");
+		lbl1.setForeground(Color.WHITE);
+		lbl1.setBackground(Color.WHITE);
+		lbl1.setBounds(797, 331, 158, 14);
+		contentPane.add(lbl1);
 
 		txtCartao = new JTextField();
 		txtCartao.setColumns(10);
@@ -193,22 +205,110 @@ public class Transferencia extends JFrame {
 
 		Query bd = new Query(con);
 
+		lblNome.setVisible(false);
+
+		// setando visibilidade dos components
+
+		lblNomeCartao.setVisible(false);
+		lblNomeMaquina.setVisible(false);
+		lblValor.setVisible(false);
+		txtValor.setVisible(false);
+
 		btnVerificar.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
-				// pegando conta informada
+				// pegando conta digitada no texto
 				String numConta = txtCartao.getText();
 
-				Contas continha = null;
+				// verifica se a conta do destinatario é igual
+				if (numConta.equals(contaRemetente.getNumero())) {
+					JOptionPane.showMessageDialog(null, "MESMA CONTA!!", "#ERRO404", JOptionPane.ERROR_MESSAGE);
 
-				continha = bd.verificaConta(numConta);
-			
-				
-				
+				} else {
+					// metodo verifica se a conta informada é valida
+					contaDestinatario = bd.verificaConta(numConta);
+					mensagemContinuar();
+
+					String nome = contaDestinatario.getCliente().getNome();
+					String sobrenome = contaDestinatario.getCliente().getSobreNome();
+
+					// setando visibilidade
+
+					lblNomeCartao.setText(contaDestinatario.getNumero());
+					lblNome.setText(nome + " " + sobrenome);
+
+					lblNomeCartao.setVisible(true);
+					btnVerificar.setVisible(false);
+					txtCartao.setVisible(false);
+					lbl1.setVisible(false);
+
+					lblNome.setVisible(true);
+					lblNomeMaquina.setVisible(false);
+					lblValor.setVisible(true);
+					txtValor.setVisible(true);
+
+				}
+
+			}
+		});
+
+		btnVerde.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+
+				String valor = txtValor.getText();
+				Double transferencia = Double.parseDouble(valor);
+
+				System.out.println(valor);
+
+				if (contaAtual.getTipo().equals("corrente")) {
+
+					corrente = (ContaCorrente) contaAtual;
+
+					corrente.transferencia(contaDestinatario, transferencia);
+
+					System.out.println(corrente.getSaldo());
+
+				}
+				if (contaAtual.getTipo().equals("poupanca")) {
+
+					ContaPoupanca poupanca = null;
+
+					poupanca = (ContaPoupanca) contaAtual;
+
+					corrente.transferencia(contaDestinatario, transferencia);
+
+					System.out.println(poupanca.getSaldo());
+
+					System.out.println("SOU POUPANCA");
+				}
+
 			}
 		});
 
 	}
+
+	public boolean mensagemContinuar() {
+
+		String nome = contaDestinatario.getCliente().getNome();
+
+		// funcao nova
+		int i = JOptionPane.showConfirmDialog(null, "Destinario: " + nome + "\n \n \t \t \t  Deseja continuar?",
+				"Transferencia", JOptionPane.OK_CANCEL_OPTION);
+
+		if (i == JOptionPane.YES_OPTION) {
+			System.out.println("Clicou em Sim");
+
+		} else if (i == JOptionPane.CANCEL_OPTION) {
+
+			System.out.println("Clicou em Não");
+
+		}
+		return rootPaneCheckingEnabled;
+
+	}
+
 }

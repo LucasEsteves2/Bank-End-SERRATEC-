@@ -4,13 +4,13 @@ import br.com.residencia.bankend.clientes.Cliente;
 
  public abstract class Contas {
 
-	private String agencia;
-	private String numero;
-	private String tipo;
+	protected String agencia;
+	protected String numero;
+	protected String tipo;
 	protected Double saldo;
-	private Cliente cliente;
-	private SeguroVida seguro;
-	private Integer id;
+	protected Cliente cliente;
+	protected SeguroVida seguro;
+	protected Integer id;
 	
 
 	public Contas(String agencia, String numero, String tipo, Double saldo, Cliente cliente, SeguroVida seguro,Integer id) {
