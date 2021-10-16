@@ -198,10 +198,14 @@ public class Menu extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 
-				Transferencia telaTransferencia = new Transferencia(con,conta);
+				//Transferencia telaTransferencia = new Transferencia(con,conta);
 
-				telaTransferencia.setVisible(true);
+				//telaTransferencia.setVisible(true);
 
+				
+				MenuTransacaos telaTransacao = new MenuTransacaos(con, conta);
+				telaTransacao.setVisible(true);
+				
 			}
 		});
 		

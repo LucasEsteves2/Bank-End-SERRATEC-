@@ -23,14 +23,13 @@ import br.com.residencia.bankend.contas.ContaCorrente;
 import br.com.residencia.bankend.contas.ContaPoupanca;
 import br.com.residencia.bankend.contas.Contas;
 
-public class Deposito extends JFrame {
+public class Saque extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private String login;
 	private String senha;
 	private Connection con;
-	private JTextField txtCartao;
 	private JTextField txtValor;
 	private Contas contaDestinatario = null;
 	private Contas contaRemetente = null;
@@ -48,12 +47,12 @@ public class Deposito extends JFrame {
 	private JLabel lbl3;
 	private JLabel lblTipo;
 
-	public Deposito(Connection conexao, Contas contaRemetente) {
+	public Saque(Connection conexao, Contas contaRemetente) {
 		this.con = conexao;
 		this.contaRemetente = contaRemetente;
 
 		setIconImage(Toolkit.getDefaultToolkit()
-				.getImage(Deposito.class.getResource("/br/com/residencia/bankend/imagens/cadeado-trancado.png")));
+				.getImage(Saque.class.getResource("/br/com/residencia/bankend/imagens/cadeado-trancado.png")));
 		setExtendedState(Frame.MAXIMIZED_BOTH);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
@@ -62,7 +61,7 @@ public class Deposito extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 
-		JButton btnNewButton_4_1 = new JButton("6");
+		JButton btn6 = new JButton("6");
 
 		lbl3 = new JLabel("AGENCIA");
 		lbl3.setFont(new Font("Tahoma", Font.PLAIN, 9));
@@ -84,11 +83,15 @@ public class Deposito extends JFrame {
 		lbl2.setBounds(811, 403, 46, 14);
 		contentPane.add(lbl2);
 
-		JButton btnNewButton_3_1_2 = new JButton("");
-		btnNewButton_3_1_2.setIcon(new ImageIcon("C:\\Users\\Esteves\\Downloads\\atencao.png"));
-		btnNewButton_3_1_2.setBackground(Color.YELLOW);
-		btnNewButton_3_1_2.setBounds(1170, 534, 48, 22);
-		contentPane.add(btnNewButton_3_1_2);
+		JButton btnAmarelo = new JButton("");
+		btnAmarelo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btnAmarelo.setIcon(new ImageIcon("C:\\Users\\Esteves\\Downloads\\atencao.png"));
+		btnAmarelo.setBackground(Color.YELLOW);
+		btnAmarelo.setBounds(1170, 534, 48, 22);
+		contentPane.add(btnAmarelo);
 
 		lblAgencia = new JLabel("Agencia");
 		lblAgencia.setForeground(Color.WHITE);
@@ -105,71 +108,79 @@ public class Deposito extends JFrame {
 		btnVerde.setBackground(new Color(50, 205, 50));
 		btnVerde.setBounds(1231, 534, 48, 22);
 		contentPane.add(btnVerde);
-		btnNewButton_4_1.setBackground(Color.LIGHT_GRAY);
-		btnNewButton_4_1.setBounds(1231, 445, 48, 22);
-		contentPane.add(btnNewButton_4_1);
+		btn6.setBackground(Color.LIGHT_GRAY);
+		btn6.setBounds(1231, 445, 48, 22);
+		contentPane.add(btn6);
 
-		JButton btnNewButton_4_1_1 = new JButton("0");
-		btnNewButton_4_1_1.setBackground(Color.LIGHT_GRAY);
-		btnNewButton_4_1_1.setBounds(1170, 505, 48, 22);
-		contentPane.add(btnNewButton_4_1_1);
+		JButton btn0 = new JButton("0");
+		btn0.setBackground(Color.LIGHT_GRAY);
+		btn0.setBounds(1170, 505, 48, 22);
+		contentPane.add(btn0);
 
-		JButton btnNewButton_3_1_1 = new JButton("#");
-		btnNewButton_3_1_1.setBackground(Color.LIGHT_GRAY);
-		btnNewButton_3_1_1.setBounds(1231, 505, 48, 22);
-		contentPane.add(btnNewButton_3_1_1);
+		JButton btnVelha = new JButton("#");
+		btnVelha.setBackground(Color.LIGHT_GRAY);
+		btnVelha.setBounds(1231, 505, 48, 22);
+		contentPane.add(btnVelha);
 
-		JButton btnNewButton_6 = new JButton("*");
-		btnNewButton_6.setBackground(Color.LIGHT_GRAY);
-		btnNewButton_6.setBounds(1111, 505, 48, 22);
-		contentPane.add(btnNewButton_6);
+		JButton btnAs = new JButton("*");
+		btnAs.setBackground(Color.LIGHT_GRAY);
+		btnAs.setBounds(1111, 505, 48, 22);
+		contentPane.add(btnAs);
 
-		JButton btnNewButton_3_1 = new JButton("");
-		btnNewButton_3_1.setIcon(new ImageIcon("C:\\Users\\Esteves\\Downloads\\cancelar.png"));
-		btnNewButton_3_1.setBackground(new Color(220, 20, 60));
-		btnNewButton_3_1.setBounds(1111, 534, 50, 22);
-		contentPane.add(btnNewButton_3_1);
+		JButton btnVermelho = new JButton("");
+		btnVermelho.setIcon(new ImageIcon("C:\\Users\\Esteves\\Downloads\\cancelar.png"));
+		btnVermelho.setBackground(new Color(220, 20, 60));
+		btnVermelho.setBounds(1111, 534, 50, 22);
+		contentPane.add(btnVermelho);
 
-		JButton btnNewButton = new JButton("1");
-		btnNewButton.setBackground(Color.LIGHT_GRAY);
-		btnNewButton.setBounds(1111, 416, 48, 22);
-		contentPane.add(btnNewButton);
+		JButton btn1 = new JButton("1");
+		btn1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btn1.setBackground(Color.LIGHT_GRAY);
+		btn1.setBounds(1111, 416, 48, 22);
+		contentPane.add(btn1);
 //aaa
-		JButton btnNewButton_5 = new JButton("8");
-		btnNewButton_5.setBackground(Color.LIGHT_GRAY);
-		btnNewButton_5.setBounds(1170, 476, 48, 22);
-		contentPane.add(btnNewButton_5);
+		JButton btn8 = new JButton("8");
+		btn8.setBackground(Color.LIGHT_GRAY);
+		btn8.setBounds(1170, 476, 48, 22);
+		contentPane.add(btn8);
 
-		JButton btnNewButton_1_1 = new JButton("9");
-		btnNewButton_1_1.setBackground(Color.LIGHT_GRAY);
-		btnNewButton_1_1.setBounds(1231, 476, 48, 22);
-		contentPane.add(btnNewButton_1_1);
+		JButton btn9 = new JButton("9");
+		btn9.setBackground(Color.LIGHT_GRAY);
+		btn9.setBounds(1231, 476, 48, 22);
+		contentPane.add(btn9);
 
-		JButton btnNewButton_2_1 = new JButton("7");
-		btnNewButton_2_1.setBackground(Color.LIGHT_GRAY);
-		btnNewButton_2_1.setBounds(1111, 475, 48, 22);
-		contentPane.add(btnNewButton_2_1);
+		JButton btn7 = new JButton("7");
+		btn7.setBackground(Color.LIGHT_GRAY);
+		btn7.setBounds(1111, 475, 48, 22);
+		contentPane.add(btn7);
 
-		JButton btnNewButton_1 = new JButton("2");
-		btnNewButton_1.setBackground(Color.LIGHT_GRAY);
-		btnNewButton_1.setBounds(1170, 416, 48, 22);
-		contentPane.add(btnNewButton_1);
+		JButton btn2 = new JButton("2");
+		btn2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btn2.setBackground(Color.LIGHT_GRAY);
+		btn2.setBounds(1170, 416, 48, 22);
+		contentPane.add(btn2);
 
-		JButton btnNewButton_2 = new JButton("3");
-		btnNewButton_2.setBackground(Color.LIGHT_GRAY);
-		btnNewButton_2.setBounds(1231, 416, 48, 22);
-		contentPane.add(btnNewButton_2);
+		JButton btn3 = new JButton("3");
+		btn3.setBackground(Color.LIGHT_GRAY);
+		btn3.setBounds(1231, 416, 48, 22);
+		contentPane.add(btn3);
 
-		JButton btnNewButton_3 = new JButton("4");
+		JButton btn4 = new JButton("4");
 
-		btnNewButton_3.setBackground(Color.LIGHT_GRAY);
-		btnNewButton_3.setBounds(1110, 445, 48, 22);
-		contentPane.add(btnNewButton_3);
+		btn4.setBackground(Color.LIGHT_GRAY);
+		btn4.setBounds(1110, 445, 48, 22);
+		contentPane.add(btn4);
 
-		JButton btnNewButton_4 = new JButton("5");
-		btnNewButton_4.setBackground(Color.LIGHT_GRAY);
-		btnNewButton_4.setBounds(1170, 445, 48, 22);
-		contentPane.add(btnNewButton_4);
+		JButton btn5 = new JButton("5");
+		btn5.setBackground(Color.LIGHT_GRAY);
+		btn5.setBounds(1170, 445, 48, 22);
+		contentPane.add(btn5);
 
 		lblConta = new JLabel("Conta:");
 		lblConta.setFont(new Font("Tahoma", Font.PLAIN, 12));
@@ -218,11 +229,6 @@ public class Deposito extends JFrame {
 		lbl1.setBounds(797, 331, 158, 14);
 		contentPane.add(lbl1);
 
-		txtCartao = new JTextField();
-		txtCartao.setColumns(10);
-		txtCartao.setBounds(795, 348, 160, 20);
-		contentPane.add(txtCartao);
-
 		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\Esteves\\Pictures\\card222323.png"));
 		lblNewLabel.setBounds(512, 143, 638, 365);
@@ -241,32 +247,35 @@ public class Deposito extends JFrame {
 
 		lblConta.setVisible(false);
 		lblNomeMaquina.setVisible(false);
-		lblValor.setVisible(false);
-		txtValor.setVisible(false);
 		lblAgencia.setVisible(false);
 
-		btnVerificar.addActionListener(new ActionListener() {
+		
+		
+		//pegando dados dos usuarios
 
-			@Override
-			public void actionPerformed(ActionEvent e) {
+		String nome1 = contaRemetente.getCliente().getNome();
+		String sobrenome = contaRemetente.getCliente().getSobreNome();
 
-				// pegando conta digitada no texto
-				String numConta = txtCartao.getText();
+		// setando textos
+		lblConta.setText(contaRemetente.getNumero());
+		lblNome.setText(nome1 + " " + sobrenome);
+		lblAgencia.setText(contaRemetente.getAgencia());
+		lblTipo.setText("Conta: " + contaRemetente.getTipo());
 
-				// verifica se a conta do destinatario é igual
-				if (numConta.equals(contaRemetente.getNumero())) {
-					JOptionPane.showMessageDialog(null, "MESMA CONTA!!", "#ERRO404", JOptionPane.ERROR_MESSAGE);
-
-				} else {
-					// metodo verifica se a conta informada é valida
-					contaDestinatario = bd.verificaConta(numConta);
-					mensagemContinuar();
-
-				}
-
-			}
-		});
-
+		// setando visibilidade dos componentes
+		lblConta.setVisible(true);
+		btnVerificar.setVisible(false);
+		lbl1.setVisible(false);
+		lblNome.setVisible(true);
+		lblNomeMaquina.setVisible(false);
+		lblValor.setVisible(true);
+		txtValor.setVisible(true);
+		lbl2.setVisible(true);
+		lbl3.setVisible(true);
+		lblAgencia.setVisible(true);
+		lblTipo.setVisible(true);
+		
+		
 		btnVerde.addActionListener(new ActionListener() {
 
 			@Override
@@ -274,7 +283,7 @@ public class Deposito extends JFrame {
 
 				// pegando e convertendo valor inforamdo
 				String valor = txtValor.getText();
-				Double deposito = Double.parseDouble(valor);
+				Double saldo = Double.parseDouble(valor);
 
 				System.out.println(valor);
 
@@ -284,14 +293,14 @@ public class Deposito extends JFrame {
 					// fazend o cast
 					corrente = (ContaCorrente) contaRemetente;
 
-					corrente.deposito(contaDestinatario, deposito);
+					corrente.saque(saldo, contaRemetente);
 
 					// gambiarra refazendo o cast
 					Contas contaRemetnetee = null;
 
 					contaRemetnetee = corrente;
 
-					bd.deposito(contaDestinatario,deposito);
+					bd.deposito(contaRemetnetee,saldo);
 
 				}
 
@@ -299,14 +308,14 @@ public class Deposito extends JFrame {
 
 					poupanca = (ContaPoupanca) contaRemetente;
 
-					poupanca.deposito(contaDestinatario, deposito);
+					poupanca.saque(saldo,contaRemetente);
 
 					// gambiarra refazendo o cast
 					Contas contaRemetnetee = null;
 
 					contaRemetnetee = poupanca;
 
-					bd.deposito(contaDestinatario,deposito);
+					bd.deposito(contaRemetnetee,saldo);
 
 					System.out.println("SOU POUPANCA");
 				}
@@ -316,52 +325,4 @@ public class Deposito extends JFrame {
 
 	}
 
-	public boolean mensagemContinuar() {
-
-		String nome = contaDestinatario.getCliente().getNome();
-
-		int i = JOptionPane.showConfirmDialog(null, "Destinario: " + nome + "\n \n \t \t \t  Deseja continuar?",
-				"Transferencia", JOptionPane.OK_CANCEL_OPTION);
-
-		// se clicar em sim
-		if (i == JOptionPane.YES_OPTION) {
-			System.out.println("Clicou em Sim");
-
-			String nome1 = contaDestinatario.getCliente().getNome();
-			String sobrenome = contaDestinatario.getCliente().getSobreNome();
-
-			// setando textos
-			lblConta.setText(contaDestinatario.getNumero());
-			lblNome.setText(nome1 + " " + sobrenome);
-			lblAgencia.setText(contaDestinatario.getAgencia());
-			lblTipo.setText("Conta: " + contaDestinatario.getTipo());
-
-			// setando visibilidade dos componentes
-			lblConta.setVisible(true);
-			btnVerificar.setVisible(false);
-			txtCartao.setVisible(false);
-			lbl1.setVisible(false);
-			lblNome.setVisible(true);
-			lblNomeMaquina.setVisible(false);
-			lblValor.setVisible(true);
-			txtValor.setVisible(true);
-			lbl2.setVisible(true);
-			lbl3.setVisible(true);
-			lblAgencia.setVisible(true);
-			lblTipo.setVisible(true);
-
-		}
-		
-		// se clicar em nao
-
-		else if (i == JOptionPane.CANCEL_OPTION) {
-
-			System.out.println("Clicou em Não");
-			txtCartao.setText("");
-
-		}
-		return rootPaneCheckingEnabled;
-
-	}
-//vaiiiiiiiiiiiiiiii  AGORAAAAAAAAAAAAA
 }

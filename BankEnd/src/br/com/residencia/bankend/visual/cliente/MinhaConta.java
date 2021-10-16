@@ -63,7 +63,8 @@ public class MinhaConta extends JFrame {
 		JLabel imgPaciente = new JLabel("");
 		imgPaciente.setHorizontalTextPosition(SwingConstants.CENTER);
 		imgPaciente.setHorizontalAlignment(SwingConstants.CENTER);
-		imgPaciente.setIcon(new ImageIcon(MinhaConta.class.getResource("/br/com/residencia/bankend/imagens/doctor (4).png")));
+		imgPaciente.setIcon(
+				new ImageIcon(MinhaConta.class.getResource("/br/com/residencia/bankend/imagens/doctor (4).png")));
 		imgPaciente.setBounds(23, 12, 32, 32);
 		PainelMedico.add(imgPaciente);
 
@@ -87,8 +88,8 @@ public class MinhaConta extends JFrame {
 
 		JLabel lblInicio = new JLabel("");
 
-		lblInicio.setIcon(
-				new ImageIcon(MinhaConta.class.getResource("/br/com/residencia/bankend/imagens/pagina-inicial (1).png")));
+		lblInicio.setIcon(new ImageIcon(
+				MinhaConta.class.getResource("/br/com/residencia/bankend/imagens/pagina-inicial (1).png")));
 		lblInicio.setBounds(10, -1, 29, 30);
 		PainelVoltar.add(lblInicio);
 
@@ -107,8 +108,8 @@ public class MinhaConta extends JFrame {
 		panel.add(PainelFechar);
 
 		JLabel imgPaciente_1_1_1 = new JLabel("");
-		imgPaciente_1_1_1
-				.setIcon(new ImageIcon(MinhaConta.class.getResource("/br/com/residencia/bankend/imagens/cancelar.png")));
+		imgPaciente_1_1_1.setIcon(
+				new ImageIcon(MinhaConta.class.getResource("/br/com/residencia/bankend/imagens/cancelar.png")));
 		imgPaciente_1_1_1.setBounds(23, 12, 32, 32);
 		PainelFechar.add(imgPaciente_1_1_1);
 
@@ -130,8 +131,8 @@ public class MinhaConta extends JFrame {
 		panel.add(PainelConsulta);
 
 		JLabel imgPaciente_1_1 = new JLabel("");
-		imgPaciente_1_1
-				.setIcon(new ImageIcon(MinhaConta.class.getResource("/br/com/residencia/bankend/imagens/health-check.png")));
+		imgPaciente_1_1.setIcon(
+				new ImageIcon(MinhaConta.class.getResource("/br/com/residencia/bankend/imagens/health-check.png")));
 		imgPaciente_1_1.setBounds(23, 12, 32, 32);
 		PainelConsulta.add(imgPaciente_1_1);
 
@@ -153,8 +154,8 @@ public class MinhaConta extends JFrame {
 		panel.add(PainelPaciente);
 
 		JLabel imgPaciente_1 = new JLabel("");
-		imgPaciente_1
-				.setIcon(new ImageIcon(MinhaConta.class.getResource("/br/com/residencia/bankend/imagens/examination.png")));
+		imgPaciente_1.setIcon(
+				new ImageIcon(MinhaConta.class.getResource("/br/com/residencia/bankend/imagens/examination.png")));
 		imgPaciente_1.setBounds(23, 12, 32, 32);
 		PainelPaciente.add(imgPaciente_1);
 
@@ -167,60 +168,60 @@ public class MinhaConta extends JFrame {
 		txtMedico_1.setFont(new Font("Segoe UI", Font.BOLD, 16));
 		txtMedico_1.setBounds(68, 16, 103, 22);
 		PainelPaciente.add(txtMedico_1);
-		
+
 		Panel lblSobrenome = new Panel();
-	
+
 		lblSobrenome.setBackground(UIManager.getColor("CheckBox.background"));
 		lblSobrenome.setBounds(235, 32, 1142, 675);
 		contentPane.add(lblSobrenome);
 		lblSobrenome.setLayout(null);
-		
+
 		Panel panel_2 = new Panel();
 		panel_2.setFont(new Font("Franklin Gothic Medium", Font.BOLD, 12));
 		panel_2.setBounds(38, 148, 328, 120);
 		lblSobrenome.add(panel_2);
 		panel_2.setLayout(null);
 		panel_2.setBackground(Color.WHITE);
-		
+
 		Label label = new Label("Conta:");
 		label.setFont(new Font("Franklin Gothic Medium", Font.BOLD, 22));
 		label.setBounds(11, 9, 113, 30);
 		panel_2.add(label);
-		
+
 		JLabel lblAgencia = new JLabel("1234");
 		lblAgencia.setForeground(SystemColor.inactiveCaption);
 		lblAgencia.setFont(new Font("Franklin Gothic Medium", Font.BOLD, 29));
 		lblAgencia.setBackground(Color.GREEN);
 		lblAgencia.setBounds(17, 63, 98, 46);
 		panel_2.add(lblAgencia);
-		
+
 		JLabel lblNewLabel_3 = new JLabel("AGENCIA");
 		lblNewLabel_3.setBounds(33, 51, 46, 14);
 		panel_2.add(lblNewLabel_3);
-		
+
 		JLabel lblNumConta = new JLabel("12345678-9");
 		lblNumConta.setForeground(SystemColor.textHighlight);
 		lblNumConta.setFont(new Font("Franklin Gothic Medium", Font.BOLD, 30));
 		lblNumConta.setBackground(Color.GREEN);
 		lblNumConta.setBounds(121, 61, 210, 46);
 		panel_2.add(lblNumConta);
-		
+
 		JLabel lblNewLabel_3_1 = new JLabel("NUMERO DA CONTA");
 		lblNewLabel_3_1.setBounds(151, 49, 113, 14);
 		panel_2.add(lblNewLabel_3_1);
-		
+
 		Panel panel_2_1 = new Panel();
 		panel_2_1.setLayout(null);
 		panel_2_1.setFont(new Font("Franklin Gothic Medium", Font.BOLD, 12));
 		panel_2_1.setBackground(Color.WHITE);
 		panel_2_1.setBounds(399, 148, 328, 120);
 		lblSobrenome.add(panel_2_1);
-		
+
 		Label label_1 = new Label("Status:");
 		label_1.setFont(new Font("Franklin Gothic Medium", Font.BOLD, 22));
 		label_1.setBounds(11, 10, 126, 34);
 		panel_2_1.add(label_1);
-		
+
 		JLabel lblStatus = new JLabel("ATIVO");
 		lblStatus.setHorizontalAlignment(SwingConstants.CENTER);
 		lblStatus.setForeground(new Color(153, 0, 204));
@@ -228,128 +229,122 @@ public class MinhaConta extends JFrame {
 		lblStatus.setBackground(Color.GREEN);
 		lblStatus.setBounds(3, 48, 325, 46);
 		panel_2_1.add(lblStatus);
-		
+
 		Panel panel_2_1_1 = new Panel();
 		panel_2_1_1.setLayout(null);
 		panel_2_1_1.setFont(new Font("Franklin Gothic Medium", Font.BOLD, 12));
 		panel_2_1_1.setBackground(Color.WHITE);
 		panel_2_1_1.setBounds(764, 148, 328, 120);
 		lblSobrenome.add(panel_2_1_1);
-		
+
 		Label label_1_1 = new Label("Saldo total:");
 		label_1_1.setFont(new Font("Franklin Gothic Medium", Font.BOLD, 22));
 		label_1_1.setBounds(12, 10, 126, 34);
 		panel_2_1_1.add(label_1_1);
-		
+
 		JLabel lblSaldo = new JLabel("R$ - - - - - - -");
 		lblSaldo.setForeground(new Color(34, 139, 34));
 		lblSaldo.setFont(new Font("Franklin Gothic Medium", Font.BOLD, 39));
 		lblSaldo.setBackground(Color.GREEN);
 		lblSaldo.setBounds(26, 49, 210, 46);
 		panel_2_1_1.add(lblSaldo);
-		
+
 		JLabel lblDinheiro = new JLabel("R$ : ***");
 		lblDinheiro.setForeground(new Color(255, 102, 0));
 		lblDinheiro.setFont(new Font("Franklin Gothic Medium", Font.BOLD, 19));
 		lblDinheiro.setBounds(946, 55, 91, 22);
 		lblSobrenome.add(lblDinheiro);
-		
+
 		JLabel lblNewLabel_7 = new JLabel("Saldo:");
 		lblNewLabel_7.setFont(new Font("Franklin Gothic Medium", Font.PLAIN, 19));
 		lblNewLabel_7.setBounds(884, 54, 69, 23);
 		lblSobrenome.add(lblNewLabel_7);
-		
+
 		JLabel lblNewLabel_6 = new JLabel("");
 		lblNewLabel_6.setBorder(new EtchedBorder(EtchedBorder.RAISED, new Color(255, 153, 51), null));
 		lblNewLabel_6.setBounds(871, 40, 200, 50);
 		lblSobrenome.add(lblNewLabel_6);
-		
+
 		JLabel lblNewLabel_9 = new JLabel("Status");
 		lblNewLabel_9.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		lblNewLabel_9.setBounds(82, 416, 52, 23);
 		lblSobrenome.add(lblNewLabel_9);
-		
+
 		JLabel lblNewLabel_9_1 = new JLabel("Nome do Cliente");
 		lblNewLabel_9_1.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		lblNewLabel_9_1.setBounds(239, 416, 131, 22);
 		lblSobrenome.add(lblNewLabel_9_1);
-		
+
 		JLabel lblNewLabel_10 = new JLabel("ATIVO");
 		lblNewLabel_10.setForeground(new Color(0, 102, 51));
 		lblNewLabel_10.setFont(new Font("Tahoma", Font.BOLD, 13));
 		lblNewLabel_10.setBounds(83, 466, 40, 16);
 		lblSobrenome.add(lblNewLabel_10);
-		
+
 		JLabel lblNewLabel_11 = new JLabel("Lucas Esteves");
 		lblNewLabel_11.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		lblNewLabel_11.setBounds(244, 464, 213, 19);
 		lblSobrenome.add(lblNewLabel_11);
-		
+
 		JLabel lblNewLabel_11_1 = new JLabel("Natalino Esteves");
 		lblNewLabel_11_1.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		lblNewLabel_11_1.setBounds(244, 516, 153, 14);
 		lblSobrenome.add(lblNewLabel_11_1);
-		
+
 		JLabel lblNewLabel_10_1 = new JLabel("ATIVO");
 		lblNewLabel_10_1.setForeground(new Color(0, 102, 51));
 		lblNewLabel_10_1.setFont(new Font("Tahoma", Font.BOLD, 13));
 		lblNewLabel_10_1.setBounds(82, 516, 40, 16);
 		lblSobrenome.add(lblNewLabel_10_1);
-		
+
 		JLabel lblNewLabel_9_1_1 = new JLabel("Saldo");
 		lblNewLabel_9_1_1.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		lblNewLabel_9_1_1.setBounds(473, 417, 131, 22);
 		lblSobrenome.add(lblNewLabel_9_1_1);
-		
+
 		JLabel lblNewLabel_12 = new JLabel("R$  950,00");
 		lblNewLabel_12.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		lblNewLabel_12.setBounds(461, 464, 69, 17);
 		lblSobrenome.add(lblNewLabel_12);
-		
+
 		JLabel lblNewLabel_12_1 = new JLabel("R$  920,00");
 		lblNewLabel_12_1.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		lblNewLabel_12_1.setBounds(461, 515, 69, 17);
 		lblSobrenome.add(lblNewLabel_12_1);
-		
+
 		JLabel lblNewLabel_13 = new JLabel("HISTORICO ");
 		lblNewLabel_13.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		lblNewLabel_13.setBounds(516, 346, 91, 20);
 		lblSobrenome.add(lblNewLabel_13);
-		
+
 		JLabel imgExibirSaldo = new JLabel("");
-	
-		imgExibirSaldo.setIcon(new ImageIcon(MinhaConta.class.getResource("/br/com/residencia/bankend/imagens/visao.png")));
+
+		imgExibirSaldo
+				.setIcon(new ImageIcon(MinhaConta.class.getResource("/br/com/residencia/bankend/imagens/visao.png")));
 		imgExibirSaldo.setBounds(1034, 48, 82, 32);
 		lblSobrenome.add(imgExibirSaldo);
 
-		
 		JLabel lblBackground = new JLabel("");
 		lblBackground.setIcon(new ImageIcon("C:\\Users\\Esteves\\Pictures\\bg.png"));
 		lblBackground.setBounds(235, 28, 1134, 711);
 		contentPane.add(lblBackground);
-		
-		
+
 		JLabel lblNome = new JLabel("NOMEEEEEEEEEEEEE");
 		lblNome.setBounds(38, 105, 101, 14);
 		lblSobrenome.add(lblNome);
-		
+
 		JLabel lblMenu = new JLabel("New label");
 		lblMenu.setIcon(new ImageIcon(MinhaConta.class.getResource("/br/com/residencia/bankend/imagens/2.jpg")));
 		lblMenu.setBounds(6, 11, 232, 714);
 		panel.add(lblMenu);
 
-		
-
 		JLabel lblCpf = new JLabel("New label");
 		lblCpf.setBounds(197, 105, 91, 14);
 		lblSobrenome.add(lblCpf);
-		
+
 		JLabel lblSobrenomee = new JLabel("New label");
 		lblSobrenomee.setBounds(103, 105, 82, 14);
 		lblSobrenome.add(lblSobrenomee);
-		
-		
-		
 
 		// ANIMAÇÃO AO PASSAR O MOUSE ( Escutador de click-mouse)
 		/*
@@ -360,53 +355,35 @@ public class MinhaConta extends JFrame {
 		 * PainelFechar.addMouseListener(new MouseFunction(PainelFechar, "fechar", this,
 		 * con));
 		 */
-		
-		
 
-	
+		/// trocando os valores da tela pelo da conta
 
-		///trocando os valores da tela pelo da conta
-		
-		
 		lblAgencia.setText(conta.getAgencia());
 		lblSaldo.setText(conta.getSaldo().toString());
 		lblNumConta.setText(conta.getNumero());
 		lblNome.setText(conta.getCliente().getNome());
 		lblCpf.setText(conta.getCliente().getCpf());
 		lblSobrenomee.setText(conta.getCliente().getSobreNome());
-		
-		
-		
+
 		imgExibirSaldo.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				
-				
+
 				System.out.println("clicou");
-			
-				
 
-				
-				if(lblDinheiro.getText().equals("R$ : ***"))
-				{
-					lblDinheiro.setText("R$ :"+conta.getSaldo().toString());
-					imgExibirSaldo.setIcon(new ImageIcon(MinhaConta.class.getResource("/br/com/residencia/bankend/imagens/eye-slash.png")));
-				}
-				else {
+				if (lblDinheiro.getText().equals("R$ : ***")) {
+					lblDinheiro.setText("R$ :" + conta.getSaldo().toString());
+					imgExibirSaldo.setIcon(new ImageIcon(
+							MinhaConta.class.getResource("/br/com/residencia/bankend/imagens/eye-slash.png")));
+				} else {
 					lblDinheiro.setText("R$ : ***");
-					imgExibirSaldo.setIcon(new ImageIcon(MinhaConta.class.getResource("/br/com/residencia/bankend/imagens/visao.png")));
-
+					imgExibirSaldo.setIcon(new ImageIcon(
+							MinhaConta.class.getResource("/br/com/residencia/bankend/imagens/visao.png")));
 
 				}
-				
-				
-				
-				
+
 			}
 		});
-		
-		
-	
 
 		PainelConsulta.addMouseListener(new Mouse(PainelConsulta));
 

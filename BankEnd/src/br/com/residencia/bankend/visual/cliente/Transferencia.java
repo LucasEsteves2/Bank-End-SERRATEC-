@@ -41,7 +41,7 @@ public class Transferencia extends JFrame {
 	private JLabel lblNome;
 	private JButton btnVerificar;
 	private JLabel lbl1;
-	private JLabel lblNomeMaquina;
+	private JLabel lblNomeRecibo;
 	private JLabel lblValor;
 	private JLabel lblAgencia;
 	private JLabel lbl2;
@@ -62,7 +62,7 @@ public class Transferencia extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 
-		JButton btnNewButton_4_1 = new JButton("6");
+		JButton btn6 = new JButton("6");
 
 		lbl3 = new JLabel("AGENCIA");
 		lbl3.setFont(new Font("Tahoma", Font.PLAIN, 9));
@@ -76,19 +76,21 @@ public class Transferencia extends JFrame {
 		lbl2.setVisible(false);
 
 		lblTipo = new JLabel("TIPO");
+		lblTipo.setHorizontalAlignment(SwingConstants.CENTER);
+		lblTipo.setForeground(Color.WHITE);
 		lblTipo.setVisible(false);
 		lblTipo.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		lblTipo.setBounds(825, 375, 104, 14);
+		lblTipo.setBounds(862, 274, 159, 14);
 		contentPane.add(lblTipo);
 		lbl2.setForeground(Color.WHITE);
 		lbl2.setBounds(811, 403, 46, 14);
 		contentPane.add(lbl2);
 
-		JButton btnNewButton_3_1_2 = new JButton("");
-		btnNewButton_3_1_2.setIcon(new ImageIcon("C:\\Users\\Esteves\\Downloads\\atencao.png"));
-		btnNewButton_3_1_2.setBackground(Color.YELLOW);
-		btnNewButton_3_1_2.setBounds(1170, 534, 48, 22);
-		contentPane.add(btnNewButton_3_1_2);
+		JButton btnAmarelo = new JButton("");
+		btnAmarelo.setIcon(new ImageIcon("C:\\Users\\Esteves\\Downloads\\atencao.png"));
+		btnAmarelo.setBackground(Color.YELLOW);
+		btnAmarelo.setBounds(1170, 648, 48, 22);
+		contentPane.add(btnAmarelo);
 
 		lblAgencia = new JLabel("Agencia");
 		lblAgencia.setForeground(Color.WHITE);
@@ -96,80 +98,81 @@ public class Transferencia extends JFrame {
 		contentPane.add(lblAgencia);
 
 		lblNome = new JLabel("New label");
-		lblNome.setFont(new Font("Plantagenet Cherokee", Font.PLAIN, 26));
+		lblNome.setForeground(Color.WHITE);
+		lblNome.setFont(new Font("Verdana", Font.PLAIN, 26));
 		lblNome.setBounds(796, 327, 197, 54);
 		contentPane.add(lblNome);
 
 		JButton btnVerde = new JButton("");
 		btnVerde.setIcon(new ImageIcon("C:\\Users\\Esteves\\Downloads\\marca-de-verificacao (2).png"));
 		btnVerde.setBackground(new Color(50, 205, 50));
-		btnVerde.setBounds(1231, 534, 48, 22);
+		btnVerde.setBounds(1231, 648, 48, 22);
 		contentPane.add(btnVerde);
-		btnNewButton_4_1.setBackground(Color.LIGHT_GRAY);
-		btnNewButton_4_1.setBounds(1231, 445, 48, 22);
-		contentPane.add(btnNewButton_4_1);
+		btn6.setBackground(Color.LIGHT_GRAY);
+		btn6.setBounds(1231, 559, 48, 22);
+		contentPane.add(btn6);
 
-		JButton btnNewButton_4_1_1 = new JButton("0");
-		btnNewButton_4_1_1.setBackground(Color.LIGHT_GRAY);
-		btnNewButton_4_1_1.setBounds(1170, 505, 48, 22);
-		contentPane.add(btnNewButton_4_1_1);
+		JButton btn0 = new JButton("0");
+		btn0.setBackground(Color.LIGHT_GRAY);
+		btn0.setBounds(1170, 619, 48, 22);
+		contentPane.add(btn0);
 
-		JButton btnNewButton_3_1_1 = new JButton("#");
-		btnNewButton_3_1_1.setBackground(Color.LIGHT_GRAY);
-		btnNewButton_3_1_1.setBounds(1231, 505, 48, 22);
-		contentPane.add(btnNewButton_3_1_1);
+		JButton btnJogo = new JButton("#");
+		btnJogo.setBackground(Color.LIGHT_GRAY);
+		btnJogo.setBounds(1231, 619, 48, 22);
+		contentPane.add(btnJogo);
 
-		JButton btnNewButton_6 = new JButton("*");
-		btnNewButton_6.setBackground(Color.LIGHT_GRAY);
-		btnNewButton_6.setBounds(1111, 505, 48, 22);
-		contentPane.add(btnNewButton_6);
+		JButton btnAs = new JButton("*");
+		btnAs.setBackground(Color.LIGHT_GRAY);
+		btnAs.setBounds(1111, 619, 48, 22);
+		contentPane.add(btnAs);
 
-		JButton btnNewButton_3_1 = new JButton("");
-		btnNewButton_3_1.setIcon(new ImageIcon("C:\\Users\\Esteves\\Downloads\\cancelar.png"));
-		btnNewButton_3_1.setBackground(new Color(220, 20, 60));
-		btnNewButton_3_1.setBounds(1111, 534, 50, 22);
-		contentPane.add(btnNewButton_3_1);
+		JButton btnVermelho = new JButton("");
+		btnVermelho.setIcon(new ImageIcon("C:\\Users\\Esteves\\Downloads\\cancelar.png"));
+		btnVermelho.setBackground(new Color(220, 20, 60));
+		btnVermelho.setBounds(1111, 648, 50, 22);
+		contentPane.add(btnVermelho);
 
-		JButton btnNewButton = new JButton("1");
-		btnNewButton.setBackground(Color.LIGHT_GRAY);
-		btnNewButton.setBounds(1111, 416, 48, 22);
-		contentPane.add(btnNewButton);
+		JButton btn1 = new JButton("1");
+		btn1.setBackground(Color.LIGHT_GRAY);
+		btn1.setBounds(1111, 530, 48, 22);
+		contentPane.add(btn1);
 //aaa
-		JButton btnNewButton_5 = new JButton("8");
-		btnNewButton_5.setBackground(Color.LIGHT_GRAY);
-		btnNewButton_5.setBounds(1170, 476, 48, 22);
-		contentPane.add(btnNewButton_5);
+		JButton btn8 = new JButton("8");
+		btn8.setBackground(Color.LIGHT_GRAY);
+		btn8.setBounds(1170, 590, 48, 22);
+		contentPane.add(btn8);
 
-		JButton btnNewButton_1_1 = new JButton("9");
-		btnNewButton_1_1.setBackground(Color.LIGHT_GRAY);
-		btnNewButton_1_1.setBounds(1231, 476, 48, 22);
-		contentPane.add(btnNewButton_1_1);
+		JButton btn9 = new JButton("9");
+		btn9.setBackground(Color.LIGHT_GRAY);
+		btn9.setBounds(1231, 590, 48, 22);
+		contentPane.add(btn9);
 
-		JButton btnNewButton_2_1 = new JButton("7");
-		btnNewButton_2_1.setBackground(Color.LIGHT_GRAY);
-		btnNewButton_2_1.setBounds(1111, 475, 48, 22);
-		contentPane.add(btnNewButton_2_1);
+		JButton btn7 = new JButton("7");
+		btn7.setBackground(Color.LIGHT_GRAY);
+		btn7.setBounds(1111, 589, 48, 22);
+		contentPane.add(btn7);
 
-		JButton btnNewButton_1 = new JButton("2");
-		btnNewButton_1.setBackground(Color.LIGHT_GRAY);
-		btnNewButton_1.setBounds(1170, 416, 48, 22);
-		contentPane.add(btnNewButton_1);
+		JButton btn2 = new JButton("2");
+		btn2.setBackground(Color.LIGHT_GRAY);
+		btn2.setBounds(1170, 530, 48, 22);
+		contentPane.add(btn2);
 
-		JButton btnNewButton_2 = new JButton("3");
-		btnNewButton_2.setBackground(Color.LIGHT_GRAY);
-		btnNewButton_2.setBounds(1231, 416, 48, 22);
-		contentPane.add(btnNewButton_2);
+		JButton btn3 = new JButton("3");
+		btn3.setBackground(Color.LIGHT_GRAY);
+		btn3.setBounds(1231, 530, 48, 22);
+		contentPane.add(btn3);
 
-		JButton btnNewButton_3 = new JButton("4");
+		JButton btn4 = new JButton("4");
 
-		btnNewButton_3.setBackground(Color.LIGHT_GRAY);
-		btnNewButton_3.setBounds(1110, 445, 48, 22);
-		contentPane.add(btnNewButton_3);
+		btn4.setBackground(Color.LIGHT_GRAY);
+		btn4.setBounds(1110, 559, 48, 22);
+		contentPane.add(btn4);
 
-		JButton btnNewButton_4 = new JButton("5");
-		btnNewButton_4.setBackground(Color.LIGHT_GRAY);
-		btnNewButton_4.setBounds(1170, 445, 48, 22);
-		contentPane.add(btnNewButton_4);
+		JButton btn5 = new JButton("5");
+		btn5.setBackground(Color.LIGHT_GRAY);
+		btn5.setBounds(1170, 559, 48, 22);
+		contentPane.add(btn5);
 
 		lblConta = new JLabel("Conta:");
 		lblConta.setFont(new Font("Tahoma", Font.PLAIN, 12));
@@ -190,27 +193,27 @@ public class Transferencia extends JFrame {
 
 		lblValor = new JLabel("INFORME UM VALOR");
 		lblValor.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		lblValor.setBounds(1140, 284, 113, 15);
+		lblValor.setBounds(1140, 398, 113, 15);
 		contentPane.add(lblValor);
 
 		txtValor = new JTextField();
 		txtValor.setColumns(10);
-		txtValor.setBounds(1145, 309, 97, 20);
+		txtValor.setBounds(1145, 423, 97, 20);
 		contentPane.add(txtValor);
 
-		lblNomeMaquina = new JLabel("Cliente: Lucas Esteves");
-		lblNomeMaquina.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNomeMaquina.setHorizontalTextPosition(SwingConstants.CENTER);
-		lblNomeMaquina.setForeground(Color.DARK_GRAY);
-		lblNomeMaquina.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		lblNomeMaquina.setBounds(1117, 165, 151, 17);
-		contentPane.add(lblNomeMaquina);
+		lblNomeRecibo = new JLabel("Cliente: Lucas Esteves");
+		lblNomeRecibo.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNomeRecibo.setHorizontalTextPosition(SwingConstants.CENTER);
+		lblNomeRecibo.setForeground(Color.DARK_GRAY);
+		lblNomeRecibo.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		lblNomeRecibo.setBounds(1117, 279, 151, 17);
+		contentPane.add(lblNomeRecibo);
 
-		JLabel lblNewLabel_3 = new JLabel("");
-		lblNewLabel_3.setBackground(Color.WHITE);
-		lblNewLabel_3.setIcon(new ImageIcon("C:\\Users\\Esteves\\Pictures\\oriignal2.png"));
-		lblNewLabel_3.setBounds(921, -538, 1026, 1913);
-		contentPane.add(lblNewLabel_3);
+		JLabel imgMaquina = new JLabel("");
+		imgMaquina.setBackground(Color.WHITE);
+		imgMaquina.setIcon(new ImageIcon("C:\\Users\\Esteves\\Pictures\\oriignal2.png"));
+		imgMaquina.setBounds(921, -424, 1026, 1913);
+		contentPane.add(imgMaquina);
 
 		lbl1 = new JLabel("Conta:");
 		lbl1.setForeground(Color.WHITE);
@@ -240,7 +243,7 @@ public class Transferencia extends JFrame {
 		// setando visibilidade dos components
 
 		lblConta.setVisible(false);
-		lblNomeMaquina.setVisible(false);
+		lblNomeRecibo.setVisible(false);
 		lblValor.setVisible(false);
 		txtValor.setVisible(false);
 		lblAgencia.setVisible(false);
@@ -258,9 +261,15 @@ public class Transferencia extends JFrame {
 					JOptionPane.showMessageDialog(null, "MESMA CONTA!!", "#ERRO404", JOptionPane.ERROR_MESSAGE);
 
 				} else {
-					// metodo verifica se a conta informada é valida
+
+					// metodo verifica se a conta informada é valida e retorna a conta com o cliente
 					contaDestinatario = bd.verificaConta(numConta);
-					mensagemContinuar();
+
+					// metodo pergutna se o usuario quer continuar
+					if (mensagemContinuar(imgMaquina)) {
+						exibeMaquininha(imgMaquina, btn0, btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9, btnAs,
+								btnVermelho, btnJogo, btnAmarelo, btnVerde);
+					}
 
 				}
 
@@ -319,7 +328,7 @@ public class Transferencia extends JFrame {
 
 	}
 
-	public boolean mensagemContinuar() {
+	public boolean mensagemContinuar(JLabel imgMaquina) {
 
 		String nome = contaDestinatario.getCliente().getNome();
 
@@ -328,30 +337,9 @@ public class Transferencia extends JFrame {
 
 		// se clicar em sim
 		if (i == JOptionPane.YES_OPTION) {
+
 			System.out.println("Clicou em Sim");
-
-			String nome1 = contaDestinatario.getCliente().getNome();
-			String sobrenome = contaDestinatario.getCliente().getSobreNome();
-
-			// setando textos
-			lblConta.setText(contaDestinatario.getNumero());
-			lblNome.setText(nome1 + " " + sobrenome);
-			lblAgencia.setText(contaDestinatario.getAgencia());
-			lblTipo.setText("Conta: " + contaDestinatario.getTipo());
-
-			// setando visibilidade dos componentes
-			lblConta.setVisible(true);
-			btnVerificar.setVisible(false);
-			txtCartao.setVisible(false);
-			lbl1.setVisible(false);
-			lblNome.setVisible(true);
-			lblNomeMaquina.setVisible(false);
-			lblValor.setVisible(true);
-			txtValor.setVisible(true);
-			lbl2.setVisible(true);
-			lbl3.setVisible(true);
-			lblAgencia.setVisible(true);
-			lblTipo.setVisible(true);
+			return true;
 
 		}
 		// se clicar em nao
@@ -360,10 +348,59 @@ public class Transferencia extends JFrame {
 
 			System.out.println("Clicou em Não");
 			txtCartao.setText("");
-
+			return false;
 		}
-		return rootPaneCheckingEnabled;
+		return false;
 
+	}
+
+	public void exibeMaquininha(JLabel imgMaquina, JButton btn0, JButton btn1, JButton btn2, JButton btn3, JButton btn4,
+			JButton btn5, JButton btn6, JButton btn7, JButton btn8, JButton btn9, JButton btnAs, JButton btnVermelho,
+			JButton btnJogo, JButton btnAmarelo, JButton btnVerde) {
+
+		String nome1 = contaDestinatario.getCliente().getNome();
+		String sobrenome = contaDestinatario.getCliente().getSobreNome();
+
+		// setando textos
+		lblConta.setText(contaDestinatario.getNumero());
+		lblNome.setText(nome1 + " " + sobrenome);
+		lblAgencia.setText(contaDestinatario.getAgencia());
+		lblTipo.setText("Conta: " + contaDestinatario.getTipo());
+		imgMaquina.setBounds(921, -538, 1026, 1913);
+		// setando visibilidade dos componentes
+		lblConta.setVisible(true);
+		btnVerificar.setVisible(false);
+		txtCartao.setVisible(false);
+		lbl1.setVisible(false);
+		lblNome.setVisible(true);
+		lblNomeRecibo.setVisible(false);
+		lblValor.setVisible(true);
+		txtValor.setVisible(true);
+		lbl2.setVisible(true);
+		lbl3.setVisible(true);
+		lblAgencia.setVisible(true);
+		lblTipo.setVisible(true);
+
+		// setando a posição dos botoes
+		btn0.setBounds(1170, 505, 48, 22);
+		btn1.setBounds(1111, 416, 48, 22);
+		btn2.setBounds(1170, 416, 48, 22);
+		btn3.setBounds(1231, 416, 48, 22);
+		btn4.setBounds(1110, 445, 48, 22);
+		btn5.setBounds(1170, 445, 48, 22);
+		btn6.setBounds(1231, 445, 48, 22);
+		btn7.setBounds(1111, 475, 48, 22);
+		btn8.setBounds(1170, 476, 48, 22);
+		btn9.setBounds(1231, 476, 48, 22);
+
+		btnVermelho.setBounds(1111, 534, 50, 22);
+		btnAs.setBounds(1111, 505, 48, 22);
+		btnJogo.setBounds(1231, 505, 48, 22);
+		btnAmarelo.setBounds(1170, 534, 48, 22);
+		txtValor.setBounds(1145, 309, 97, 20);
+		lblNomeRecibo.setBounds(1117, 165, 151, 17);
+		lblValor.setBounds(1140, 284, 113, 15);
+		btnVerde.setBounds(1231, 534, 48, 22);
 	}
 
 }
