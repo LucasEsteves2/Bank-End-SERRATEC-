@@ -253,6 +253,7 @@ public class Transferencia extends JFrame {
 
 			}
 		});
+		
 
 		btnVerde.addActionListener(new ActionListener() {
 
