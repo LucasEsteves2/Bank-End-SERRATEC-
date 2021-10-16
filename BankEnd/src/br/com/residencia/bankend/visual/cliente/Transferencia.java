@@ -101,7 +101,7 @@ public class Transferencia extends JFrame {
 		btnNewButton.setBackground(Color.LIGHT_GRAY);
 		btnNewButton.setBounds(1111, 416, 48, 22);
 		contentPane.add(btnNewButton);
-//aa
+//aaa
 		JButton btnNewButton_5 = new JButton("8");
 		btnNewButton_5.setBackground(Color.LIGHT_GRAY);
 		btnNewButton_5.setBounds(1170, 476, 48, 22);
@@ -253,7 +253,6 @@ public class Transferencia extends JFrame {
 
 			}
 		});
-		
 
 		btnVerde.addActionListener(new ActionListener() {
 
