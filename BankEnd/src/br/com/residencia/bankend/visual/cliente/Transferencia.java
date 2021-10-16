@@ -253,6 +253,7 @@ public class Transferencia extends JFrame {
 
 			}
 		});
+		
 
 		btnVerde.addActionListener(new ActionListener() {
 
@@ -279,7 +280,7 @@ public class Transferencia extends JFrame {
 
 					poupanca = (ContaPoupanca) contaAtual;
 
-					corrente.transferencia(contaDestinatario, transferencia);
+					poupanca.transferencia(contaDestinatario, transferencia);
 
 					System.out.println(poupanca.getSaldo());
 
