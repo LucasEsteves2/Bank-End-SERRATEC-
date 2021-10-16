@@ -256,5 +256,27 @@ public class Query {
 		}
 
 	}
+	
+	public void deposito(Contas contaDestinatario)
+	{
+		
+		try {
+			st=conexao.prepareStatement("UPDATE CONTAS SET SALDO = ? WHERE NUMERO=?");
+			st.setDouble(1, contaDestinatario.getSaldo());
+			st.setString(2, contaDestinatario.getNumero());
+			st.executeUpdate();
+			
+		
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		
+		
+	}
+	}
+	
+	
 
-}

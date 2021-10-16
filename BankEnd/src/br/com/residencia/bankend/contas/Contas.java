@@ -31,9 +31,9 @@ import br.com.residencia.bankend.clientes.Cliente;
 		return id;
 	}
 
-	public boolean saque(double valor) {
-		if (this.saldo >= valor) {
-			this.saldo = this.saldo - valor;
+	public boolean saque(double valor,Contas destinatario) {
+		if (destinatario.saldo >= valor) {
+			destinatario.saldo = destinatario.saldo - valor;
 
 			return true;
 		} else {
@@ -41,9 +41,9 @@ import br.com.residencia.bankend.clientes.Cliente;
 		}
 	}
 
-	public boolean deposito(double valor) {
+	public boolean deposito(Contas destinatario,double valor) {
 		if (valor > 0) {
-			this.saldo = this.saldo + valor;
+			destinatario.saldo = destinatario.saldo + valor;
 			return true;
 		} else {
 			return false;
@@ -53,7 +53,7 @@ import br.com.residencia.bankend.clientes.Cliente;
 	public boolean transferencia(Contas destinatario, double valor) {
 
 		if (this.saldo >= valor) {
-			destinatario.deposito(valor);
+			destinatario.saldo = destinatario.saldo + valor;
 			this.saldo = this.saldo - valor;
 			return true;
 

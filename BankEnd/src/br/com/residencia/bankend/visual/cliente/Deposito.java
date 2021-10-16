@@ -284,11 +284,7 @@ public class Deposito extends JFrame {
 					// fazend o cast
 					corrente = (ContaCorrente) contaRemetente;
 
-					System.out.println(corrente.getSaldo());
-
-					corrente.deposito(deposito);
-
-					System.out.println(corrente.getSaldo());
+					corrente.deposito(contaDestinatario, deposito);
 
 					// gambiarra refazendo o cast
 					Contas contaRemetnetee = null;
@@ -298,14 +294,12 @@ public class Deposito extends JFrame {
 					bd.atualizarTransferencia(contaRemetente, contaDestinatario);
 
 				}
-				
-				
-				
+
 				if (contaRemetente.getTipo().equals("poupanca")) {
 
 					poupanca = (ContaPoupanca) contaRemetente;
 
-					poupanca.transferencia(contaDestinatario, deposito);
+					poupanca.deposito(contaDestinatario, deposito);
 
 					// gambiarra refazendo o cast
 					Contas contaRemetnetee = null;

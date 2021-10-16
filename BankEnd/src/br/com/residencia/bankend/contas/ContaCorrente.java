@@ -13,10 +13,10 @@ public class ContaCorrente extends Contas {
 	}
 
 	@Override
-	public boolean saque(double valor) {
+	public boolean saque(double valor,Contas destinatario) {
 
-		if (this.saldo >= (valor + 0.10)) {
-			this.saldo = this.saldo - valor - 0.10;
+		if (destinatario.saldo >= (valor + 0.10)) {
+			destinatario.saldo = destinatario.saldo - valor - 0.10;
 
 			return true;
 		} else {
@@ -25,9 +25,9 @@ public class ContaCorrente extends Contas {
 	}
 
 	@Override
-	public boolean deposito(double valor) {
+	public boolean deposito(Contas destinatario,double valor) {
 		if ((valor > 0)  && (this.saldo>=0.10)) {
-			this.saldo = this.saldo + valor;
+			destinatario.saldo = destinatario.saldo + valor;
 			return true;
 		} else {
 			return false;
@@ -40,7 +40,7 @@ public class ContaCorrente extends Contas {
 
 
 		if (this.saldo >= (valor+0.20)) {
-			destinatario.deposito(valor);
+			destinatario.saldo = destinatario.saldo + valor;
 			this.saldo = this.saldo - valor-0.20;
 			return true;
 
