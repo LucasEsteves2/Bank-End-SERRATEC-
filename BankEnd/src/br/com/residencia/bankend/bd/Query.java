@@ -181,12 +181,12 @@ public class Query {
 					continha = corrente;
 				}
 
-				if(tipo.equals("poupanca")){
+				if (tipo.equals("poupanca")) {
 					Cliente cliente = descobreCliente(idConta);
-					
+
 					ContaPoupanca poupanca = new ContaPoupanca(agencia, numero, tipo, saldo, cliente, null, idConta);
 					continha = poupanca;
-					
+
 				}
 
 			}
@@ -203,8 +203,7 @@ public class Query {
 	public Cliente descobreCliente(int id) {
 
 		Cliente clientee = null;
-		
-		
+
 		try {
 			st = conexao.prepareStatement("Select *from cliente where idCliente = ?");
 
@@ -223,7 +222,7 @@ public class Query {
 				String senha = rs.getString("senha");
 
 				Cliente cliente = new Cliente(nome, sobrenome, email, cpf, senha, idCliente);
-				clientee=cliente;
+				clientee = cliente;
 			}
 
 		} catch (SQLException e) {
@@ -231,6 +230,30 @@ public class Query {
 			e.printStackTrace();
 		}
 		return clientee;
+
+	}
+
+	public void atualizarTransferencia(Contas remetente, Contas destinatario) {
+		try {
+
+			// retirando o valor
+			st = conexao.prepareStatement("Update Contas set saldo = ? where numero=?  ");
+			st.setDouble(1, remetente.getSaldo());
+			st.setString(2, remetente.getNumero());
+
+			st.executeUpdate();
+
+			// add o valor
+			st = conexao.prepareStatement("Update Contas set saldo = ? where numero=?  ");
+			st.setDouble(1, destinatario.getSaldo());
+			st.setString(2, destinatario.getNumero());
+
+			st.executeUpdate();
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 	}
 
