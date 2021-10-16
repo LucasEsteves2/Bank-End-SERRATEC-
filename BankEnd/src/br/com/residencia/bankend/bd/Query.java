@@ -181,7 +181,7 @@ public class Query {
 					continha = corrente;
 				}
 
-				 {
+				if(tipo.equals("poupanca")){
 					Cliente cliente = descobreCliente(idConta);
 					
 					ContaPoupanca poupanca = new ContaPoupanca(agencia, numero, tipo, saldo, cliente, null, idConta);
