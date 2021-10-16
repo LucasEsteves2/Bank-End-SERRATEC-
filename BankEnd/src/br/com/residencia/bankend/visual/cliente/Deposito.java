@@ -291,7 +291,7 @@ public class Deposito extends JFrame {
 
 					contaRemetnetee = corrente;
 
-					bd.atualizarTransferencia(contaRemetente, contaDestinatario);
+					bd.deposito(contaDestinatario,deposito);
 
 				}
 
@@ -306,7 +306,7 @@ public class Deposito extends JFrame {
 
 					contaRemetnetee = poupanca;
 
-					bd.atualizarTransferencia(contaRemetente, contaDestinatario);
+					bd.deposito(contaDestinatario,deposito);
 
 					System.out.println("SOU POUPANCA");
 				}

@@ -257,7 +257,7 @@ public class Query {
 
 	}
 	
-	public void deposito(Contas contaDestinatario)
+	public void deposito(Contas contaDestinatario,double valor)
 	{
 		
 		try {
