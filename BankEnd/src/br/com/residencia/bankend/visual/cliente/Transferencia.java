@@ -211,7 +211,7 @@ public class Transferencia extends JFrame {
 
 		JLabel imgMaquina = new JLabel("");
 		imgMaquina.setBackground(Color.WHITE);
-		imgMaquina.setIcon(new ImageIcon("C:\\Users\\Esteves\\Pictures\\oriignal2.png"));
+		imgMaquina.setIcon(new ImageIcon("C:\\Users\\Esteves\\Pictures\\BANKEND\\maquinaComfundo.png"));
 		imgMaquina.setBounds(921, -424, 1026, 1913);
 		contentPane.add(imgMaquina);
 
@@ -276,6 +276,7 @@ public class Transferencia extends JFrame {
 			}
 		});
 
+		// botao da maquina
 		btnVerde.addActionListener(new ActionListener() {
 
 			@Override
