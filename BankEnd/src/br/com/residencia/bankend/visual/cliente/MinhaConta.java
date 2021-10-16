@@ -385,6 +385,17 @@ public class MinhaConta extends JFrame {
 			}
 		});
 
+		
+		imgExibirSaldo.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+
+				
+				
+			}
+		});
+
+		
 		PainelConsulta.addMouseListener(new Mouse(PainelConsulta));
 
 	}

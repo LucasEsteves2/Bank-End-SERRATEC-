@@ -3,6 +3,7 @@ package br.com.residencia.bankend.visual.cliente;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Frame;
+import java.awt.SystemColor;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -22,6 +23,8 @@ import br.com.residencia.bankend.bd.Query;
 import br.com.residencia.bankend.contas.ContaCorrente;
 import br.com.residencia.bankend.contas.ContaPoupanca;
 import br.com.residencia.bankend.contas.Contas;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class Transferencia extends JFrame {
 
@@ -47,6 +50,13 @@ public class Transferencia extends JFrame {
 	private JLabel lbl2;
 	private JLabel lbl3;
 	private JLabel lblTipo;
+	private JLabel imgMaquina;
+	private JLabel lblCupomNome;
+	private JLabel lblCupomContaa;
+	private JLabel lblCupomFavorecido;
+	private JLabel lblCupomTipoConta;
+	private JLabel lblCupomAgencia;
+	private JLabel lblSair;
 
 	public Transferencia(Connection conexao, Contas contaRemetente) {
 		this.con = conexao;
@@ -67,6 +77,40 @@ public class Transferencia extends JFrame {
 		lbl3 = new JLabel("AGENCIA");
 		lbl3.setFont(new Font("Tahoma", Font.PLAIN, 9));
 		lbl3.setVisible(false);
+
+		lblCupomAgencia = new JLabel("");
+		lblCupomAgencia.setFont(new Font("Tahoma", Font.BOLD, 10));
+		lblCupomAgencia.setForeground(new Color(128, 128, 128));
+		lblCupomAgencia.setBounds(1134, 211, 129, 14);
+		contentPane.add(lblCupomAgencia);
+
+		lblCupomTipoConta = new JLabel("");
+		lblCupomTipoConta.setHorizontalAlignment(SwingConstants.LEFT);
+		lblCupomTipoConta.setHorizontalTextPosition(SwingConstants.CENTER);
+		lblCupomTipoConta.setForeground(SystemColor.controlShadow);
+		lblCupomTipoConta.setFont(new Font("Tahoma", Font.PLAIN, 9));
+		lblCupomTipoConta.setBounds(1127, 126, 136, 17);
+
+		contentPane.add(lblCupomTipoConta);
+
+		lblCupomNome = new JLabel("");
+		lblCupomNome.setFont(new Font("Tahoma", Font.BOLD, 10));
+		lblCupomNome.setForeground(new Color(128, 128, 128));
+		lblCupomNome.setBounds(1134, 167, 129, 14);
+		contentPane.add(lblCupomNome);
+
+		lblCupomContaa = new JLabel("");
+		lblCupomContaa.setFont(new Font("Tahoma", Font.BOLD, 10));
+		lblCupomContaa.setForeground(new Color(128, 128, 128));
+		lblCupomContaa.setBounds(1134, 189, 129, 14);
+		contentPane.add(lblCupomContaa);
+
+		lblCupomFavorecido = new JLabel("");
+		lblCupomFavorecido.setFont(new Font("Tahoma", Font.BOLD, 10));
+		lblCupomFavorecido.setForeground(new Color(128, 128, 128));
+		lblCupomFavorecido.setBounds(1163, 147, 100, 14);
+		contentPane.add(lblCupomFavorecido);
+
 		lbl3.setForeground(Color.WHITE);
 		lbl3.setBounds(732, 403, 59, 14);
 		contentPane.add(lbl3);
@@ -83,7 +127,7 @@ public class Transferencia extends JFrame {
 		lblTipo.setBounds(862, 274, 159, 14);
 		contentPane.add(lblTipo);
 		lbl2.setForeground(Color.WHITE);
-		lbl2.setBounds(811, 403, 46, 14);
+		lbl2.setBounds(821, 403, 46, 14);
 		contentPane.add(lbl2);
 
 		JButton btnAmarelo = new JButton("");
@@ -99,8 +143,8 @@ public class Transferencia extends JFrame {
 
 		lblNome = new JLabel("New label");
 		lblNome.setForeground(Color.WHITE);
-		lblNome.setFont(new Font("Verdana", Font.PLAIN, 26));
-		lblNome.setBounds(796, 327, 197, 54);
+		lblNome.setFont(new Font("Verdana", Font.PLAIN, 24));
+		lblNome.setBounds(793, 327, 199, 54);
 		contentPane.add(lblNome);
 
 		JButton btnVerde = new JButton("");
@@ -178,7 +222,7 @@ public class Transferencia extends JFrame {
 		lblConta.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		lblConta.setForeground(Color.WHITE);
 		lblConta.setBackground(Color.WHITE);
-		lblConta.setBounds(812, 424, 90, 14);
+		lblConta.setBounds(822, 424, 90, 14);
 		contentPane.add(lblConta);
 
 		JLabel lblNewLabel_1 = new JLabel("");
@@ -209,7 +253,7 @@ public class Transferencia extends JFrame {
 		lblNomeRecibo.setBounds(1117, 279, 151, 17);
 		contentPane.add(lblNomeRecibo);
 
-		JLabel imgMaquina = new JLabel("");
+		imgMaquina = new JLabel("");
 		imgMaquina.setBackground(Color.WHITE);
 		imgMaquina.setIcon(new ImageIcon("C:\\Users\\Esteves\\Pictures\\BANKEND\\maquinaComfundo.png"));
 		imgMaquina.setBounds(921, -424, 1026, 1913);
@@ -230,23 +274,66 @@ public class Transferencia extends JFrame {
 		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\Esteves\\Pictures\\card222323.png"));
 		lblNewLabel.setBounds(512, 143, 638, 365);
 		contentPane.add(lblNewLabel);
+		
+		lblSair = new JLabel("");
+		
+		lblSair.setIcon(new ImageIcon("C:\\Users\\Esteves\\Downloads\\sair.png"));
+		lblSair.setBounds(29, 641, 59, 53);
+		contentPane.add(lblSair);
 
 		JLabel ImgBackground = new JLabel("");
-		ImgBackground.setBounds(0, 0, 1375, 705);
 		ImgBackground.setIcon(new ImageIcon("C:\\Users\\Esteves\\Pictures\\2133232232323.jpg"));
+		ImgBackground.setBounds(0, 0, 1375, 705);
 		contentPane.add(ImgBackground);
 
-		Query bd = new Query(con);
-
-		lblNome.setVisible(false);
-
 		// setando visibilidade dos components
-
+		lblNome.setVisible(false);
 		lblConta.setVisible(false);
 		lblNomeRecibo.setVisible(false);
 		lblValor.setVisible(false);
 		txtValor.setVisible(false);
 		lblAgencia.setVisible(false);
+
+		Query bd = new Query(con);
+		
+		
+		
+		
+		lblSair.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				
+				Menu menuPrincipal = new Menu(conexao, contaRemetente);
+				menuPrincipal.setVisible(true);
+				dispose();
+			}
+		});
+		
+		
+		
+		
+
+		btnAmarelo.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+
+				txtValor.setText("");
+
+			}
+		});
+
+		btnVermelho.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+
+				Transferencia reabrir = new Transferencia(conexao, contaRemetente);
+				reabrir.setVisible(true);
+				dispose();
+
+			}
+		});
 
 		btnVerificar.addActionListener(new ActionListener() {
 
@@ -275,53 +362,16 @@ public class Transferencia extends JFrame {
 
 			}
 		});
-
 		// botao da maquina
 		btnVerde.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-
-				// pegando e convertendo valor inforamdo
-				String valor = txtValor.getText();
-				Double transferencia = Double.parseDouble(valor);
-
-				System.out.println(valor);
-
-				// verificando qual conta é
-				if (contaRemetente.getTipo().equals("corrente")) {
-
-					// fazend o cast
-					corrente = (ContaCorrente) contaRemetente;
-
-					System.out.println(corrente.getSaldo());
-
-					corrente.transferencia(contaDestinatario, transferencia);
-
-					System.out.println(corrente.getSaldo());
-
-					// gambiarra refazendo o cast
-					Contas contaRemetnetee = null;
-
-					contaRemetnetee = corrente;
-
-					bd.atualizarTransferencia(contaRemetente, contaDestinatario);
-
-				}
-				if (contaRemetente.getTipo().equals("poupanca")) {
-
-					poupanca = (ContaPoupanca) contaRemetente;
-
-					poupanca.transferencia(contaDestinatario, transferencia);
-
-					// gambiarra refazendo o cast
-					Contas contaRemetnetee = null;
-
-					contaRemetnetee = poupanca;
-
-					bd.atualizarTransferencia(contaRemetente, contaDestinatario);
-
-					System.out.println("SOU POUPANCA");
+				
+				//se o campo de valor nao for nulo
+				if (!txtValor.getText().trim().equals(""))
+				{   // metodo que confirma
+					confirmarTransacao(bd);
 				}
 
 			}
@@ -402,6 +452,95 @@ public class Transferencia extends JFrame {
 		lblNomeRecibo.setBounds(1117, 165, 151, 17);
 		lblValor.setBounds(1140, 284, 113, 15);
 		btnVerde.setBounds(1231, 534, 48, 22);
+	}
+
+	public void confirmarTransacao(Query bd) {
+
+		int i = JOptionPane.showConfirmDialog(null, "Deseja continuar?", "Transferencia", JOptionPane.OK_CANCEL_OPTION);
+
+		// se clicar em sim
+		if (i == JOptionPane.YES_OPTION) {
+
+			System.out.println("Clicou em Sim");
+			transferencia(bd);
+
+		}
+		// se clicar em nao
+
+		else if (i == JOptionPane.CANCEL_OPTION) {
+
+			System.out.println("Clicou em Não");
+			txtValor.setText("");
+		}
+
+	}
+
+	public void transferencia(Query bd) {
+		// pegando e convertendo valor inforamdo
+		String valor = txtValor.getText();
+		Double transferencia = Double.parseDouble(valor);
+
+		System.out.println(valor);
+
+		// verificando qual conta é
+		if (contaRemetente.getTipo().equals("corrente")) {
+
+			// fazend o cast
+			corrente = (ContaCorrente) contaRemetente;
+
+			System.out.println(corrente.getSaldo());
+
+			corrente.transferencia(contaDestinatario, transferencia);
+
+			System.out.println(corrente.getSaldo());
+
+			// gambiarra refazendo o cast
+			Contas contaRemetnetee = null;
+
+			contaRemetnetee = corrente;
+
+			bd.atualizarTransferencia(contaRemetente, contaDestinatario);
+
+			System.out.println("Transferencia feita com suceso!!");
+
+			JOptionPane.showMessageDialog(null, "Transferencia Realizada!", "Sucess", JOptionPane.INFORMATION_MESSAGE);
+
+		}
+		if (contaRemetente.getTipo().equals("poupanca")) {
+
+			poupanca = (ContaPoupanca) contaRemetente;
+
+			poupanca.transferencia(contaDestinatario, transferencia);
+
+			// gambiarra refazendo o cast
+			Contas contaRemetnetee = null;
+
+			contaRemetnetee = poupanca;
+
+			bd.atualizarTransferencia(contaRemetente, contaDestinatario);
+
+			System.out.println("Transferencia feita com sucesso!!");
+			exibeCupomFiscal();
+			JOptionPane.showMessageDialog(null, "Transferencia Realizada!", "Sucess", JOptionPane.INFORMATION_MESSAGE);
+
+		}
+
+	}
+
+	public void exibeCupomFiscal() {
+
+		lblValor.setVisible(false);
+		txtValor.setVisible(false);
+
+		String nome1 = contaDestinatario.getCliente().getNome();
+		String sobrenome = contaDestinatario.getCliente().getSobreNome();
+
+		imgMaquina.setIcon(new ImageIcon("C:\\Users\\Esteves\\Pictures\\BANKEND\\macahdoo98.png"));
+		lblCupomNome.setText("Titular:" + nome1 + " " + sobrenome);
+		lblCupomContaa.setText("Conta:12345");
+		lblCupomFavorecido.setText("Favorecido");
+		lblCupomTipoConta.setText("Transferencia em Conta: Corrente");
+		lblCupomAgencia.setText("Agencia: 404");
 	}
 
 }

@@ -22,6 +22,8 @@ import br.com.residencia.bankend.bd.Query;
 import br.com.residencia.bankend.contas.ContaCorrente;
 import br.com.residencia.bankend.contas.ContaPoupanca;
 import br.com.residencia.bankend.contas.Contas;
+import java.awt.SystemColor;
+import javax.swing.UIManager;
 
 public class Deposito extends JFrame {
 
@@ -41,7 +43,7 @@ public class Deposito extends JFrame {
 	private JLabel lblNome;
 	private JButton btnVerificar;
 	private JLabel lbl1;
-	private JLabel lblNomeMaquina;
+	private JLabel lblCupomTipoConta;
 	private JLabel lblValor;
 	private JLabel lblAgencia;
 	private JLabel lbl2;
@@ -67,6 +69,31 @@ public class Deposito extends JFrame {
 		lbl3 = new JLabel("AGENCIA");
 		lbl3.setFont(new Font("Tahoma", Font.PLAIN, 9));
 		lbl3.setVisible(false);
+		
+		JLabel lblCupomConta = new JLabel("Conta:");
+		lblCupomConta.setForeground(new Color(128, 128, 128));
+		lblCupomConta.setBounds(1134, 211, 46, 14);
+		contentPane.add(lblCupomConta);
+		
+		JLabel lblCupomNome = new JLabel("Nome:");
+		lblCupomNome.setForeground(new Color(128, 128, 128));
+		lblCupomNome.setBounds(1134, 167, 33, 14);
+		contentPane.add(lblCupomNome);
+		
+		JLabel lblCupomAgencia = new JLabel("Agencia");
+		lblCupomAgencia.setForeground(new Color(128, 128, 128));
+		lblCupomAgencia.setBounds(1134, 189, 46, 14);
+		contentPane.add(lblCupomAgencia);
+		
+		JLabel lblCupomFavorecido = new JLabel("Favorecido");
+		lblCupomFavorecido.setForeground(new Color(112, 128, 144));
+		lblCupomFavorecido.setBounds(1163, 147, 53, 14);
+		contentPane.add(lblCupomFavorecido);
+		
+		JLabel lblNewLabel_2 = new JLabel("");
+		lblNewLabel_2.setIcon(new ImageIcon("C:\\Users\\Esteves\\Desktop\\unnamed.png"));
+		lblNewLabel_2.setBounds(823, 476, 278, 286);
+		contentPane.add(lblNewLabel_2);
 		lbl3.setForeground(Color.WHITE);
 		lbl3.setBounds(732, 403, 59, 14);
 		contentPane.add(lbl3);
@@ -198,17 +225,18 @@ public class Deposito extends JFrame {
 		txtValor.setBounds(1145, 309, 97, 20);
 		contentPane.add(txtValor);
 
-		lblNomeMaquina = new JLabel("Cliente: Lucas Esteves");
-		lblNomeMaquina.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNomeMaquina.setHorizontalTextPosition(SwingConstants.CENTER);
-		lblNomeMaquina.setForeground(Color.DARK_GRAY);
-		lblNomeMaquina.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		lblNomeMaquina.setBounds(1117, 165, 151, 17);
-		contentPane.add(lblNomeMaquina);
-
+		lblCupomTipoConta = new JLabel("Deposito em conta");
+		lblCupomTipoConta.setHorizontalAlignment(SwingConstants.LEFT);
+		lblCupomTipoConta.setHorizontalTextPosition(SwingConstants.CENTER);
+		lblCupomTipoConta.setForeground(SystemColor.controlShadow);
+		lblCupomTipoConta.setFont(new Font("Tahoma", Font.PLAIN, 10));
+		lblCupomTipoConta.setBounds(1127, 126, 141, 17);
+		contentPane.add(lblCupomTipoConta);
+		lblCupomTipoConta.setVisible(false);
+		
 		JLabel lblNewLabel_3 = new JLabel("");
 		lblNewLabel_3.setBackground(Color.WHITE);
-		lblNewLabel_3.setIcon(new ImageIcon("C:\\Users\\Esteves\\Pictures\\oriignal2.png"));
+		lblNewLabel_3.setIcon(new ImageIcon("C:\\Users\\Esteves\\Pictures\\BANKEND\\macahdoo98.png"));
 		lblNewLabel_3.setBounds(921, -538, 1026, 1913);
 		contentPane.add(lblNewLabel_3);
 
@@ -240,7 +268,7 @@ public class Deposito extends JFrame {
 		// setando visibilidade dos components
 
 		lblConta.setVisible(false);
-		lblNomeMaquina.setVisible(false);
+		lblCupomTipoConta.setVisible(false);
 		lblValor.setVisible(false);
 		txtValor.setVisible(false);
 		lblAgencia.setVisible(false);
@@ -342,7 +370,7 @@ public class Deposito extends JFrame {
 			txtCartao.setVisible(false);
 			lbl1.setVisible(false);
 			lblNome.setVisible(true);
-			lblNomeMaquina.setVisible(false);
+			lblCupomTipoConta.setVisible(false);
 			lblValor.setVisible(true);
 			txtValor.setVisible(true);
 			lbl2.setVisible(true);
