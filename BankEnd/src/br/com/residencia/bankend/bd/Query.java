@@ -199,6 +199,41 @@ public class Query {
 		return continha;
 
 	}
+	
+	
+	
+	public boolean contaExiste(String conta) {
+
+		Contas continha = null;
+
+		try {
+
+			st = conexao.prepareStatement("select *from contas where numero = ?  ");
+
+			st.setString(1, conta);
+
+			st.execute();
+
+			rs = st.getResultSet();
+
+			if (rs.next()) {
+				return true;
+				
+			}
+			
+			else
+			{
+				return false;
+			}
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+		}
+
+		return false;
+	}
+	
+	
 
 	public Cliente descobreCliente(int id) {
 

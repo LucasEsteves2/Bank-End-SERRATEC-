@@ -18,6 +18,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
+import javax.swing.border.LineBorder;
 
 import br.com.residencia.bankend.bd.Query;
 import br.com.residencia.bankend.contas.ContaCorrente;
@@ -334,33 +335,57 @@ public class Transferencia extends JFrame {
 			}
 		});
 
+		//verifica se a conta existe
+		
 		btnVerificar.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
-				// pegando conta digitada no texto
-				String numConta = txtCartao.getText();
-
-				// verifica se a conta do destinatario é igual
-				if (numConta.equals(contaRemetente.getNumero())) {
-					JOptionPane.showMessageDialog(null, "MESMA CONTA!!", "#ERRO404", JOptionPane.ERROR_MESSAGE);
-
+				// se o campo for vzio
+				if (txtCartao.getText().trim().equals("")) {
+					
+					JOptionPane.showMessageDialog(null, "Conta Invalida!!", "#ERRO404", JOptionPane.ERROR_MESSAGE);
+					txtCartao.setBorder(new LineBorder(Color.RED));
+					txtCartao.setBorder(new LineBorder(Color.RED));
+					
 				} else {
+					// pegando conta digitada no texto
+					String numConta = txtCartao.getText();
 
-					// metodo verifica se a conta informada é valida e retorna a conta com o cliente
-					contaDestinatario = bd.verificaConta(numConta);
+					//se a conta informada existir
+					if (bd.contaExiste(numConta)) {
 
-					// metodo pergutna se o usuario quer continuar
-					if (mensagemContinuar(imgMaquina)) {
-						exibeMaquininha(imgMaquina, btn0, btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9, btnAs,
-								btnVermelho, btnJogo, btnAmarelo, btnVerde);
+						// verifica se a conta do destinatario é igual
+						if (numConta.equals(contaRemetente.getNumero())) {
+							JOptionPane.showMessageDialog(null, "MESMA CONTA!!", "#ERRO404", JOptionPane.ERROR_MESSAGE);
+
+						} else {
+
+							// metodo que retorna a conta com o cliente
+							contaDestinatario = bd.verificaConta(numConta);
+
+							// metodo pergutna se o usuario quer continuar
+							if (mensagemContinuar(imgMaquina)) {
+								exibeMaquininha(imgMaquina, btn0, btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9,
+										btnAs, btnVermelho, btnJogo, btnAmarelo, btnVerde);
+							}
+
+						}
+
 					}
-
+					else {
+						JOptionPane.showMessageDialog(null, "Conta não cadastrada!", "#ERRO404", JOptionPane.ERROR_MESSAGE);
+						txtCartao.setText("");
+						txtCartao.setBorder(new LineBorder(Color.RED));
+						txtCartao.setBorder(new LineBorder(Color.RED));
+					}
 				}
 
 			}
 		});
+		
+		
 		// botao da maquina
 		btnVerde.addActionListener(new ActionListener() {
 
