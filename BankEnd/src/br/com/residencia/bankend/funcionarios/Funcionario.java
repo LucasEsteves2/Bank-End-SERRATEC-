@@ -10,6 +10,11 @@ public abstract class Funcionario {
 	private Double salario;
 	private Integer acesso ;
 
+	public Integer getAcesso() {
+		return acesso;
+	}
+
+
 	public Funcionario(String nome, String sobreNome, String cargo, String cpf, String email, String senha,
 			Double salario,Integer acesso) {
 		this.nome = nome;

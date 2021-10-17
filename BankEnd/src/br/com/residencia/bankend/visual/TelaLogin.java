@@ -31,6 +31,7 @@ import br.com.residencia.bankend.contas.Contas;
 import br.com.residencia.bankend.funcionarios.Funcionario;
 import br.com.residencia.bankend.funcionarios.Presidente;
 import br.com.residencia.bankend.visual.cliente.Menu;
+import br.com.residencia.bankend.visual.funcionario.MenuFun;
 
 public class TelaLogin extends JFrame {
 
@@ -43,7 +44,7 @@ public class TelaLogin extends JFrame {
 	private Connection con;
 	private JTextField textField;
 	private Contas conta;
-	
+
 //polvo laser
 	public TelaLogin(Connection con) {
 		this.con = con;
@@ -132,7 +133,6 @@ public class TelaLogin extends JFrame {
 		ImgBackground.setIcon(new ImageIcon("C:\\Users\\Esteves\\Pictures\\2133232232323.jpg"));
 		contentPane.add(ImgBackground);
 
-		
 		Query bd = new Query(con);
 		btnAcessar.addActionListener(new ActionListener() {
 
@@ -143,17 +143,22 @@ public class TelaLogin extends JFrame {
 				senha = String.valueOf(txtSenha.getPassword());
 				Cliente cliente = null;
 				Funcionario funcionario = null;
-				funcionario = bd.funcionario(login, senha);
+				// pega dados de funcionario
+				funcionario = bd.dadosFuncionario(login, senha);
+				// pega dados de cliente
 				cliente = bd.cliente(login, senha);
 
 				// instancia Tela funcionario
 				if (funcionario != null) {
+
+
 					telaFuncionario(funcionario);
+
 				}
 
 				// instancia Tela cliente
 				if (cliente != null) {
-					//metodo que retorna a conta do cliente
+					// metodo que retorna a conta do cliente
 					conta = bd.descobreConta(cliente);
 					telaCliente();
 				}
@@ -171,8 +176,6 @@ public class TelaLogin extends JFrame {
 
 		});
 
-		
-		
 	}
 
 	private void telaFuncionario(Funcionario funcionario) {
@@ -182,10 +185,10 @@ public class TelaLogin extends JFrame {
 		JOptionPane.showMessageDialog(null, "Bem Vindo," + funcionario.getNome() + "!!", "Sucess",
 				JOptionPane.INFORMATION_MESSAGE);
 
-		/*
-		 * Menu ak = new Menu(con); ak.setVisible(true); dispose();
-		 * 
-		 */
+		MenuFun menu = new MenuFun(con, funcionario);
+		menu.setVisible(true);
+		dispose();
+
 	}
 
 	public void telaCliente() {
@@ -197,7 +200,7 @@ public class TelaLogin extends JFrame {
 		JOptionPane.showMessageDialog(null, "Bem Vindo," + conta.getCliente().getNome() + "!!", "Sucess",
 				JOptionPane.INFORMATION_MESSAGE);
 
-		//instancia da janela
+		// instancia da janela
 		Menu menu = new Menu(con, conta);
 		menu.setVisible(true);
 		dispose();

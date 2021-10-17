@@ -116,6 +116,64 @@ public class Query {
 
 	}
 
+	public Funcionario dadosFuncionario(String login, String senha) {
+		Funcionario fun = null;
+
+		try {
+			st = conexao.prepareStatement("Select *from funcionario where email =? and senha=?");
+			st.setString(1, login);
+			st.setString(2, senha);
+			st.execute();
+
+			rs = st.getResultSet();
+
+			if (rs.next()) {
+				int id = rs.getInt("IDFuncionario");
+				String nome = rs.getString("nome");
+				String sobrenome = rs.getString("sobrenome");
+				String cargo = rs.getString("cargo");
+				double salario = rs.getDouble("salario");
+				String cpf = rs.getString("cpf");
+				String senha2 = rs.getString("senha");
+				String email = rs.getString("email");
+				int acesso = rs.getInt("acesso");
+				int numConta = rs.getInt("numConta");
+
+				switch (acesso) {
+				case 1:
+					Gerente gerente = new Gerente(nome, sobrenome, cargo, cpf, email, senha2, 2000.00, 1, numConta);
+					fun = gerente;
+
+					break;
+
+				case 2:
+					Diretor diretor = new Diretor(nome, sobrenome, cargo, cpf, email, senha2, 3000.00, 2, null);
+					fun = diretor;
+					break;
+
+				case 3:
+					Presidente presidente = new Presidente(nome, sobrenome, cargo, cpf, email, senha2, 4000.00, 3);
+					fun = presidente;
+					break;
+
+				default:
+					break;
+				}
+				
+				return fun;
+				
+
+			}
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return null;
+
+	}
+
 	public Contas descobreConta(Cliente cliente) {
 
 		Contas continha = null;
@@ -200,9 +258,7 @@ public class Query {
 		return continha;
 
 	}
-	
-	
-	
+
 	public boolean contaExiste(String conta) {
 
 		Contas continha = null;
@@ -219,11 +275,10 @@ public class Query {
 
 			if (rs.next()) {
 				return true;
-				
+
 			}
-			
-			else
-			{
+
+			else {
 				return false;
 			}
 		} catch (SQLException e) {
@@ -233,8 +288,6 @@ public class Query {
 
 		return false;
 	}
-	
-	
 
 	public Cliente descobreCliente(int id) {
 
@@ -319,12 +372,11 @@ public class Query {
 		ContaPoupanca poupanca = null;
 
 	}
-	
 
 	public void deposito(Contas contaDestinatario, double valor) {
 
 		try {
-			
+
 			st = conexao.prepareStatement("UPDATE CONTAS SET SALDO = ? WHERE NUMERO=?");
 			st.setDouble(1, contaDestinatario.getSaldo());
 			st.setString(2, contaDestinatario.getNumero());

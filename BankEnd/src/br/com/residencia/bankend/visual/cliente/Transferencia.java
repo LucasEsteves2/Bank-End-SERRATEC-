@@ -58,7 +58,6 @@ public class Transferencia extends JFrame {
 	private JLabel lblCupomTipoConta;
 	private JLabel lblCupomAgencia;
 	private JLabel lblSair;
-	private JLabel lblNewLabel_2;
 
 	public Transferencia(Connection conexao, Contas contaRemetenteV) {
 		this.con = conexao;
@@ -85,11 +84,6 @@ public class Transferencia extends JFrame {
 		lblCupomAgencia.setForeground(new Color(128, 128, 128));
 		lblCupomAgencia.setBounds(1134, 211, 129, 14);
 		contentPane.add(lblCupomAgencia);
-
-		lblNewLabel_2 = new JLabel("");
-		lblNewLabel_2.setIcon(new ImageIcon("C:\\Users\\Esteves\\Desktop\\Pasta Bank End\\logoBankEnd.png"));
-		lblNewLabel_2.setBounds(707, 261, 147, 57);
-		contentPane.add(lblNewLabel_2);
 
 		lblCupomTipoConta = new JLabel("");
 		lblCupomTipoConta.setHorizontalAlignment(SwingConstants.LEFT);
