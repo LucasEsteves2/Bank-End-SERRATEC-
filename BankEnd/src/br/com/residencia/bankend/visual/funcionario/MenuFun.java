@@ -189,6 +189,7 @@ public class MenuFun extends JFrame {
 
 	}
 
+	//teste
 	public void verificaPermissao(Funcionario fun) {
 
 		int acesso = fun.getAcesso();
