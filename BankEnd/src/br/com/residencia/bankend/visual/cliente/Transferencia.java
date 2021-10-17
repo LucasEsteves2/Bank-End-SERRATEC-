@@ -57,6 +57,7 @@ public class Transferencia extends JFrame {
 	private JLabel lblCupomTipoConta;
 	private JLabel lblCupomAgencia;
 	private JLabel lblSair;
+	private JLabel lblNewLabel_2;
 
 	public Transferencia(Connection conexao, Contas contaRemetenteV) {
 		this.con = conexao;
@@ -83,6 +84,11 @@ public class Transferencia extends JFrame {
 		lblCupomAgencia.setForeground(new Color(128, 128, 128));
 		lblCupomAgencia.setBounds(1134, 211, 129, 14);
 		contentPane.add(lblCupomAgencia);
+
+		lblNewLabel_2 = new JLabel("");
+		lblNewLabel_2.setIcon(new ImageIcon("C:\\Users\\Esteves\\Desktop\\Pasta Bank End\\logoBankEnd.png"));
+		lblNewLabel_2.setBounds(707, 261, 147, 57);
+		contentPane.add(lblNewLabel_2);
 
 		lblCupomTipoConta = new JLabel("");
 		lblCupomTipoConta.setHorizontalAlignment(SwingConstants.LEFT);
@@ -274,9 +280,9 @@ public class Transferencia extends JFrame {
 		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\Esteves\\Pictures\\card222323.png"));
 		lblNewLabel.setBounds(512, 143, 638, 365);
 		contentPane.add(lblNewLabel);
-		
+
 		lblSair = new JLabel("");
-		
+
 		lblSair.setIcon(new ImageIcon("C:\\Users\\Esteves\\Downloads\\sair.png"));
 		lblSair.setBounds(29, 641, 59, 53);
 		contentPane.add(lblSair);
@@ -295,23 +301,16 @@ public class Transferencia extends JFrame {
 		lblAgencia.setVisible(false);
 
 		Query bd = new Query(con);
-		
-		
-		
-		
+
 		lblSair.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				
+
 				Menu menuPrincipal = new Menu(con, contaRemetenteV);
 				menuPrincipal.setVisible(true);
 				dispose();
 			}
 		});
-		
-		
-		
-		
 
 		btnAmarelo.addActionListener(new ActionListener() {
 
@@ -335,8 +334,6 @@ public class Transferencia extends JFrame {
 			}
 		});
 
-		
-		
 		btnVerificar.addActionListener(new ActionListener() {
 
 			@Override
@@ -345,12 +342,6 @@ public class Transferencia extends JFrame {
 				// pegando conta digitada no texto
 				String numConta = txtCartao.getText();
 
-				if(txtValor.getText().trim().equals(""));
-				{
-					
-				}
-				
-				
 				// verifica se a conta do destinatario é igual
 				if (numConta.equals(contaRemetente.getNumero())) {
 					JOptionPane.showMessageDialog(null, "MESMA CONTA!!", "#ERRO404", JOptionPane.ERROR_MESSAGE);
@@ -375,10 +366,9 @@ public class Transferencia extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
-				//se o campo de valor nao for nulo
-				if (!txtValor.getText().trim().equals(""))
-				{   // metodo que confirma
+
+				// se o campo de valor nao for nulo
+				if (!txtValor.getText().trim().equals("")) { // metodo que confirma
 					confirmarTransacao(bd);
 				}
 
@@ -510,9 +500,9 @@ public class Transferencia extends JFrame {
 			bd.atualizarTransferencia(contaRemetente, contaDestinatario);
 
 			System.out.println("Transferencia feita com suceso!!");
-			
-			JOptionPane.showMessageDialog(null, "Transferencia Realizada!", "Sucess", JOptionPane.INFORMATION_MESSAGE);
 			exibeCupomFiscal();
+			JOptionPane.showMessageDialog(null, "Transferencia Realizada!", "Sucess", JOptionPane.INFORMATION_MESSAGE);
+
 		}
 		if (contaRemetente.getTipo().equals("poupanca")) {
 
@@ -550,5 +540,4 @@ public class Transferencia extends JFrame {
 		lblCupomTipoConta.setText("Transferencia em Conta: Corrente");
 		lblCupomAgencia.setText("Agencia: 404");
 	}
-
 }
