@@ -58,9 +58,9 @@ public class Transferencia extends JFrame {
 	private JLabel lblCupomAgencia;
 	private JLabel lblSair;
 
-	public Transferencia(Connection conexao, Contas contaRemetente) {
+	public Transferencia(Connection conexao, Contas contaRemetenteV) {
 		this.con = conexao;
-		this.contaRemetente = contaRemetente;
+		this.contaRemetente = contaRemetenteV;
 
 		setIconImage(Toolkit.getDefaultToolkit()
 				.getImage(Transferencia.class.getResource("/br/com/residencia/bankend/imagens/cadeado-trancado.png")));
@@ -303,7 +303,7 @@ public class Transferencia extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				
-				Menu menuPrincipal = new Menu(conexao, contaRemetente);
+				Menu menuPrincipal = new Menu(con, contaRemetenteV);
 				menuPrincipal.setVisible(true);
 				dispose();
 			}
@@ -335,6 +335,8 @@ public class Transferencia extends JFrame {
 			}
 		});
 
+		
+		
 		btnVerificar.addActionListener(new ActionListener() {
 
 			@Override
@@ -343,6 +345,12 @@ public class Transferencia extends JFrame {
 				// pegando conta digitada no texto
 				String numConta = txtCartao.getText();
 
+				if(txtValor.getText().trim().equals(""));
+				{
+					
+				}
+				
+				
 				// verifica se a conta do destinatario é igual
 				if (numConta.equals(contaRemetente.getNumero())) {
 					JOptionPane.showMessageDialog(null, "MESMA CONTA!!", "#ERRO404", JOptionPane.ERROR_MESSAGE);
@@ -502,9 +510,9 @@ public class Transferencia extends JFrame {
 			bd.atualizarTransferencia(contaRemetente, contaDestinatario);
 
 			System.out.println("Transferencia feita com suceso!!");
-
+			
 			JOptionPane.showMessageDialog(null, "Transferencia Realizada!", "Sucess", JOptionPane.INFORMATION_MESSAGE);
-
+			exibeCupomFiscal();
 		}
 		if (contaRemetente.getTipo().equals("poupanca")) {
 

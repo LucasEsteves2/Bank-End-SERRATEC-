@@ -386,11 +386,13 @@ public class MinhaConta extends JFrame {
 		});
 
 		
-		imgExibirSaldo.addMouseListener(new MouseAdapter() {
+		lblInicio.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 
-				
+				Menu menuPrincipal = new Menu(con, conta);
+				menuPrincipal.setVisible(true);
+				dispose();
 				
 			}
 		});

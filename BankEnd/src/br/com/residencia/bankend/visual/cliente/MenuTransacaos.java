@@ -53,21 +53,21 @@ public class MenuTransacaos extends JFrame {
 		
 		JLabel lblNewLabel = new JLabel("");
 		
-		lblNewLabel.setBounds(984, 56, 368, 610);
+		lblNewLabel.setBounds(994, 56, 368, 610);
 		contentPane.add(lblNewLabel);
 		
 		JLabel lblSaque = new JLabel("");
 		
-		lblSaque.setBounds(551, 56, 354, 610);
+		lblSaque.setBounds(513, 56, 354, 610);
 		contentPane.add(lblSaque);
 		
 		JLabel lblTransferencia = new JLabel("");
 		
-		lblTransferencia.setBounds(118, 46, 354, 610);
+		lblTransferencia.setBounds(26, 56, 354, 610);
 		contentPane.add(lblTransferencia);
 		
 		JLabel ImgBackground = new JLabel("");
-		ImgBackground.setIcon(new ImageIcon("C:\\Users\\Esteves\\Pictures\\BANKEND\\transaccao.jpg"));
+		ImgBackground.setIcon(new ImageIcon("C:\\Users\\Esteves\\Pictures\\BANKEND\\backzada.jpg"));
 		ImgBackground.setBounds(0, 0, 1375, 705);
 		contentPane.add(ImgBackground);
 

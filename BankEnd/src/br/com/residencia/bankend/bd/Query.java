@@ -250,33 +250,75 @@ public class Query {
 
 			st.executeUpdate();
 
+			// Add tributo
+
+			st = conexao.prepareStatement("select quantidadeTransf from Contas where IdConta=? ");
+			st.setInt(1, remetente.getId());
+			st.execute();
+
+			rs = st.getResultSet();
+
+			int qtdTransf = 0;
+
+			if (rs.next()) {
+				qtdTransf = rs.getInt("quantidadeTransf");
+			}
+
+			if (remetente.getTipo().equals("corrente")) {
+				st = conexao.prepareStatement("Update Contas set quantidadeTransf = ? where IDCONTA=? ");
+				st.setInt(1, qtdTransf + 1);
+				st.setInt(2, remetente.getId());
+				st.executeUpdate();
+			}
+
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
 	}
+
+	public void adicionarTributo(Contas contas) {
+		ContaCorrente corrente = null;
+		ContaPoupanca poupanca = null;
+
+	}
 	
-	public void deposito(Contas contaDestinatario,double valor)
-	{
-		
+
+	public void deposito(Contas contaDestinatario, double valor) {
+
 		try {
-			st=conexao.prepareStatement("UPDATE CONTAS SET SALDO = ? WHERE NUMERO=?");
+			
+			st = conexao.prepareStatement("UPDATE CONTAS SET SALDO = ? WHERE NUMERO=?");
 			st.setDouble(1, contaDestinatario.getSaldo());
 			st.setString(2, contaDestinatario.getNumero());
 			st.executeUpdate();
-			
-		
+
+			// Add tributo
+
+			st = conexao.prepareStatement("select quantidadeDeposito from Contas where IdConta=? ");
+			st.setInt(1, contaDestinatario.getId());
+			st.execute();
+
+			rs = st.getResultSet();
+
+			int qtdTransf = 0;
+
+			if (rs.next()) {
+				qtdTransf = rs.getInt("quantidadeDeposito");
+			}
+
+			if (contaDestinatario.getTipo().equals("corrente")) {
+				st = conexao.prepareStatement("Update Contas set quantidadeDeposito = ? where IDCONTA=? ");
+				st.setInt(1, qtdTransf + 1);
+				st.setInt(2, contaDestinatario.getId());
+				st.executeUpdate();
+			}
+
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		
-		
-		
-	}
-	}
-	
-	
 
+	}
+}

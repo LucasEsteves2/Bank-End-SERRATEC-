@@ -11,7 +11,6 @@ import br.com.residencia.bankend.clientes.Cliente;
 	protected Cliente cliente;
 	protected SeguroVida seguro;
 	protected Integer id;
-	
 
 	public Contas(String agencia, String numero, String tipo, Double saldo, Cliente cliente, SeguroVida seguro,Integer id) {
 		this.agencia = agencia;
