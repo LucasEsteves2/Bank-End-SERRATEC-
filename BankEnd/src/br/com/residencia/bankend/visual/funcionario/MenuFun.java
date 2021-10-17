@@ -25,6 +25,9 @@ import javax.swing.border.MatteBorder;
 import br.com.residencia.bankend.contas.Contas;
 import br.com.residencia.bankend.funcionarios.Funcionario;
 import br.com.residencia.bankend.utility.Mouse;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class MenuFun extends JFrame {
 
@@ -52,6 +55,11 @@ public class MenuFun extends JFrame {
 		panel.setBounds(-6, -14, 238, 736);
 		contentPane.add(panel);
 		panel.setLayout(null);
+		
+		JButton btnRelatorios = new JButton("relatorios");
+		
+		btnRelatorios.setBounds(41, 26, 124, 23);
+		panel.add(btnRelatorios);
 
 		JLabel lblLogo = new JLabel("New label");
 		lblLogo.setBounds(-55, 11, 421, 130);
@@ -178,7 +186,7 @@ public class MenuFun extends JFrame {
 
 		JLabel lblBackground = new JLabel("");
 		lblBackground.setIcon(
-				new ImageIcon(MenuFun.class.getResource("/br/com/residencia/bankend/imagens/backgroundvddd.jpg")));
+				new ImageIcon("C:\\Users\\Esteves\\Pictures\\tela1.jpg"));
 		lblBackground.setBounds(235, 28, 1134, 711);
 		contentPane.add(lblBackground);
 
@@ -186,7 +194,26 @@ public class MenuFun extends JFrame {
 		lblMenu.setIcon(new ImageIcon(MenuFun.class.getResource("/br/com/residencia/bankend/imagens/2.jpg")));
 		lblMenu.setBounds(6, 11, 232, 714);
 		panel.add(lblMenu);
+		
+		JButton button = new JButton("New button");
+		button.setBounds(76, 400, 89, 23);
+		panel.add(button);
 
+		
+		
+		
+		btnRelatorios.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				Relatorioos rel = new  Relatorioos(fun, con);
+				rel.setVisible(true);
+				
+			}
+		});
+		
+		
+		
+		
 	}
 
 	//teste
@@ -209,5 +236,4 @@ public class MenuFun extends JFrame {
 		}
 
 	}
-
 }

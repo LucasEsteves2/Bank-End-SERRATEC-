@@ -138,10 +138,11 @@ public class Query {
 				String email = rs.getString("email");
 				int acesso = rs.getInt("acesso");
 				int numConta = rs.getInt("numConta");
+				String idagencia = rs.getString("agencia");
 
 				switch (acesso) {
 				case 1:
-					Gerente gerente = new Gerente(nome, sobrenome, cargo, cpf, email, senha2, 2000.00, 1, numConta);
+					Gerente gerente = new Gerente(nome, sobrenome, cargo, cpf, email, senha2, 2000.00, 1, idagencia);
 					fun = gerente;
 
 					break;
@@ -159,9 +160,8 @@ public class Query {
 				default:
 					break;
 				}
-				
+
 				return fun;
-				
 
 			}
 
@@ -409,4 +409,138 @@ public class Query {
 		}
 
 	}
+
+	public int qtdAgencia(String agencia) {
+		int qtdConta = 0;
+
+		try {
+			st = conexao.prepareStatement("select *from contas where agencia =?");
+
+			st.setString(1, agencia);
+			st.execute();
+
+			rs = st.getResultSet();
+
+			while (rs.next()) {
+				qtdConta += 1;
+
+			}
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return qtdConta;
+
+	}
+
+	public void totalClientes(ArrayList<Contas> contas) {
+
+		ArrayList<Cliente> clientes = new ArrayList<>();
+
+		Contas continha;
+
+		try {
+			st = conexao.prepareStatement("select *from cliente");
+
+			st.execute();
+
+			rs = st.getResultSet();
+
+			while (rs.next()) {
+				int id = rs.getInt("IDCliente");
+				String nome = rs.getString("nome");
+				String sobrenome = rs.getString("sobrenome");
+				String cpf = rs.getString("cpf");
+
+				Cliente cliente = new Cliente(nome, sobrenome, null, cpf, null, id);
+
+				clientes.add(cliente);
+
+			}
+
+			st = conexao.prepareStatement("SELECT *FROM CONTAS ");
+			st.execute();
+
+			rs = st.getResultSet();
+
+			while (rs.next()) {
+
+				int id = rs.getInt("IDConta");
+				String agencia = rs.getString("agencia");
+				String tipo = rs.getString("tipo");
+				int id_Cliente = rs.getInt("ID_cliente");
+
+				// verificando o tipo
+
+				if (tipo.equals("poupanca")) {
+
+					// percorrendo todos os clientes
+					for (Cliente x : clientes) {
+						int idCliente = x.getId();
+
+						if (idCliente == id_Cliente) {
+
+							ContaPoupanca poupanca = new ContaPoupanca(agencia, null, tipo, null, x, null, id);
+
+							contas.add(poupanca);
+
+						}
+
+					}
+
+				}
+
+				if (tipo.equals("corrente")) {
+
+					// percorrendo todos os clientes
+					for (Cliente x : clientes) {
+						int idCliente = x.getId();
+
+						if (idCliente == id_Cliente) {
+
+							ContaCorrente corrente = new ContaCorrente(agencia, null, tipo, null, x, null, id);
+
+							contas.add(corrente);
+
+						}
+
+					}
+
+				}
+
+			}
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
+
+	public double valorTotal() {
+		try {
+			st = conexao.prepareStatement("select saldo from contas");
+			st.execute();
+
+			rs = st.getResultSet();
+
+			double saldoTotal = 0;
+
+			while (rs.next()) {
+				saldoTotal += rs.getDouble("saldo");
+			}
+
+			return saldoTotal;
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return 0;
+
+	}
+
 }
