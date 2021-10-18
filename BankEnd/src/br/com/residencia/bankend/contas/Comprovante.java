@@ -4,12 +4,15 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 
 public class Comprovante {
 	public static void deposito (Contas conta,Double valor,String tipoConta) throws IOException {
-		
-		File arquivo = new File( "C:\\temp\\deposito.txt" );
+		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+		String data = dtf.format(LocalDateTime.now());
+		File arquivo = new File( "C:\\temp\\"+data+"  deposito.txt" );
 		boolean existe = arquivo.exists();
 		arquivo.createNewFile();
 		
@@ -54,7 +57,9 @@ public class Comprovante {
 	
 	public static void saque (Contas conta,Double valor) throws IOException {
 	
-		File arquivo = new File( "C:\\temp\\saque.txt");
+		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+		String data = dtf.format(LocalDateTime.now());
+		File arquivo = new File( "C:\\temp\\"+data+"  saque.txt" );
 		boolean existe = arquivo.exists();
 		arquivo.createNewFile();
 		
@@ -89,7 +94,9 @@ public class Comprovante {
 	
 	
 	public static void Transferencia (Contas conta,Double valor) throws IOException {
-		File arquivo = new File( "C:\\temp\\Transferência.txt" );
+		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+		String data = dtf.format(LocalDateTime.now());
+		File arquivo = new File( "C:\\temp\\"+data+"  Transferência.txt" );
 		boolean existe = arquivo.exists();
 		arquivo.createNewFile();
 		
