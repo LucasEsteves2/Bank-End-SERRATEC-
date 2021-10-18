@@ -18,7 +18,8 @@ import br.com.residencia.bankend.funcionarios.Diretor;
 import br.com.residencia.bankend.funcionarios.Funcionario;
 import br.com.residencia.bankend.funcionarios.Gerente;
 import br.com.residencia.bankend.funcionarios.Presidente;
-import br.com.residencia.bankend.utility.TableModel;
+import br.com.residencia.bankend.utility.ClienteTableModel;
+import br.com.residencia.bankend.utility.FuncionarioTableModel;
 
 public class Query {
 	private Connection conexao = null;
@@ -544,7 +545,7 @@ public class Query {
 						if (idCliente == id_Cliente) {
 
 							ContaCorrente corrente = new ContaCorrente(agencia, null, tipo, null, x, null, id);
-
+							
 							contas.add(corrente);
 
 						}
@@ -620,19 +621,14 @@ public class Query {
 
 	}
 
-	public void addDadosRelatorios(TextArea x, ArrayList<Contas> listaContas) {
-		for (Contas contas : listaContas) {
-
-			String nome = contas.getCliente().getNome();
-			String cpf = contas.getCliente().getCpf();
-			String agencia = contas.getAgencia();
-
-			x.append("\r\n    | Cliente: " + nome + " |         -         Cpf: " + cpf + "     -   Agencia: " + agencia
-					+ "  \t\t\r\n\t\r\n ");
-		}
+	public void addDadosRelatorios(FuncionarioTableModel tabelaFuncionario, ArrayList<Contas> listaContas) {
+	
+		for (Contas conta : listaContas) {
+			
+			tabelaFuncionario.adicionarLinha(conta);		}
 	}
 
-	public void addAllClientes(TableModel tabelaContas) {
+	public void addAllClientes(ClienteTableModel tabelaContas) {
 
 		ArrayList<Contas> listaContas = new ArrayList<Contas>();
 

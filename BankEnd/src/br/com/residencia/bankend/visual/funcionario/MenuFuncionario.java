@@ -105,6 +105,12 @@ public class MenuFuncionario extends JFrame {
 		lblNewLabel_5.setFont(new Font("Tahoma", Font.BOLD, 11));
 		lblNewLabel_5.setBounds(37, 10, 46, 14);
 		PainelVoltar.add(lblNewLabel_5);
+		
+		JLabel lblNewLabel = new JLabel("MODO ADMINISTRADOR");
+		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 11));
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel.setBounds(0, 7, 1129, 14);
+		PainelVoltar.add(lblNewLabel);
 
 		JPanel PainelFechar = new JPanel();
 		PainelFechar.setBorder(new MatteBorder(1, 1, 2, 1, (Color) new Color(0, 0, 0)));
@@ -196,7 +202,7 @@ public class MenuFuncionario extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				
-				TelaRelatorio relatorio = new TelaRelatorio(fun, con);
+				TelaRelatorios relatorio = new TelaRelatorios(con, fun);
 				relatorio.setLocationRelativeTo(null);
 				relatorio.setVisible(true);
 			}
@@ -206,7 +212,7 @@ public class MenuFuncionario extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				
-				TabelaClientes clientes = new TabelaClientes(con);
+				TabelaClientes clientes = new TabelaClientes(con, fun);
 				clientes.setLocationRelativeTo(null);
 				clientes.setVisible(true);
 				

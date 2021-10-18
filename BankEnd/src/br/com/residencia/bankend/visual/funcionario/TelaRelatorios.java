@@ -35,28 +35,30 @@ import br.com.residencia.bankend.bd.Query;
 import br.com.residencia.bankend.contas.ContaCorrente;
 import br.com.residencia.bankend.contas.Contas;
 import br.com.residencia.bankend.funcionarios.Funcionario;
+import br.com.residencia.bankend.funcionarios.Gerente;
 import br.com.residencia.bankend.utility.ClienteTableModel;
+import br.com.residencia.bankend.utility.FuncionarioTableModel;
 
 import javax.swing.UIManager;
 import java.awt.ComponentOrientation;
+import javax.swing.border.EtchedBorder;
 
-public class TabelaClientes extends JFrame {
+public class TelaRelatorios extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTable jTabelaPaciente;
-	private JTextField txtPesquisar;
-	private ArrayList<Contas> pacientes = new ArrayList<>();
+	private ArrayList<Contas> relatorios = new ArrayList<>();
 	private Connection con;
 
-	ClienteTableModel paciente_tableModel = new ClienteTableModel();
+	FuncionarioTableModel funcionario_tableModel = new FuncionarioTableModel();
 
-	public TabelaClientes(Connection con,Funcionario fun) {
+	public TelaRelatorios(Connection con,Funcionario fun) {
 		setTitle("Pacientes");
 
 		this.con = con;
 		setIconImage(Toolkit.getDefaultToolkit()
-				.getImage(TabelaClientes.class.getResource("/br/com/residencia/bankend/imagens/mask_icon_134856 (2).png")));
+				.getImage(TelaRelatorios.class.getResource("/br/com/residencia/bankend/imagens/mask_icon_134856 (2).png")));
 		setExtendedState(Frame.MAXIMIZED_BOTH);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
@@ -88,7 +90,7 @@ public class TabelaClientes extends JFrame {
 		JLabel imgPaciente = new JLabel("");
 		imgPaciente.setHorizontalTextPosition(SwingConstants.CENTER);
 		imgPaciente.setHorizontalAlignment(SwingConstants.CENTER);
-		imgPaciente.setIcon(new ImageIcon(TabelaClientes.class.getResource("/br/com/residencia/bankend/imagens/doctor (4).png")));
+		imgPaciente.setIcon(new ImageIcon(TelaRelatorios.class.getResource("/br/com/residencia/bankend/imagens/doctor (4).png")));
 		imgPaciente.setBounds(23, 12, 32, 32);
 		painelSeguro.add(imgPaciente);
 
@@ -113,7 +115,7 @@ public class TabelaClientes extends JFrame {
 		JLabel lblInicio = new JLabel("");
 		
 
-		lblInicio.setIcon(new ImageIcon(TabelaClientes.class.getResource("/br/com/residencia/bankend/imagens/pagina-inicial (1).png")));
+		lblInicio.setIcon(new ImageIcon(TelaRelatorios.class.getResource("/br/com/residencia/bankend/imagens/pagina-inicial (1).png")));
 		lblInicio.setBounds(10, -1, 29, 30);
 		PainelVoltar.add(lblInicio);
 
@@ -124,10 +126,10 @@ public class TabelaClientes extends JFrame {
 		lblNewLabel_5.setBounds(37, 10, 46, 14);
 		PainelVoltar.add(lblNewLabel_5);
 
-		JLabel lblNewLabel_4 = new JLabel("> Paciente");
+		JLabel lblNewLabel_4 = new JLabel("> Relatorios");
 		lblNewLabel_4.setFont(new Font("Tahoma", Font.BOLD, 11));
 		lblNewLabel_4.setForeground(new Color(0, 0, 0));
-		lblNewLabel_4.setBounds(71, 10, 61, 14);
+		lblNewLabel_4.setBounds(71, 10, 70, 14);
 		PainelVoltar.add(lblNewLabel_4);
 
 		JPanel PainelFechar = new JPanel();
@@ -138,7 +140,7 @@ public class TabelaClientes extends JFrame {
 		panel.add(PainelFechar);
 
 		JLabel imgPaciente_1_1_1 = new JLabel("");
-		imgPaciente_1_1_1.setIcon(new ImageIcon(TabelaClientes.class.getResource("/br/com/residencia/bankend/imagens/cancelar.png")));
+		imgPaciente_1_1_1.setIcon(new ImageIcon(TelaRelatorios.class.getResource("/br/com/residencia/bankend/imagens/cancelar.png")));
 		imgPaciente_1_1_1.setBounds(23, 12, 32, 32);
 		PainelFechar.add(imgPaciente_1_1_1);
 
@@ -160,7 +162,7 @@ public class TabelaClientes extends JFrame {
 		panel.add(PainelConsulta);
 
 		JLabel imgPaciente_1_1 = new JLabel("");
-		imgPaciente_1_1.setIcon(new ImageIcon(TabelaClientes.class.getResource("/br/com/residencia/bankend/imagens/health-check.png")));
+		imgPaciente_1_1.setIcon(new ImageIcon(TelaRelatorios.class.getResource("/br/com/residencia/bankend/imagens/health-check.png")));
 		imgPaciente_1_1.setBounds(23, 12, 32, 32);
 		PainelConsulta.add(imgPaciente_1_1);
 
@@ -182,7 +184,7 @@ public class TabelaClientes extends JFrame {
 		panel.add(painelClientes);
 
 		JLabel imgPaciente_1 = new JLabel("");
-		imgPaciente_1.setIcon(new ImageIcon(TabelaClientes.class.getResource("/br/com/residencia/bankend/imagens/examination.png")));
+		imgPaciente_1.setIcon(new ImageIcon(TelaRelatorios.class.getResource("/br/com/residencia/bankend/imagens/examination.png")));
 		imgPaciente_1.setBounds(23, 12, 32, 32);
 		painelClientes.add(imgPaciente_1);
 
@@ -202,107 +204,74 @@ public class TabelaClientes extends JFrame {
 		panel_1.setLayout(null);
 
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(27, 96, 1070, 535);
+		scrollPane.setBounds(27, 151, 1070, 480);
 		panel_1.add(scrollPane);
 
 		jTabelaPaciente = new JTable();
 
 		scrollPane.setViewportView(jTabelaPaciente);
 
-		JButton btnExcluir = new JButton("Excluir");
-		btnExcluir.setIcon(new ImageIcon(TabelaClientes.class.getResource("/br/com/residencia/bankend/imagens/trash.png")));
-		btnExcluir.setBounds(255, 36, 90, 34);
-		panel_1.add(btnExcluir);
-
-		JLabel lblPesquisarr = new JLabel("Pesquisar:");
-		lblPesquisarr.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblPesquisarr.setBounds(356, 43, 67, 17);
-		panel_1.add(lblPesquisarr);
-
-		txtPesquisar = new JTextField();
-
-		txtPesquisar.setBounds(424, 36, 530, 34);
-		panel_1.add(txtPesquisar);
-		txtPesquisar.setColumns(10);
-
-		btnExcluir.setBackground(new java.awt.Color(0, 102, 52));
-		btnExcluir.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-		btnExcluir.setForeground(new java.awt.Color(255, 255, 255));
-		btnExcluir.setBorder(null);
-		btnExcluir.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-		btnExcluir.setDoubleBuffered(true);
-
-		JButton btnEditar = new JButton("Editar");
-		
-		btnEditar.setIcon(new ImageIcon(TabelaClientes.class.getResource("/br/com/residencia/bankend/imagens/edit.png")));
-		btnEditar.setForeground(Color.WHITE);
-		btnEditar.setFont(new Font("Segoe UI", Font.PLAIN, 16));
-		btnEditar.setDoubleBuffered(true);
-		btnEditar.setBorder(null);
-		btnEditar.setBackground(new Color(0, 102, 52));
-		btnEditar.setBounds(144, 36, 90, 35);
-		panel_1.add(btnEditar);
-
-		JButton btnNovo = new JButton("Novo");
-		btnNovo.setIcon(new ImageIcon(TabelaClientes.class.getResource("/br/com/residencia/bankend/imagens/plus-black-symbol.png")));
-		btnNovo.setForeground(Color.WHITE);
-		btnNovo.setFont(new Font("Segoe UI", Font.PLAIN, 16));
-		btnNovo.setDoubleBuffered(true);
-		btnNovo.setBorder(null);
-		btnNovo.setBackground(new Color(0, 102, 52));
-		btnNovo.setBounds(33, 36, 90, 35);
-		panel_1.add(btnNovo);
-
-		JButton btnPesquisar = new JButton("Pesquisar");
-		
-		btnPesquisar.setIcon(new ImageIcon(TabelaClientes.class.getResource("/br/com/residencia/bankend/imagens/search.png")));
-		btnPesquisar.setForeground(Color.WHITE);
-		btnPesquisar.setFont(new Font("Segoe UI", Font.PLAIN, 16));
-		btnPesquisar.setDoubleBuffered(true);
-		btnPesquisar.setBorder(null);
-		btnPesquisar.setBackground(new Color(0, 102, 52));
-		btnPesquisar.setBounds(963, 36, 129, 34);
-		panel_1.add(btnPesquisar);
-
-		JButton btnLimpar = new JButton("Limpar");
-		btnLimpar.setIcon(new ImageIcon(TabelaClientes.class.getResource("/br/com/residencia/bankend/imagens/trash.png")));
-		btnLimpar.setForeground(Color.WHITE);
-		btnLimpar.setFont(new Font("Segoe UI", Font.PLAIN, 16));
-		btnLimpar.setDoubleBuffered(true);
-		btnLimpar.setBorder(null);
-		btnLimpar.setBackground(Color.RED);
-		btnLimpar.setBounds(963, 36, 129, 34);
-		panel_1.add(btnLimpar);
-
-		btnLimpar.setVisible(false);
-
 		
 		Query bd = new Query(con);
-		// Metodo responsavel por instanciar todos os clientes no Jtable
-		bd.addAllClientes(paciente_tableModel);
+		
 	
 
 		JLabel lblImagemPaciente = new JLabel("");
-		lblImagemPaciente.setIcon(new ImageIcon(TabelaClientes.class.getResource("/br/com/residencia/bankend/imagens/1s.png")));
+		lblImagemPaciente.setIcon(new ImageIcon(TelaRelatorios.class.getResource("/br/com/residencia/bankend/imagens/1s.png")));
 		lblImagemPaciente.setBounds(0, 553, 288, 172);
 		panel.add(lblImagemPaciente);
 
 		JLabel lblMenu = new JLabel("");
-		lblMenu.setIcon(new ImageIcon(TabelaClientes.class.getResource("/br/com/residencia/bankend/imagens/2.jpg")));
+		lblMenu.setIcon(new ImageIcon(TelaRelatorios.class.getResource("/br/com/residencia/bankend/imagens/2.jpg")));
 		lblMenu.setBounds(6, 11, 232, 714);
 		panel.add(lblMenu);
 
 		// Instanciando meu proprio model (jtable)
 
-		jTabelaPaciente.setModel(paciente_tableModel);
+		jTabelaPaciente.setModel(funcionario_tableModel);
 		
-		// Escutadores + funçoes
-
+		JLabel lblFoto = new JLabel("");
+		lblFoto.setIcon(new ImageIcon(TelaRelatorios.class.getResource("/br/com/residencia/bankend/imagens/12s.png")));
+		lblFoto.setHorizontalAlignment(SwingConstants.CENTER);
+		lblFoto.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
+		lblFoto.setBounds(28, 24, 95, 101);
+		panel_1.add(lblFoto);
+		
+		JLabel lblNewLabel = new JLabel("GERENTE");
+		lblNewLabel.setBounds(51, 31, 46, 14);
+		panel_1.add(lblNewLabel);
+		
+		JLabel lblNome = new JLabel("Nome:");
+		lblNome.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblNome.setBounds(150, 31, 129, 20);
+		panel_1.add(lblNome);
+		
+		JLabel lblCpf = new JLabel("Cpf:");
+		lblCpf.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblCpf.setBounds(406, 31, 129, 20);
+		panel_1.add(lblCpf);
+		
+		JLabel lblEmail = new JLabel("E-mail:");
+		lblEmail.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblEmail.setBounds(687, 31, 220, 20);
+		panel_1.add(lblEmail);
+		
+		JLabel lblNewLabel_1_1_1_1 = new JLabel("Cargo:");
+		lblNewLabel_1_1_1_1.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblNewLabel_1_1_1_1.setBounds(955, 31, 129, 20);
+		panel_1.add(lblNewLabel_1_1_1_1);
+		
 		JLabel lblBackground = new JLabel("");
 		lblBackground.setBackground(new Color(245, 245, 245));
-		lblBackground.setIcon(new ImageIcon(TabelaClientes.class.getResource("/br/com/residencia/bankend/imagens/aaaaaaaaaaaaaaa.jpg")));
-		lblBackground.setBounds(0, 0, 1129, 681);
+		lblBackground.setBounds(0, 0, 0, 0);
 		panel_1.add(lblBackground);
+		
+		JLabel lblValorTotal = new JLabel("VALOR TOTAL:");
+		lblValorTotal.setHorizontalAlignment(SwingConstants.CENTER);
+		lblValorTotal.setForeground(Color.RED);
+		lblValorTotal.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		lblValorTotal.setBounds(26, 81, 1066, 44);
+		panel_1.add(lblValorTotal);
 
 		
 		
@@ -311,7 +280,7 @@ public class TabelaClientes extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				
-				TabelaClientes clientes = new TabelaClientes(con,fun);
+				TelaRelatorios clientes = new TelaRelatorios(con,fun);
 				clientes.setLocationRelativeTo(null);
 				clientes.setVisible(true);
 				
@@ -330,6 +299,61 @@ public class TabelaClientes extends JFrame {
 				
 			}
 		});
+		
+		int acesso = fun.getAcesso();
+
+
+		ArrayList<Contas> conta = new ArrayList<>();
+
+		lblNome.setText("Nome: " + fun.getNome());
+		lblCpf.setText("Cpf: " + fun.getCpf());
+		
+		JLabel lblMesmaAgencia = new JLabel("New label");
+		lblMesmaAgencia.setBounds(687, 100, 195, 14);
+		panel_1.add(lblMesmaAgencia);
+		
+
+		// Verificando tipo do funcionario
+		switch (acesso) {
+		case 1:
+
+			Gerente gerente = (Gerente) fun;
+
+			Integer quantidade = bd.qtdAgencia(gerente.getIdAgencia());
+			lblMesmaAgencia.setText("a quantidade e :" + quantidade.toString());
+
+			break;
+		case 2:
+
+			System.out.println("Bem vindo Diretor ");
+
+			// metodo que pega todas os nomes/cpf/agencia e armazena dentro de uma lista
+			bd.totalClientes(conta);
+
+			// metodo que adiciona no componente
+			bd.addDadosRelatorios(funcionario_tableModel, conta);
+
+			break;
+
+		case 3:
+			System.out.println("Bem vindo Presidente");
+			//retorna todas as cotnas na minha lista
+			bd.totalClientes(conta);
+			
+			// Metodo responsavel por instanciar todos os clientes no Jtable
+			bd.addDadosRelatorios(funcionario_tableModel, conta);
+
+			Double saldoTotal = bd.valorTotal();
+
+			
+			lblValorTotal.setText("VALOR TOTAL: "+saldoTotal.toString()+"$");
+
+			lblValorTotal.setVisible(true);
+			break;
+
+		default:
+			break;
+		}
 		
 		
 		

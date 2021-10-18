@@ -11,7 +11,7 @@ import br.com.residencia.bankend.contas.Contas;
 
 //Estava aprendendo a criar jtable e vi uns tutoriais recomendando criar o proprio model
 
-public class TableModel extends AbstractTableModel {
+public class ClienteTableModel extends AbstractTableModel {
 
 	private static final long serialVersionUID = 1L;
 	private ArrayList<Contas> dados = new ArrayList<>();
