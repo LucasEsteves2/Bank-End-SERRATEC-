@@ -15,6 +15,7 @@ import java.sql.Connection;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.UIManager;
@@ -23,6 +24,7 @@ import javax.swing.border.EtchedBorder;
 import javax.swing.border.MatteBorder;
 
 import br.com.residencia.bankend.contas.Contas;
+import br.com.residencia.bankend.visual.TelaLogin;
 
 public class Menu extends JFrame {
 
@@ -179,6 +181,8 @@ public class Menu extends JFrame {
 		lblMenu.setBounds(6, 11, 232, 714);
 		panel.add(lblMenu);
 
+		
+		
 		// Click no botao Conta
 
 		painelConta.addMouseListener(new MouseAdapter() {
@@ -201,7 +205,8 @@ public class Menu extends JFrame {
 
 			}
 		});
-
+		
+		//escutador btn Seguro
 		painelSeguro.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -211,14 +216,30 @@ public class Menu extends JFrame {
 			}
 		});
 		
-		lblInicio.addMouseListener(new MouseAdapter() {
+		
+			//btn fechar
+		PainelFechar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				Menu inicio = new Menu(con, conta);
-				inicio.setVisible(true);
-				dispose();
+				
+				int i = JOptionPane.showConfirmDialog(null, "Deseja Encerrar o programa?", "Finalizar",
+						JOptionPane.OK_CANCEL_OPTION);
+
+				if (i == JOptionPane.YES_OPTION) {
+					System.out.println("Clicou em Sim");
+
+					TelaLogin login = new TelaLogin(con);
+					login.setVisible(true);
+					dispose();
+
+				} else if (i == JOptionPane.CANCEL_OPTION) {
+
+					System.out.println("Clicou em Não");
+
+				}
 			}
 		});
+		
 		
 		
 		

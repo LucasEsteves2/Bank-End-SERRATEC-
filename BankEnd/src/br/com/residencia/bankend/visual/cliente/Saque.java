@@ -56,6 +56,8 @@ public class Saque extends JFrame {
 	private JLabel lblCupomTipoConta;
 	private JLabel lblCupomAgencia;
 	private JLabel lblSair;
+	private JLabel lblCaixaSaldo;
+	private Double valorSaque;
 
 	public Saque(Connection conexao, Contas contaRemetenteV) {
 		this.con = conexao;
@@ -76,10 +78,25 @@ public class Saque extends JFrame {
 		lbl3 = new JLabel("AGENCIA");
 		lbl3.setFont(new Font("Tahoma", Font.PLAIN, 9));
 
+		JLabel lblCaixaEletronico = new JLabel("Saldo Atual");
+		lblCaixaEletronico.setFont(new Font("Tahoma", Font.BOLD, 12));
+		lblCaixaEletronico.setHorizontalAlignment(SwingConstants.CENTER);
+		lblCaixaEletronico.setHorizontalTextPosition(SwingConstants.CENTER);
+		lblCaixaEletronico.setBounds(239, 367, 120, 33);
+		contentPane.add(lblCaixaEletronico);
+
+		lblCaixaSaldo = new JLabel("10000");
+		lblCaixaSaldo.setForeground(new Color(0, 128, 0));
+		lblCaixaSaldo.setHorizontalAlignment(SwingConstants.CENTER);
+		lblCaixaSaldo.setHorizontalTextPosition(SwingConstants.CENTER);
+		lblCaixaSaldo.setFont(new Font("Tahoma", Font.BOLD, 15));
+		lblCaixaSaldo.setBounds(241, 393, 113, 14);
+		contentPane.add(lblCaixaSaldo);
+
 		lblCupomAgencia = new JLabel("");
 		lblCupomAgencia.setFont(new Font("Tahoma", Font.BOLD, 10));
 		lblCupomAgencia.setForeground(new Color(128, 128, 128));
-		lblCupomAgencia.setBounds(1134, 211, 129, 14);
+		lblCupomAgencia.setBounds(1124, 216, 129, 14);
 		contentPane.add(lblCupomAgencia);
 
 		lblCupomTipoConta = new JLabel("");
@@ -87,26 +104,26 @@ public class Saque extends JFrame {
 		lblCupomTipoConta.setHorizontalTextPosition(SwingConstants.CENTER);
 		lblCupomTipoConta.setForeground(SystemColor.controlShadow);
 		lblCupomTipoConta.setFont(new Font("Tahoma", Font.PLAIN, 9));
-		lblCupomTipoConta.setBounds(1127, 126, 136, 17);
+		lblCupomTipoConta.setBounds(1117, 131, 136, 17);
 
 		contentPane.add(lblCupomTipoConta);
 
 		lblCupomNome = new JLabel("");
 		lblCupomNome.setFont(new Font("Tahoma", Font.BOLD, 10));
 		lblCupomNome.setForeground(new Color(128, 128, 128));
-		lblCupomNome.setBounds(1134, 167, 129, 14);
+		lblCupomNome.setBounds(1124, 172, 129, 14);
 		contentPane.add(lblCupomNome);
 
 		lblCupomContaa = new JLabel("");
 		lblCupomContaa.setFont(new Font("Tahoma", Font.BOLD, 10));
 		lblCupomContaa.setForeground(new Color(128, 128, 128));
-		lblCupomContaa.setBounds(1134, 189, 129, 14);
+		lblCupomContaa.setBounds(1124, 194, 129, 14);
 		contentPane.add(lblCupomContaa);
 
 		lblCupomFavorecido = new JLabel("");
 		lblCupomFavorecido.setFont(new Font("Tahoma", Font.BOLD, 10));
 		lblCupomFavorecido.setForeground(new Color(128, 128, 128));
-		lblCupomFavorecido.setBounds(1163, 147, 100, 14);
+		lblCupomFavorecido.setBounds(1153, 152, 100, 14);
 		contentPane.add(lblCupomFavorecido);
 
 		lbl3.setForeground(Color.WHITE);
@@ -129,7 +146,7 @@ public class Saque extends JFrame {
 		JButton btnAmarelo = new JButton("");
 		btnAmarelo.setIcon(new ImageIcon("C:\\Users\\Esteves\\Downloads\\atencao.png"));
 		btnAmarelo.setBackground(Color.YELLOW);
-		btnAmarelo.setBounds(1170, 648, 48, 22);
+		btnAmarelo.setBounds(1164, 536, 48, 22);
 		contentPane.add(btnAmarelo);
 
 		lblAgencia = new JLabel("Agencia");
@@ -146,72 +163,72 @@ public class Saque extends JFrame {
 		JButton btnVerde = new JButton("");
 		btnVerde.setIcon(new ImageIcon("C:\\Users\\Esteves\\Downloads\\marca-de-verificacao (2).png"));
 		btnVerde.setBackground(new Color(50, 205, 50));
-		btnVerde.setBounds(1231, 648, 48, 22);
+		btnVerde.setBounds(1225, 536, 48, 22);
 		contentPane.add(btnVerde);
 		btn6.setBackground(Color.LIGHT_GRAY);
-		btn6.setBounds(1231, 559, 48, 22);
+		btn6.setBounds(1225, 447, 48, 22);
 		contentPane.add(btn6);
 
 		JButton btn0 = new JButton("0");
 		btn0.setBackground(Color.LIGHT_GRAY);
-		btn0.setBounds(1170, 619, 48, 22);
+		btn0.setBounds(1164, 507, 48, 22);
 		contentPane.add(btn0);
 
 		JButton btnJogo = new JButton("#");
 		btnJogo.setBackground(Color.LIGHT_GRAY);
-		btnJogo.setBounds(1231, 619, 48, 22);
+		btnJogo.setBounds(1225, 507, 48, 22);
 		contentPane.add(btnJogo);
 
 		JButton btnAs = new JButton("*");
 		btnAs.setBackground(Color.LIGHT_GRAY);
-		btnAs.setBounds(1111, 619, 48, 22);
+		btnAs.setBounds(1105, 507, 48, 22);
 		contentPane.add(btnAs);
 
 		JButton btnVermelho = new JButton("");
 		btnVermelho.setIcon(new ImageIcon("C:\\Users\\Esteves\\Downloads\\cancelar.png"));
 		btnVermelho.setBackground(new Color(220, 20, 60));
-		btnVermelho.setBounds(1111, 648, 50, 22);
+		btnVermelho.setBounds(1105, 536, 50, 22);
 		contentPane.add(btnVermelho);
 
 		JButton btn1 = new JButton("1");
 		btn1.setBackground(Color.LIGHT_GRAY);
-		btn1.setBounds(1111, 530, 48, 22);
+		btn1.setBounds(1105, 418, 48, 22);
 		contentPane.add(btn1);
 //aaa
 		JButton btn8 = new JButton("8");
 		btn8.setBackground(Color.LIGHT_GRAY);
-		btn8.setBounds(1170, 590, 48, 22);
+		btn8.setBounds(1164, 478, 48, 22);
 		contentPane.add(btn8);
 
 		JButton btn9 = new JButton("9");
 		btn9.setBackground(Color.LIGHT_GRAY);
-		btn9.setBounds(1231, 590, 48, 22);
+		btn9.setBounds(1225, 478, 48, 22);
 		contentPane.add(btn9);
 
 		JButton btn7 = new JButton("7");
 		btn7.setBackground(Color.LIGHT_GRAY);
-		btn7.setBounds(1111, 589, 48, 22);
+		btn7.setBounds(1105, 477, 48, 22);
 		contentPane.add(btn7);
 
 		JButton btn2 = new JButton("2");
 		btn2.setBackground(Color.LIGHT_GRAY);
-		btn2.setBounds(1170, 530, 48, 22);
+		btn2.setBounds(1164, 418, 48, 22);
 		contentPane.add(btn2);
 
 		JButton btn3 = new JButton("3");
 		btn3.setBackground(Color.LIGHT_GRAY);
-		btn3.setBounds(1231, 530, 48, 22);
+		btn3.setBounds(1225, 418, 48, 22);
 		contentPane.add(btn3);
 
 		JButton btn4 = new JButton("4");
 
 		btn4.setBackground(Color.LIGHT_GRAY);
-		btn4.setBounds(1110, 559, 48, 22);
+		btn4.setBounds(1105, 447, 48, 22);
 		contentPane.add(btn4);
 
 		JButton btn5 = new JButton("5");
 		btn5.setBackground(Color.LIGHT_GRAY);
-		btn5.setBounds(1170, 559, 48, 22);
+		btn5.setBounds(1164, 447, 48, 22);
 		contentPane.add(btn5);
 
 		lblConta = new JLabel("Conta:");
@@ -228,12 +245,12 @@ public class Saque extends JFrame {
 
 		lblValor = new JLabel("INFORME UM VALOR");
 		lblValor.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		lblValor.setBounds(1140, 398, 113, 15);
+		lblValor.setBounds(1134, 286, 113, 15);
 		contentPane.add(lblValor);
 
 		txtValor = new JTextField();
 		txtValor.setColumns(10);
-		txtValor.setBounds(1145, 423, 97, 20);
+		txtValor.setBounds(1139, 311, 97, 20);
 		contentPane.add(txtValor);
 
 		lblNomeRecibo = new JLabel("Cliente: Lucas Esteves");
@@ -247,7 +264,7 @@ public class Saque extends JFrame {
 		imgMaquina = new JLabel("");
 		imgMaquina.setBackground(Color.WHITE);
 		imgMaquina.setIcon(new ImageIcon("C:\\Users\\Esteves\\Pictures\\BANKEND\\maquinaComfundo.png"));
-		imgMaquina.setBounds(921, -424, 1026, 1913);
+		imgMaquina.setBounds(915, -536, 1026, 1913);
 		contentPane.add(imgMaquina);
 
 		lbl1 = new JLabel("Conta:");
@@ -272,10 +289,7 @@ public class Saque extends JFrame {
 		ImgBackground.setBounds(0, 0, 1375, 705);
 		contentPane.add(ImgBackground);
 		lblNomeRecibo.setVisible(false);
-		lblValor.setVisible(false);
-		txtValor.setVisible(false);
-		
-		
+
 		String nome1 = contaRemetente.getCliente().getNome();
 		String sobrenome = contaRemetente.getCliente().getSobreNome();
 
@@ -284,9 +298,14 @@ public class Saque extends JFrame {
 		lblNome.setText(nome1 + " " + sobrenome);
 		lblAgencia.setText(contaRemetente.getAgencia());
 		lblTipo.setText("Conta: " + contaRemetente.getTipo());
-		
-		
-		
+
+		JLabel label = new JLabel("New label");
+		label.setBounds(275, 386, 46, 14);
+		contentPane.add(label);
+
+		// convertendo para string e limitando as casas
+		String caixaSaldo = String.format("%.2f", contaRemetente.getSaldo());
+		lblCaixaSaldo.setText(caixaSaldo + "$");
 
 		Query bd = new Query(con);
 
@@ -341,10 +360,11 @@ public class Saque extends JFrame {
 
 	public boolean mensagemContinuar(JLabel imgMaquina) {
 
-		String nome = contaDestinatario.getCliente().getNome();
+		String nome = contaRemetente.getCliente().getNome();
+		String valor = txtValor.getText();
 
-		int i = JOptionPane.showConfirmDialog(null, "Destinario: " + nome + "\n \n \t \t \t  Deseja continuar?",
-				"Transferencia", JOptionPane.OK_CANCEL_OPTION);
+		int i = JOptionPane.showConfirmDialog(null, "Valor do saque: " + valor + "$\n \n \t \t \t  Deseja continuar?",
+				"Saque", JOptionPane.OK_CANCEL_OPTION);
 
 		// se clicar em sim
 		if (i == JOptionPane.YES_OPTION) {
@@ -364,50 +384,13 @@ public class Saque extends JFrame {
 
 	}
 
-	public void exibeMaquininha(JLabel imgMaquina, JButton btn0, JButton btn1, JButton btn2, JButton btn3, JButton btn4,
-			JButton btn5, JButton btn6, JButton btn7, JButton btn8, JButton btn9, JButton btnAs, JButton btnVermelho,
-			JButton btnJogo, JButton btnAmarelo, JButton btnVerde) {
-
-		
-		imgMaquina.setBounds(921, -538, 1026, 1913);
-		// setando visibilidade dos componentes
-		lblConta.setVisible(true);
-		lbl1.setVisible(false);
-		lblNome.setVisible(true);
-		lblNomeRecibo.setVisible(false);
-		lblValor.setVisible(true);
-		txtValor.setVisible(true);
-		lbl2.setVisible(true);
-		lbl3.setVisible(true);
-		lblAgencia.setVisible(true);
-		lblTipo.setVisible(true);
-
-		// setando a posição dos botoes
-		btn0.setBounds(1170, 505, 48, 22);
-		btn1.setBounds(1111, 416, 48, 22);
-		btn2.setBounds(1170, 416, 48, 22);
-		btn3.setBounds(1231, 416, 48, 22);
-		btn4.setBounds(1110, 445, 48, 22);
-		btn5.setBounds(1170, 445, 48, 22);
-		btn6.setBounds(1231, 445, 48, 22);
-		btn7.setBounds(1111, 475, 48, 22);
-		btn8.setBounds(1170, 476, 48, 22);
-		btn9.setBounds(1231, 476, 48, 22);
-
-		btnVermelho.setBounds(1111, 534, 50, 22);
-		btnAs.setBounds(1111, 505, 48, 22);
-		btnJogo.setBounds(1231, 505, 48, 22);
-		btnAmarelo.setBounds(1170, 534, 48, 22);
-		txtValor.setBounds(1145, 309, 97, 20);
-		lblNomeRecibo.setBounds(1117, 165, 151, 17);
-		lblValor.setBounds(1140, 284, 113, 15);
-		btnVerde.setBounds(1231, 534, 48, 22);
-	}
-
 	public void confirmarTransacao(Query bd) {
 
-		int i = JOptionPane.showConfirmDialog(null, "Deseja continuar?", "Transferencia", JOptionPane.OK_CANCEL_OPTION);
+		String nome = contaRemetente.getCliente().getNome();
+		String valor = txtValor.getText();
 
+		int i = JOptionPane.showConfirmDialog(null, "Valor do saque: " + valor + "$\n \n \t \t \t  Deseja continuar?",
+				"Saque", JOptionPane.OK_CANCEL_OPTION);
 		// se clicar em sim
 		if (i == JOptionPane.YES_OPTION) {
 
@@ -428,7 +411,7 @@ public class Saque extends JFrame {
 	public void saque(Query bd) {
 		// pegando e convertendo valor inforamdo
 		String valor = txtValor.getText();
-		Double valorSaque = Double.parseDouble(valor);
+		valorSaque = Double.parseDouble(valor);
 
 		System.out.println(valor);
 
@@ -440,34 +423,52 @@ public class Saque extends JFrame {
 
 			System.out.println(corrente.getSaldo());
 
-			corrente.deposito(contaDestinatario, valorSaque);
+			//se a conta tiver o valor informado
+			if (corrente.saque(valorSaque, contaRemetente)) {
 
-			System.out.println(corrente.getSaldo());
+				System.out.println(corrente.getSaldo());
 
-			contaRemetente = corrente;
+				contaRemetente = corrente;
 
-			bd.atualizarTransferencia(contaRemetente, contaDestinatario);
+				bd.saque(contaRemetente, valorSaque);
 
-			System.out.println("Transferencia feita com suceso!!");
-			exibeCupomFiscal();
-			JOptionPane.showMessageDialog(null, "Transferencia Realizada!", "Sucess", JOptionPane.INFORMATION_MESSAGE);
+				// metodo que faz a animação
+				caixaEletronico();
+			} else {
+
+				JOptionPane.showMessageDialog(null, "Saldo insuficiente!!", "Sucess", JOptionPane.ERROR_MESSAGE);
+			}
 
 		}
 		if (contaRemetente.getTipo().equals("poupanca")) {
 
 			poupanca = (ContaPoupanca) contaRemetente;
 
-			poupanca.transferencia(contaDestinatario, valorSaque);
+			// se a conta tiver valor o suficiente
+			if (poupanca.saque(valorSaque, contaRemetente)) {
+				contaRemetente = poupanca;
 
-			contaRemetente = poupanca;
+				bd.saque(contaRemetente, valorSaque);
 
-			bd.atualizarTransferencia(contaRemetente, contaDestinatario);
+				// metodo que faz a animação
+				caixaEletronico();
+			} else {
+				JOptionPane.showMessageDialog(null, "Saldo insuficiente!!", "Sucess", JOptionPane.ERROR_MESSAGE);
 
-			System.out.println("Transferencia feita com sucesso!!");
-			exibeCupomFiscal();
-			JOptionPane.showMessageDialog(null, "Transferencia Realizada!", "Sucess", JOptionPane.INFORMATION_MESSAGE);
-
+			}
 		}
+
+	}
+
+	public void caixaEletronico() {
+		// convertendo para string e limitando as casas
+		String caixaSaldo = String.format("%.2f", contaRemetente.getSaldo());
+		lblCaixaSaldo.setText(caixaSaldo + "$");
+
+		System.out.println("Saque de " + valorSaque + "$ feito com suceso!!");
+		exibeCupomFiscal();
+		JOptionPane.showMessageDialog(null, "Saque de " + valorSaque + "$ feito com suceso!!", "Sucess",
+				JOptionPane.INFORMATION_MESSAGE);
 
 	}
 
@@ -475,9 +476,9 @@ public class Saque extends JFrame {
 
 		lblValor.setVisible(false);
 		txtValor.setVisible(false);
-
-		String nome1 = contaDestinatario.getCliente().getNome();
-		String sobrenome = contaDestinatario.getCliente().getSobreNome();
+		txtValor.setText("");
+		String nome1 = contaRemetente.getCliente().getNome();
+		String sobrenome = contaRemetente.getCliente().getSobreNome();
 
 		imgMaquina.setIcon(new ImageIcon("C:\\Users\\Esteves\\Pictures\\BANKEND\\macahdoo98.png"));
 		lblCupomNome.setText("Titular:" + nome1 + " " + sobrenome);

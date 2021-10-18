@@ -58,6 +58,10 @@ public class Deposito extends JFrame {
 	private JLabel lblCupomTipoConta;
 	private JLabel lblCupomAgencia;
 	private JLabel lblSair;
+	private JLabel lblCaixaSaldo;
+	private JLabel lblCaixaEletronico;
+	private JLabel ImgBackground;
+	private Double transferencia;
 
 	public Deposito(Connection conexao, Contas contaRemetenteV) {
 		this.con = conexao;
@@ -278,11 +282,27 @@ public class Deposito extends JFrame {
 
 		lblSair = new JLabel("");
 
-		lblSair.setIcon(new ImageIcon("C:\\Users\\Esteves\\Downloads\\sair.png"));
-		lblSair.setBounds(29, 641, 59, 53);
+		lblSair.setIcon(new ImageIcon("C:\\Users\\Esteves\\Downloads\\botao-de-seta-para-a-esquerda-do-teclado.png"));
+		lblSair.setBounds(14, 642, 59, 53);
 		contentPane.add(lblSair);
 
-		JLabel ImgBackground = new JLabel("");
+		// componentes do caixa eletronico
+		lblCaixaSaldo = new JLabel("10000");
+		lblCaixaSaldo.setForeground(new Color(0, 128, 0));
+		lblCaixaSaldo.setHorizontalAlignment(SwingConstants.CENTER);
+		lblCaixaSaldo.setHorizontalTextPosition(SwingConstants.CENTER);
+		lblCaixaSaldo.setFont(new Font("Tahoma", Font.BOLD, 15));
+		lblCaixaSaldo.setBounds(241, 393, 113, 14);
+		contentPane.add(lblCaixaSaldo);
+
+		lblCaixaEletronico = new JLabel("Saldo Atual");
+		lblCaixaEletronico.setFont(new Font("Tahoma", Font.BOLD, 12));
+		lblCaixaEletronico.setHorizontalAlignment(SwingConstants.CENTER);
+		lblCaixaEletronico.setHorizontalTextPosition(SwingConstants.CENTER);
+		lblCaixaEletronico.setBounds(239, 367, 120, 33);
+		contentPane.add(lblCaixaEletronico);
+
+		ImgBackground = new JLabel("");
 		ImgBackground.setIcon(new ImageIcon("C:\\Users\\Esteves\\Pictures\\2133232232323.jpg"));
 		ImgBackground.setBounds(0, 0, 1375, 705);
 		contentPane.add(ImgBackground);
@@ -295,14 +315,19 @@ public class Deposito extends JFrame {
 		txtValor.setVisible(false);
 		lblAgencia.setVisible(false);
 
+		// convertendo para string e limitando as casas
+		String caixaSaldo = String.format("%.2f", contaRemetente.getSaldo());
+		lblCaixaSaldo.setText(caixaSaldo + "$");
+
 		Query bd = new Query(con);
 
 		lblSair.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 
-				Menu menuPrincipal = new Menu(con, contaRemetente);
-				menuPrincipal.setVisible(true);
+				MenuTransacaos transacaos = new MenuTransacaos(conexao, contaRemetente);
+
+				transacaos.setVisible(true);
 				dispose();
 			}
 		});
@@ -372,7 +397,6 @@ public class Deposito extends JFrame {
 								JOptionPane.ERROR_MESSAGE);
 						txtCartao.setText("");
 						txtCartao.setBorder(new LineBorder(Color.RED));
-						txtCartao.setBorder(new LineBorder(Color.RED));
 					}
 				}
 
@@ -414,7 +438,7 @@ public class Deposito extends JFrame {
 		else if (i == JOptionPane.CANCEL_OPTION) {
 
 			System.out.println("Clicou em Não");
-			txtCartao.setText("");
+
 			return false;
 		}
 		return false;
@@ -472,7 +496,26 @@ public class Deposito extends JFrame {
 
 	public void confirmarTransacao(Query bd) {
 
-		int i = JOptionPane.showConfirmDialog(null, "Deseja continuar?", "Transferencia", JOptionPane.OK_CANCEL_OPTION);
+		String nomee = contaDestinatario.getCliente().getNome();
+		String sobrenome = contaDestinatario.getCliente().getSobreNome();
+		String nome = nomee + " " + sobrenome;
+		String valor = txtValor.getText();
+		int i;
+
+		if (contaRemetente.getTipo().equals("corrente")) {
+
+			i = JOptionPane
+					.showConfirmDialog(null,
+							"\t Destinatario:" + nome + " \n \t Valor do Deposito:" + valor + "$ \n \t Taxa:0,10$ "
+									+ "\n \n \t \t \t  Deseja continuar?",
+							"Deposito", JOptionPane.OK_CANCEL_OPTION);
+
+		} else {
+
+			i = JOptionPane.showConfirmDialog(null, "Destinatario:" + nome + " \n \t Valor do Deposito: " + valor
+					+ "$\n \n \t \t \t  Deseja continuar?", "Deposito", JOptionPane.OK_CANCEL_OPTION);
+
+		}
 
 		// se clicar em sim
 		if (i == JOptionPane.YES_OPTION) {
@@ -494,7 +537,7 @@ public class Deposito extends JFrame {
 	public void deposito(Query bd) {
 		// pegando e convertendo valor inforamdo
 		String valor = txtValor.getText();
-		Double deposito = Double.parseDouble(valor);
+		Double transferencia = Double.parseDouble(valor);
 
 		System.out.println(valor);
 
@@ -504,32 +547,57 @@ public class Deposito extends JFrame {
 			// fazend o cast
 			corrente = (ContaCorrente) contaRemetente;
 
-			corrente.deposito(contaDestinatario, deposito);
+			System.out.println(corrente.getSaldo());
 
-			contaRemetente = corrente;
+			// se o saldo for suficiente
+			if (corrente.deposito(contaDestinatario, transferencia)) {
+				System.out.println(corrente.getSaldo());
 
-			bd.deposito(contaDestinatario, deposito);
+				contaRemetente = corrente;
 
-			System.out.println("Transferencia feita com suceso!!");
-			exibeCupomFiscal();
-			JOptionPane.showMessageDialog(null, "Transferencia Realizada!", "Sucess", JOptionPane.INFORMATION_MESSAGE);
+				bd.deposito(contaDestinatario, transferencia);
+				caixaEletronico();
+
+			} else {
+				lblCaixaSaldo.setForeground(Color.red);
+				txtValor.setBorder(new LineBorder(Color.RED));
+				JOptionPane.showMessageDialog(null, "Saldo insuficiente!!", "Sucess", JOptionPane.ERROR_MESSAGE);
+
+			}
 
 		}
 		if (contaRemetente.getTipo().equals("poupanca")) {
 
 			poupanca = (ContaPoupanca) contaRemetente;
 
-			poupanca.deposito(contaDestinatario, deposito);
+			// se o saldo for suficiente
+			if (poupanca.deposito(contaDestinatario, transferencia)) {
 
-			contaRemetente = poupanca;
+				contaRemetente = poupanca;
+				
+				
+				bd.deposito(contaDestinatario, transferencia);
 
-			bd.deposito(contaDestinatario, deposito);
-
-			System.out.println("Deposito feita com sucesso!!");
-			exibeCupomFiscal();
-			JOptionPane.showMessageDialog(null, "Deposito Realizada!", "Sucess", JOptionPane.INFORMATION_MESSAGE);
-
+				caixaEletronico();
+			} else {
+				lblCaixaSaldo.setForeground(Color.red);
+				txtValor.setBorder(new LineBorder(Color.RED));
+				JOptionPane.showMessageDialog(null, "Saldo insuficiente!!", "#404", JOptionPane.ERROR_MESSAGE);
+			}
 		}
+
+	}
+
+	public void caixaEletronico() {
+		// convertendo para string e limitando as casas
+		lblCaixaSaldo.setForeground(new Color(0, 128, 0));
+		String caixaSaldo = String.format("%.2f", contaRemetente.getSaldo());
+		lblCaixaSaldo.setText(caixaSaldo + "$");
+
+		System.out.println("Deposito de " + transferencia + "$ feito com suceso!!");
+		exibeCupomFiscal();
+		JOptionPane.showMessageDialog(null, "Deposito de " + txtValor.getText() + "$ feito com suceso!!", "Sucess",
+				JOptionPane.INFORMATION_MESSAGE);
 
 	}
 
@@ -537,7 +605,7 @@ public class Deposito extends JFrame {
 
 		lblValor.setVisible(false);
 		txtValor.setVisible(false);
-
+		txtValor.setText("");
 		String nome1 = contaDestinatario.getCliente().getNome();
 		String sobrenome = contaDestinatario.getCliente().getSobreNome();
 

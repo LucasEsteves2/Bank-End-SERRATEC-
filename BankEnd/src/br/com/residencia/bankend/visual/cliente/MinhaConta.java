@@ -14,6 +14,7 @@ import java.sql.Connection;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.UIManager;
@@ -22,6 +23,7 @@ import javax.swing.border.EtchedBorder;
 import javax.swing.border.MatteBorder;
 
 import br.com.residencia.bankend.contas.Contas;
+import br.com.residencia.bankend.visual.TelaLogin;
 
 public class MinhaConta extends JFrame {
 
@@ -32,13 +34,12 @@ public class MinhaConta extends JFrame {
 	private JPanel painelSeguro;
 	private JPanel painelConta;
 	private JPanel painelTransferencia;
-	
+
 	public MinhaConta(Connection con, Contas conta) {
-		
-		this.conta=conta;
-		this.con=con;
-		
-		
+
+		this.conta = conta;
+		this.con = con;
+
 		setIconImage(Toolkit.getDefaultToolkit()
 				.getImage(MinhaConta.class.getResource("/br/com/residencia/bankend/imagens/hospital.png")));
 		setExtendedState(Frame.MAXIMIZED_BOTH);
@@ -155,7 +156,7 @@ public class MinhaConta extends JFrame {
 		txtMedico_1_1.setBounds(68, 16, 115, 22);
 		painelConta.add(txtMedico_1_1);
 
-		 painelTransferencia = new JPanel();
+		painelTransferencia = new JPanel();
 		painelTransferencia.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 0)));
 		painelTransferencia.setLayout(null);
 		painelTransferencia.setBackground(Color.WHITE);
@@ -173,7 +174,7 @@ public class MinhaConta extends JFrame {
 		lblNewLabel_2_1.setBounds(79, 16, 0, 0);
 		painelTransferencia.add(lblNewLabel_2_1);
 
-		JLabel txtMedico_1 = new JLabel("Transferencia");
+		JLabel txtMedico_1 = new JLabel("Transa\u00E7\u00F5es");
 		txtMedico_1.setFont(new Font("Segoe UI", Font.BOLD, 16));
 		txtMedico_1.setBounds(68, 16, 103, 22);
 		painelTransferencia.add(txtMedico_1);
@@ -181,7 +182,7 @@ public class MinhaConta extends JFrame {
 		Panel lblSobrenome = new Panel();
 
 		lblSobrenome.setBackground(UIManager.getColor("CheckBox.background"));
-		lblSobrenome.setBounds(235, 32, 1142, 675);
+		lblSobrenome.setBounds(235, 28, 1142, 679);
 		contentPane.add(lblSobrenome);
 		lblSobrenome.setLayout(null);
 
@@ -355,21 +356,15 @@ public class MinhaConta extends JFrame {
 		lblSobrenomee.setBounds(103, 105, 82, 14);
 		lblSobrenome.add(lblSobrenomee);
 
-		
-		
-		
 		// ANIMAÇÃO AO PASSAR O MOUSE ( Escutador de click-mouse)
-		
-		 // PainelConsulta.addMouseListener(new Mouse(PainelMedico, "medico", this, con)); 
-		 
+
+		// PainelConsulta.addMouseListener(new Mouse(PainelMedico, "medico", this,
+		// con));
 
 		/// trocando os valores da tela pelo da conta
 
-		
 		String saldo = String.format("%.2f", conta.getSaldo());
 
-		
-		
 		lblAgencia.setText(conta.getAgencia());
 		lblSaldo.setText(saldo);
 		lblNumConta.setText(conta.getNumero());
@@ -397,7 +392,6 @@ public class MinhaConta extends JFrame {
 			}
 		});
 
-		
 		lblInicio.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -405,18 +399,40 @@ public class MinhaConta extends JFrame {
 				Menu menuPrincipal = new Menu(con, conta);
 				menuPrincipal.setVisible(true);
 				dispose();
-				
+
+			}
+		});
+		
+		
+		//metodo com todos os escutadores 
+		menu();
+
+		// btn fechar
+		PainelFechar.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+
+				int i = JOptionPane.showConfirmDialog(null, "Deseja Encerrar o programa?", "Finalizar",
+						JOptionPane.OK_CANCEL_OPTION);
+
+				if (i == JOptionPane.YES_OPTION) {
+					System.out.println("Clicou em Sim");
+
+					TelaLogin login = new TelaLogin(con);
+					login.setVisible(true);
+					dispose();
+
+				} else if (i == JOptionPane.CANCEL_OPTION) {
+
+					System.out.println("Clicou em Não");
+
+				}
 			}
 		});
 
-		
-		menu();
-		
-
 	}
-	
-	public void menu()
-	{
+
+	public void menu() {
 		// Click no botao Conta
 
 		painelConta.addMouseListener(new MouseAdapter() {
@@ -448,9 +464,10 @@ public class MinhaConta extends JFrame {
 				dispose();
 			}
 		});
-		
-		
+
 	}
 	
 	
+	
+
 }

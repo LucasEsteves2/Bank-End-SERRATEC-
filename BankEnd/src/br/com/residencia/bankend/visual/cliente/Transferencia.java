@@ -58,6 +58,10 @@ public class Transferencia extends JFrame {
 	private JLabel lblCupomTipoConta;
 	private JLabel lblCupomAgencia;
 	private JLabel lblSair;
+	private JLabel lblCaixaSaldo;
+	private JLabel lblCaixaEletronico;
+	private JLabel ImgBackground;
+	private Double transferencia;
 
 	public Transferencia(Connection conexao, Contas contaRemetenteV) {
 		this.con = conexao;
@@ -282,7 +286,23 @@ public class Transferencia extends JFrame {
 		lblSair.setBounds(14, 642, 59, 53);
 		contentPane.add(lblSair);
 
-		JLabel ImgBackground = new JLabel("");
+		// componentes do caixa eletronico
+		lblCaixaSaldo = new JLabel("10000");
+		lblCaixaSaldo.setForeground(new Color(0, 128, 0));
+		lblCaixaSaldo.setHorizontalAlignment(SwingConstants.CENTER);
+		lblCaixaSaldo.setHorizontalTextPosition(SwingConstants.CENTER);
+		lblCaixaSaldo.setFont(new Font("Tahoma", Font.BOLD, 15));
+		lblCaixaSaldo.setBounds(241, 393, 113, 14);
+		contentPane.add(lblCaixaSaldo);
+
+		lblCaixaEletronico = new JLabel("Saldo Atual");
+		lblCaixaEletronico.setFont(new Font("Tahoma", Font.BOLD, 12));
+		lblCaixaEletronico.setHorizontalAlignment(SwingConstants.CENTER);
+		lblCaixaEletronico.setHorizontalTextPosition(SwingConstants.CENTER);
+		lblCaixaEletronico.setBounds(239, 367, 120, 33);
+		contentPane.add(lblCaixaEletronico);
+
+		ImgBackground = new JLabel("");
 		ImgBackground.setIcon(new ImageIcon("C:\\Users\\Esteves\\Pictures\\2133232232323.jpg"));
 		ImgBackground.setBounds(0, 0, 1375, 705);
 		contentPane.add(ImgBackground);
@@ -294,6 +314,10 @@ public class Transferencia extends JFrame {
 		lblValor.setVisible(false);
 		txtValor.setVisible(false);
 		lblAgencia.setVisible(false);
+
+		// convertendo para string e limitando as casas
+		String caixaSaldo = String.format("%.2f", contaRemetente.getSaldo());
+		lblCaixaSaldo.setText(caixaSaldo + "$");
 
 		Query bd = new Query(con);
 
@@ -373,7 +397,6 @@ public class Transferencia extends JFrame {
 								JOptionPane.ERROR_MESSAGE);
 						txtCartao.setText("");
 						txtCartao.setBorder(new LineBorder(Color.RED));
-						txtCartao.setBorder(new LineBorder(Color.RED));
 					}
 				}
 
@@ -415,7 +438,7 @@ public class Transferencia extends JFrame {
 		else if (i == JOptionPane.CANCEL_OPTION) {
 
 			System.out.println("Clicou em Não");
-			txtCartao.setText("");
+
 			return false;
 		}
 		return false;
@@ -473,7 +496,26 @@ public class Transferencia extends JFrame {
 
 	public void confirmarTransacao(Query bd) {
 
-		int i = JOptionPane.showConfirmDialog(null, "Deseja continuar?", "Transferencia", JOptionPane.OK_CANCEL_OPTION);
+		String nomee = contaDestinatario.getCliente().getNome();
+		String sobrenome = contaDestinatario.getCliente().getSobreNome();
+		String nome = nomee + " " + sobrenome;
+		String valor = txtValor.getText();
+		int i;
+
+		if (contaRemetente.getTipo().equals("corrente")) {
+
+			i = JOptionPane
+					.showConfirmDialog(null,
+							"\t Destinatario:" + nome + " \n \t Valor da transferencia:" + valor + "$ \n \t Taxa:0,10$ "
+									+ "\n \n \t \t \t  Deseja continuar?",
+							"Transferencia", JOptionPane.OK_CANCEL_OPTION);
+
+		} else {
+
+			i = JOptionPane.showConfirmDialog(null, "Destinatario:" + nome + " \n \t Valor da transferencia: " + valor
+					+ "$\n \n \t \t \t  Deseja continuar?", "Transferencia", JOptionPane.OK_CANCEL_OPTION);
+
+		}
 
 		// se clicar em sim
 		if (i == JOptionPane.YES_OPTION) {
@@ -507,34 +549,53 @@ public class Transferencia extends JFrame {
 
 			System.out.println(corrente.getSaldo());
 
-			corrente.transferencia(contaDestinatario, transferencia);
+			// se o saldo for suficiente
+			if (corrente.transferencia(contaDestinatario, transferencia)) {
+				System.out.println(corrente.getSaldo());
 
-			System.out.println(corrente.getSaldo());
+				contaRemetente = corrente;
 
-			contaRemetente = corrente;
+				bd.atualizarTransferencia(contaRemetente, contaDestinatario);
+				caixaEletronico();
 
-			bd.atualizarTransferencia(contaRemetente, contaDestinatario);
+			} else {
+				lblCaixaSaldo.setForeground(Color.red);
+				txtValor.setBorder(new LineBorder(Color.RED));
+				JOptionPane.showMessageDialog(null, "Saldo insuficiente!!", "Sucess", JOptionPane.ERROR_MESSAGE);
 
-			System.out.println("Transferencia feita com suceso!!");
-			exibeCupomFiscal();
-			JOptionPane.showMessageDialog(null, "Transferencia Realizada!", "Sucess", JOptionPane.INFORMATION_MESSAGE);
+			}
 
 		}
 		if (contaRemetente.getTipo().equals("poupanca")) {
 
 			poupanca = (ContaPoupanca) contaRemetente;
 
-			poupanca.transferencia(contaDestinatario, transferencia);
+			// se o saldo for suficiente
+			if (poupanca.transferencia(contaDestinatario, transferencia)) {
 
-			contaRemetente = poupanca;
+				contaRemetente = poupanca;
 
-			bd.atualizarTransferencia(contaRemetente, contaDestinatario);
-
-			System.out.println("Transferencia feita com sucesso!!");
-			exibeCupomFiscal();
-			JOptionPane.showMessageDialog(null, "Transferencia Realizada!", "Sucess", JOptionPane.INFORMATION_MESSAGE);
-
+				bd.atualizarTransferencia(contaRemetente, contaDestinatario);
+				caixaEletronico();
+			} else {
+				lblCaixaSaldo.setForeground(Color.red);
+				txtValor.setBorder(new LineBorder(Color.RED));
+				JOptionPane.showMessageDialog(null, "Saldo insuficiente!!", "Sucess", JOptionPane.ERROR_MESSAGE);
+			}
 		}
+
+	}
+
+	public void caixaEletronico() {
+		// convertendo para string e limitando as casas
+		lblCaixaSaldo.setForeground(new Color(0, 128, 0));
+		String caixaSaldo = String.format("%.2f", contaRemetente.getSaldo());
+		lblCaixaSaldo.setText(caixaSaldo + "$");
+
+		System.out.println("Transferencia de " + transferencia + "$ feito com suceso!!");
+		exibeCupomFiscal();
+		JOptionPane.showMessageDialog(null, "Transferencia de " + txtValor.getText() + "$ feito com suceso!!", "Sucess",
+				JOptionPane.INFORMATION_MESSAGE);
 
 	}
 
@@ -542,6 +603,7 @@ public class Transferencia extends JFrame {
 
 		lblValor.setVisible(false);
 		txtValor.setVisible(false);
+		txtValor.setText("");
 
 		String nome1 = contaDestinatario.getCliente().getNome();
 		String sobrenome = contaDestinatario.getCliente().getSobreNome();
