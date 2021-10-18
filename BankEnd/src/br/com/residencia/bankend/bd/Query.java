@@ -411,6 +411,47 @@ public class Query {
 
 	}
 
+	public void saque(Contas contaDestinatario, double valor) {
+
+		try {
+
+			st = conexao.prepareStatement("UPDATE CONTAS SET SALDO = ? WHERE NUMERO=?");
+			st.setDouble(1, contaDestinatario.getSaldo());
+			st.setString(2, contaDestinatario.getNumero());
+			st.executeUpdate();
+
+			// Add tributo
+
+			st = conexao.prepareStatement("select quantidadeSaque from Contas where IdConta=? ");
+			st.setInt(1, contaDestinatario.getId());
+			st.execute();
+
+			rs = st.getResultSet();
+
+			int qtdTransf = 0;
+
+			// pego a quantidade de saque e somo+1
+			if (rs.next()) {
+				qtdTransf = rs.getInt("quantidadeSaque");
+			}
+
+			if (contaDestinatario.getTipo().equals("corrente")) {
+
+				st = conexao.prepareStatement("Update Contas set quantidadeSaque = ? where IDCONTA=? ");
+				st.setInt(1, qtdTransf + 1);
+				st.setInt(2, contaDestinatario.getId());
+				st.executeUpdate();
+
+			}
+
+		}
+
+		catch (Exception e) {
+			// TODO: handle exception
+		}
+
+	}
+
 	public int qtdAgencia(String agencia) {
 		int qtdConta = 0;
 

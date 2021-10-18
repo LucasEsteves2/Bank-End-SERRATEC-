@@ -301,7 +301,7 @@ public class Deposito extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 
-				Menu menuPrincipal = new Menu(con, contaRemetenteV);
+				Menu menuPrincipal = new Menu(con, contaRemetente);
 				menuPrincipal.setVisible(true);
 				dispose();
 			}
@@ -329,8 +329,8 @@ public class Deposito extends JFrame {
 			}
 		});
 
-		//verifica se a conta existe
-		
+		// verifica se a conta existe
+
 		btnVerificar.addActionListener(new ActionListener() {
 
 			@Override
@@ -338,16 +338,16 @@ public class Deposito extends JFrame {
 
 				// se o campo for vzio
 				if (txtCartao.getText().trim().equals("")) {
-					
+
 					JOptionPane.showMessageDialog(null, "Conta Invalida!!", "#ERRO404", JOptionPane.ERROR_MESSAGE);
 					txtCartao.setBorder(new LineBorder(Color.RED));
 					txtCartao.setBorder(new LineBorder(Color.RED));
-					
+
 				} else {
 					// pegando conta digitada no texto
 					String numConta = txtCartao.getText();
 
-					//se a conta informada existir
+					// se a conta informada existir
 					if (bd.contaExiste(numConta)) {
 
 						// verifica se a conta do destinatario é igual
@@ -367,9 +367,9 @@ public class Deposito extends JFrame {
 
 						}
 
-					}
-					else {
-						JOptionPane.showMessageDialog(null, "Conta não cadastrada!", "#ERRO404", JOptionPane.ERROR_MESSAGE);
+					} else {
+						JOptionPane.showMessageDialog(null, "Conta não cadastrada!", "#ERRO404",
+								JOptionPane.ERROR_MESSAGE);
 						txtCartao.setText("");
 						txtCartao.setBorder(new LineBorder(Color.RED));
 						txtCartao.setBorder(new LineBorder(Color.RED));
@@ -378,8 +378,7 @@ public class Deposito extends JFrame {
 
 			}
 		});
-		
-		
+
 		// botao da maquina
 		btnVerde.addActionListener(new ActionListener() {
 
@@ -507,12 +506,9 @@ public class Deposito extends JFrame {
 
 			corrente.deposito(contaDestinatario, deposito);
 
-			// gambiarra refazendo o cast
-			Contas contaRemetnetee = null;
+			contaRemetente = corrente;
 
-			contaRemetnetee = corrente;
-
-			bd.deposito(contaDestinatario,deposito);
+			bd.deposito(contaDestinatario, deposito);
 
 			System.out.println("Transferencia feita com suceso!!");
 			exibeCupomFiscal();
@@ -521,17 +517,13 @@ public class Deposito extends JFrame {
 		}
 		if (contaRemetente.getTipo().equals("poupanca")) {
 
-
 			poupanca = (ContaPoupanca) contaRemetente;
 
 			poupanca.deposito(contaDestinatario, deposito);
 
-			// gambiarra refazendo o cast
-			Contas contaRemetnetee = null;
+			contaRemetente = poupanca;
 
-			contaRemetnetee = poupanca;
-
-			bd.deposito(contaDestinatario,deposito);
+			bd.deposito(contaDestinatario, deposito);
 
 			System.out.println("Deposito feita com sucesso!!");
 			exibeCupomFiscal();

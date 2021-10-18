@@ -301,7 +301,7 @@ public class Transferencia extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 
-				MenuTransacaos transacaos = new MenuTransacaos(conexao, contaRemetenteV);
+				MenuTransacaos transacaos = new MenuTransacaos(conexao, contaRemetente);
 
 				transacaos.setVisible(true);
 				dispose();
@@ -511,10 +511,7 @@ public class Transferencia extends JFrame {
 
 			System.out.println(corrente.getSaldo());
 
-			// gambiarra refazendo o cast
-			Contas contaRemetnetee = null;
-
-			contaRemetnetee = corrente;
+			contaRemetente = corrente;
 
 			bd.atualizarTransferencia(contaRemetente, contaDestinatario);
 
@@ -529,10 +526,7 @@ public class Transferencia extends JFrame {
 
 			poupanca.transferencia(contaDestinatario, transferencia);
 
-			// gambiarra refazendo o cast
-			Contas contaRemetnetee = null;
-
-			contaRemetnetee = poupanca;
+			contaRemetente = poupanca;
 
 			bd.atualizarTransferencia(contaRemetente, contaDestinatario);
 

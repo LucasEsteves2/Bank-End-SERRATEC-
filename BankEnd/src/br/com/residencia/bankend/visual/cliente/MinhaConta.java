@@ -355,6 +355,9 @@ public class MinhaConta extends JFrame {
 		lblSobrenomee.setBounds(103, 105, 82, 14);
 		lblSobrenome.add(lblSobrenomee);
 
+		
+		
+		
 		// ANIMAÇÃO AO PASSAR O MOUSE ( Escutador de click-mouse)
 		
 		 // PainelConsulta.addMouseListener(new Mouse(PainelMedico, "medico", this, con)); 
@@ -362,8 +365,13 @@ public class MinhaConta extends JFrame {
 
 		/// trocando os valores da tela pelo da conta
 
+		
+		String saldo = String.format("%.2f", conta.getSaldo());
+
+		
+		
 		lblAgencia.setText(conta.getAgencia());
-		lblSaldo.setText(conta.getSaldo().toString());
+		lblSaldo.setText(saldo);
 		lblNumConta.setText(conta.getNumero());
 		lblNome.setText(conta.getCliente().getNome());
 		lblCpf.setText(conta.getCliente().getCpf());
@@ -376,7 +384,7 @@ public class MinhaConta extends JFrame {
 				System.out.println("clicou");
 
 				if (lblDinheiro.getText().equals("R$ : ***")) {
-					lblDinheiro.setText("R$ :" + conta.getSaldo().toString());
+					lblDinheiro.setText("R$ :" + saldo);
 					imgExibirSaldo.setIcon(new ImageIcon(
 							MinhaConta.class.getResource("/br/com/residencia/bankend/imagens/eye-slash.png")));
 				} else {
