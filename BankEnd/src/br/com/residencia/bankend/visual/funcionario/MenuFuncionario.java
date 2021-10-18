@@ -201,6 +201,18 @@ public class MenuFuncionario extends JFrame {
 				relatorio.setVisible(true);
 			}
 		});
+		
+		painelClientes.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				
+				TabelaClientes clientes = new TabelaClientes(con);
+				clientes.setLocationRelativeTo(null);
+				clientes.setVisible(true);
+				
+				
+			}
+		});
 
 	}
 

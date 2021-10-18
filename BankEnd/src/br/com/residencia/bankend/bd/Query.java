@@ -18,6 +18,7 @@ import br.com.residencia.bankend.funcionarios.Diretor;
 import br.com.residencia.bankend.funcionarios.Funcionario;
 import br.com.residencia.bankend.funcionarios.Gerente;
 import br.com.residencia.bankend.funcionarios.Presidente;
+import br.com.residencia.bankend.utility.TableModel;
 
 public class Query {
 	private Connection conexao = null;
@@ -629,6 +630,95 @@ public class Query {
 			x.append("\r\n    | Cliente: " + nome + " |         -         Cpf: " + cpf + "     -   Agencia: " + agencia
 					+ "  \t\t\r\n\t\r\n ");
 		}
+	}
+
+	public void addAllClientes(TableModel tabelaContas) {
+
+		ArrayList<Contas> listaContas = new ArrayList<Contas>();
+
+		ArrayList<Cliente> clientes = new ArrayList<>();
+
+		Contas continha;
+
+		try {
+			// pegando todos os clientes
+			st = conexao.prepareStatement("select *from cliente");
+
+			st.execute();
+
+			rs = st.getResultSet();
+
+			while (rs.next()) {
+				int id = rs.getInt("IDCliente");
+				String nome = rs.getString("nome");
+				String sobrenome = rs.getString("sobrenome");
+				String cpf = rs.getString("cpf");
+
+				Cliente cliente = new Cliente(nome, sobrenome, null, cpf, null, id);
+
+				clientes.add(cliente);
+
+			}
+
+			// pegando todas as contas
+			st = conexao.prepareStatement("SELECT *FROM CONTAS ");
+			st.execute();
+
+			rs = st.getResultSet();
+
+			while (rs.next()) {
+
+				int id = rs.getInt("IDConta");
+				String agencia = rs.getString("agencia");
+				String tipo = rs.getString("tipo");
+				int id_Cliente = rs.getInt("ID_cliente");
+				String numero = rs.getString("numero");
+				// verificando o tipo
+
+				if (tipo.equals("poupanca")) {
+
+					// associando o cliente a sua conta
+					for (Cliente x : clientes) {
+						int idCliente = x.getId();
+
+						if (idCliente == id_Cliente) {
+							ContaPoupanca poupanca = new ContaPoupanca(agencia, numero, tipo, null, x, null, id);
+
+							listaContas.add(poupanca);
+							tabelaContas.adicionarLinha(poupanca);
+
+						}
+
+					}
+
+				}
+
+				if (tipo.equals("corrente")) {
+
+					// percorrendo todos os clientes
+					for (Cliente x : clientes) {
+						int idCliente = x.getId();
+
+						if (idCliente == id_Cliente) {
+
+							ContaCorrente corrente = new ContaCorrente(agencia, numero, tipo, null, x, null, id);
+
+							listaContas.add(corrente);
+							tabelaContas.adicionarLinha(corrente);
+
+						}
+
+					}
+
+				}
+
+			}
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
 	}
 
 }

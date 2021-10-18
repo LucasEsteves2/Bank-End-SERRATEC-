@@ -26,6 +26,7 @@ import br.com.residencia.bankend.contas.ContaPoupanca;
 import br.com.residencia.bankend.contas.Contas;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import javax.swing.JProgressBar;
 
 public class Saque extends JFrame {
 
@@ -84,6 +85,10 @@ public class Saque extends JFrame {
 		lblCaixaEletronico.setHorizontalTextPosition(SwingConstants.CENTER);
 		lblCaixaEletronico.setBounds(239, 367, 120, 33);
 		contentPane.add(lblCaixaEletronico);
+		
+		JProgressBar progressBar = new JProgressBar();
+		progressBar.setBounds(1125, 312, 120, 19);
+		contentPane.add(progressBar);
 
 		lblCaixaSaldo = new JLabel("10000");
 		lblCaixaSaldo.setForeground(new Color(0, 128, 0));
@@ -307,6 +312,10 @@ public class Saque extends JFrame {
 		String caixaSaldo = String.format("%.2f", contaRemetente.getSaldo());
 		lblCaixaSaldo.setText(caixaSaldo + "$");
 
+		
+		
+		
+		
 		Query bd = new Query(con);
 
 		lblSair.addMouseListener(new MouseAdapter() {
@@ -488,4 +497,14 @@ public class Saque extends JFrame {
 		lblCupomAgencia.setText("Agencia: 404");
 
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }
