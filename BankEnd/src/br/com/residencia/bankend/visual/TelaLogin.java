@@ -31,7 +31,7 @@ import br.com.residencia.bankend.contas.Contas;
 import br.com.residencia.bankend.funcionarios.Funcionario;
 import br.com.residencia.bankend.funcionarios.Presidente;
 import br.com.residencia.bankend.visual.cliente.Menu;
-import br.com.residencia.bankend.visual.funcionario.MenuFun;
+import br.com.residencia.bankend.visual.funcionario.MenuFuncionario;
 
 public class TelaLogin extends JFrame {
 
@@ -149,19 +149,54 @@ public class TelaLogin extends JFrame {
 				cliente = bd.cliente(login, senha);
 
 				// instancia Tela funcionario
-				if (funcionario != null) {
+				if (funcionario != null || cliente != null) {
 
+					// verificando se funcionario possui uma conta
+					if (bd.contaFuncionario(login, senha)) {
+						System.out.println("possui conta");
 
-					telaFuncionario(funcionario);
+						int i = JOptionPane.showConfirmDialog(null, "Entrar em admin", "??",
+								JOptionPane.OK_CANCEL_OPTION);
+
+						// se clicar em sim
+						if (i == JOptionPane.YES_OPTION) {
+
+							System.out.println("Clicou em Sim");
+							System.out.println("Entrando na conta como funcionario");
+							telaFuncionario(funcionario);
+
+						}
+						// se clicar em nao
+
+						else if (i == JOptionPane.CANCEL_OPTION) {
+
+							System.out.println("Clicou em Não");
+							System.out.println("Entrando na conta como cliente");
+							conta = bd.descobreConta(cliente);
+							telaCliente();
+						}
+
+					} else {
+						System.out.println("Funcionario nao possui conta");
+
+						if (funcionario != null) {
+
+							telaFuncionario(funcionario);
+
+						}
+
+						// instancia Tela cliente
+						if (cliente != null) {
+							// metodo que retorna a conta do cliente
+							conta = bd.descobreConta(cliente);
+							telaCliente();
+						}
+
+					}
 
 				}
 
 				// instancia Tela cliente
-				if (cliente != null) {
-					// metodo que retorna a conta do cliente
-					conta = bd.descobreConta(cliente);
-					telaCliente();
-				}
 
 				if (cliente == null && funcionario == null) {
 
@@ -178,14 +213,14 @@ public class TelaLogin extends JFrame {
 
 	}
 
-	private void telaFuncionario(Funcionario funcionario) {
+	public void telaFuncionario(Funcionario funcionario) {
 
 		txtNome.setBorder(new LineBorder(Color.GREEN));
 		txtSenha.setBorder(new LineBorder(Color.green));
 		JOptionPane.showMessageDialog(null, "Bem Vindo," + funcionario.getNome() + "!!", "Sucess",
 				JOptionPane.INFORMATION_MESSAGE);
 
-		MenuFun menu = new MenuFun(con, funcionario);
+		MenuFuncionario menu = new MenuFuncionario(con, funcionario);
 		menu.setVisible(true);
 		dispose();
 

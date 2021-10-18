@@ -1,5 +1,6 @@
 package br.com.residencia.bankend.bd;
 
+import java.awt.TextArea;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -541,6 +542,52 @@ public class Query {
 
 		return 0;
 
+	}
+
+	// metodo que verifica se o funcionario possui uma conta cadastrada
+
+	public boolean contaFuncionario(String login, String senha) {
+		try {
+			st = conexao.prepareStatement("select *from funcionario where email=? and senha =?");
+			st.setString(1, login);
+			st.setString(2, senha);
+			st.execute();
+			rs = st.getResultSet();
+
+			if (rs.next()) {
+				st = conexao.prepareStatement("select *from cliente where email=? and senha =?");
+				st.setString(1, login);
+				st.setString(2, senha);
+				st.execute();
+				rs = st.getResultSet();
+
+				if (rs.next()) {
+					return true;
+				} else {
+					return false;
+				}
+
+			}
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return false;
+
+	}
+
+	public void addDadosRelatorios(TextArea x, ArrayList<Contas> listaContas) {
+		for (Contas contas : listaContas) {
+
+			String nome = contas.getCliente().getNome();
+			String cpf = contas.getCliente().getCpf();
+			String agencia = contas.getAgencia();
+
+			x.append("\r\n    | Cliente: " + nome + " |         -         Cpf: " + cpf + "     -   Agencia: " + agencia
+					+ "  \t\t\r\n\t\r\n ");
+		}
 	}
 
 }

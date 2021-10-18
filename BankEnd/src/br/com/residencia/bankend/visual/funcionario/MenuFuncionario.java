@@ -29,18 +29,18 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class MenuFun extends JFrame {
+public class MenuFuncionario extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 
-	public MenuFun(Connection con, Funcionario fun) {
+	public MenuFuncionario(Connection con, Funcionario fun) {
 
 		verificaPermissao(fun);
 
 		//visual
 		setIconImage(Toolkit.getDefaultToolkit()
-				.getImage(MenuFun.class.getResource("/br/com/residencia/bankend/imagens/hospital.png")));
+				.getImage(MenuFuncionario.class.getResource("/br/com/residencia/bankend/imagens/hospital.png")));
 		setExtendedState(Frame.MAXIMIZED_BOTH);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
@@ -63,7 +63,7 @@ public class MenuFun extends JFrame {
 
 		JLabel lblLogo = new JLabel("New label");
 		lblLogo.setBounds(-55, 11, 421, 130);
-		lblLogo.setIcon(new ImageIcon(MenuFun.class.getResource("/br/com/residencia/bankend/imagens/asx.png")));
+		lblLogo.setIcon(new ImageIcon(MenuFuncionario.class.getResource("/br/com/residencia/bankend/imagens/asx.png")));
 		panel.add(lblLogo);
 
 		JPanel painelSeguro = new JPanel();
@@ -78,7 +78,7 @@ public class MenuFun extends JFrame {
 		imgPaciente.setHorizontalTextPosition(SwingConstants.CENTER);
 		imgPaciente.setHorizontalAlignment(SwingConstants.CENTER);
 		imgPaciente
-				.setIcon(new ImageIcon(MenuFun.class.getResource("/br/com/residencia/bankend/imagens/doctor (4).png")));
+				.setIcon(new ImageIcon(MenuFuncionario.class.getResource("/br/com/residencia/bankend/imagens/doctor (4).png")));
 		imgPaciente.setBounds(23, 12, 32, 32);
 		painelSeguro.add(imgPaciente);
 
@@ -103,7 +103,7 @@ public class MenuFun extends JFrame {
 		JLabel lblInicio = new JLabel("");
 
 		lblInicio.setIcon(
-				new ImageIcon(MenuFun.class.getResource("/br/com/residencia/bankend/imagens/pagina-inicial (1).png")));
+				new ImageIcon(MenuFuncionario.class.getResource("/br/com/residencia/bankend/imagens/pagina-inicial (1).png")));
 		lblInicio.setBounds(10, -1, 29, 30);
 		PainelVoltar.add(lblInicio);
 
@@ -123,7 +123,7 @@ public class MenuFun extends JFrame {
 
 		JLabel imgPaciente_1_1_1 = new JLabel("");
 		imgPaciente_1_1_1
-				.setIcon(new ImageIcon(MenuFun.class.getResource("/br/com/residencia/bankend/imagens/cancelar.png")));
+				.setIcon(new ImageIcon(MenuFuncionario.class.getResource("/br/com/residencia/bankend/imagens/cancelar.png")));
 		imgPaciente_1_1_1.setBounds(23, 12, 32, 32);
 		PainelFechar.add(imgPaciente_1_1_1);
 
@@ -146,7 +146,7 @@ public class MenuFun extends JFrame {
 
 		JLabel imgPaciente_1_1 = new JLabel("");
 		imgPaciente_1_1.setIcon(
-				new ImageIcon(MenuFun.class.getResource("/br/com/residencia/bankend/imagens/health-check.png")));
+				new ImageIcon(MenuFuncionario.class.getResource("/br/com/residencia/bankend/imagens/health-check.png")));
 		imgPaciente_1_1.setBounds(23, 12, 32, 32);
 		painelConta.add(imgPaciente_1_1);
 
@@ -170,7 +170,7 @@ public class MenuFun extends JFrame {
 
 		JLabel imgPaciente_1 = new JLabel("");
 		imgPaciente_1.setIcon(
-				new ImageIcon(MenuFun.class.getResource("/br/com/residencia/bankend/imagens/examination.png")));
+				new ImageIcon(MenuFuncionario.class.getResource("/br/com/residencia/bankend/imagens/examination.png")));
 		imgPaciente_1.setBounds(23, 12, 32, 32);
 		painelTransferencia.add(imgPaciente_1);
 
@@ -191,7 +191,7 @@ public class MenuFun extends JFrame {
 		contentPane.add(lblBackground);
 
 		JLabel lblMenu = new JLabel("New label");
-		lblMenu.setIcon(new ImageIcon(MenuFun.class.getResource("/br/com/residencia/bankend/imagens/2.jpg")));
+		lblMenu.setIcon(new ImageIcon(MenuFuncionario.class.getResource("/br/com/residencia/bankend/imagens/2.jpg")));
 		lblMenu.setBounds(6, 11, 232, 714);
 		panel.add(lblMenu);
 		
@@ -205,7 +205,7 @@ public class MenuFun extends JFrame {
 		btnRelatorios.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				Relatorioos rel = new  Relatorioos(fun, con);
+				TelaRelatorio rel = new  TelaRelatorio(fun, con);
 				rel.setVisible(true);
 				
 			}
