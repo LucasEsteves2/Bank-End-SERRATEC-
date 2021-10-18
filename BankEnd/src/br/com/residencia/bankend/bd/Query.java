@@ -7,6 +7,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.Set;
+import java.util.TreeSet;
 
 import javax.swing.JOptionPane;
 
@@ -545,7 +547,7 @@ public class Query {
 						if (idCliente == id_Cliente) {
 
 							ContaCorrente corrente = new ContaCorrente(agencia, null, tipo, null, x, null, id);
-							
+
 							contas.add(corrente);
 
 						}
@@ -622,12 +624,18 @@ public class Query {
 	}
 
 	public void addDadosRelatorios(FuncionarioTableModel tabelaFuncionario, ArrayList<Contas> listaContas) {
-	
+
 		for (Contas conta : listaContas) {
-			
-			tabelaFuncionario.adicionarLinha(conta);		}
+
+			tabelaFuncionario.adicionarLinha(conta);
+		}
 	}
 
+	//Set<Contas> continhass = new TreeSet<>();
+	//continhass.add(conta);
+	
+	
+	
 	public void addAllClientes(ClienteTableModel tabelaContas) {
 
 		ArrayList<Contas> listaContas = new ArrayList<Contas>();

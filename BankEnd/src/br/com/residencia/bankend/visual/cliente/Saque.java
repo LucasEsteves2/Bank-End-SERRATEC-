@@ -21,11 +21,14 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
 import br.com.residencia.bankend.bd.Query;
+import br.com.residencia.bankend.contas.Comprovante;
 import br.com.residencia.bankend.contas.ContaCorrente;
 import br.com.residencia.bankend.contas.ContaPoupanca;
 import br.com.residencia.bankend.contas.Contas;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.IOException;
+
 import javax.swing.JProgressBar;
 
 public class Saque extends JFrame {
@@ -474,6 +477,7 @@ public class Saque extends JFrame {
 		String caixaSaldo = String.format("%.2f", contaRemetente.getSaldo());
 		lblCaixaSaldo.setText(caixaSaldo + "$");
 
+		
 		System.out.println("Saque de " + valorSaque + "$ feito com suceso!!");
 		exibeCupomFiscal();
 		JOptionPane.showMessageDialog(null, "Saque de " + valorSaque + "$ feito com suceso!!", "Sucess",
@@ -482,7 +486,17 @@ public class Saque extends JFrame {
 	}
 
 	public void exibeCupomFiscal() {
-
+		
+		
+		
+		
+		try {
+			Comprovante.saque(contaRemetente,valorSaque);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		lblValor.setVisible(false);
 		txtValor.setVisible(false);
 		txtValor.setText("");
@@ -495,7 +509,9 @@ public class Saque extends JFrame {
 		lblCupomFavorecido.setText("Favorecido");
 		lblCupomTipoConta.setText("Transferencia em Conta: Corrente");
 		lblCupomAgencia.setText("Agencia: 404");
-
+		
+		
+		
 	}
 	
 	

@@ -20,6 +20,8 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.sql.Connection;
 import java.util.ArrayList;
+import java.util.Set;
+import java.util.TreeSet;
 
 import javax.swing.JTable;
 import javax.swing.JScrollPane;
@@ -355,6 +357,17 @@ public class TelaRelatorios extends JFrame {
 			break;
 		}
 		
+		painelClientes.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				
+				TabelaClientes clientes = new TabelaClientes(con, fun);
+				clientes.setLocationRelativeTo(null);
+				clientes.setVisible(true);
+				
+				
+			}
+		});
 		
 		
 	}
