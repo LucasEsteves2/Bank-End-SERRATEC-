@@ -1,0 +1,128 @@
+package br.com.residencia.bankend.contas;
+
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+
+
+public class Comprovante {
+	public static void deposito (Contas conta,Double valor,String tipoConta) throws IOException {
+		
+		File arquivo = new File( "C:\\temp\\deposito.txt" );
+		boolean existe = arquivo.exists();
+		arquivo.createNewFile();
+		
+		FileWriter fw = new FileWriter( arquivo );
+		BufferedWriter bw = new BufferedWriter( fw );
+		
+		
+		if(tipoConta.equalsIgnoreCase("corrente")) {
+		bw.write( "--------------- DEPÓSITO --------------- ");
+		bw.newLine();
+		bw.write( "Operação realizada : "+ "DEPÓSITO" );
+		bw.newLine();
+		bw.write( "favorecido  "+conta.getCliente().getNome() );
+		bw.newLine();
+		bw.write( "conta favorecida :  "+conta.getNumero() );
+		bw.newLine();
+		bw.write( "valor do depósito : "+"R$ "+valor );
+		bw.newLine();
+		bw.close();
+		fw.close();
+		}
+		
+		else {
+			bw.write( "--------------- DEPÓSITO --------------- ");
+			bw.newLine();
+			bw.write( "Operação realizada : "+ "DEPÓSITO" );
+			bw.newLine();
+			bw.write( "taxa da operação : "+ "R$" + "0.10");
+			bw.newLine();
+			bw.write( "favorecido  "+conta.getCliente().getNome() );
+			bw.newLine();
+			bw.write( "conta favorecida :  "+conta.getNumero() );
+			bw.newLine();
+			bw.write( "valor do depósito : "+"R$ "+valor );
+			bw.newLine();
+			bw.close();
+			fw.close();
+					
+		}
+		
+	}
+	
+	public static void saque (Contas conta,Double valor) throws IOException {
+	
+		File arquivo = new File( "C:\\temp\\saque.txt");
+		boolean existe = arquivo.exists();
+		arquivo.createNewFile();
+		
+		FileWriter fw = new FileWriter( arquivo );
+		BufferedWriter bw = new BufferedWriter( fw );
+		
+		if(conta.tipo.equalsIgnoreCase("corrente")) {
+		bw.write( "--------------- Saque --------------- ");
+		bw.newLine();
+		bw.write( "Operação realizada : "+ "Saque" );
+		bw.newLine();
+		bw.write( "valor do saque : "+"R$ "+valor );
+		bw.newLine();
+		bw.write( "Saldo  atual:  "+conta.getSaldo() );
+		bw.close();
+		fw.close();
+		
+		}
+		bw.write( "--------------- Saque --------------- ");
+		bw.newLine();
+		bw.write( "Operação realizada : "+ "Saque" );
+		bw.newLine();
+		bw.write( "taxa da operação : "+"R$ "+"0.10" );
+		bw.newLine();
+		bw.write( "valor do saque : "+"R$ "+valor );
+		bw.newLine();
+		bw.write( "Saldo  atual:  "+"R$ "+conta.getSaldo() );
+		bw.close();
+		fw.close();
+		
+	}
+	
+	
+	public static void Transferencia (Contas conta,Double valor) throws IOException {
+		File arquivo = new File( "C:\\temp\\Transferência.txt" );
+		boolean existe = arquivo.exists();
+		arquivo.createNewFile();
+		
+		FileWriter fw = new FileWriter( arquivo );
+		BufferedWriter bw = new BufferedWriter( fw );
+		if(conta.tipo.equalsIgnoreCase("corrente")) {
+		bw.write( "--------------- Transferência --------------- ");
+		bw.newLine();
+		bw.write( "Operação realizada : "+ "Transferência" );
+		bw.newLine();
+		bw.write( "valor da transferência: "+"R$ "+valor);
+		bw.newLine();
+		bw.write( "favorecido  "+conta.getCliente().getNome() );
+		bw.newLine();
+		bw.write( "conta favorecida :  "+conta.getNumero() );
+		bw.newLine();
+		fw.close();
+		}else {
+			bw.write( "--------------- Transferência --------------- ");
+			bw.newLine();
+			bw.write( "Operação realizada : "+ "Transferência" );
+			bw.newLine();
+			bw.write( "taxa da operação : "+"R$ "+"0.20" );
+			bw.newLine();
+			bw.write( "valor da transferência: "+"R$ "+valor);
+			bw.newLine();
+			bw.write( "favorecido  "+conta.getCliente().getNome() );
+			bw.newLine();
+			bw.write( "conta favorecida :  "+conta.getNumero() );
+			bw.close();
+			fw.close();
+			}
+		}
+		
+	}
+
