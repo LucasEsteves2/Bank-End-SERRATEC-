@@ -55,7 +55,7 @@
 </p>
 
 <div align="center"> 
-<img height="445px" align="center" src="https://i.imgur.com/agWL9wR.jpeg"> 
+<img height="445px" align="center" src=""> 
 </div>
 <br>
 
