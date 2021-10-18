@@ -38,7 +38,7 @@ public class MenuFuncionario extends JFrame {
 
 		verificaPermissao(fun);
 
-		//visual
+		// visual
 		setIconImage(Toolkit.getDefaultToolkit()
 				.getImage(MenuFuncionario.class.getResource("/br/com/residencia/bankend/imagens/hospital.png")));
 		setExtendedState(Frame.MAXIMIZED_BOTH);
@@ -55,9 +55,9 @@ public class MenuFuncionario extends JFrame {
 		panel.setBounds(-6, -14, 238, 736);
 		contentPane.add(panel);
 		panel.setLayout(null);
-		
+
 		JButton btnRelatorios = new JButton("relatorios");
-		
+
 		btnRelatorios.setBounds(41, 26, 124, 23);
 		panel.add(btnRelatorios);
 
@@ -77,8 +77,8 @@ public class MenuFuncionario extends JFrame {
 		JLabel imgPaciente = new JLabel("");
 		imgPaciente.setHorizontalTextPosition(SwingConstants.CENTER);
 		imgPaciente.setHorizontalAlignment(SwingConstants.CENTER);
-		imgPaciente
-				.setIcon(new ImageIcon(MenuFuncionario.class.getResource("/br/com/residencia/bankend/imagens/doctor (4).png")));
+		imgPaciente.setIcon(
+				new ImageIcon(MenuFuncionario.class.getResource("/br/com/residencia/bankend/imagens/doctor (4).png")));
 		imgPaciente.setBounds(23, 12, 32, 32);
 		painelSeguro.add(imgPaciente);
 
@@ -102,8 +102,8 @@ public class MenuFuncionario extends JFrame {
 
 		JLabel lblInicio = new JLabel("");
 
-		lblInicio.setIcon(
-				new ImageIcon(MenuFuncionario.class.getResource("/br/com/residencia/bankend/imagens/pagina-inicial (1).png")));
+		lblInicio.setIcon(new ImageIcon(
+				MenuFuncionario.class.getResource("/br/com/residencia/bankend/imagens/pagina-inicial (1).png")));
 		lblInicio.setBounds(10, -1, 29, 30);
 		PainelVoltar.add(lblInicio);
 
@@ -122,8 +122,8 @@ public class MenuFuncionario extends JFrame {
 		panel.add(PainelFechar);
 
 		JLabel imgPaciente_1_1_1 = new JLabel("");
-		imgPaciente_1_1_1
-				.setIcon(new ImageIcon(MenuFuncionario.class.getResource("/br/com/residencia/bankend/imagens/cancelar.png")));
+		imgPaciente_1_1_1.setIcon(
+				new ImageIcon(MenuFuncionario.class.getResource("/br/com/residencia/bankend/imagens/cancelar.png")));
 		imgPaciente_1_1_1.setBounds(23, 12, 32, 32);
 		PainelFechar.add(imgPaciente_1_1_1);
 
@@ -145,8 +145,8 @@ public class MenuFuncionario extends JFrame {
 		panel.add(painelConta);
 
 		JLabel imgPaciente_1_1 = new JLabel("");
-		imgPaciente_1_1.setIcon(
-				new ImageIcon(MenuFuncionario.class.getResource("/br/com/residencia/bankend/imagens/health-check.png")));
+		imgPaciente_1_1.setIcon(new ImageIcon(
+				MenuFuncionario.class.getResource("/br/com/residencia/bankend/imagens/health-check.png")));
 		imgPaciente_1_1.setBounds(23, 12, 32, 32);
 		painelConta.add(imgPaciente_1_1);
 
@@ -185,8 +185,7 @@ public class MenuFuncionario extends JFrame {
 		painelTransferencia.add(txtMedico_1);
 
 		JLabel lblBackground = new JLabel("");
-		lblBackground.setIcon(
-				new ImageIcon("C:\\Users\\Esteves\\Pictures\\tela1.jpg"));
+		lblBackground.setIcon(new ImageIcon("C:\\Users\\Esteves\\Pictures\\tela1.jpg"));
 		lblBackground.setBounds(235, 28, 1134, 711);
 		contentPane.add(lblBackground);
 
@@ -194,29 +193,23 @@ public class MenuFuncionario extends JFrame {
 		lblMenu.setIcon(new ImageIcon(MenuFuncionario.class.getResource("/br/com/residencia/bankend/imagens/2.jpg")));
 		lblMenu.setBounds(6, 11, 232, 714);
 		panel.add(lblMenu);
-		
+
 		JButton button = new JButton("New button");
 		button.setBounds(76, 400, 89, 23);
 		panel.add(button);
 
-		
-		
-		
 		btnRelatorios.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
-				TelaRelatorio rel = new  TelaRelatorio(fun, con);
+
+				TelaRelatorio rel = new TelaRelatorio(fun, con);
 				rel.setVisible(true);
-				
+
 			}
 		});
-		
-		
-		
-		
+
 	}
 
-	//teste
+	// teste
 	public void verificaPermissao(Funcionario fun) {
 
 		int acesso = fun.getAcesso();
