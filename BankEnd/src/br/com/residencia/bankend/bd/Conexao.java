@@ -13,7 +13,7 @@ public class Conexao {
 	private String senha = "717a7c41f8b5153c1faad21d0357cdd3ede9d99dbb55c5210a0a10d3bc50507c";
 
 	// metodo que faz a conexao
-
+	//POLVO LAZER
 	public Connection conectar() {
 		Connection con = null;
 
