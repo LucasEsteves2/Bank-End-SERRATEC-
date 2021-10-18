@@ -50,68 +50,77 @@ public class MenuTransacaos extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
-		JLabel lblNewLabel = new JLabel("");
-		
-		lblNewLabel.setBounds(994, 56, 368, 610);
-		contentPane.add(lblNewLabel);
-		
+
+		JLabel lblVoltar = new JLabel("New label");
+
+		lblVoltar.setIcon(new ImageIcon("C:\\Users\\Esteves\\Downloads\\botao-de-seta-para-a-esquerda-do-teclado.png"));
+		lblVoltar.setBounds(0, 616, 46, 89);
+		contentPane.add(lblVoltar);
+
+		JLabel lblDeposito = new JLabel("");
+
+		lblDeposito.setBounds(969, 56, 361, 610);
+		contentPane.add(lblDeposito);
+
 		JLabel lblSaque = new JLabel("");
-		
-		lblSaque.setBounds(513, 56, 354, 610);
+
+		lblSaque.setBounds(528, 56, 354, 610);
 		contentPane.add(lblSaque);
-		
+
 		JLabel lblTransferencia = new JLabel("");
-		
-		lblTransferencia.setBounds(26, 56, 354, 610);
+
+		lblTransferencia.setBounds(71, 56, 361, 610);
 		contentPane.add(lblTransferencia);
-		
+
 		JLabel ImgBackground = new JLabel("");
 		ImgBackground.setIcon(new ImageIcon("C:\\Users\\Esteves\\Pictures\\BANKEND\\backzada.jpg"));
 		ImgBackground.setBounds(0, 0, 1375, 705);
 		contentPane.add(ImgBackground);
 
-
-		
 		lblTransferencia.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				
+
 				System.out.println("FUI CLICADO");
-				
+
 				Transferencia transferencia = new Transferencia(conexao, contaRemetente);
 				transferencia.setVisible(true);
 				dispose();
-				
+
 			}
 		});
-		
-		
-		
+
 		lblSaque.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				
-				
+
 				System.out.println("FUI CLICADO");
 				Saque telaSaque = new Saque(conexao, contaRemetente);
 				telaSaque.setVisible(true);
-				
-				
+				dispose();
+
 			}
 		});
-		
-		
-		
-		lblNewLabel.addMouseListener(new MouseAdapter() {
+
+		lblVoltar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				
+				Menu inicio = new Menu(conexao, contaRemetente);
+				inicio.setVisible(true);
+				dispose();
+
+			}
+		});
+
+		lblDeposito.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+
 				Deposito telaDeposito = new Deposito(conexao, contaRemetente);
 				telaDeposito.setVisible(true);
 				dispose();
 			}
 		});
-		
+
 	}
 }

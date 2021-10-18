@@ -23,7 +23,6 @@ import javax.swing.border.EtchedBorder;
 import javax.swing.border.MatteBorder;
 
 import br.com.residencia.bankend.contas.Contas;
-import br.com.residencia.bankend.utility.Mouse;
 
 public class Menu extends JFrame {
 
@@ -64,7 +63,7 @@ public class Menu extends JFrame {
 		JLabel imgPaciente = new JLabel("");
 		imgPaciente.setHorizontalTextPosition(SwingConstants.CENTER);
 		imgPaciente.setHorizontalAlignment(SwingConstants.CENTER);
-		imgPaciente.setIcon(new ImageIcon(Menu.class.getResource("/br/com/residencia/bankend/imagens/doctor (4).png")));
+		imgPaciente.setIcon(new ImageIcon("C:\\Users\\Esteves\\Downloads\\seguro-de-vida.png"));
 		imgPaciente.setBounds(23, 12, 32, 32);
 		painelSeguro.add(imgPaciente);
 
@@ -87,6 +86,7 @@ public class Menu extends JFrame {
 		PainelVoltar.setLayout(null);
 
 		JLabel lblInicio = new JLabel("");
+	
 
 		lblInicio.setIcon(
 				new ImageIcon(Menu.class.getResource("/br/com/residencia/bankend/imagens/pagina-inicial (1).png")));
@@ -131,8 +131,7 @@ public class Menu extends JFrame {
 		panel.add(painelConta);
 
 		JLabel imgPaciente_1_1 = new JLabel("");
-		imgPaciente_1_1
-				.setIcon(new ImageIcon(Menu.class.getResource("/br/com/residencia/bankend/imagens/health-check.png")));
+		imgPaciente_1_1.setIcon(new ImageIcon("C:\\Users\\Esteves\\Downloads\\cartao-de-credito (1).png"));
 		imgPaciente_1_1.setBounds(23, 12, 32, 32);
 		painelConta.add(imgPaciente_1_1);
 
@@ -155,8 +154,7 @@ public class Menu extends JFrame {
 		panel.add(painelTransferencia);
 
 		JLabel imgPaciente_1 = new JLabel("");
-		imgPaciente_1
-				.setIcon(new ImageIcon(Menu.class.getResource("/br/com/residencia/bankend/imagens/examination.png")));
+		imgPaciente_1.setIcon(new ImageIcon("C:\\Users\\Esteves\\Downloads\\atm.png"));
 		imgPaciente_1.setBounds(23, 12, 32, 32);
 		painelTransferencia.add(imgPaciente_1);
 
@@ -165,7 +163,7 @@ public class Menu extends JFrame {
 		lblNewLabel_2_1.setBounds(79, 16, 0, 0);
 		painelTransferencia.add(lblNewLabel_2_1);
 
-		JLabel txtMedico_1 = new JLabel("Transferencia");
+		JLabel txtMedico_1 = new JLabel("Transa\u00E7\u00F5es");
 		txtMedico_1.setFont(new Font("Segoe UI", Font.BOLD, 16));
 		txtMedico_1.setBounds(68, 16, 103, 22);
 		painelTransferencia.add(txtMedico_1);
@@ -198,30 +196,32 @@ public class Menu extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 
-				//Transferencia telaTransferencia = new Transferencia(con,conta);
-
-				//telaTransferencia.setVisible(true);
-
-				
 				MenuTransacaos telaTransacao = new MenuTransacaos(con, conta);
 				telaTransacao.setVisible(true);
-				
+
 			}
 		});
-		
-		
-		
-		
 
 		painelSeguro.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				Deposito telaDeposito = new Deposito(con, conta);
 				telaDeposito.setVisible(true);
+				dispose();
 			}
 		});
-
-		painelConta.addMouseListener(new Mouse(painelConta));
-
+		
+		lblInicio.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				Menu inicio = new Menu(con, conta);
+				inicio.setVisible(true);
+				dispose();
+			}
+		});
+		
+		
+		
+		
 	}
 }

@@ -22,14 +22,23 @@ import javax.swing.border.EtchedBorder;
 import javax.swing.border.MatteBorder;
 
 import br.com.residencia.bankend.contas.Contas;
-import br.com.residencia.bankend.utility.Mouse;
 
 public class MinhaConta extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
-
+	private Connection con;
+	private Contas conta;
+	private JPanel painelSeguro;
+	private JPanel painelConta;
+	private JPanel painelTransferencia;
+	
 	public MinhaConta(Connection con, Contas conta) {
+		
+		this.conta=conta;
+		this.con=con;
+		
+		
 		setIconImage(Toolkit.getDefaultToolkit()
 				.getImage(MinhaConta.class.getResource("/br/com/residencia/bankend/imagens/hospital.png")));
 		setExtendedState(Frame.MAXIMIZED_BOTH);
@@ -52,13 +61,13 @@ public class MinhaConta extends JFrame {
 		lblLogo.setIcon(new ImageIcon(MinhaConta.class.getResource("/br/com/residencia/bankend/imagens/asx.png")));
 		panel.add(lblLogo);
 
-		JPanel PainelMedico = new JPanel();
+		painelSeguro = new JPanel();
 
-		PainelMedico.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 0)));
-		PainelMedico.setBounds(-1, 252, 243, 56);
-		PainelMedico.setBackground(Color.WHITE);
-		panel.add(PainelMedico);
-		PainelMedico.setLayout(null);
+		painelSeguro.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 0)));
+		painelSeguro.setBounds(-1, 252, 243, 56);
+		painelSeguro.setBackground(Color.WHITE);
+		panel.add(painelSeguro);
+		painelSeguro.setLayout(null);
 
 		JLabel imgPaciente = new JLabel("");
 		imgPaciente.setHorizontalTextPosition(SwingConstants.CENTER);
@@ -66,11 +75,11 @@ public class MinhaConta extends JFrame {
 		imgPaciente.setIcon(
 				new ImageIcon(MinhaConta.class.getResource("/br/com/residencia/bankend/imagens/doctor (4).png")));
 		imgPaciente.setBounds(23, 12, 32, 32);
-		PainelMedico.add(imgPaciente);
+		painelSeguro.add(imgPaciente);
 
 		JLabel lblNewLabel_2 = new JLabel("");
 		lblNewLabel_2.setBounds(79, 16, 0, 0);
-		PainelMedico.add(lblNewLabel_2);
+		painelSeguro.add(lblNewLabel_2);
 		lblNewLabel_2.setBackground(new Color(0, 255, 0));
 
 		JLabel txtMedico = new JLabel("Seguro de vida");
@@ -78,7 +87,7 @@ public class MinhaConta extends JFrame {
 		txtMedico.setHorizontalAlignment(SwingConstants.CENTER);
 		txtMedico.setBounds(68, 16, 114, 22);
 		txtMedico.setFont(new Font("Segoe UI", Font.BOLD, 16));
-		PainelMedico.add(txtMedico);
+		painelSeguro.add(txtMedico);
 
 		Panel PainelVoltar = new Panel();
 		PainelVoltar.setBackground(new Color(248, 248, 255));
@@ -123,51 +132,51 @@ public class MinhaConta extends JFrame {
 		txtMedico_1_1_1.setBounds(68, 16, 90, 22);
 		PainelFechar.add(txtMedico_1_1_1);
 
-		JPanel PainelConsulta = new JPanel();
-		PainelConsulta.setBorder(new MatteBorder(2, 1, 1, 1, (Color) new Color(0, 0, 0)));
-		PainelConsulta.setLayout(null);
-		PainelConsulta.setBackground(Color.LIGHT_GRAY);
-		PainelConsulta.setBounds(-1, 140, 246, 56);
-		panel.add(PainelConsulta);
+		painelConta = new JPanel();
+		painelConta.setBorder(new MatteBorder(2, 1, 1, 1, (Color) new Color(0, 0, 0)));
+		painelConta.setLayout(null);
+		painelConta.setBackground(Color.LIGHT_GRAY);
+		painelConta.setBounds(-1, 140, 246, 56);
+		panel.add(painelConta);
 
 		JLabel imgPaciente_1_1 = new JLabel("");
 		imgPaciente_1_1.setIcon(
 				new ImageIcon(MinhaConta.class.getResource("/br/com/residencia/bankend/imagens/health-check.png")));
 		imgPaciente_1_1.setBounds(23, 12, 32, 32);
-		PainelConsulta.add(imgPaciente_1_1);
+		painelConta.add(imgPaciente_1_1);
 
 		JLabel lblNewLabel_2_1_1 = new JLabel("");
 		lblNewLabel_2_1_1.setBackground(Color.GREEN);
 		lblNewLabel_2_1_1.setBounds(79, 16, 0, 0);
-		PainelConsulta.add(lblNewLabel_2_1_1);
+		painelConta.add(lblNewLabel_2_1_1);
 
 		JLabel txtMedico_1_1 = new JLabel("Minha Conta");
 		txtMedico_1_1.setFont(new Font("Segoe UI", Font.BOLD, 16));
 		txtMedico_1_1.setBounds(68, 16, 115, 22);
-		PainelConsulta.add(txtMedico_1_1);
+		painelConta.add(txtMedico_1_1);
 
-		JPanel PainelPaciente = new JPanel();
-		PainelPaciente.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 0)));
-		PainelPaciente.setLayout(null);
-		PainelPaciente.setBackground(Color.WHITE);
-		PainelPaciente.setBounds(-1, 196, 245, 56);
-		panel.add(PainelPaciente);
+		 painelTransferencia = new JPanel();
+		painelTransferencia.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 0)));
+		painelTransferencia.setLayout(null);
+		painelTransferencia.setBackground(Color.WHITE);
+		painelTransferencia.setBounds(-1, 196, 245, 56);
+		panel.add(painelTransferencia);
 
 		JLabel imgPaciente_1 = new JLabel("");
 		imgPaciente_1.setIcon(
 				new ImageIcon(MinhaConta.class.getResource("/br/com/residencia/bankend/imagens/examination.png")));
 		imgPaciente_1.setBounds(23, 12, 32, 32);
-		PainelPaciente.add(imgPaciente_1);
+		painelTransferencia.add(imgPaciente_1);
 
 		JLabel lblNewLabel_2_1 = new JLabel("");
 		lblNewLabel_2_1.setBackground(Color.GREEN);
 		lblNewLabel_2_1.setBounds(79, 16, 0, 0);
-		PainelPaciente.add(lblNewLabel_2_1);
+		painelTransferencia.add(lblNewLabel_2_1);
 
 		JLabel txtMedico_1 = new JLabel("Transferencia");
 		txtMedico_1.setFont(new Font("Segoe UI", Font.BOLD, 16));
 		txtMedico_1.setBounds(68, 16, 103, 22);
-		PainelPaciente.add(txtMedico_1);
+		painelTransferencia.add(txtMedico_1);
 
 		Panel lblSobrenome = new Panel();
 
@@ -347,14 +356,9 @@ public class MinhaConta extends JFrame {
 		lblSobrenome.add(lblSobrenomee);
 
 		// ANIMAÇÃO AO PASSAR O MOUSE ( Escutador de click-mouse)
-		/*
-		 * PainelMedico.addMouseListener(new MouseFunction(PainelMedico, "medico", this,
-		 * con)); PainelConsulta.addMouseListener(new MouseFunction(PainelConsulta,
-		 * "consulta", this, con)); PainelPaciente.addMouseListener(new
-		 * MouseFunction(PainelPaciente, "paciente", this, con));
-		 * PainelFechar.addMouseListener(new MouseFunction(PainelFechar, "fechar", this,
-		 * con));
-		 */
+		
+		 // PainelConsulta.addMouseListener(new Mouse(PainelMedico, "medico", this, con)); 
+		 
 
 		/// trocando os valores da tela pelo da conta
 
@@ -398,7 +402,47 @@ public class MinhaConta extends JFrame {
 		});
 
 		
-		PainelConsulta.addMouseListener(new Mouse(PainelConsulta));
+		menu();
+		
 
 	}
+	
+	public void menu()
+	{
+		// Click no botao Conta
+
+		painelConta.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				MinhaConta telaConta = new MinhaConta(con, conta);
+				telaConta.setVisible(true);
+				dispose();
+			}
+		});
+
+		// evento click botao transferencia
+
+		painelTransferencia.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+
+				MenuTransacaos telaTransacao = new MenuTransacaos(con, conta);
+				telaTransacao.setVisible(true);
+
+			}
+		});
+
+		painelSeguro.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				Deposito telaDeposito = new Deposito(con, conta);
+				telaDeposito.setVisible(true);
+				dispose();
+			}
+		});
+		
+		
+	}
+	
+	
 }

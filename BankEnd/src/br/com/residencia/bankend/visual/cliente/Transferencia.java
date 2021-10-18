@@ -278,8 +278,8 @@ public class Transferencia extends JFrame {
 
 		lblSair = new JLabel("");
 
-		lblSair.setIcon(new ImageIcon("C:\\Users\\Esteves\\Downloads\\sair.png"));
-		lblSair.setBounds(29, 641, 59, 53);
+		lblSair.setIcon(new ImageIcon("C:\\Users\\Esteves\\Downloads\\botao-de-seta-para-a-esquerda-do-teclado.png"));
+		lblSair.setBounds(14, 642, 59, 53);
 		contentPane.add(lblSair);
 
 		JLabel ImgBackground = new JLabel("");
@@ -301,8 +301,9 @@ public class Transferencia extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 
-				Menu menuPrincipal = new Menu(con, contaRemetenteV);
-				menuPrincipal.setVisible(true);
+				MenuTransacaos transacaos = new MenuTransacaos(conexao, contaRemetenteV);
+
+				transacaos.setVisible(true);
 				dispose();
 			}
 		});
@@ -329,8 +330,8 @@ public class Transferencia extends JFrame {
 			}
 		});
 
-		//verifica se a conta existe
-		
+		// verifica se a conta existe
+
 		btnVerificar.addActionListener(new ActionListener() {
 
 			@Override
@@ -338,16 +339,16 @@ public class Transferencia extends JFrame {
 
 				// se o campo for vzio
 				if (txtCartao.getText().trim().equals("")) {
-					
+
 					JOptionPane.showMessageDialog(null, "Conta Invalida!!", "#ERRO404", JOptionPane.ERROR_MESSAGE);
 					txtCartao.setBorder(new LineBorder(Color.RED));
 					txtCartao.setBorder(new LineBorder(Color.RED));
-					
+
 				} else {
 					// pegando conta digitada no texto
 					String numConta = txtCartao.getText();
 
-					//se a conta informada existir
+					// se a conta informada existir
 					if (bd.contaExiste(numConta)) {
 
 						// verifica se a conta do destinatario é igual
@@ -367,9 +368,9 @@ public class Transferencia extends JFrame {
 
 						}
 
-					}
-					else {
-						JOptionPane.showMessageDialog(null, "Conta não cadastrada!", "#ERRO404", JOptionPane.ERROR_MESSAGE);
+					} else {
+						JOptionPane.showMessageDialog(null, "Conta não cadastrada!", "#ERRO404",
+								JOptionPane.ERROR_MESSAGE);
 						txtCartao.setText("");
 						txtCartao.setBorder(new LineBorder(Color.RED));
 						txtCartao.setBorder(new LineBorder(Color.RED));
@@ -378,8 +379,7 @@ public class Transferencia extends JFrame {
 
 			}
 		});
-		
-		
+
 		// botao da maquina
 		btnVerde.addActionListener(new ActionListener() {
 

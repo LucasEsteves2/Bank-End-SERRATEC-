@@ -97,11 +97,10 @@ public class TelaRelatorio extends JFrame {
 		contentPane.add(lblValorTotal);
 		lblValorTotal.setVisible(false);
 
-		
 		// Verificando tipo do funcionario
 		switch (acesso) {
 		case 1:
-			
+
 			Gerente gerente = (Gerente) fun;
 
 			Integer quantidade = bd.qtdAgencia(gerente.getIdAgencia());
@@ -109,8 +108,7 @@ public class TelaRelatorio extends JFrame {
 
 			break;
 		case 2:
-			
-		
+
 			System.out.println("Bem vindo Diretor ");
 
 			// metodo que pega todas os nomes/cpf/agencia e armazena dentro de uma lista
@@ -120,6 +118,7 @@ public class TelaRelatorio extends JFrame {
 			bd.addDadosRelatorios(textArea, conta);
 
 			break;
+
 		case 3:
 			System.out.println("Bem vindo Presidente");
 
@@ -127,7 +126,7 @@ public class TelaRelatorio extends JFrame {
 			bd.addDadosRelatorios(textArea, conta);
 
 			Double saldoTotal = bd.valorTotal();
-			
+
 			lblValorTotal.setText(saldoTotal.toString());
 
 			lblValorTotal.setVisible(true);

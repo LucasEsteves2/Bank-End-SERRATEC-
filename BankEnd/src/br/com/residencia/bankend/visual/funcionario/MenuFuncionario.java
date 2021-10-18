@@ -3,13 +3,10 @@ package br.com.residencia.bankend.visual.funcionario;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Frame;
-import java.awt.Label;
 import java.awt.Panel;
-import java.awt.SystemColor;
 import java.awt.Toolkit;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.sql.Connection;
 
 import javax.swing.ImageIcon;
@@ -19,15 +16,10 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
-import javax.swing.border.EtchedBorder;
 import javax.swing.border.MatteBorder;
 
-import br.com.residencia.bankend.contas.Contas;
 import br.com.residencia.bankend.funcionarios.Funcionario;
-import br.com.residencia.bankend.utility.Mouse;
 import javax.swing.JButton;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 
 public class MenuFuncionario extends JFrame {
 
@@ -137,52 +129,53 @@ public class MenuFuncionario extends JFrame {
 		txtMedico_1_1_1.setBounds(68, 16, 90, 22);
 		PainelFechar.add(txtMedico_1_1_1);
 
-		JPanel painelConta = new JPanel();
-		painelConta.setBorder(new MatteBorder(2, 1, 1, 1, (Color) new Color(0, 0, 0)));
-		painelConta.setLayout(null);
-		painelConta.setBackground(Color.WHITE);
-		painelConta.setBounds(-1, 140, 246, 56);
-		panel.add(painelConta);
+		JPanel painelRelatorios = new JPanel();
+
+		painelRelatorios.setBorder(new MatteBorder(2, 1, 1, 1, (Color) new Color(0, 0, 0)));
+		painelRelatorios.setLayout(null);
+		painelRelatorios.setBackground(Color.WHITE);
+		painelRelatorios.setBounds(-1, 140, 246, 56);
+		panel.add(painelRelatorios);
 
 		JLabel imgPaciente_1_1 = new JLabel("");
 		imgPaciente_1_1.setIcon(new ImageIcon(
 				MenuFuncionario.class.getResource("/br/com/residencia/bankend/imagens/health-check.png")));
 		imgPaciente_1_1.setBounds(23, 12, 32, 32);
-		painelConta.add(imgPaciente_1_1);
+		painelRelatorios.add(imgPaciente_1_1);
 
 		JLabel lblNewLabel_2_1_1 = new JLabel("");
 		lblNewLabel_2_1_1.setBackground(Color.GREEN);
 		lblNewLabel_2_1_1.setBounds(79, 16, 0, 0);
-		painelConta.add(lblNewLabel_2_1_1);
+		painelRelatorios.add(lblNewLabel_2_1_1);
 
-		JLabel txtMedico_1_1 = new JLabel("Minha Conta");
+		JLabel txtMedico_1_1 = new JLabel("Relatorios");
 		txtMedico_1_1.setFont(new Font("Segoe UI", Font.BOLD, 16));
 		txtMedico_1_1.setBounds(68, 16, 115, 22);
-		painelConta.add(txtMedico_1_1);
+		painelRelatorios.add(txtMedico_1_1);
 
-		JPanel painelTransferencia = new JPanel();
+		JPanel painelClientes = new JPanel();
 
-		painelTransferencia.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 0)));
-		painelTransferencia.setLayout(null);
-		painelTransferencia.setBackground(Color.WHITE);
-		painelTransferencia.setBounds(-1, 196, 245, 56);
-		panel.add(painelTransferencia);
+		painelClientes.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 0)));
+		painelClientes.setLayout(null);
+		painelClientes.setBackground(Color.WHITE);
+		painelClientes.setBounds(-1, 196, 245, 56);
+		panel.add(painelClientes);
 
 		JLabel imgPaciente_1 = new JLabel("");
 		imgPaciente_1.setIcon(
 				new ImageIcon(MenuFuncionario.class.getResource("/br/com/residencia/bankend/imagens/examination.png")));
 		imgPaciente_1.setBounds(23, 12, 32, 32);
-		painelTransferencia.add(imgPaciente_1);
+		painelClientes.add(imgPaciente_1);
 
 		JLabel lblNewLabel_2_1 = new JLabel("");
 		lblNewLabel_2_1.setBackground(Color.GREEN);
 		lblNewLabel_2_1.setBounds(79, 16, 0, 0);
-		painelTransferencia.add(lblNewLabel_2_1);
+		painelClientes.add(lblNewLabel_2_1);
 
-		JLabel txtMedico_1 = new JLabel("Transferencia");
+		JLabel txtMedico_1 = new JLabel("Clientes");
 		txtMedico_1.setFont(new Font("Segoe UI", Font.BOLD, 16));
 		txtMedico_1.setBounds(68, 16, 103, 22);
-		painelTransferencia.add(txtMedico_1);
+		painelClientes.add(txtMedico_1);
 
 		JLabel lblBackground = new JLabel("");
 		lblBackground.setIcon(new ImageIcon("C:\\Users\\Esteves\\Pictures\\tela1.jpg"));
@@ -198,12 +191,14 @@ public class MenuFuncionario extends JFrame {
 		button.setBounds(76, 400, 89, 23);
 		panel.add(button);
 
-		btnRelatorios.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-
-				TelaRelatorio rel = new TelaRelatorio(fun, con);
-				rel.setVisible(true);
-
+		
+		painelRelatorios.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				
+				TelaRelatorio relatorio = new TelaRelatorio(fun, con);
+				relatorio.setLocationRelativeTo(null);
+				relatorio.setVisible(true);
 			}
 		});
 
