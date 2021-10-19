@@ -270,7 +270,7 @@ public class MinhaConta extends JFrame {
 		JLabel lblDinheiro = new JLabel("R$ : ***");
 		lblDinheiro.setForeground(new Color(255, 102, 0));
 		lblDinheiro.setFont(new Font("Franklin Gothic Medium", Font.BOLD, 19));
-		lblDinheiro.setBounds(946, 55, 91, 22);
+		lblDinheiro.setBounds(946, 55, 120, 22);
 		lblSobrenome.add(lblDinheiro);
 
 		JLabel lblNewLabel_7 = new JLabel("Saldo:");
@@ -280,7 +280,7 @@ public class MinhaConta extends JFrame {
 
 		JLabel lblNewLabel_6 = new JLabel("");
 		lblNewLabel_6.setBorder(new EtchedBorder(EtchedBorder.RAISED, new Color(255, 153, 51), null));
-		lblNewLabel_6.setBounds(871, 40, 200, 50);
+		lblNewLabel_6.setBounds(871, 40, 242, 50);
 		lblSobrenome.add(lblNewLabel_6);
 
 		JLabel lbls = new JLabel("Simular Rendimento");
@@ -293,7 +293,7 @@ public class MinhaConta extends JFrame {
 
 		imgExibirSaldo
 				.setIcon(new ImageIcon(MinhaConta.class.getResource("/br/com/residencia/bankend/imagens/visao.png")));
-		imgExibirSaldo.setBounds(1034, 48, 82, 32);
+		imgExibirSaldo.setBounds(1071, 48, 82, 32);
 		lblSobrenome.add(imgExibirSaldo);
 
 		JLabel lblBackground = new JLabel("");

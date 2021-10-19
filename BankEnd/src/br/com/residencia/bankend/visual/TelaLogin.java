@@ -42,7 +42,6 @@ public class TelaLogin extends JFrame {
 	private String login;
 	private String senha;
 	private Connection con;
-	private JTextField textField;
 	private Contas conta;
 
 //polvo laser
@@ -58,22 +57,6 @@ public class TelaLogin extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-
-		JLabel lblNewLabel_1 = new JLabel("Conta:");
-		lblNewLabel_1.setForeground(Color.WHITE);
-		lblNewLabel_1.setBackground(Color.WHITE);
-		lblNewLabel_1.setBounds(698, 298, 46, 14);
-		contentPane.add(lblNewLabel_1);
-
-		textField = new JTextField();
-		textField.setColumns(10);
-		textField.setBounds(696, 315, 145, 20);
-		contentPane.add(textField);
-
-		JLabel lblNewLabel = new JLabel("New label");
-		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\Esteves\\Pictures\\pngwing.com.png"));
-		lblNewLabel.setBounds(509, 157, 384, 277);
-		contentPane.add(lblNewLabel);
 
 		txtSenha = new JPasswordField();
 		txtSenha.setToolTipText("Informe a senha");
@@ -116,10 +99,11 @@ public class TelaLogin extends JFrame {
 
 		String timeStamp = new SimpleDateFormat("dd/MM/yyyy").format(Calendar.getInstance().getTime());
 		JLabel lblCadastrarNovo = new JLabel(timeStamp);
+		lblCadastrarNovo.setIcon(new ImageIcon("C:\\Users\\Esteves\\Downloads\\data-limite.png"));
 
 		lblCadastrarNovo.setFont(new Font("Tahoma", Font.BOLD, 12));
 		lblCadastrarNovo.setBounds(899, 507, 156, 32);
-		lblCadastrarNovo.setForeground(new Color(0, 0, 128));
+		lblCadastrarNovo.setForeground(new Color(255, 255, 255));
 		contentPane.add(lblCadastrarNovo);
 
 		JLabel lblfundoTransparente = new JLabel("");
@@ -130,7 +114,7 @@ public class TelaLogin extends JFrame {
 
 		JLabel ImgBackground = new JLabel("");
 		ImgBackground.setBounds(0, 0, 1375, 705);
-		ImgBackground.setIcon(new ImageIcon("C:\\Users\\Esteves\\Pictures\\2133232232323.jpg"));
+		ImgBackground.setIcon(new ImageIcon("C:\\Users\\Esteves\\Pictures\\Nova pasta\\login2.jpg"));
 		contentPane.add(ImgBackground);
 
 		Query bd = new Query(con);
