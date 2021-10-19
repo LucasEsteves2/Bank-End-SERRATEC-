@@ -60,12 +60,14 @@ public class Rendimento extends JFrame {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				Integer dias =	Integer.parseInt(txt1.getText());
-				Double	valor =	Double.parseDouble(txt2.getText());
+				Integer dias =	Integer.parseInt(txt2.getText());
+				Double	valor =	Double.parseDouble(txt1.getText());
 			
-			ContaPoupanca continha= (ContaPoupanca) conta;
+			 ContaPoupanca continha= (ContaPoupanca) conta;
 			 Double resultado = continha.simuRendimento(dias, valor);
 			 lbl1.setText(resultado.toString());
+			 txt1.setText(null);
+			 txt2.setText(null);
 			 lbl1.setVisible(true);
 			 
 			

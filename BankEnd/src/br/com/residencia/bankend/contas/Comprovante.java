@@ -126,6 +126,42 @@ public class Comprovante {
 		bw.close();
 		fw.close();
 		}
+	
+	public static void tributos (Contas conta,Double valor) throws IOException {
+		
+		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy.MM.dd HH.mm.ss");
+		String data = dtf.format(LocalDateTime.now());
+		File arquivo = new File( "C:\\temp\\"+data+"  saque.txt" );
+		arquivo.createNewFile();
+		
+		FileWriter fw = new FileWriter( arquivo );
+		BufferedWriter bw = new BufferedWriter( fw );
+		
+		if(conta.tipo.equalsIgnoreCase("corrente")) {
+		bw.write( "--------------- tributo --------------- ");
+		bw.newLine();
+		bw.write( "Operação realizada : "+ "Saque" );
+		bw.newLine();
+		bw.write( "valor do saque : "+"R$ "+valor );
+		bw.newLine();
+		bw.write( "Saldo  atual:  "+conta.getSaldo() );
+		
+		
+		}else {
+		bw.write( "--------------- Saque --------------- ");
+		bw.newLine();
+		bw.write( "Operação realizada : "+ "Saque" );
+		bw.newLine();
+		bw.write( "taxa da operação : "+"R$ "+"0.10" );
+		bw.newLine();
+		bw.write( "valor do saque : "+"R$ "+valor );
+		bw.newLine();
+		bw.write( "Saldo  atual:  "+"R$ "+conta.getSaldo() );
+		
+		}
+		bw.close();
+		fw.close();
+	}
 		
 	}
 
