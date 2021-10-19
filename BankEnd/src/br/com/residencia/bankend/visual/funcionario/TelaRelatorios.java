@@ -40,6 +40,7 @@ import br.com.residencia.bankend.funcionarios.Funcionario;
 import br.com.residencia.bankend.funcionarios.Gerente;
 import br.com.residencia.bankend.utility.ClienteTableModel;
 import br.com.residencia.bankend.utility.FuncionarioTableModel;
+import br.com.residencia.bankend.visual.TelaLogin;
 
 import javax.swing.UIManager;
 import java.awt.ComponentOrientation;
@@ -59,8 +60,7 @@ public class TelaRelatorios extends JFrame {
 		setTitle("Pacientes");
 
 		this.con = con;
-		setIconImage(Toolkit.getDefaultToolkit().getImage(
-				TelaRelatorios.class.getResource("/br/com/residencia/bankend/imagens/mask_icon_134856 (2).png")));
+		setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\Esteves\\Downloads\\banco-movel.png"));
 		setExtendedState(Frame.MAXIMIZED_BOTH);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
@@ -77,37 +77,10 @@ public class TelaRelatorios extends JFrame {
 		panel.setLayout(null);
 
 		JLabel painelRelatorios = new JLabel("");
+		painelRelatorios.setHorizontalAlignment(SwingConstants.CENTER);
 		painelRelatorios.setIcon(new ImageIcon("C:\\Users\\Esteves\\Pictures\\BANKEND\\mauqina\\logo.png"));
-		painelRelatorios.setBounds(11, 0, 232, 136);
+		painelRelatorios.setBounds(-1, 11, 244, 132);
 		panel.add(painelRelatorios);
-
-		JPanel painelSeguro = new JPanel();
-		painelSeguro.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 0)));
-		painelSeguro.setBounds(-1, 252, 243, 56);
-
-		painelSeguro.setBackground(Color.WHITE);
-		panel.add(painelSeguro);
-		painelSeguro.setLayout(null);
-
-		JLabel imgPaciente = new JLabel("");
-		imgPaciente.setHorizontalTextPosition(SwingConstants.CENTER);
-		imgPaciente.setHorizontalAlignment(SwingConstants.CENTER);
-		imgPaciente.setIcon(
-				new ImageIcon(TelaRelatorios.class.getResource("/br/com/residencia/bankend/imagens/doctor (4).png")));
-		imgPaciente.setBounds(23, 12, 32, 32);
-		painelSeguro.add(imgPaciente);
-
-		JLabel lblNewLabel_2 = new JLabel("");
-		lblNewLabel_2.setBounds(79, 16, 0, 0);
-		painelSeguro.add(lblNewLabel_2);
-		lblNewLabel_2.setBackground(new Color(0, 255, 0));
-
-		JLabel txtMedico = new JLabel("PROFISSIONAL");
-		txtMedico.setHorizontalTextPosition(SwingConstants.CENTER);
-		txtMedico.setHorizontalAlignment(SwingConstants.CENTER);
-		txtMedico.setBounds(68, 16, 112, 22);
-		txtMedico.setFont(new Font("Segoe UI", Font.BOLD, 16));
-		painelSeguro.add(txtMedico);
 
 		Panel PainelVoltar = new Panel();
 		PainelVoltar.setBackground(new Color(248, 248, 255));
@@ -139,7 +112,7 @@ public class TelaRelatorios extends JFrame {
 		PainelFechar.setBorder(new MatteBorder(1, 1, 2, 1, (Color) new Color(0, 0, 0)));
 		PainelFechar.setLayout(null);
 		PainelFechar.setBackground(Color.WHITE);
-		PainelFechar.setBounds(-1, 308, 246, 56);
+		PainelFechar.setBounds(-1, 252, 246, 56);
 		panel.add(PainelFechar);
 
 		JLabel imgPaciente_1_1_1 = new JLabel("");
@@ -161,13 +134,13 @@ public class TelaRelatorios extends JFrame {
 		JPanel PainelConsulta = new JPanel();
 		PainelConsulta.setBorder(new MatteBorder(2, 1, 1, 1, (Color) new Color(0, 0, 0)));
 		PainelConsulta.setLayout(null);
-		PainelConsulta.setBackground(Color.LIGHT_GRAY);
+		PainelConsulta.setBackground(new Color(240, 248, 255));
 		PainelConsulta.setBounds(-1, 140, 246, 56);
 		panel.add(PainelConsulta);
 
 		JLabel imgPaciente_1_1 = new JLabel("");
 		imgPaciente_1_1.setIcon(
-				new ImageIcon(TelaRelatorios.class.getResource("/br/com/residencia/bankend/imagens/health-check.png")));
+				new ImageIcon("C:\\Users\\Esteves\\Downloads\\relatorio.png"));
 		imgPaciente_1_1.setBounds(23, 12, 32, 32);
 		PainelConsulta.add(imgPaciente_1_1);
 
@@ -190,7 +163,7 @@ public class TelaRelatorios extends JFrame {
 
 		JLabel imgPaciente_1 = new JLabel("");
 		imgPaciente_1.setIcon(
-				new ImageIcon(TelaRelatorios.class.getResource("/br/com/residencia/bankend/imagens/examination.png")));
+				new ImageIcon("C:\\Users\\Esteves\\Downloads\\cliente.png"));
 		imgPaciente_1.setBounds(23, 12, 32, 32);
 		painelClientes.add(imgPaciente_1);
 
@@ -218,17 +191,6 @@ public class TelaRelatorios extends JFrame {
 		scrollPane.setViewportView(jTabelaPaciente);
 
 		Query bd = new Query(con);
-
-		JLabel lblImagemPaciente = new JLabel("");
-		lblImagemPaciente
-				.setIcon(new ImageIcon(TelaRelatorios.class.getResource("/br/com/residencia/bankend/imagens/1s.png")));
-		lblImagemPaciente.setBounds(0, 553, 288, 172);
-		panel.add(lblImagemPaciente);
-
-		JLabel lblMenu = new JLabel("");
-		lblMenu.setIcon(new ImageIcon(TelaRelatorios.class.getResource("/br/com/residencia/bankend/imagens/2.jpg")));
-		lblMenu.setBounds(6, 11, 232, 714);
-		panel.add(lblMenu);
 
 		// Instanciando meu proprio model (jtable)
 
@@ -366,6 +328,31 @@ public class TelaRelatorios extends JFrame {
 
 			}
 		});
+		
+		// btn fechar
+				PainelFechar.addMouseListener(new MouseAdapter() {
+					@Override
+					public void mouseClicked(MouseEvent e) {
 
-	}
+						int i = JOptionPane.showConfirmDialog(null, "Deseja Encerrar o programa?", "Finalizar",
+								JOptionPane.OK_CANCEL_OPTION);
+
+						if (i == JOptionPane.YES_OPTION) {
+							System.out.println("Clicou em Sim");
+
+							TelaLogin login = new TelaLogin(con);
+							login.setVisible(true);
+							dispose();
+
+						} else if (i == JOptionPane.CANCEL_OPTION) {
+
+							System.out.println("Clicou em Não");
+
+						}
+					}
+				});
+
+			}
+
+	
 }

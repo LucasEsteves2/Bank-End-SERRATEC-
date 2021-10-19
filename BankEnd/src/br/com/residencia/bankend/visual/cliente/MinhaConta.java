@@ -43,8 +43,7 @@ public class MinhaConta extends JFrame {
 		this.conta = conta;
 		this.con = con;
 
-		setIconImage(Toolkit.getDefaultToolkit()
-				.getImage(MinhaConta.class.getResource("/br/com/residencia/bankend/imagens/hospital.png")));
+		setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\Esteves\\Downloads\\banco.png"));
 		setExtendedState(Frame.MAXIMIZED_BOTH);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
@@ -182,10 +181,11 @@ public class MinhaConta extends JFrame {
 		txtMedico_1.setBounds(68, 16, 103, 22);
 		painelTransferencia.add(txtMedico_1);
 		
-		JLabel lblNewLabel_1 = new JLabel("");
-		lblNewLabel_1.setBounds(10, 11, 246, 136);
-		panel.add(lblNewLabel_1);
-		lblNewLabel_1.setIcon(new ImageIcon("C:\\Users\\Esteves\\Pictures\\BANKEND\\mauqina\\logo2.png"));
+		JLabel lblLogo_1 = new JLabel("");
+		lblLogo_1.setIcon(new ImageIcon("C:\\Users\\Esteves\\Pictures\\BANKEND\\mauqina\\logo.png"));
+		lblLogo_1.setHorizontalAlignment(SwingConstants.CENTER);
+		lblLogo_1.setBounds(4, 11, 238, 130);
+		panel.add(lblLogo_1);
 
 		Panel lblSobrenome = new Panel();
 
@@ -283,10 +283,11 @@ public class MinhaConta extends JFrame {
 		lblNewLabel_6.setBounds(871, 40, 200, 50);
 		lblSobrenome.add(lblNewLabel_6);
 
-		JLabel lblNewLabel_13 = new JLabel("Simular Rendimento");
-		lblNewLabel_13.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblNewLabel_13.setBounds(516, 346, 165, 20);
-		lblSobrenome.add(lblNewLabel_13);
+		JLabel lbls = new JLabel("Simular Rendimento");
+		lbls.setVisible(false);
+		lbls.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lbls.setBounds(516, 346, 165, 20);
+		lblSobrenome.add(lbls);
 
 		JLabel imgExibirSaldo = new JLabel("");
 
@@ -331,10 +332,15 @@ public class MinhaConta extends JFrame {
 		lblCpf.setText(conta.getCliente().getCpf());
 		lblSobrenomee.setText(conta.getCliente().getSobreNome());
 
-		JButton btnRendimento = new JButton("New button");
+		JButton btnRendimento = new JButton("Simular");
 		btnRendimento.setVisible(false);
 		btnRendimento.setBounds(526, 377, 120, 32);
 		lblSobrenome.add(btnRendimento);
+		
+		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\Esteves\\Pictures\\Nova pasta\\card2.png"));
+		lblNewLabel.setBounds(-29, 406, 638, 365);
+		lblSobrenome.add(lblNewLabel);
 
 		btnRendimento.addMouseListener(new MouseAdapter() {
 			@Override
@@ -403,8 +409,9 @@ public class MinhaConta extends JFrame {
 			}
 		});
 
-		if (conta.getTipo().equals("corrente")) {
+		if (conta.getTipo().equals("poupanca")) {
 			btnRendimento.setVisible(true);
+			lbls.setVisible(true);
 		}
 
 	}

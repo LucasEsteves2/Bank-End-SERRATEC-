@@ -48,11 +48,6 @@ public class MenuFuncionario extends JFrame {
 		contentPane.add(panel);
 		panel.setLayout(null);
 
-		JLabel lblLogo = new JLabel("New label");
-		lblLogo.setBounds(-55, 11, 421, 130);
-		lblLogo.setIcon(new ImageIcon(MenuFuncionario.class.getResource("/br/com/residencia/bankend/imagens/asx.png")));
-		panel.add(lblLogo);
-
 		Panel PainelVoltar = new Panel();
 		PainelVoltar.setBackground(new Color(248, 248, 255));
 		PainelVoltar.setBounds(235, 0, 1139, 26);
@@ -78,6 +73,12 @@ public class MenuFuncionario extends JFrame {
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setBounds(0, 7, 1129, 14);
 		PainelVoltar.add(lblNewLabel);
+		
+		JLabel lblLogo = new JLabel("");
+		lblLogo.setHorizontalAlignment(SwingConstants.CENTER);
+		lblLogo.setIcon(new ImageIcon("C:\\Users\\Esteves\\Pictures\\BANKEND\\mauqina\\logo.png"));
+		lblLogo.setBounds(-1, 11, 239, 133);
+		panel.add(lblLogo);
 
 		JPanel PainelFechar = new JPanel();
 		PainelFechar.setBorder(new MatteBorder(1, 1, 2, 1, (Color) new Color(0, 0, 0)));
@@ -111,8 +112,7 @@ public class MenuFuncionario extends JFrame {
 		panel.add(painelRelatorios);
 
 		JLabel imgPaciente_1_1 = new JLabel("");
-		imgPaciente_1_1.setIcon(new ImageIcon(
-				MenuFuncionario.class.getResource("/br/com/residencia/bankend/imagens/health-check.png")));
+		imgPaciente_1_1.setIcon(new ImageIcon("C:\\Users\\Esteves\\Downloads\\relatorio.png"));
 		imgPaciente_1_1.setBounds(23, 12, 32, 32);
 		painelRelatorios.add(imgPaciente_1_1);
 
@@ -136,7 +136,7 @@ public class MenuFuncionario extends JFrame {
 
 		JLabel imgPaciente_1 = new JLabel("");
 		imgPaciente_1.setIcon(
-				new ImageIcon(MenuFuncionario.class.getResource("/br/com/residencia/bankend/imagens/examination.png")));
+				new ImageIcon("C:\\Users\\Esteves\\Downloads\\cliente.png"));
 		imgPaciente_1.setBounds(23, 12, 32, 32);
 		painelClientes.add(imgPaciente_1);
 
@@ -154,15 +154,6 @@ public class MenuFuncionario extends JFrame {
 		lblBackground.setIcon(new ImageIcon("C:\\Users\\Esteves\\Pictures\\BANKEND\\mauqina\\12332.jpg"));
 		lblBackground.setBounds(235, 28, 1134, 711);
 		contentPane.add(lblBackground);
-
-		JLabel lblMenu = new JLabel("New label");
-		lblMenu.setIcon(new ImageIcon(MenuFuncionario.class.getResource("/br/com/residencia/bankend/imagens/2.jpg")));
-		lblMenu.setBounds(6, 11, 232, 714);
-		panel.add(lblMenu);
-
-		JButton button = new JButton("New button");
-		button.setBounds(76, 400, 89, 23);
-		panel.add(button);
 
 		
 		painelRelatorios.addMouseListener(new MouseAdapter() {

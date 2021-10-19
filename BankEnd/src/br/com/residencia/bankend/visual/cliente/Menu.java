@@ -33,8 +33,7 @@ public class Menu extends JFrame {
 	public Menu(Connection con, Contas conta) {
 		this.conta = conta;
 		this.con = con;
-		setIconImage(Toolkit.getDefaultToolkit()
-				.getImage(Menu.class.getResource("/br/com/residencia/bankend/imagens/hospital.png")));
+		setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\Esteves\\Downloads\\banco.png"));
 		setExtendedState(Frame.MAXIMIZED_BOTH);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
@@ -43,17 +42,18 @@ public class Menu extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+		
+		JLabel lblLogo = new JLabel("");
+		lblLogo.setHorizontalAlignment(SwingConstants.CENTER);
+		lblLogo.setIcon(new ImageIcon("C:\\Users\\Esteves\\Pictures\\BANKEND\\mauqina\\logo.png"));
+		lblLogo.setBounds(0, 0, 238, 130);
+		contentPane.add(lblLogo);
 
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(240, 248, 255));
 		panel.setBounds(-6, -14, 238, 736);
 		contentPane.add(panel);
 		panel.setLayout(null);
-
-		JLabel lblLogo = new JLabel("New label");
-		lblLogo.setBounds(-55, 11, 421, 130);
-		lblLogo.setIcon(new ImageIcon(Menu.class.getResource("/br/com/residencia/bankend/imagens/asx.png")));
-		panel.add(lblLogo);
 
 		JPanel painelSeguro = new JPanel();
 
@@ -172,14 +172,9 @@ public class Menu extends JFrame {
 
 		JLabel lblBackground = new JLabel("");
 		lblBackground.setIcon(
-				new ImageIcon(Menu.class.getResource("/br/com/residencia/bankend/imagens/backgroundvddd.jpg")));
-		lblBackground.setBounds(235, 28, 1134, 711);
+				new ImageIcon("C:\\Users\\Esteves\\Pictures\\Nova pasta\\Sem T\u00EDtulo-3.jpg"));
+		lblBackground.setBounds(235, 28, 1139, 677);
 		contentPane.add(lblBackground);
-
-		JLabel lblMenu = new JLabel("New label");
-		lblMenu.setIcon(new ImageIcon(Menu.class.getResource("/br/com/residencia/bankend/imagens/2.jpg")));
-		lblMenu.setBounds(6, 11, 232, 714);
-		panel.add(lblMenu);
 
 		Query bd = new Query(con);
 
