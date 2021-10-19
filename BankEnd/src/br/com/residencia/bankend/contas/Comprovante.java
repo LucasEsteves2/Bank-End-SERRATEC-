@@ -127,7 +127,7 @@ public class Comprovante {
 		fw.close();
 		}
 	
-	public static void tributos (ContaCorrente conta,Double valor) throws IOException {
+	public static void tributos (ContaCorrente conta) throws IOException {
 		double saqueTotal= conta.getTributos().get(0).getValor()*0.10;
 		double depositoTotal= conta.getTributos().get(1).getValor()*0.10;
 		double trasnfenciaTotal=conta.getTributos().get(2).getValor()*0.20;;
@@ -136,8 +136,6 @@ public class Comprovante {
 		String data = dtf.format(LocalDateTime.now());
 		File arquivo = new File( "C:\\temp\\"+data+"  tributos.txt" );
 		arquivo.createNewFile();
-		
-		
 		FileWriter fw = new FileWriter( arquivo );
 		BufferedWriter bw = new BufferedWriter( fw );
 		

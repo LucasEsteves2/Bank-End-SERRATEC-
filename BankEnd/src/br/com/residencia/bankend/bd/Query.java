@@ -384,7 +384,7 @@ public class Query {
 
 	}
 
-	public void deposito(Contas contaDestinatario, double valor) {
+	public void deposito(Contas contaDestinatario, double valor,Contas remetente) {
 
 		try {
 
@@ -407,14 +407,14 @@ public class Query {
 				qtdTransf = rs.getInt("quantidadeDeposito");
 			}
 
-			if (contaDestinatario.getTipo().equals("corrente")) {
+			if (remetente.getTipo().equals("corrente")) {
 				st = conexao.prepareStatement("Update Contas set quantidadeDeposito = ? where IDCONTA=? ");
 				st.setInt(1, qtdTransf + 1);
-				st.setInt(2, contaDestinatario.getId());
+				st.setInt(2, remetente.getId());
 				st.executeUpdate();
 				
 				
-				totalTributo(contaDestinatario);
+				totalTributo(remetente);
 				
 			}
 
@@ -758,7 +758,7 @@ public class Query {
 
 				corrente.setTributos(trib);
 
-				Comprovante.tributos(corrente, null);
+				Comprovante.tributos(corrente);
 
 			}
 

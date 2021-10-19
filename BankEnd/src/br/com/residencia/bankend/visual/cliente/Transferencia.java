@@ -602,7 +602,7 @@ public class Transferencia extends JFrame {
 	}
 
 	public void exibeCupomFiscal() {
-		
+
 		lblValor.setVisible(false);
 		txtValor.setVisible(false);
 		txtValor.setText("");
@@ -612,36 +612,23 @@ public class Transferencia extends JFrame {
 
 		imgMaquina.setIcon(new ImageIcon("C:\\Users\\Esteves\\Pictures\\BANKEND\\macahdoo98.png"));
 		lblCupomNome.setText("Titular:" + nome1 + " " + sobrenome);
-		lblCupomContaa.setText("Conta:"+contaDestinatario.getNumero());
+		lblCupomContaa.setText("Conta:" + contaDestinatario.getNumero());
 		lblCupomFavorecido.setText("Favorecido");
 		lblCupomTipoConta.setText("Transferencia em Conta:");
-		lblCupomAgencia.setText("Agencia:"+contaDestinatario.getAgencia());
-		
-		
-		
+		lblCupomAgencia.setText("Agencia:" + contaDestinatario.getAgencia());
 
 		geraComprovante();
-		
-		
+
 	}
 
-
-
-	public void geraComprovante()
-	{
+	public void geraComprovante() {
 		try {
-			Comprovante.Transferencia(contaDestinatario,transferencia);
-			Comprovante.tributos(corrente, transferencia);
-			
+			Comprovante.Transferencia(contaDestinatario, transferencia);
+
 		} catch (IOException e) {
 			System.out.println("erro ao gerar o comprovante");
 			e.printStackTrace();
 		}
 	}
-	
-
-
-
-
 
 }

@@ -383,7 +383,9 @@ public class Deposito extends JFrame {
 							if (depositoMesmaConta()) {
 								// metodo que retorna a conta com o cliente
 								contaDestinatario = bd.verificaConta(numConta);
-
+								
+						
+								
 								// metodo pergutna se o usuario quer continuar
 								if (mensagemContinuar(imgMaquina)) {
 									exibeMaquininha(imgMaquina, btn0, btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8,
@@ -551,7 +553,7 @@ public class Deposito extends JFrame {
 	public void deposito(Query bd) {
 		// pegando e convertendo valor inforamdo
 		String valor = txtValor.getText();
-		double transferencia = Double.parseDouble(valor);
+		 transferencia = Double.parseDouble(valor);
 
 		System.out.println(valor);
 
@@ -569,7 +571,7 @@ public class Deposito extends JFrame {
 
 				contaRemetente = corrente;
 
-				bd.deposito(contaDestinatario, transferencia);
+				bd.deposito(contaDestinatario, transferencia, contaRemetente);
 				caixaEletronico();
 
 			} else {
@@ -589,7 +591,7 @@ public class Deposito extends JFrame {
 
 				contaRemetente = poupanca;
 
-				bd.deposito(contaDestinatario, transferencia);
+				bd.deposito(contaDestinatario, transferencia, contaRemetente);
 
 				caixaEletronico();
 			} else {
@@ -607,9 +609,11 @@ public class Deposito extends JFrame {
 		String caixaSaldo = String.format("%.2f", contaRemetente.getSaldo());
 		lblCaixaSaldo.setText(caixaSaldo + "$");
 
+		System.out.println(contaDestinatario.getSaldo());
+		System.out.println(contaRemetente.getSaldo());
 		System.out.println("Deposito de " + transferencia + "$ feito com suceso!!");
 		exibeCupomFiscal();
-		JOptionPane.showMessageDialog(null, "Deposito de " + txtValor.getText() + "$ feito com suceso!!", "Sucess",
+		JOptionPane.showMessageDialog(null, "Deposito de " +transferencia+ "$ feito com suceso!!", "Sucess",
 				JOptionPane.INFORMATION_MESSAGE);
 
 	}
