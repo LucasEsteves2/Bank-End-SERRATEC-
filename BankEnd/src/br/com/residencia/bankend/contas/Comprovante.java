@@ -167,12 +167,28 @@ public class Comprovante {
 		bw.write( "valor gasto em  "+ conta.getTributos().get(2).getNome() +" : "+" R$ "+String.format("%.2f",conta.getTributos().get(2).getValor()*0.20)  );
 		bw.newLine();
 		bw.newLine();
+		if(conta.seguro != null) {
+			bw.write( "--------------- Seguro ---------------");
+			bw.newLine();
+			bw.newLine();
+			bw.write( "gasto com seguro :  R$"+String.format("%.2f",conta.getSeguro().getTaxa()));
+			bw.newLine();
+			bw.newLine();
+			bw.write( "--------------- Total ---------------");
+			bw.newLine();
+			bw.write( "gastos totais :  R$"+String.format("%.2f",saqueTotal+depositoTotal+trasnfenciaTotal+conta.getSeguro().getTaxa()));
+			
+			bw.close();
+			fw.close();
+		}
+		else {
 		bw.write( "--------------- Total ---------------");
 		bw.newLine();
 		bw.write( "gastos totais :  R$"+String.format("%.2f",saqueTotal+depositoTotal+trasnfenciaTotal));
 		
 		bw.close();
 		fw.close();
+		}
 	}
 		
 	}
