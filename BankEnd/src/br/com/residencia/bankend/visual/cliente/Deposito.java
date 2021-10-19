@@ -382,10 +382,9 @@ public class Deposito extends JFrame {
 							System.out.println("depositando na mesma conta");
 							if (depositoMesmaConta()) {
 								// metodo que retorna a conta com o cliente
+
 								contaDestinatario = bd.verificaConta(numConta);
-								
-						
-								
+
 								// metodo pergutna se o usuario quer continuar
 								if (mensagemContinuar(imgMaquina)) {
 									exibeMaquininha(imgMaquina, btn0, btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8,
@@ -425,7 +424,7 @@ public class Deposito extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
-				// se o campo de valor nao for nulo e o valor 
+				// se o campo de valor nao for nulo e o valor
 				if (!txtValor.getText().trim().equals("")) { // metodo que confirma
 					confirmarTransacao(bd);
 				}
@@ -553,7 +552,7 @@ public class Deposito extends JFrame {
 	public void deposito(Query bd) {
 		// pegando e convertendo valor inforamdo
 		String valor = txtValor.getText();
-		 transferencia = Double.parseDouble(valor);
+		transferencia = Double.parseDouble(valor);
 
 		System.out.println(valor);
 
@@ -605,15 +604,28 @@ public class Deposito extends JFrame {
 
 	public void caixaEletronico() {
 		// convertendo para string e limitando as casas
-		lblCaixaSaldo.setForeground(new Color(0, 128, 0));
-		String caixaSaldo = String.format("%.2f", contaRemetente.getSaldo());
-		lblCaixaSaldo.setText(caixaSaldo + "$");
+		
+		//caso a conta informada seja a minha
+		if (contaDestinatario.getId() == contaRemetente.getId()) {
+			lblCaixaSaldo.setForeground(new Color(0, 128, 0));
+			String caixaSaldo = String.format("%.2f", contaDestinatario.getSaldo()-0.10);
+			lblCaixaSaldo.setText(caixaSaldo + "$");
 
+			contaRemetente = contaDestinatario;
+
+		} else {
+
+			lblCaixaSaldo.setForeground(new Color(0, 128, 0));
+			String caixaSaldo = String.format("%.2f", contaRemetente.getSaldo());
+			lblCaixaSaldo.setText(caixaSaldo + "$");
+
+		}
+		lblCaixaSaldo.setForeground(new Color(0, 128, 0));
 		System.out.println(contaDestinatario.getSaldo());
 		System.out.println(contaRemetente.getSaldo());
 		System.out.println("Deposito de " + transferencia + "$ feito com suceso!!");
 		exibeCupomFiscal();
-		JOptionPane.showMessageDialog(null, "Deposito de " +transferencia+ "$ feito com suceso!!", "Sucess",
+		JOptionPane.showMessageDialog(null, "Deposito de " + transferencia + "$ feito com suceso!!", "Sucess",
 				JOptionPane.INFORMATION_MESSAGE);
 
 	}
@@ -627,13 +639,12 @@ public class Deposito extends JFrame {
 		String nome1 = contaDestinatario.getCliente().getNome();
 		String sobrenome = contaDestinatario.getCliente().getSobreNome();
 
-
 		imgMaquina.setIcon(new ImageIcon("C:\\Users\\Esteves\\Pictures\\BANKEND\\macahdoo98.png"));
 		lblCupomNome.setText("Titular:" + nome1 + " " + sobrenome);
-		lblCupomContaa.setText("Conta:"+contaDestinatario.getNumero());
+		lblCupomContaa.setText("Conta:" + contaDestinatario.getNumero());
 		lblCupomFavorecido.setText("Favorecido");
 		lblCupomTipoConta.setText("Transferencia em Conta: Corrente");
-		lblCupomAgencia.setText("Agencia:"+contaDestinatario.getAgencia());
+		lblCupomAgencia.setText("Agencia:" + contaDestinatario.getAgencia());
 	}
 
 	public void geraComprovante() {
