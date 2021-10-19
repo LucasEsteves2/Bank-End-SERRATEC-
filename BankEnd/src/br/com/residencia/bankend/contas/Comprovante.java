@@ -127,11 +127,11 @@ public class Comprovante {
 		fw.close();
 		}
 	
-	public static void tributos (Contas conta,Double valor) throws IOException {
+	public static void tributos (ContaCorrente conta,Double valor) throws IOException {
 		
 		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy.MM.dd HH.mm.ss");
 		String data = dtf.format(LocalDateTime.now());
-		File arquivo = new File( "C:\\temp\\"+data+"  saque.txt" );
+		File arquivo = new File( "C:\\temp\\"+data+"  tributos.txt" );
 		arquivo.createNewFile();
 		
 		FileWriter fw = new FileWriter( arquivo );
@@ -139,29 +139,17 @@ public class Comprovante {
 		
 		if(conta.tipo.equalsIgnoreCase("corrente")) {
 		bw.write( "--------------- tributo --------------- ");
+		for(int i = 0 ;i<=2;i++) {
 		bw.newLine();
-		bw.write( "Operação realizada : "+ "Saque" );
+		bw.write( "numero de "+conta.getTributos().get(i).getNome()+" feitos : " +conta.getTributos().get(i).getValor());
 		bw.newLine();
-		bw.write( "valor do saque : "+"R$ "+valor );
-		bw.newLine();
-		bw.write( "Saldo  atual:  "+conta.getSaldo() );
-		
-		
-		}else {
-		bw.write( "--------------- Saque --------------- ");
-		bw.newLine();
-		bw.write( "Operação realizada : "+ "Saque" );
-		bw.newLine();
-		bw.write( "taxa da operação : "+"R$ "+"0.10" );
-		bw.newLine();
-		bw.write( "valor do saque : "+"R$ "+valor );
-		bw.newLine();
-		bw.write( "Saldo  atual:  "+"R$ "+conta.getSaldo() );
-		
+		bw.write( "valor gasto em  "+ conta.getTributos().get(i).getNome() +" : "+" R$ "+(conta.getTributos().get(i).getValor()*0.10)  );
 		}
+
 		bw.close();
 		fw.close();
 	}
 		
+	}
 	}
 

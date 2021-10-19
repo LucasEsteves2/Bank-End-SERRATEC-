@@ -734,7 +734,7 @@ public class Query {
 		ArrayList<Contas> contas = new ArrayList<>();
 
 		try {
-			st = conexao.prepareStatement("Select *from contas where idContas = ?");
+			st = conexao.prepareStatement("Select *from contas where idConta = ?");
 			st.setInt(1, conta.getId());
 			st.execute();
 
