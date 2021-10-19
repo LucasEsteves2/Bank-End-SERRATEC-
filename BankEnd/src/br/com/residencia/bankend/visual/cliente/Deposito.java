@@ -21,11 +21,13 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
 import br.com.residencia.bankend.bd.Query;
+import br.com.residencia.bankend.contas.Comprovante;
 import br.com.residencia.bankend.contas.ContaCorrente;
 import br.com.residencia.bankend.contas.ContaPoupanca;
 import br.com.residencia.bankend.contas.Contas;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.IOException;
 
 public class Deposito extends JFrame {
 
@@ -377,7 +379,19 @@ public class Deposito extends JFrame {
 
 						// verifica se a conta do destinatario é igual
 						if (numConta.equals(contaRemetente.getNumero())) {
-							JOptionPane.showMessageDialog(null, "MESMA CONTA!!", "#ERRO404", JOptionPane.ERROR_MESSAGE);
+							System.out.println("depositando na mesma conta");
+							if (depositoMesmaConta()) {
+								// metodo que retorna a conta com o cliente
+								contaDestinatario = bd.verificaConta(numConta);
+
+								// metodo pergutna se o usuario quer continuar
+								if (mensagemContinuar(imgMaquina)) {
+									exibeMaquininha(imgMaquina, btn0, btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8,
+											btn9, btnAs, btnVermelho, btnJogo, btnAmarelo, btnVerde);
+								}
+							} else {
+								txtCartao.setText("");
+							}
 
 						} else {
 
@@ -409,7 +423,7 @@ public class Deposito extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
-				// se o campo de valor nao for nulo
+				// se o campo de valor nao for nulo e o valor 
 				if (!txtValor.getText().trim().equals("")) { // metodo que confirma
 					confirmarTransacao(bd);
 				}
@@ -505,9 +519,9 @@ public class Deposito extends JFrame {
 		if (contaRemetente.getTipo().equals("corrente")) {
 
 			i = JOptionPane
-					.showConfirmDialog(null,
-							"\t Destinatario:" + nome + " \n \t Valor do Deposito:" + valor + "$ \n \t Taxa:0,10$ "
-									+ "\n \n \t \t \t  Deseja continuar?",
+					.showConfirmDialog(
+							null, "\t Destinatario:" + nome + " \n \t Valor do Deposito:" + valor
+									+ "$ \n \t Taxa:0,10$ " + "\n \n \t \t \t  Deseja continuar?",
 							"Deposito", JOptionPane.OK_CANCEL_OPTION);
 
 		} else {
@@ -537,7 +551,7 @@ public class Deposito extends JFrame {
 	public void deposito(Query bd) {
 		// pegando e convertendo valor inforamdo
 		String valor = txtValor.getText();
-		Double transferencia = Double.parseDouble(valor);
+		double transferencia = Double.parseDouble(valor);
 
 		System.out.println(valor);
 
@@ -574,8 +588,7 @@ public class Deposito extends JFrame {
 			if (poupanca.deposito(contaDestinatario, transferencia)) {
 
 				contaRemetente = poupanca;
-				
-				
+
 				bd.deposito(contaDestinatario, transferencia);
 
 				caixaEletronico();
@@ -603,17 +616,55 @@ public class Deposito extends JFrame {
 
 	public void exibeCupomFiscal() {
 
+		geraComprovante();
 		lblValor.setVisible(false);
 		txtValor.setVisible(false);
 		txtValor.setText("");
 		String nome1 = contaDestinatario.getCliente().getNome();
 		String sobrenome = contaDestinatario.getCliente().getSobreNome();
 
+
 		imgMaquina.setIcon(new ImageIcon("C:\\Users\\Esteves\\Pictures\\BANKEND\\macahdoo98.png"));
 		lblCupomNome.setText("Titular:" + nome1 + " " + sobrenome);
-		lblCupomContaa.setText("Conta:12345");
+		lblCupomContaa.setText("Conta:"+contaDestinatario.getNumero());
 		lblCupomFavorecido.setText("Favorecido");
 		lblCupomTipoConta.setText("Transferencia em Conta: Corrente");
-		lblCupomAgencia.setText("Agencia: 404");
+		lblCupomAgencia.setText("Agencia:"+contaDestinatario.getAgencia());
 	}
+
+	public void geraComprovante() {
+		try {
+			Comprovante.deposito(contaDestinatario, transferencia, contaDestinatario.getCliente().getNome());
+		} catch (IOException e) {
+			System.out.println("erro ao gerar o comprovante");
+			e.printStackTrace();
+		}
+	}
+
+	public boolean depositoMesmaConta() {
+
+		String nome = contaRemetente.getCliente().getNome();
+
+		int i = JOptionPane.showConfirmDialog(null, "Deseja fazer um deposito para a sua propria conta? ",
+				"Transferencia", JOptionPane.OK_CANCEL_OPTION);
+
+		// se clicar em sim
+		if (i == JOptionPane.YES_OPTION) {
+
+			System.out.println("Clicou em Sim");
+			return true;
+
+		}
+		// se clicar em nao
+
+		else if (i == JOptionPane.CANCEL_OPTION) {
+
+			System.out.println("Clicou em Não");
+
+			return false;
+		}
+		return false;
+
+	}
+
 }

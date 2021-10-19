@@ -184,7 +184,7 @@ public class MenuFuncionario extends JFrame {
 		painelClientes.add(txtMedico_1);
 
 		JLabel lblBackground = new JLabel("");
-		lblBackground.setIcon(new ImageIcon("C:\\Users\\Esteves\\Pictures\\tela1.jpg"));
+		lblBackground.setIcon(new ImageIcon("C:\\Users\\Esteves\\Pictures\\123232312.jpg"));
 		lblBackground.setBounds(235, 28, 1134, 711);
 		contentPane.add(lblBackground);
 
@@ -222,6 +222,7 @@ public class MenuFuncionario extends JFrame {
 
 	}
 
+	
 	// teste
 	public void verificaPermissao(Funcionario fun) {
 

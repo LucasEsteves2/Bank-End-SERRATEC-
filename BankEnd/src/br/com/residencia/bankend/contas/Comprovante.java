@@ -10,7 +10,7 @@ import java.time.format.DateTimeFormatter;
 
 public class Comprovante {
 	public static void deposito (Contas conta,Double valor,String tipoConta) throws IOException {
-		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy.MM.dd HH.mm.ss");
 		String data = dtf.format(LocalDateTime.now());
 		
 		File arquivo = new File( "C:\\temp\\"+data+"  deposito.txt" );
@@ -91,7 +91,7 @@ public class Comprovante {
 	
 	
 	public static void Transferencia (Contas conta,Double valor) throws IOException {
-		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy.MM.dd HH.mm.ss");
 		String data = dtf.format(LocalDateTime.now());
 		File arquivo = new File( "C:\\temp\\"+data+"  Transferência.txt" );
 		arquivo.createNewFile();

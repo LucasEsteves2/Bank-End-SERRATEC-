@@ -72,10 +72,10 @@ public class TabelaClientes extends JFrame {
 		contentPane.add(panel);
 		panel.setLayout(null);
 
-		JLabel painelRelatorios = new JLabel("New label");
-		painelRelatorios.setBounds(-55, -29, 421, 146);
+		JLabel logo = new JLabel("New label");
+		logo.setBounds(-55, -29, 421, 146);
 
-		panel.add(painelRelatorios);
+		panel.add(logo);
 
 		JPanel painelSeguro = new JPanel();
 		painelSeguro.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 0)));
@@ -97,7 +97,7 @@ public class TabelaClientes extends JFrame {
 		painelSeguro.add(lblNewLabel_2);
 		lblNewLabel_2.setBackground(new Color(0, 255, 0));
 
-		JLabel txtMedico = new JLabel("PROFISSIONAL");
+		JLabel txtMedico = new JLabel("Profissional");
 		txtMedico.setHorizontalTextPosition(SwingConstants.CENTER);
 		txtMedico.setHorizontalAlignment(SwingConstants.CENTER);
 		txtMedico.setBounds(68, 16, 112, 22);
@@ -152,27 +152,27 @@ public class TabelaClientes extends JFrame {
 		txtMedico_1_1_1.setBounds(68, 16, 90, 22);
 		PainelFechar.add(txtMedico_1_1_1);
 
-		JPanel PainelConsulta = new JPanel();
-		PainelConsulta.setBorder(new MatteBorder(2, 1, 1, 1, (Color) new Color(0, 0, 0)));
-		PainelConsulta.setLayout(null);
-		PainelConsulta.setBackground(Color.WHITE);
-		PainelConsulta.setBounds(-1, 140, 246, 56);
-		panel.add(PainelConsulta);
+		JPanel painelRelatorios = new JPanel();
+		painelRelatorios.setBorder(new MatteBorder(2, 1, 1, 1, (Color) new Color(0, 0, 0)));
+		painelRelatorios.setLayout(null);
+		painelRelatorios.setBackground(Color.WHITE);
+		painelRelatorios.setBounds(-1, 140, 246, 56);
+		panel.add(painelRelatorios);
 
 		JLabel imgPaciente_1_1 = new JLabel("");
 		imgPaciente_1_1.setIcon(new ImageIcon(TabelaClientes.class.getResource("/br/com/residencia/bankend/imagens/health-check.png")));
 		imgPaciente_1_1.setBounds(23, 12, 32, 32);
-		PainelConsulta.add(imgPaciente_1_1);
+		painelRelatorios.add(imgPaciente_1_1);
 
 		JLabel lblNewLabel_2_1_1 = new JLabel("");
 		lblNewLabel_2_1_1.setBackground(Color.GREEN);
 		lblNewLabel_2_1_1.setBounds(79, 16, 0, 0);
-		PainelConsulta.add(lblNewLabel_2_1_1);
+		painelRelatorios.add(lblNewLabel_2_1_1);
 
-		JLabel txtMedico_1_1 = new JLabel("RELATORIOS");
+		JLabel txtMedico_1_1 = new JLabel("Relatorios");
 		txtMedico_1_1.setFont(new Font("Segoe UI", Font.BOLD, 16));
 		txtMedico_1_1.setBounds(68, 16, 115, 22);
-		PainelConsulta.add(txtMedico_1_1);
+		painelRelatorios.add(txtMedico_1_1);
 
 		JPanel painelClientes = new JPanel();
 		painelClientes.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 0)));
@@ -191,7 +191,7 @@ public class TabelaClientes extends JFrame {
 		lblNewLabel_2_1.setBounds(79, 16, 0, 0);
 		painelClientes.add(lblNewLabel_2_1);
 
-		JLabel txtMedico_1 = new JLabel("CLIENTES");
+		JLabel txtMedico_1 = new JLabel("Clientes");
 		txtMedico_1.setFont(new Font("Segoe UI", Font.BOLD, 16));
 		txtMedico_1.setBounds(68, 16, 90, 22);
 		painelClientes.add(txtMedico_1);
@@ -210,6 +210,7 @@ public class TabelaClientes extends JFrame {
 		scrollPane.setViewportView(jTabelaPaciente);
 
 		JButton btnExcluir = new JButton("Excluir");
+		btnExcluir.setEnabled(false);
 		btnExcluir.setIcon(new ImageIcon(TabelaClientes.class.getResource("/br/com/residencia/bankend/imagens/trash.png")));
 		btnExcluir.setBounds(255, 36, 90, 34);
 		panel_1.add(btnExcluir);
@@ -233,6 +234,7 @@ public class TabelaClientes extends JFrame {
 		btnExcluir.setDoubleBuffered(true);
 
 		JButton btnEditar = new JButton("Editar");
+		btnEditar.setEnabled(false);
 		
 		btnEditar.setIcon(new ImageIcon(TabelaClientes.class.getResource("/br/com/residencia/bankend/imagens/edit.png")));
 		btnEditar.setForeground(Color.WHITE);
@@ -331,7 +333,14 @@ public class TabelaClientes extends JFrame {
 			}
 		});
 		
-		
-		
+		painelRelatorios.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				
+				TelaRelatorios relatorio = new TelaRelatorios(con, fun);
+				relatorio.setLocationRelativeTo(null);
+				relatorio.setVisible(true);
+			}
+		});
 	}
 }

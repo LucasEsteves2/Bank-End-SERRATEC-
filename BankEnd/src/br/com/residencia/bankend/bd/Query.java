@@ -631,18 +631,11 @@ public class Query {
 		}
 	}
 
-	//Set<Contas> continhass = new TreeSet<>();
-	//continhass.add(conta);
-	
-	
-	
 	public void addAllClientes(ClienteTableModel tabelaContas) {
 
 		ArrayList<Contas> listaContas = new ArrayList<Contas>();
 
 		ArrayList<Cliente> clientes = new ArrayList<>();
-
-		Contas continha;
 
 		try {
 			// pegando todos os clientes

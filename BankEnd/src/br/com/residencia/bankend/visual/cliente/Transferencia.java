@@ -21,11 +21,13 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
 import br.com.residencia.bankend.bd.Query;
+import br.com.residencia.bankend.contas.Comprovante;
 import br.com.residencia.bankend.contas.ContaCorrente;
 import br.com.residencia.bankend.contas.ContaPoupanca;
 import br.com.residencia.bankend.contas.Contas;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.IOException;
 
 public class Transferencia extends JFrame {
 
@@ -537,7 +539,7 @@ public class Transferencia extends JFrame {
 	public void transferencia(Query bd) {
 		// pegando e convertendo valor inforamdo
 		String valor = txtValor.getText();
-		Double transferencia = Double.parseDouble(valor);
+		transferencia = Double.parseDouble(valor);
 
 		System.out.println(valor);
 
@@ -600,7 +602,7 @@ public class Transferencia extends JFrame {
 	}
 
 	public void exibeCupomFiscal() {
-
+		geraComprovante();
 		lblValor.setVisible(false);
 		txtValor.setVisible(false);
 		txtValor.setText("");
@@ -610,9 +612,27 @@ public class Transferencia extends JFrame {
 
 		imgMaquina.setIcon(new ImageIcon("C:\\Users\\Esteves\\Pictures\\BANKEND\\macahdoo98.png"));
 		lblCupomNome.setText("Titular:" + nome1 + " " + sobrenome);
-		lblCupomContaa.setText("Conta:12345");
+		lblCupomContaa.setText("Conta:"+contaDestinatario.getNumero());
 		lblCupomFavorecido.setText("Favorecido");
 		lblCupomTipoConta.setText("Transferencia em Conta: Corrente");
-		lblCupomAgencia.setText("Agencia: 404");
+		lblCupomAgencia.setText("Agencia:"+contaDestinatario.getAgencia());
 	}
+
+
+
+	public void geraComprovante()
+	{
+		try {
+			Comprovante.Transferencia(contaDestinatario,transferencia);
+		} catch (IOException e) {
+			System.out.println("erro ao gerar o comprovante");
+			e.printStackTrace();
+		}
+	}
+	
+
+
+
+
+
 }

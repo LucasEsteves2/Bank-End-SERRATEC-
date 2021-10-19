@@ -488,14 +488,7 @@ public class Saque extends JFrame {
 	public void exibeCupomFiscal() {
 		
 		
-		
-		
-		try {
-			Comprovante.saque(contaRemetente,valorSaque);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		geraComprovante();
 		
 		lblValor.setVisible(false);
 		txtValor.setVisible(false);
@@ -505,15 +498,24 @@ public class Saque extends JFrame {
 
 		imgMaquina.setIcon(new ImageIcon("C:\\Users\\Esteves\\Pictures\\BANKEND\\macahdoo98.png"));
 		lblCupomNome.setText("Titular:" + nome1 + " " + sobrenome);
-		lblCupomContaa.setText("Conta:12345");
+		lblCupomContaa.setText("Conta"+ contaRemetente.getNumero());
 		lblCupomFavorecido.setText("Favorecido");
-		lblCupomTipoConta.setText("Transferencia em Conta: Corrente");
-		lblCupomAgencia.setText("Agencia: 404");
+		lblCupomTipoConta.setText("Transferencia em Conta:");
+		lblCupomAgencia.setText("Agencia: "+contaRemetente.getAgencia());
 		
 		
 		
 	}
 	
+	public void geraComprovante()
+	{
+		try {
+			Comprovante.saque(contaRemetente,valorSaque);
+		} catch (IOException e) {
+			System.out.println("erro ao gerar o comprovante");
+			e.printStackTrace();
+		}
+	}
 	
 	
 	
