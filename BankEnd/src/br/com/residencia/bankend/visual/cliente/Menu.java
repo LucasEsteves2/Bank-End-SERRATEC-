@@ -147,28 +147,28 @@ public class Menu extends JFrame {
 		txtMedico_1_1.setBounds(68, 16, 115, 22);
 		painelConta.add(txtMedico_1_1);
 
-		JPanel painelTransferencia = new JPanel();
+		JPanel painelTransacao = new JPanel();
 
-		painelTransferencia.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 0)));
-		painelTransferencia.setLayout(null);
-		painelTransferencia.setBackground(Color.WHITE);
-		painelTransferencia.setBounds(-1, 196, 245, 56);
-		panel.add(painelTransferencia);
+		painelTransacao.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 0)));
+		painelTransacao.setLayout(null);
+		painelTransacao.setBackground(Color.WHITE);
+		painelTransacao.setBounds(-1, 196, 245, 56);
+		panel.add(painelTransacao);
 
 		JLabel imgPaciente_1 = new JLabel("");
 		imgPaciente_1.setIcon(new ImageIcon("C:\\Users\\Esteves\\Downloads\\atm.png"));
 		imgPaciente_1.setBounds(23, 12, 32, 32);
-		painelTransferencia.add(imgPaciente_1);
+		painelTransacao.add(imgPaciente_1);
 
 		JLabel lblNewLabel_2_1 = new JLabel("");
 		lblNewLabel_2_1.setBackground(Color.GREEN);
 		lblNewLabel_2_1.setBounds(79, 16, 0, 0);
-		painelTransferencia.add(lblNewLabel_2_1);
+		painelTransacao.add(lblNewLabel_2_1);
 
 		JLabel txtMedico_1 = new JLabel("Transa\u00E7\u00F5es");
 		txtMedico_1.setFont(new Font("Segoe UI", Font.BOLD, 16));
 		txtMedico_1.setBounds(68, 16, 103, 22);
-		painelTransferencia.add(txtMedico_1);
+		painelTransacao.add(txtMedico_1);
 
 		JLabel lblBackground = new JLabel("");
 		lblBackground.setIcon(
@@ -196,13 +196,13 @@ public class Menu extends JFrame {
 
 		// evento click botao transferencia
 
-		painelTransferencia.addMouseListener(new MouseAdapter() {
+		painelTransacao.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 
 				MenuTransacaos telaTransacao = new MenuTransacaos(con, conta);
 				telaTransacao.setVisible(true);
-
+				dispose();
 			}
 		});
 		

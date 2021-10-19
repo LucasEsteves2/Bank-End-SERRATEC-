@@ -7,6 +7,8 @@ import java.awt.Label;
 import java.awt.Panel;
 import java.awt.SystemColor;
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.sql.Connection;
@@ -24,6 +26,7 @@ import javax.swing.border.MatteBorder;
 
 import br.com.residencia.bankend.contas.Contas;
 import br.com.residencia.bankend.visual.TelaLogin;
+import javax.swing.JButton;
 
 public class MinhaConta extends JFrame {
 
@@ -371,6 +374,10 @@ public class MinhaConta extends JFrame {
 		lblNome.setText(conta.getCliente().getNome());
 		lblCpf.setText(conta.getCliente().getCpf());
 		lblSobrenomee.setText(conta.getCliente().getSobreNome());
+		
+		JButton btnRendimento = new JButton("New button");
+		btnRendimento.setBounds(715, 564, 120, 50);
+		lblSobrenome.add(btnRendimento);
 
 		imgExibirSaldo.addMouseListener(new MouseAdapter() {
 			@Override
@@ -429,7 +436,17 @@ public class MinhaConta extends JFrame {
 				}
 			}
 		});
-
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 	}
 
 	public void menu() {
@@ -466,8 +483,4 @@ public class MinhaConta extends JFrame {
 		});
 
 	}
-	
-	
-	
-
 }
