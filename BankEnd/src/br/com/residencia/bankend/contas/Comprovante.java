@@ -29,7 +29,7 @@ public class Comprovante {
 		bw.newLine();
 		bw.write( "conta favorecida :  "+conta.getNumero() );
 		bw.newLine();
-		bw.write( "valor do depósito : "+"R$ "+valor );
+		bw.write( "valor do depósito : "+"R$ "+String.format("%.2f",valor) );
 		bw.newLine();
 		}
 		
@@ -38,13 +38,13 @@ public class Comprovante {
 			bw.newLine();
 			bw.write( "Operação realizada : "+ "DEPÓSITO" );
 			bw.newLine();
-			bw.write( "taxa da operação : "+ "R$" + "0.10");
+			bw.write( "taxa da operação : "+ "R$" + "0,10");
 			bw.newLine();
 			bw.write( "favorecido  "+conta.getCliente().getNome() );
 			bw.newLine();
 			bw.write( "conta favorecida :  "+conta.getNumero() );
 			bw.newLine();
-			bw.write( "valor do depósito : "+"R$ "+valor );
+			bw.write( "valor do depósito : "+"R$ "+String.format("%.2f",valor) );
 			bw.newLine();
 		
 					
@@ -68,7 +68,7 @@ public class Comprovante {
 		bw.newLine();
 		bw.write( "Operação realizada : "+ "Saque" );
 		bw.newLine();
-		bw.write( "valor do saque : "+"R$ "+valor );
+		bw.write( "valor do saque : "+"R$ "+String.format("%.2f",valor) );
 		bw.newLine();
 		bw.write( "Saldo  atual:  "+conta.getSaldo() );
 		
@@ -80,7 +80,7 @@ public class Comprovante {
 		bw.newLine();
 		bw.write( "taxa da operação : "+"R$ "+"0.10" );
 		bw.newLine();
-		bw.write( "valor do saque : "+"R$ "+valor );
+		bw.write( "valor do saque : "+"R$ "+String.format("%.2f",valor) );
 		bw.newLine();
 		bw.write( "Saldo  atual:  "+"R$ "+conta.getSaldo() );
 		
@@ -103,7 +103,7 @@ public class Comprovante {
 		bw.newLine();
 		bw.write( "Operação realizada : "+ "Transferência" );
 		bw.newLine();
-		bw.write( "valor da transferência: "+"R$ "+valor);
+		bw.write( "valor da transferência: "+"R$ "+String.format("%.2f",valor));
 		bw.newLine();
 		bw.write( "favorecido  "+conta.getCliente().getNome() );
 		bw.newLine();
@@ -116,7 +116,7 @@ public class Comprovante {
 			bw.newLine();
 			bw.write( "taxa da operação : "+"R$ "+"0.20" );
 			bw.newLine();
-			bw.write( "valor da transferência: "+"R$ "+valor);
+			bw.write( "valor da transferência: "+"R$ "+String.format("%.2f",valor));
 			bw.newLine();
 			bw.write( "favorecido  "+conta.getCliente().getNome() );
 			bw.newLine();
@@ -128,24 +128,51 @@ public class Comprovante {
 		}
 	
 	public static void tributos (ContaCorrente conta,Double valor) throws IOException {
+		double saqueTotal= conta.getTributos().get(0).getValor()*0.10;
+		double depositoTotal= conta.getTributos().get(1).getValor()*0.10;
+		double trasnfenciaTotal=conta.getTributos().get(2).getValor()*0.20;;
 		
 		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy.MM.dd HH.mm.ss");
 		String data = dtf.format(LocalDateTime.now());
 		File arquivo = new File( "C:\\temp\\"+data+"  tributos.txt" );
 		arquivo.createNewFile();
 		
+		
 		FileWriter fw = new FileWriter( arquivo );
 		BufferedWriter bw = new BufferedWriter( fw );
 		
 		if(conta.tipo.equalsIgnoreCase("corrente")) {
-		bw.write( "--------------- tributo --------------- ");
-		for(int i = 0 ;i<=2;i++) {
+		bw.write( "------------------------------------------------------------ tributos ------------------------------------------------------------");
+		bw.newLine();
+		bw.write( "--------------- Taxas ---------------");
+		bw.newLine();
+		bw.write( "valor cobrado por depósito : R$:0,10");
+		bw.newLine();
+		bw.write( "valor cobrado por saque : R$:0,10");
+		bw.newLine();
+		bw.write( "valor cobrado por transferencia: R$:0,20");
+		bw.newLine();
+		bw.newLine();
+		bw.write( "--------------- Gastos ---------------");
+		
+		
+		for(int i = 0 ;i<=1;i++) {
 		bw.newLine();
 		bw.write( "numero de "+conta.getTributos().get(i).getNome()+" feitos : " +conta.getTributos().get(i).getValor());
 		bw.newLine();
-		bw.write( "valor gasto em  "+ conta.getTributos().get(i).getNome() +" : "+" R$ "+(conta.getTributos().get(i).getValor()*0.10)  );
+		bw.write( "valor gasto em  "+ conta.getTributos().get(i).getNome() +" : "+" R$ "+String.format("%.2f",conta.getTributos().get(i).getValor()*0.10)  );
+		bw.newLine();
 		}
-
+		bw.newLine();
+		bw.write( "numero de "+conta.getTributos().get(2).getNome()+" feitos : " +conta.getTributos().get(2).getValor());
+		bw.newLine();
+		bw.write( "valor gasto em  "+ conta.getTributos().get(2).getNome() +" : "+" R$ "+String.format("%.2f",conta.getTributos().get(2).getValor()*0.20)  );
+		bw.newLine();
+		bw.newLine();
+		bw.write( "--------------- Total ---------------");
+		bw.newLine();
+		bw.write( "gastos totais :  R$"+String.format("%.2f",saqueTotal+depositoTotal+trasnfenciaTotal));
+		
 		bw.close();
 		fw.close();
 	}
