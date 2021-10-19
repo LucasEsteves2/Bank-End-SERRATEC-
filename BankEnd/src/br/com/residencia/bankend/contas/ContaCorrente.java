@@ -12,6 +12,14 @@ public class ContaCorrente extends Contas {
 
 	}
 
+	public ArrayList<Tributos> getTributos() {
+		return tributos;
+	}
+
+	public void setTributos(ArrayList<Tributos> tributos) {
+		this.tributos = tributos;
+	}
+
 	@Override
 	public boolean saque(double valor,Contas remetente) {
 

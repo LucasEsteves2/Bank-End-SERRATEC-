@@ -338,7 +338,7 @@ public class MinhaConta extends JFrame {
 		lblSobrenome.add(imgExibirSaldo);
 
 		JLabel lblBackground = new JLabel("");
-		lblBackground.setIcon(new ImageIcon("C:\\Users\\Esteves\\Pictures\\bg.png"));
+		lblBackground.setIcon(new ImageIcon("C:\\Users\\Esteves\\Desktop\\PSD\\aaaaaaaaaaaaaaa.jpg"));
 		lblBackground.setBounds(235, 28, 1134, 711);
 		contentPane.add(lblBackground);
 

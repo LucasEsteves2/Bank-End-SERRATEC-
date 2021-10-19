@@ -1,6 +1,7 @@
 package br.com.residencia.bankend.bd;
 
 import java.awt.TextArea;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -13,9 +14,11 @@ import java.util.TreeSet;
 import javax.swing.JOptionPane;
 
 import br.com.residencia.bankend.clientes.Cliente;
+import br.com.residencia.bankend.contas.Comprovante;
 import br.com.residencia.bankend.contas.ContaCorrente;
 import br.com.residencia.bankend.contas.ContaPoupanca;
 import br.com.residencia.bankend.contas.Contas;
+import br.com.residencia.bankend.contas.Tributos;
 import br.com.residencia.bankend.funcionarios.Diretor;
 import br.com.residencia.bankend.funcionarios.Funcionario;
 import br.com.residencia.bankend.funcionarios.Gerente;
@@ -363,6 +366,9 @@ public class Query {
 				st.setInt(1, qtdTransf + 1);
 				st.setInt(2, remetente.getId());
 				st.executeUpdate();
+				
+				
+				totalTributo(remetente);
 			}
 
 		} catch (SQLException e) {
@@ -406,6 +412,10 @@ public class Query {
 				st.setInt(1, qtdTransf + 1);
 				st.setInt(2, contaDestinatario.getId());
 				st.executeUpdate();
+				
+				
+				totalTributo(contaDestinatario);
+				
 			}
 
 		} catch (SQLException e) {
@@ -446,6 +456,7 @@ public class Query {
 				st.setInt(2, contaDestinatario.getId());
 				st.executeUpdate();
 
+				totalTributo(contaDestinatario);
 			}
 
 		}
@@ -712,6 +723,49 @@ public class Query {
 			}
 
 		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
+
+	public void totalTributo(Contas conta) {
+
+		ArrayList<Contas> contas = new ArrayList<>();
+
+		try {
+			st = conexao.prepareStatement("Select *from contas where idContas = ?");
+			st.setInt(1, conta.getId());
+			st.execute();
+
+			rs = st.getResultSet();
+
+			while (rs.next()) {
+				int quantidadeTransf = rs.getInt("quantidadeTransf");
+				int quantidadeSaque = rs.getInt("quantidadeSaque");
+				int quantidadeDeposito = rs.getInt("quantidadeDeposito");
+
+				Tributos transferencia = new Tributos("transferencia", quantidadeTransf);
+				Tributos saque = new Tributos("saque", quantidadeSaque);
+				Tributos deposito = new Tributos("deposito", quantidadeDeposito);
+
+				ArrayList<Tributos> trib = new ArrayList<>();
+				trib.add(saque);
+				trib.add(deposito);
+				trib.add(transferencia);
+
+				ContaCorrente corrente = (ContaCorrente) conta;
+
+				corrente.setTributos(trib);
+
+				Comprovante.tributos(corrente, null);
+
+			}
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
