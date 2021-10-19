@@ -193,7 +193,6 @@ public class Menu extends JFrame {
 		}
 
 		// Click no botao Conta
-
 		painelConta.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -219,9 +218,9 @@ public class Menu extends JFrame {
 		painelSeguro.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				Deposito telaDeposito = new Deposito(con, conta);
-				telaDeposito.setVisible(true);
-				dispose();
+				TelaSeguroVida seguro = new TelaSeguroVida(conta, con);
+				seguro.setLocationRelativeTo(null);
+				seguro.setVisible(true);
 			}
 		});
 

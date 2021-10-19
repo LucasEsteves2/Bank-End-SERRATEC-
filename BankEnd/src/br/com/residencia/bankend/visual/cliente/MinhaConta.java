@@ -60,11 +60,6 @@ public class MinhaConta extends JFrame {
 		contentPane.add(panel);
 		panel.setLayout(null);
 
-		JLabel lblLogo = new JLabel("New label");
-		lblLogo.setBounds(-55, -34, 421, 225);
-		lblLogo.setIcon(new ImageIcon(MinhaConta.class.getResource("/br/com/residencia/bankend/imagens/asx.png")));
-		panel.add(lblLogo);
-
 		painelSeguro = new JPanel();
 
 		painelSeguro.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 0)));
@@ -77,7 +72,7 @@ public class MinhaConta extends JFrame {
 		imgPaciente.setHorizontalTextPosition(SwingConstants.CENTER);
 		imgPaciente.setHorizontalAlignment(SwingConstants.CENTER);
 		imgPaciente.setIcon(
-				new ImageIcon(MinhaConta.class.getResource("/br/com/residencia/bankend/imagens/doctor (4).png")));
+				new ImageIcon("C:\\Users\\Esteves\\Downloads\\seguro-de-vida.png"));
 		imgPaciente.setBounds(23, 12, 32, 32);
 		painelSeguro.add(imgPaciente);
 
@@ -145,7 +140,7 @@ public class MinhaConta extends JFrame {
 
 		JLabel imgPaciente_1_1 = new JLabel("");
 		imgPaciente_1_1.setIcon(
-				new ImageIcon(MinhaConta.class.getResource("/br/com/residencia/bankend/imagens/health-check.png")));
+				new ImageIcon("C:\\Users\\Esteves\\Downloads\\cartao-de-credito (1).png"));
 		imgPaciente_1_1.setBounds(23, 12, 32, 32);
 		painelConta.add(imgPaciente_1_1);
 
@@ -158,6 +153,11 @@ public class MinhaConta extends JFrame {
 		txtMedico_1_1.setFont(new Font("Segoe UI", Font.BOLD, 16));
 		txtMedico_1_1.setBounds(68, 16, 115, 22);
 		painelConta.add(txtMedico_1_1);
+		
+		JLabel lblLogo = new JLabel("");
+		lblLogo.setBounds(10, -180, 421, 225);
+		painelConta.add(lblLogo);
+		lblLogo.setIcon(new ImageIcon("C:\\Users\\Esteves\\Pictures\\BANKEND\\mauqina\\logo2.png"));
 
 		painelTransferencia = new JPanel();
 		painelTransferencia.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 0)));
@@ -168,7 +168,7 @@ public class MinhaConta extends JFrame {
 
 		JLabel imgPaciente_1 = new JLabel("");
 		imgPaciente_1.setIcon(
-				new ImageIcon(MinhaConta.class.getResource("/br/com/residencia/bankend/imagens/examination.png")));
+				new ImageIcon("C:\\Users\\Esteves\\Downloads\\atm.png"));
 		imgPaciente_1.setBounds(23, 12, 32, 32);
 		painelTransferencia.add(imgPaciente_1);
 
@@ -181,6 +181,11 @@ public class MinhaConta extends JFrame {
 		txtMedico_1.setFont(new Font("Segoe UI", Font.BOLD, 16));
 		txtMedico_1.setBounds(68, 16, 103, 22);
 		painelTransferencia.add(txtMedico_1);
+		
+		JLabel lblNewLabel_1 = new JLabel("");
+		lblNewLabel_1.setBounds(10, 11, 246, 136);
+		panel.add(lblNewLabel_1);
+		lblNewLabel_1.setIcon(new ImageIcon("C:\\Users\\Esteves\\Pictures\\BANKEND\\mauqina\\logo2.png"));
 
 		Panel lblSobrenome = new Panel();
 
@@ -278,56 +283,9 @@ public class MinhaConta extends JFrame {
 		lblNewLabel_6.setBounds(871, 40, 200, 50);
 		lblSobrenome.add(lblNewLabel_6);
 
-		JLabel lblNewLabel_9 = new JLabel("Status");
-		lblNewLabel_9.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		lblNewLabel_9.setBounds(82, 416, 52, 23);
-		lblSobrenome.add(lblNewLabel_9);
-
-		JLabel lblNewLabel_9_1 = new JLabel("Nome do Cliente");
-		lblNewLabel_9_1.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		lblNewLabel_9_1.setBounds(239, 416, 131, 22);
-		lblSobrenome.add(lblNewLabel_9_1);
-
-		JLabel lblNewLabel_10 = new JLabel("ATIVO");
-		lblNewLabel_10.setForeground(new Color(0, 102, 51));
-		lblNewLabel_10.setFont(new Font("Tahoma", Font.BOLD, 13));
-		lblNewLabel_10.setBounds(83, 466, 40, 16);
-		lblSobrenome.add(lblNewLabel_10);
-
-		JLabel lblNewLabel_11 = new JLabel("Lucas Esteves");
-		lblNewLabel_11.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblNewLabel_11.setBounds(244, 464, 213, 19);
-		lblSobrenome.add(lblNewLabel_11);
-
-		JLabel lblNewLabel_11_1 = new JLabel("Natalino Esteves");
-		lblNewLabel_11_1.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblNewLabel_11_1.setBounds(244, 516, 153, 14);
-		lblSobrenome.add(lblNewLabel_11_1);
-
-		JLabel lblNewLabel_10_1 = new JLabel("ATIVO");
-		lblNewLabel_10_1.setForeground(new Color(0, 102, 51));
-		lblNewLabel_10_1.setFont(new Font("Tahoma", Font.BOLD, 13));
-		lblNewLabel_10_1.setBounds(82, 516, 40, 16);
-		lblSobrenome.add(lblNewLabel_10_1);
-
-		JLabel lblNewLabel_9_1_1 = new JLabel("Saldo");
-		lblNewLabel_9_1_1.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		lblNewLabel_9_1_1.setBounds(473, 417, 131, 22);
-		lblSobrenome.add(lblNewLabel_9_1_1);
-
-		JLabel lblNewLabel_12 = new JLabel("R$  950,00");
-		lblNewLabel_12.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblNewLabel_12.setBounds(461, 464, 69, 17);
-		lblSobrenome.add(lblNewLabel_12);
-
-		JLabel lblNewLabel_12_1 = new JLabel("R$  920,00");
-		lblNewLabel_12_1.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblNewLabel_12_1.setBounds(461, 515, 69, 17);
-		lblSobrenome.add(lblNewLabel_12_1);
-
-		JLabel lblNewLabel_13 = new JLabel("HISTORICO ");
+		JLabel lblNewLabel_13 = new JLabel("Simular Rendimento");
 		lblNewLabel_13.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblNewLabel_13.setBounds(516, 346, 91, 20);
+		lblNewLabel_13.setBounds(516, 346, 165, 20);
 		lblSobrenome.add(lblNewLabel_13);
 
 		JLabel imgExibirSaldo = new JLabel("");
@@ -343,20 +301,18 @@ public class MinhaConta extends JFrame {
 		contentPane.add(lblBackground);
 
 		JLabel lblNome = new JLabel("NOMEEEEEEEEEEEEE");
+		lblNome.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		lblNome.setBounds(38, 105, 101, 14);
 		lblSobrenome.add(lblNome);
 
-		JLabel lblMenu = new JLabel("New label");
-		lblMenu.setIcon(new ImageIcon(MinhaConta.class.getResource("/br/com/residencia/bankend/imagens/2.jpg")));
-		lblMenu.setBounds(6, 11, 232, 714);
-		panel.add(lblMenu);
-
 		JLabel lblCpf = new JLabel("New label");
-		lblCpf.setBounds(197, 105, 91, 14);
+		lblCpf.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblCpf.setBounds(275, 105, 138, 14);
 		lblSobrenome.add(lblCpf);
 
 		JLabel lblSobrenomee = new JLabel("New label");
-		lblSobrenomee.setBounds(103, 105, 82, 14);
+		lblSobrenomee.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblSobrenomee.setBounds(149, 105, 104, 14);
 		lblSobrenome.add(lblSobrenomee);
 
 		// ANIMAÇÃO AO PASSAR O MOUSE ( Escutador de click-mouse)
@@ -377,7 +333,7 @@ public class MinhaConta extends JFrame {
 
 		JButton btnRendimento = new JButton("New button");
 		btnRendimento.setVisible(false);
-		btnRendimento.setBounds(951, 556, 120, 50);
+		btnRendimento.setBounds(526, 377, 120, 32);
 		lblSobrenome.add(btnRendimento);
 
 		btnRendimento.addMouseListener(new MouseAdapter() {

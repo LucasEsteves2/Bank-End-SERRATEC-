@@ -399,7 +399,7 @@ public class Saque extends JFrame {
 		String nome = contaRemetente.getCliente().getNome();
 		String valor = txtValor.getText();
 
-		int i = JOptionPane.showConfirmDialog(null, "Valor do saque: " + valor + "$\n \n \t \t \t  Deseja continuar?",
+		int i = JOptionPane.showConfirmDialog(null, "Valor do saque: " + valor + "$\n Taxa:0.10 $\n \n \t \t \t  Deseja continuar?",
 				"Saque", JOptionPane.OK_CANCEL_OPTION);
 		// se clicar em sim
 		if (i == JOptionPane.YES_OPTION) {

@@ -508,7 +508,7 @@ public class Transferencia extends JFrame {
 
 			i = JOptionPane
 					.showConfirmDialog(null,
-							"\t Destinatario:" + nome + " \n \t Valor da transferencia:" + valor + "$ \n \t Taxa:0,10$ "
+							"\t Destinatario:" + nome + " \n \t Valor da transferencia:" + valor + "$ \n \t Taxa:0.20$ "
 									+ "\n \n \t \t \t  Deseja continuar?",
 							"Transferencia", JOptionPane.OK_CANCEL_OPTION);
 

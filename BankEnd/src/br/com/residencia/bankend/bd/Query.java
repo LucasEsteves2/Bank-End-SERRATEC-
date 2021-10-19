@@ -420,6 +420,15 @@ public class Query {
 				totalTributo(remetente);
 
 			}
+			
+			//diminuindo a taxa 
+			st = conexao.prepareStatement("UPDATE CONTAS SET SALDO = ? WHERE NUMERO=?");
+			st.setDouble(1, remetente.getSaldo());
+			st.setString(2, remetente.getNumero());
+			st.executeUpdate();
+			
+			
+			
 
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

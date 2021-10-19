@@ -48,43 +48,10 @@ public class MenuFuncionario extends JFrame {
 		contentPane.add(panel);
 		panel.setLayout(null);
 
-		JButton btnRelatorios = new JButton("relatorios");
-
-		btnRelatorios.setBounds(41, 26, 124, 23);
-		panel.add(btnRelatorios);
-
 		JLabel lblLogo = new JLabel("New label");
 		lblLogo.setBounds(-55, 11, 421, 130);
 		lblLogo.setIcon(new ImageIcon(MenuFuncionario.class.getResource("/br/com/residencia/bankend/imagens/asx.png")));
 		panel.add(lblLogo);
-
-		JPanel painelSeguro = new JPanel();
-
-		painelSeguro.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 0)));
-		painelSeguro.setBounds(-1, 252, 243, 56);
-		painelSeguro.setBackground(Color.WHITE);
-		panel.add(painelSeguro);
-		painelSeguro.setLayout(null);
-
-		JLabel imgPaciente = new JLabel("");
-		imgPaciente.setHorizontalTextPosition(SwingConstants.CENTER);
-		imgPaciente.setHorizontalAlignment(SwingConstants.CENTER);
-		imgPaciente.setIcon(
-				new ImageIcon(MenuFuncionario.class.getResource("/br/com/residencia/bankend/imagens/doctor (4).png")));
-		imgPaciente.setBounds(23, 12, 32, 32);
-		painelSeguro.add(imgPaciente);
-
-		JLabel lblNewLabel_2 = new JLabel("");
-		lblNewLabel_2.setBounds(79, 16, 0, 0);
-		painelSeguro.add(lblNewLabel_2);
-		lblNewLabel_2.setBackground(new Color(0, 255, 0));
-
-		JLabel txtMedico = new JLabel("Seguro de vida");
-		txtMedico.setHorizontalTextPosition(SwingConstants.CENTER);
-		txtMedico.setHorizontalAlignment(SwingConstants.CENTER);
-		txtMedico.setBounds(68, 16, 114, 22);
-		txtMedico.setFont(new Font("Segoe UI", Font.BOLD, 16));
-		painelSeguro.add(txtMedico);
 
 		Panel PainelVoltar = new Panel();
 		PainelVoltar.setBackground(new Color(248, 248, 255));
@@ -116,7 +83,7 @@ public class MenuFuncionario extends JFrame {
 		PainelFechar.setBorder(new MatteBorder(1, 1, 2, 1, (Color) new Color(0, 0, 0)));
 		PainelFechar.setLayout(null);
 		PainelFechar.setBackground(Color.WHITE);
-		PainelFechar.setBounds(-1, 308, 246, 56);
+		PainelFechar.setBounds(-1, 252, 246, 56);
 		panel.add(PainelFechar);
 
 		JLabel imgPaciente_1_1_1 = new JLabel("");
@@ -154,10 +121,10 @@ public class MenuFuncionario extends JFrame {
 		lblNewLabel_2_1_1.setBounds(79, 16, 0, 0);
 		painelRelatorios.add(lblNewLabel_2_1_1);
 
-		JLabel txtMedico_1_1 = new JLabel("Relatorios");
-		txtMedico_1_1.setFont(new Font("Segoe UI", Font.BOLD, 16));
-		txtMedico_1_1.setBounds(68, 16, 115, 22);
-		painelRelatorios.add(txtMedico_1_1);
+		JLabel txtRelatorios = new JLabel("Relatorios");
+		txtRelatorios.setFont(new Font("Segoe UI", Font.BOLD, 16));
+		txtRelatorios.setBounds(68, 16, 115, 22);
+		painelRelatorios.add(txtRelatorios);
 
 		JPanel painelClientes = new JPanel();
 
@@ -178,13 +145,13 @@ public class MenuFuncionario extends JFrame {
 		lblNewLabel_2_1.setBounds(79, 16, 0, 0);
 		painelClientes.add(lblNewLabel_2_1);
 
-		JLabel txtMedico_1 = new JLabel("Clientes");
-		txtMedico_1.setFont(new Font("Segoe UI", Font.BOLD, 16));
-		txtMedico_1.setBounds(68, 16, 103, 22);
-		painelClientes.add(txtMedico_1);
+		JLabel txtClientes = new JLabel("Clientes");
+		txtClientes.setFont(new Font("Segoe UI", Font.BOLD, 16));
+		txtClientes.setBounds(68, 16, 103, 22);
+		painelClientes.add(txtClientes);
 
 		JLabel lblBackground = new JLabel("");
-		lblBackground.setIcon(new ImageIcon("C:\\Users\\Esteves\\Pictures\\123232312.jpg"));
+		lblBackground.setIcon(new ImageIcon("C:\\Users\\Esteves\\Pictures\\BANKEND\\mauqina\\12332.jpg"));
 		lblBackground.setBounds(235, 28, 1134, 711);
 		contentPane.add(lblBackground);
 

@@ -76,6 +76,11 @@ public class TelaRelatorios extends JFrame {
 		contentPane.add(panel);
 		panel.setLayout(null);
 
+		JLabel painelRelatorios = new JLabel("");
+		painelRelatorios.setIcon(new ImageIcon("C:\\Users\\Esteves\\Pictures\\BANKEND\\mauqina\\logo.png"));
+		painelRelatorios.setBounds(11, 0, 232, 136);
+		panel.add(painelRelatorios);
+
 		JPanel painelSeguro = new JPanel();
 		painelSeguro.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 0)));
 		painelSeguro.setBounds(-1, 252, 243, 56);
@@ -156,7 +161,7 @@ public class TelaRelatorios extends JFrame {
 		JPanel PainelConsulta = new JPanel();
 		PainelConsulta.setBorder(new MatteBorder(2, 1, 1, 1, (Color) new Color(0, 0, 0)));
 		PainelConsulta.setLayout(null);
-		PainelConsulta.setBackground(Color.WHITE);
+		PainelConsulta.setBackground(Color.LIGHT_GRAY);
 		PainelConsulta.setBounds(-1, 140, 246, 56);
 		panel.add(PainelConsulta);
 
@@ -171,19 +176,15 @@ public class TelaRelatorios extends JFrame {
 		lblNewLabel_2_1_1.setBounds(79, 16, 0, 0);
 		PainelConsulta.add(lblNewLabel_2_1_1);
 
-		JLabel txtMedico_1_1 = new JLabel("RELATORIOS");
-		txtMedico_1_1.setFont(new Font("Segoe UI", Font.BOLD, 16));
-		txtMedico_1_1.setBounds(68, 16, 115, 22);
-		PainelConsulta.add(txtMedico_1_1);
-		
-				JLabel painelRelatorios = new JLabel("");
-				painelRelatorios.setBounds(23, -132, 196, 136);
-				PainelConsulta.add(painelRelatorios);
+		JLabel txtRelatorio = new JLabel("Relatorios");
+		txtRelatorio.setFont(new Font("Segoe UI", Font.BOLD, 16));
+		txtRelatorio.setBounds(68, 16, 115, 22);
+		PainelConsulta.add(txtRelatorio);
 
 		JPanel painelClientes = new JPanel();
 		painelClientes.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 0)));
 		painelClientes.setLayout(null);
-		painelClientes.setBackground(new Color(240, 248, 255));
+		painelClientes.setBackground(Color.WHITE);
 		painelClientes.setBounds(-1, 196, 245, 56);
 		panel.add(painelClientes);
 
@@ -198,10 +199,10 @@ public class TelaRelatorios extends JFrame {
 		lblNewLabel_2_1.setBounds(79, 16, 0, 0);
 		painelClientes.add(lblNewLabel_2_1);
 
-		JLabel txtMedico_1 = new JLabel("CLIENTES");
-		txtMedico_1.setFont(new Font("Segoe UI", Font.BOLD, 16));
-		txtMedico_1.setBounds(68, 16, 90, 22);
-		painelClientes.add(txtMedico_1);
+		JLabel txtClientes = new JLabel("Clientes");
+		txtClientes.setFont(new Font("Segoe UI", Font.BOLD, 16));
+		txtClientes.setBounds(68, 16, 90, 22);
+		painelClientes.add(txtClientes);
 
 		JPanel panel_1 = new JPanel();
 		panel_1.setBounds(235, 30, 1139, 692);
@@ -263,7 +264,7 @@ public class TelaRelatorios extends JFrame {
 
 		JLabel lblCargo = new JLabel("Cargo:");
 		lblCargo.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblCargo.setBounds(955, 31, 129, 20);
+		lblCargo.setBounds(955, 31, 157, 20);
 		panel_1.add(lblCargo);
 
 		JLabel lblBackground = new JLabel("");
@@ -272,19 +273,24 @@ public class TelaRelatorios extends JFrame {
 		panel_1.add(lblBackground);
 
 		JLabel lblValorTotal = new JLabel("VALOR TOTAL:");
+		lblValorTotal.setVisible(false);
 		lblValorTotal.setHorizontalAlignment(SwingConstants.CENTER);
 		lblValorTotal.setForeground(Color.RED);
 		lblValorTotal.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		lblValorTotal.setBounds(26, 81, 1066, 44);
 		panel_1.add(lblValorTotal);
 
-		JLabel lblMesmaAgencia = new JLabel("New label");
-		lblMesmaAgencia.setBounds(687, 100, 195, 14);
+		JLabel lblMesmaAgencia = new JLabel("");
+		lblMesmaAgencia.setHorizontalAlignment(SwingConstants.CENTER);
+		lblMesmaAgencia.setForeground(Color.RED);
+		lblMesmaAgencia.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		lblMesmaAgencia.setVisible(false);
+		lblMesmaAgencia.setBounds(-1, 91, 1129, 23);
 		panel_1.add(lblMesmaAgencia);
 
 		lblNome.setText("Nome: " + fun.getNome());
 		lblCpf.setText("Cpf: " + fun.getCpf());
-		lblCargo.setText("Cargo:" + fun.getCargo());
+		
 		lblEmail.setText("E-mail:" + fun.getEmail());
 
 		int acesso = fun.getAcesso();
@@ -295,12 +301,15 @@ public class TelaRelatorios extends JFrame {
 		case 1:
 			System.out.println("Bem vindo GERENTE ");
 
+			lblMesmaAgencia.setVisible(true);
+
 			Gerente gerente = (Gerente) fun;
 
 			Integer quantidade = bd.qtdAgencia(gerente.getIdAgencia());
-			lblMesmaAgencia.setText("a quantidade e :" + quantidade.toString());
+			lblMesmaAgencia.setText("A quantidade de Contas que voce gerencia é de:" + quantidade.toString());
 			lblFotoCargo.setText("GERENTE");
 
+			lblCargo.setText("Cargo:GERENTE" );
 			break;
 		case 2:
 
@@ -311,12 +320,12 @@ public class TelaRelatorios extends JFrame {
 			// metodo que adiciona no componente
 			bd.addDadosRelatorios(funcionario_tableModel, conta);
 			lblFotoCargo.setText("DIRETOR");
-
-
+			lblCargo.setText("Cargo:DIRETOR" );
 			break;
 
 		case 3:
 			System.out.println("Bem vindo Presidente");
+			lblValorTotal.setVisible(true);
 			// retorna todas as cotnas na minha lista
 			bd.trazerRelatorio(conta);
 
@@ -329,7 +338,7 @@ public class TelaRelatorios extends JFrame {
 
 			lblValorTotal.setVisible(true);
 			lblFotoCargo.setText("PRESIDENTE");
-			
+			lblCargo.setText("Cargo:PRESIDENTE" );
 			break;
 
 		default:
@@ -341,17 +350,6 @@ public class TelaRelatorios extends JFrame {
 			public void mouseClicked(MouseEvent e) {
 
 				TabelaClientes clientes = new TabelaClientes(con, fun);
-				clientes.setLocationRelativeTo(null);
-				clientes.setVisible(true);
-
-			}
-		});
-
-		painelClientes.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-
-				TelaRelatorios clientes = new TelaRelatorios(con, fun);
 				clientes.setLocationRelativeTo(null);
 				clientes.setVisible(true);
 
