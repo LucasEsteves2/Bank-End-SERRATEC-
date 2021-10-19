@@ -374,27 +374,22 @@ public class MinhaConta extends JFrame {
 		lblNome.setText(conta.getCliente().getNome());
 		lblCpf.setText(conta.getCliente().getCpf());
 		lblSobrenomee.setText(conta.getCliente().getSobreNome());
-		
+
 		JButton btnRendimento = new JButton("New button");
+		btnRendimento.setVisible(false);
 		btnRendimento.setBounds(951, 556, 120, 50);
 		lblSobrenome.add(btnRendimento);
-		
-		
 
 		btnRendimento.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 
-				Rendimento rendi = new Rendimento(con,conta);
-				 rendi.setVisible(true);
+				Rendimento rendi = new Rendimento(con, conta);
+				rendi.setVisible(true);
 
 			}
 		});
-		
-		
-		
-		
-		
+
 		imgExibirSaldo.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -425,9 +420,8 @@ public class MinhaConta extends JFrame {
 
 			}
 		});
-		
-		
-		//metodo com todos os escutadores 
+
+		// metodo com todos os escutadores
 		menu();
 
 		// btn fechar
@@ -452,19 +446,14 @@ public class MinhaConta extends JFrame {
 				}
 			}
 		});
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
+
+		if (conta.getTipo().equals("corrente")) {
+			btnRendimento.setVisible(true);
+		}
+
 	}
 
+	
 	public void menu() {
 		// Click no botao Conta
 

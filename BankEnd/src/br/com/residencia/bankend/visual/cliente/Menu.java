@@ -3,13 +3,10 @@ package br.com.residencia.bankend.visual.cliente;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Frame;
-import java.awt.Label;
 import java.awt.Panel;
-import java.awt.SystemColor;
 import java.awt.Toolkit;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.sql.Connection;
 
 import javax.swing.ImageIcon;
@@ -20,7 +17,6 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
-import javax.swing.border.EtchedBorder;
 import javax.swing.border.MatteBorder;
 
 import br.com.residencia.bankend.bd.Query;
@@ -33,9 +29,10 @@ public class Menu extends JFrame {
 	private JPanel contentPane;
 	private Contas conta;
 	private Connection con;
+
 	public Menu(Connection con, Contas conta) {
-		this.conta=conta;
-		this.con=con;
+		this.conta = conta;
+		this.con = con;
 		setIconImage(Toolkit.getDefaultToolkit()
 				.getImage(Menu.class.getResource("/br/com/residencia/bankend/imagens/hospital.png")));
 		setExtendedState(Frame.MAXIMIZED_BOTH);
@@ -188,11 +185,9 @@ public class Menu extends JFrame {
 
 		// verifica se o cliente logado tem seguro de vida
 
-		
-	
-		if (conta.getSeguro()==null) {
+		if (conta.getSeguro() == null) {
 			cadastraSeguro();
-			
+
 		} else {
 			System.out.println("seguro de vida caralho");
 		}
@@ -255,11 +250,10 @@ public class Menu extends JFrame {
 
 	}
 
-	public void cadastraSeguro()  {
-		
-	
-		
-		int i = JOptionPane.showConfirmDialog(null, "Deseja criar um seguro de vida?", "BANK END", JOptionPane.OK_CANCEL_OPTION);
+	public void cadastraSeguro() {
+
+		int i = JOptionPane.showConfirmDialog(null, "Deseja criar um seguro de vida?", "BANK END",
+				JOptionPane.OK_CANCEL_OPTION);
 
 		// se clicar em sim
 		if (i == JOptionPane.YES_OPTION) {

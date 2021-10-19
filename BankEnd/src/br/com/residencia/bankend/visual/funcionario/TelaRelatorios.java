@@ -55,12 +55,12 @@ public class TelaRelatorios extends JFrame {
 
 	FuncionarioTableModel funcionario_tableModel = new FuncionarioTableModel();
 
-	public TelaRelatorios(Connection con,Funcionario fun) {
+	public TelaRelatorios(Connection con, Funcionario fun) {
 		setTitle("Pacientes");
 
 		this.con = con;
-		setIconImage(Toolkit.getDefaultToolkit()
-				.getImage(TelaRelatorios.class.getResource("/br/com/residencia/bankend/imagens/mask_icon_134856 (2).png")));
+		setIconImage(Toolkit.getDefaultToolkit().getImage(
+				TelaRelatorios.class.getResource("/br/com/residencia/bankend/imagens/mask_icon_134856 (2).png")));
 		setExtendedState(Frame.MAXIMIZED_BOTH);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
@@ -92,7 +92,8 @@ public class TelaRelatorios extends JFrame {
 		JLabel imgPaciente = new JLabel("");
 		imgPaciente.setHorizontalTextPosition(SwingConstants.CENTER);
 		imgPaciente.setHorizontalAlignment(SwingConstants.CENTER);
-		imgPaciente.setIcon(new ImageIcon(TelaRelatorios.class.getResource("/br/com/residencia/bankend/imagens/doctor (4).png")));
+		imgPaciente.setIcon(
+				new ImageIcon(TelaRelatorios.class.getResource("/br/com/residencia/bankend/imagens/doctor (4).png")));
 		imgPaciente.setBounds(23, 12, 32, 32);
 		painelSeguro.add(imgPaciente);
 
@@ -115,9 +116,9 @@ public class TelaRelatorios extends JFrame {
 		PainelVoltar.setLayout(null);
 
 		JLabel lblInicio = new JLabel("");
-		
 
-		lblInicio.setIcon(new ImageIcon(TelaRelatorios.class.getResource("/br/com/residencia/bankend/imagens/pagina-inicial (1).png")));
+		lblInicio.setIcon(new ImageIcon(
+				TelaRelatorios.class.getResource("/br/com/residencia/bankend/imagens/pagina-inicial (1).png")));
 		lblInicio.setBounds(10, -1, 29, 30);
 		PainelVoltar.add(lblInicio);
 
@@ -142,7 +143,8 @@ public class TelaRelatorios extends JFrame {
 		panel.add(PainelFechar);
 
 		JLabel imgPaciente_1_1_1 = new JLabel("");
-		imgPaciente_1_1_1.setIcon(new ImageIcon(TelaRelatorios.class.getResource("/br/com/residencia/bankend/imagens/cancelar.png")));
+		imgPaciente_1_1_1.setIcon(
+				new ImageIcon(TelaRelatorios.class.getResource("/br/com/residencia/bankend/imagens/cancelar.png")));
 		imgPaciente_1_1_1.setBounds(23, 12, 32, 32);
 		PainelFechar.add(imgPaciente_1_1_1);
 
@@ -164,7 +166,8 @@ public class TelaRelatorios extends JFrame {
 		panel.add(PainelConsulta);
 
 		JLabel imgPaciente_1_1 = new JLabel("");
-		imgPaciente_1_1.setIcon(new ImageIcon(TelaRelatorios.class.getResource("/br/com/residencia/bankend/imagens/health-check.png")));
+		imgPaciente_1_1.setIcon(
+				new ImageIcon(TelaRelatorios.class.getResource("/br/com/residencia/bankend/imagens/health-check.png")));
 		imgPaciente_1_1.setBounds(23, 12, 32, 32);
 		PainelConsulta.add(imgPaciente_1_1);
 
@@ -186,7 +189,8 @@ public class TelaRelatorios extends JFrame {
 		panel.add(painelClientes);
 
 		JLabel imgPaciente_1 = new JLabel("");
-		imgPaciente_1.setIcon(new ImageIcon(TelaRelatorios.class.getResource("/br/com/residencia/bankend/imagens/examination.png")));
+		imgPaciente_1.setIcon(
+				new ImageIcon(TelaRelatorios.class.getResource("/br/com/residencia/bankend/imagens/examination.png")));
 		imgPaciente_1.setBounds(23, 12, 32, 32);
 		painelClientes.add(imgPaciente_1);
 
@@ -213,13 +217,11 @@ public class TelaRelatorios extends JFrame {
 
 		scrollPane.setViewportView(jTabelaPaciente);
 
-		
 		Query bd = new Query(con);
-		
-	
 
 		JLabel lblImagemPaciente = new JLabel("");
-		lblImagemPaciente.setIcon(new ImageIcon(TelaRelatorios.class.getResource("/br/com/residencia/bankend/imagens/1s.png")));
+		lblImagemPaciente
+				.setIcon(new ImageIcon(TelaRelatorios.class.getResource("/br/com/residencia/bankend/imagens/1s.png")));
 		lblImagemPaciente.setBounds(0, 553, 288, 172);
 		panel.add(lblImagemPaciente);
 
@@ -231,43 +233,43 @@ public class TelaRelatorios extends JFrame {
 		// Instanciando meu proprio model (jtable)
 
 		jTabelaPaciente.setModel(funcionario_tableModel);
-		
+
 		JLabel lblFoto = new JLabel("");
 		lblFoto.setIcon(new ImageIcon(TelaRelatorios.class.getResource("/br/com/residencia/bankend/imagens/12s.png")));
 		lblFoto.setHorizontalAlignment(SwingConstants.CENTER);
 		lblFoto.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
 		lblFoto.setBounds(28, 24, 95, 101);
 		panel_1.add(lblFoto);
-		
+
 		JLabel lblNewLabel = new JLabel("GERENTE");
 		lblNewLabel.setBounds(51, 31, 46, 14);
 		panel_1.add(lblNewLabel);
-		
+
 		JLabel lblNome = new JLabel("Nome:");
 		lblNome.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		lblNome.setBounds(150, 31, 129, 20);
 		panel_1.add(lblNome);
-		
+
 		JLabel lblCpf = new JLabel("Cpf:");
 		lblCpf.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		lblCpf.setBounds(406, 31, 129, 20);
 		panel_1.add(lblCpf);
-		
+
 		JLabel lblEmail = new JLabel("E-mail:");
 		lblEmail.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		lblEmail.setBounds(687, 31, 220, 20);
 		panel_1.add(lblEmail);
-		
-		JLabel lblNewLabel_1_1_1_1 = new JLabel("Cargo:");
-		lblNewLabel_1_1_1_1.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblNewLabel_1_1_1_1.setBounds(955, 31, 129, 20);
-		panel_1.add(lblNewLabel_1_1_1_1);
-		
+
+		JLabel lblCargo = new JLabel("Cargo:");
+		lblCargo.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblCargo.setBounds(955, 31, 129, 20);
+		panel_1.add(lblCargo);
+
 		JLabel lblBackground = new JLabel("");
 		lblBackground.setBackground(new Color(245, 245, 245));
 		lblBackground.setBounds(0, 0, 0, 0);
 		panel_1.add(lblBackground);
-		
+
 		JLabel lblValorTotal = new JLabel("VALOR TOTAL:");
 		lblValorTotal.setHorizontalAlignment(SwingConstants.CENTER);
 		lblValorTotal.setForeground(Color.RED);
@@ -275,45 +277,17 @@ public class TelaRelatorios extends JFrame {
 		lblValorTotal.setBounds(26, 81, 1066, 44);
 		panel_1.add(lblValorTotal);
 
-		
-		
-		
-		painelClientes.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				
-				TelaRelatorios clientes = new TelaRelatorios(con,fun);
-				clientes.setLocationRelativeTo(null);
-				clientes.setVisible(true);
-				
-				
-			}
-		});
-
-		
-		lblInicio.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				
-				MenuFuncionario telaFuncionario = new MenuFuncionario(con,fun);
-				telaFuncionario.setVisible(true);
-				dispose();
-				
-			}
-		});
-		
-		int acesso = fun.getAcesso();
-
-
-		ArrayList<Contas> conta = new ArrayList<>();
-
-		lblNome.setText("Nome: " + fun.getNome());
-		lblCpf.setText("Cpf: " + fun.getCpf());
-		
 		JLabel lblMesmaAgencia = new JLabel("New label");
 		lblMesmaAgencia.setBounds(687, 100, 195, 14);
 		panel_1.add(lblMesmaAgencia);
-		
+
+		lblNome.setText("Nome: " + fun.getNome());
+		lblCpf.setText("Cpf: " + fun.getCpf());
+		lblCargo.setText("Cargo:" + fun.getCargo());
+		lblEmail.setText("E-mail:" + fun.getEmail());
+
+		int acesso = fun.getAcesso();
+		ArrayList<Contas> conta = new ArrayList<>();
 
 		// Verificando tipo do funcionario
 		switch (acesso) {
@@ -330,8 +304,7 @@ public class TelaRelatorios extends JFrame {
 			System.out.println("Bem vindo Diretor ");
 
 			// metodo que pega todas os nomes/cpf/agencia e armazena dentro de uma lista
-			bd.totalClientes(conta);
-
+			bd.trazerRelatorio(conta);
 			// metodo que adiciona no componente
 			bd.addDadosRelatorios(funcionario_tableModel, conta);
 
@@ -339,16 +312,15 @@ public class TelaRelatorios extends JFrame {
 
 		case 3:
 			System.out.println("Bem vindo Presidente");
-			//retorna todas as cotnas na minha lista
-			bd.totalClientes(conta);
-			
+			// retorna todas as cotnas na minha lista
+			bd.trazerRelatorio(conta);
+
 			// Metodo responsavel por instanciar todos os clientes no Jtable
 			bd.addDadosRelatorios(funcionario_tableModel, conta);
 
 			Double saldoTotal = bd.valorTotal();
 
-			
-			lblValorTotal.setText("VALOR TOTAL: "+saldoTotal.toString()+"$");
+			lblValorTotal.setText("VALOR TOTAL: " + saldoTotal.toString() + "$");
 
 			lblValorTotal.setVisible(true);
 			break;
@@ -356,19 +328,39 @@ public class TelaRelatorios extends JFrame {
 		default:
 			break;
 		}
-		
+
 		painelClientes.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				
+
 				TabelaClientes clientes = new TabelaClientes(con, fun);
 				clientes.setLocationRelativeTo(null);
 				clientes.setVisible(true);
-				
-				
+
 			}
 		});
-		
-		
+
+		painelClientes.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+
+				TelaRelatorios clientes = new TelaRelatorios(con, fun);
+				clientes.setLocationRelativeTo(null);
+				clientes.setVisible(true);
+
+			}
+		});
+
+		lblInicio.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+
+				MenuFuncionario telaFuncionario = new MenuFuncionario(con, fun);
+				telaFuncionario.setVisible(true);
+				dispose();
+
+			}
+		});
+
 	}
 }

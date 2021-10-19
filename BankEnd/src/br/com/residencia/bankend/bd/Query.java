@@ -246,7 +246,6 @@ public class Query {
 
 				SeguroVida seguro = verificaSeguro(idConta);
 
-				
 				if (tipo.equals("corrente")) {
 					Cliente cliente = descobreCliente(idConta);
 					ContaCorrente corrente = new ContaCorrente(agencia, numero, tipo, saldo, cliente, seguro, idConta);
@@ -496,89 +495,7 @@ public class Query {
 
 	}
 
-	public void totalClientes(ArrayList<Contas> contas) {
-
-		ArrayList<Cliente> clientes = new ArrayList<>();
-
-		Contas continha;
-
-		try {
-			st = conexao.prepareStatement("select *from cliente");
-
-			st.execute();
-
-			rs = st.getResultSet();
-
-			while (rs.next()) {
-				int id = rs.getInt("IDCliente");
-				String nome = rs.getString("nome");
-				String sobrenome = rs.getString("sobrenome");
-				String cpf = rs.getString("cpf");
-
-				Cliente cliente = new Cliente(nome, sobrenome, null, cpf, null, id);
-
-				clientes.add(cliente);
-
-			}
-
-			st = conexao.prepareStatement("SELECT *FROM CONTAS ");
-			st.execute();
-
-			rs = st.getResultSet();
-
-			while (rs.next()) {
-
-				int id = rs.getInt("IDConta");
-				String agencia = rs.getString("agencia");
-				String tipo = rs.getString("tipo");
-				int id_Cliente = rs.getInt("ID_cliente");
-
-				// verificando o tipo
-
-				if (tipo.equals("poupanca")) {
-
-					// percorrendo todos os clientes
-					for (Cliente x : clientes) {
-						int idCliente = x.getId();
-
-						if (idCliente == id_Cliente) {
-
-							ContaPoupanca poupanca = new ContaPoupanca(agencia, null, tipo, null, x, null, id);
-
-							contas.add(poupanca);
-
-						}
-
-					}
-
-				}
-
-				if (tipo.equals("corrente")) {
-
-					// percorrendo todos os clientes
-					for (Cliente x : clientes) {
-						int idCliente = x.getId();
-
-						if (idCliente == id_Cliente) {
-
-							ContaCorrente corrente = new ContaCorrente(agencia, null, tipo, null, x, null, id);
-
-							contas.add(corrente);
-
-						}
-
-					}
-
-				}
-
-			}
-
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
-	}
+	
 
 	public double valorTotal() {
 		try {
@@ -654,7 +571,7 @@ public class Query {
 		try {
 
 			// pegando todas as contas e ordenando
-			st = conexao.prepareStatement("SELECT *FROM CONTAS,cliente where idcliente=id_cliente ORDER BY nome DESC");
+			st = conexao.prepareStatement("SELECT *FROM CONTAS,cliente where idcliente=id_cliente ORDER BY nome ASC");
 			st.execute();
 
 			rs = st.getResultSet();
@@ -792,4 +709,64 @@ public class Query {
 
 	}
 
+	
+	// ordena por nome
+		public void trazerRelatorio(ArrayList<Contas> listaContas) {
+
+		
+
+			try {
+
+				// pegando todas as contas e ordenando
+				st = conexao.prepareStatement("SELECT *FROM CONTAS,cliente where idcliente=id_cliente ORDER BY nome ASC");
+				st.execute();
+
+				rs = st.getResultSet();
+
+				while (rs.next()) {
+
+					// cliente
+					int idCliente = rs.getInt("IDCliente");
+					String nome = rs.getString("nome");
+					String sobrenome = rs.getString("sobrenome");
+					String cpf = rs.getString("cpf");
+
+					Cliente cliente = new Cliente(nome, sobrenome, null, cpf, null, idCliente);
+
+					// dados conta
+					int id = rs.getInt("IDConta");
+					String agencia = rs.getString("agencia");
+					String tipo = rs.getString("tipo");
+					String numero = rs.getString("numero");
+					// verificando o tipo
+
+					if (tipo.equals("poupanca")) {
+
+						ContaPoupanca poupanca = new ContaPoupanca(agencia, numero, tipo, null, cliente, null, id);
+
+						listaContas.add(poupanca);
+						
+
+					}
+
+					if (tipo.equals("corrente")) {
+
+						ContaCorrente corrente = new ContaCorrente(agencia, numero, tipo, null, cliente, null, id);
+
+						listaContas.add(corrente);
+						
+
+					}
+
+				}
+
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+		}
+	
+	
+	
 }
