@@ -2,6 +2,7 @@ package br.com.residencia.bankend.visual.cliente;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.Connection;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -20,7 +21,7 @@ public class Rendimento extends JFrame {
 	private JTextField txt2;
 
 
-	public Rendimento(Contas conta) {
+	public Rendimento(Connection con, Contas conta) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 202, 300);
 		contentPane = new JPanel();

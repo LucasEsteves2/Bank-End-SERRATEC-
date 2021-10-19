@@ -376,9 +376,23 @@ public class MinhaConta extends JFrame {
 		lblSobrenomee.setText(conta.getCliente().getSobreNome());
 		
 		JButton btnRendimento = new JButton("New button");
-		btnRendimento.setBounds(715, 564, 120, 50);
+		btnRendimento.setBounds(951, 556, 120, 50);
 		lblSobrenome.add(btnRendimento);
-
+		
+		
+		
+		btnRendimento.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				 Rendimento rendi = new Rendimento(con,conta);
+				 rendi.setVisible(true);
+				 
+				
+			}
+		});
+		
+		
 		imgExibirSaldo.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
