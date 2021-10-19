@@ -602,7 +602,7 @@ public class Transferencia extends JFrame {
 	}
 
 	public void exibeCupomFiscal() {
-		geraComprovante();
+		
 		lblValor.setVisible(false);
 		txtValor.setVisible(false);
 		txtValor.setText("");
@@ -614,8 +614,15 @@ public class Transferencia extends JFrame {
 		lblCupomNome.setText("Titular:" + nome1 + " " + sobrenome);
 		lblCupomContaa.setText("Conta:"+contaDestinatario.getNumero());
 		lblCupomFavorecido.setText("Favorecido");
-		lblCupomTipoConta.setText("Transferencia em Conta: Corrente");
+		lblCupomTipoConta.setText("Transferencia em Conta:");
 		lblCupomAgencia.setText("Agencia:"+contaDestinatario.getAgencia());
+		
+		
+		
+
+		geraComprovante();
+		
+		
 	}
 
 
@@ -624,6 +631,8 @@ public class Transferencia extends JFrame {
 	{
 		try {
 			Comprovante.Transferencia(contaDestinatario,transferencia);
+			Comprovante.tributos(corrente, transferencia);
+			
 		} catch (IOException e) {
 			System.out.println("erro ao gerar o comprovante");
 			e.printStackTrace();

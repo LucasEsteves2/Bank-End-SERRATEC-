@@ -62,6 +62,7 @@ public class Saque extends JFrame {
 	private JLabel lblSair;
 	private JLabel lblCaixaSaldo;
 	private Double valorSaque;
+	private JProgressBar progressBar;
 
 	public Saque(Connection conexao, Contas contaRemetenteV) {
 		this.con = conexao;
@@ -88,8 +89,9 @@ public class Saque extends JFrame {
 		lblCaixaEletronico.setHorizontalTextPosition(SwingConstants.CENTER);
 		lblCaixaEletronico.setBounds(239, 367, 120, 33);
 		contentPane.add(lblCaixaEletronico);
-		
-		JProgressBar progressBar = new JProgressBar();
+
+		progressBar = new JProgressBar();
+		progressBar.setBackground(Color.GREEN);
 		progressBar.setBounds(1125, 312, 120, 19);
 		contentPane.add(progressBar);
 
@@ -315,10 +317,6 @@ public class Saque extends JFrame {
 		String caixaSaldo = String.format("%.2f", contaRemetente.getSaldo());
 		lblCaixaSaldo.setText(caixaSaldo + "$");
 
-		
-		
-		
-		
 		Query bd = new Query(con);
 
 		lblSair.addMouseListener(new MouseAdapter() {
@@ -435,7 +433,7 @@ public class Saque extends JFrame {
 
 			System.out.println(corrente.getSaldo());
 
-			//se a conta tiver o valor informado
+			// se a conta tiver o valor informado
 			if (corrente.saque(valorSaque, contaRemetente)) {
 
 				System.out.println(corrente.getSaldo());
@@ -463,6 +461,7 @@ public class Saque extends JFrame {
 				bd.saque(contaRemetente, valorSaque);
 
 				// metodo que faz a animação
+				txtValor.setVisible(false);
 				caixaEletronico();
 			} else {
 				JOptionPane.showMessageDialog(null, "Saldo insuficiente!!", "Sucess", JOptionPane.ERROR_MESSAGE);
@@ -476,8 +475,11 @@ public class Saque extends JFrame {
 		// convertendo para string e limitando as casas
 		String caixaSaldo = String.format("%.2f", contaRemetente.getSaldo());
 		lblCaixaSaldo.setText(caixaSaldo + "$");
-
 		
+		
+		new Temporizador().start();
+
+
 		System.out.println("Saque de " + valorSaque + "$ feito com suceso!!");
 		exibeCupomFiscal();
 		JOptionPane.showMessageDialog(null, "Saque de " + valorSaque + "$ feito com suceso!!", "Sucess",
@@ -486,10 +488,9 @@ public class Saque extends JFrame {
 	}
 
 	public void exibeCupomFiscal() {
-		
-		
+
 		geraComprovante();
-		
+
 		lblValor.setVisible(false);
 		txtValor.setVisible(false);
 		txtValor.setText("");
@@ -498,31 +499,42 @@ public class Saque extends JFrame {
 
 		imgMaquina.setIcon(new ImageIcon("C:\\Users\\Esteves\\Pictures\\BANKEND\\macahdoo98.png"));
 		lblCupomNome.setText("Titular:" + nome1 + " " + sobrenome);
-		lblCupomContaa.setText("Conta"+ contaRemetente.getNumero());
+		lblCupomContaa.setText("Conta" + contaRemetente.getNumero());
 		lblCupomFavorecido.setText("Favorecido");
 		lblCupomTipoConta.setText("Transferencia em Conta:");
-		lblCupomAgencia.setText("Agencia: "+contaRemetente.getAgencia());
-		
-		
-		
+		lblCupomAgencia.setText("Agencia: " + contaRemetente.getAgencia());
+
 	}
-	
-	public void geraComprovante()
-	{
+
+	public void geraComprovante() {
 		try {
-			Comprovante.saque(contaRemetente,valorSaque);
+			Comprovante.saque(contaRemetente, valorSaque);
 		} catch (IOException e) {
 			System.out.println("erro ao gerar o comprovante");
 			e.printStackTrace();
 		}
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
+	public class Temporizador extends Thread {
+
+		public void run() {
+
+			while (progressBar.getValue() < 1000) {
+
+				try {
+					sleep(30);
+					progressBar.setValue(progressBar.getValue() + 10);
+					System.out.println();
+
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+
+			JOptionPane.showMessageDialog(null, "E-mail de confirmação enviado para o e-mail do paciente!!",
+					"Paciente Validado", JOptionPane.INFORMATION_MESSAGE);
+			dispose();
+		}
+	}
 }
