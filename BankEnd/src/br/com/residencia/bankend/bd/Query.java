@@ -202,11 +202,13 @@ public class Query {
 				String agencia = rs.getString("agencia");
 				int IdConta = rs.getInt("IdConta");
 
+				SeguroVida seguro = verificaSeguro(IdConta);
+
 				if (tipo.equals("corrente")) {
-					ContaCorrente corrente = new ContaCorrente(agencia, numero, tipo, saldo, cliente, null, IdConta);
+					ContaCorrente corrente = new ContaCorrente(agencia, numero, tipo, saldo, cliente, seguro, IdConta);
 					continha = corrente;
 				} else {
-					ContaPoupanca poupanca = new ContaPoupanca(agencia, numero, tipo, saldo, cliente, null, IdConta);
+					ContaPoupanca poupanca = new ContaPoupanca(agencia, numero, tipo, saldo, cliente, seguro, IdConta);
 					continha = poupanca;
 				}
 
@@ -242,9 +244,12 @@ public class Query {
 				String tipo = rs.getString("tipo");
 				String agencia = rs.getString("agencia");
 
+				SeguroVida seguro = verificaSeguro(idConta);
+
+				
 				if (tipo.equals("corrente")) {
 					Cliente cliente = descobreCliente(idConta);
-					ContaCorrente corrente = new ContaCorrente(agencia, numero, tipo, saldo, cliente, null, idConta);
+					ContaCorrente corrente = new ContaCorrente(agencia, numero, tipo, saldo, cliente, seguro, idConta);
 
 					continha = corrente;
 				}
@@ -252,7 +257,7 @@ public class Query {
 				if (tipo.equals("poupanca")) {
 					Cliente cliente = descobreCliente(idConta);
 
-					ContaPoupanca poupanca = new ContaPoupanca(agencia, numero, tipo, saldo, cliente, null, idConta);
+					ContaPoupanca poupanca = new ContaPoupanca(agencia, numero, tipo, saldo, cliente, seguro, idConta);
 					continha = poupanca;
 
 				}
@@ -741,33 +746,32 @@ public class Query {
 
 	}
 
-	public Contas verificaSeguro(Contas conta) {
+	public SeguroVida verificaSeguro(int idConta) {
 		try {
 			st = conexao.prepareStatement("Select *from seguroVida where id_Conta = ?");
-			st.setInt(1, conta.getId());
+			st.setInt(1, idConta);
 			st.execute();
 
 			rs = st.getResultSet();
 			if (rs.next()) {
-				
+
 				int idSeguro = rs.getInt("idSeguro");
-				double taxa= rs.getDouble("taxa");	
+				double taxa = rs.getDouble("taxa");
 				double valor = rs.getDouble("valor");
-				
+
 				SeguroVida seguro = new SeguroVida(valor);
 				seguro.setTaxa(taxa);
 				seguro.setValor(valor);
-			
-				conta.setSeguro(seguro);
-				
-				
+
+				return seguro;
+
 			}
 
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return conta;
+		return null;
 
 	}
 
@@ -780,10 +784,6 @@ public class Query {
 			st.setInt(3, 1);
 			st.setInt(4, conta.getId());
 			st.execute();
-			
-			
-			
-			
 
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

@@ -189,7 +189,7 @@ public class Menu extends JFrame {
 
 		
 	
-		if (!bd.verificaSeguro(conta)) {
+		if (conta.getSeguro()==null) {
 			cadastraSeguro();
 			
 		} else {
