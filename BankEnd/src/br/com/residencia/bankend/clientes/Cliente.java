@@ -7,34 +7,20 @@ public class Cliente {
 	private String cpf;
 	private String senha;
 	private int id;
-	private static Integer acesso =0;
-	
+	private static Integer acesso = 0;
 
-
-
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
-
-
-	public  Cliente(String nome, String sobreNome, String email, String cpf, String senha, int id) {
+	public Cliente(String nome, String sobreNome, String email, String cpf, String senha, int id) {
 		this.nome = nome;
 		this.sobreNome = sobreNome;
 		this.email = email;
 		this.cpf = cpf;
 		this.senha = senha;
-		this.id=id;
+		this.id = id;
 	}
 
-	
-	
 	public int getId() {
 		return id;
 	}
-
-
 
 	public String getNome() {
 		return nome;
@@ -67,6 +53,9 @@ public class Cliente {
 	public String getCpf() {
 		return cpf;
 	}
+	public void setId(int id) {
+		this.id = id;
+	}
 
 	public void setCpf(String cpf) {
 		this.cpf = cpf;
@@ -80,13 +69,10 @@ public class Cliente {
 		return acesso;
 	}
 
-	
-	
 	@Override
 	public String toString() {
 		return "Cliente [nome=" + nome + ", sobreNome=" + sobreNome + ", email=" + email + ", cpf=" + cpf + ", senha="
 				+ senha + ", id=" + id + "]";
 	}
-	
-	
+
 }

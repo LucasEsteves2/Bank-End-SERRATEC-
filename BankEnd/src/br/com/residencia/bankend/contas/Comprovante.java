@@ -38,8 +38,6 @@ public class Comprovante {
 			bw.newLine();
 			bw.write( "Operação realizada : "+ "DEPÓSITO" );
 			bw.newLine();
-			bw.write( "taxa da operação : "+ "R$" + "0,10");
-			bw.newLine();
 			bw.write( "favorecido  "+conta.getCliente().getNome() );
 			bw.newLine();
 			bw.write( "conta favorecida :  "+conta.getNumero() );
@@ -70,7 +68,7 @@ public class Comprovante {
 		bw.newLine();
 		bw.write( "valor do saque : "+"R$ "+String.format("%.2f",valor) );
 		bw.newLine();
-		bw.write( "Saldo  atual:  "+conta.getSaldo() );
+		bw.write( "Saldo  atual:  "+String.format("%.2f",conta.getSaldo() ));
 		
 		
 		}else {
@@ -78,11 +76,9 @@ public class Comprovante {
 		bw.newLine();
 		bw.write( "Operação realizada : "+ "Saque" );
 		bw.newLine();
-		bw.write( "taxa da operação : "+"R$ "+"0.10" );
-		bw.newLine();
 		bw.write( "valor do saque : "+"R$ "+String.format("%.2f",valor) );
 		bw.newLine();
-		bw.write( "Saldo  atual:  "+"R$ "+conta.getSaldo() );
+		bw.write( "Saldo  atual:  "+"R$ "+String.format("%.2f",conta.getSaldo() ));
 		
 		}
 		bw.close();
@@ -113,8 +109,6 @@ public class Comprovante {
 			bw.write( "--------------- Transferência --------------- ");
 			bw.newLine();
 			bw.write( "Operação realizada : "+ "Transferência" );
-			bw.newLine();
-			bw.write( "taxa da operação : "+"R$ "+"0.20" );
 			bw.newLine();
 			bw.write( "valor da transferência: "+"R$ "+String.format("%.2f",valor));
 			bw.newLine();
