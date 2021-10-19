@@ -30,9 +30,9 @@ import br.com.residencia.bankend.clientes.Cliente;
 		return id;
 	}
 
-	public boolean saque(double valor,Contas destinatario) {
-		if (destinatario.saldo >= valor) {
-			destinatario.saldo = destinatario.saldo - valor;
+	public boolean saque(double valor,Contas remetente) {
+		if (remetente.saldo >= valor) {
+			remetente.saldo = remetente.saldo - valor;
 
 			return true;
 		} else {
