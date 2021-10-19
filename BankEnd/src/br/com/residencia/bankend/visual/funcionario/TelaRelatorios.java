@@ -76,11 +76,6 @@ public class TelaRelatorios extends JFrame {
 		contentPane.add(panel);
 		panel.setLayout(null);
 
-		JLabel painelRelatorios = new JLabel("New label");
-		painelRelatorios.setBounds(-55, -29, 421, 146);
-
-		panel.add(painelRelatorios);
-
 		JPanel painelSeguro = new JPanel();
 		painelSeguro.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 0)));
 		painelSeguro.setBounds(-1, 252, 243, 56);
@@ -180,6 +175,10 @@ public class TelaRelatorios extends JFrame {
 		txtMedico_1_1.setFont(new Font("Segoe UI", Font.BOLD, 16));
 		txtMedico_1_1.setBounds(68, 16, 115, 22);
 		PainelConsulta.add(txtMedico_1_1);
+		
+				JLabel painelRelatorios = new JLabel("");
+				painelRelatorios.setBounds(23, -132, 196, 136);
+				PainelConsulta.add(painelRelatorios);
 
 		JPanel painelClientes = new JPanel();
 		painelClientes.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 0)));
@@ -235,15 +234,17 @@ public class TelaRelatorios extends JFrame {
 		jTabelaPaciente.setModel(funcionario_tableModel);
 
 		JLabel lblFoto = new JLabel("");
+		lblFoto.setHorizontalTextPosition(SwingConstants.CENTER);
 		lblFoto.setIcon(new ImageIcon(TelaRelatorios.class.getResource("/br/com/residencia/bankend/imagens/12s.png")));
 		lblFoto.setHorizontalAlignment(SwingConstants.CENTER);
 		lblFoto.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
 		lblFoto.setBounds(28, 24, 95, 101);
 		panel_1.add(lblFoto);
 
-		JLabel lblNewLabel = new JLabel("GERENTE");
-		lblNewLabel.setBounds(51, 31, 46, 14);
-		panel_1.add(lblNewLabel);
+		JLabel lblFotoCargo = new JLabel("GERENTE");
+		lblFotoCargo.setHorizontalAlignment(SwingConstants.CENTER);
+		lblFotoCargo.setBounds(27, 31, 96, 14);
+		panel_1.add(lblFotoCargo);
 
 		JLabel lblNome = new JLabel("Nome:");
 		lblNome.setFont(new Font("Tahoma", Font.PLAIN, 16));
@@ -292,11 +293,13 @@ public class TelaRelatorios extends JFrame {
 		// Verificando tipo do funcionario
 		switch (acesso) {
 		case 1:
+			System.out.println("Bem vindo GERENTE ");
 
 			Gerente gerente = (Gerente) fun;
 
 			Integer quantidade = bd.qtdAgencia(gerente.getIdAgencia());
 			lblMesmaAgencia.setText("a quantidade e :" + quantidade.toString());
+			lblFotoCargo.setText("GERENTE");
 
 			break;
 		case 2:
@@ -307,6 +310,8 @@ public class TelaRelatorios extends JFrame {
 			bd.trazerRelatorio(conta);
 			// metodo que adiciona no componente
 			bd.addDadosRelatorios(funcionario_tableModel, conta);
+			lblFotoCargo.setText("DIRETOR");
+
 
 			break;
 
@@ -323,6 +328,8 @@ public class TelaRelatorios extends JFrame {
 			lblValorTotal.setText("VALOR TOTAL: " + saldoTotal.toString() + "$");
 
 			lblValorTotal.setVisible(true);
+			lblFotoCargo.setText("PRESIDENTE");
+			
 			break;
 
 		default:
