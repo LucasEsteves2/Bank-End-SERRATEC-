@@ -32,9 +32,10 @@ public class Menu extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private Contas conta;
+	private Connection con;
 	public Menu(Connection con, Contas conta) {
 		this.conta=conta;
-		
+		this.con=con;
 		setIconImage(Toolkit.getDefaultToolkit()
 				.getImage(Menu.class.getResource("/br/com/residencia/bankend/imagens/hospital.png")));
 		setExtendedState(Frame.MAXIMIZED_BOTH);
@@ -264,7 +265,7 @@ public class Menu extends JFrame {
 		if (i == JOptionPane.YES_OPTION) {
 
 			System.out.println("Clicou em Sim");
-			TelaSeguroVida telaSeguro = new TelaSeguroVida(conta);
+			TelaSeguroVida telaSeguro = new TelaSeguroVida(conta, con);
 			telaSeguro.setVisible(true);
 
 		}

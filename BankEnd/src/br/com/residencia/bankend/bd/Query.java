@@ -778,12 +778,12 @@ public class Query {
 	public void instanciaSeguro(Contas conta) {
 		try {
 
-			st = conexao.prepareStatement("INSERT INTO (taxa,valor,ativo,id_conta) VALUES(?,?,?,?");
+			st = conexao.prepareStatement("INSERT INTO seguroVida (taxa,valor,ativo,id_conta) VALUES(?,?,?,?)");
 			st.setDouble(1, conta.getSeguro().getTaxa());
 			st.setDouble(2, conta.getSeguro().getValor());
 			st.setInt(3, 1);
 			st.setInt(4, conta.getId());
-			st.execute();
+			st.executeUpdate();
 
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

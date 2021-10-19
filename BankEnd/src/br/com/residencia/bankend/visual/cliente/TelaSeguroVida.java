@@ -7,6 +7,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import br.com.residencia.bankend.bd.Query;
 import br.com.residencia.bankend.contas.Contas;
 import br.com.residencia.bankend.contas.SeguroVida;
 
@@ -15,13 +16,14 @@ import javax.swing.JLabel;
 import javax.swing.JButton;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.sql.Connection;
 
 public class TelaSeguroVida extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField txtValor;
 
-	public TelaSeguroVida(Contas conta) {
+	public TelaSeguroVida(Contas conta,Connection con) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 307, 198);
 		contentPane = new JPanel();
@@ -43,8 +45,10 @@ public class TelaSeguroVida extends JFrame {
 		btnVerifica.setBounds(77, 96, 89, 23);
 		contentPane.add(btnVerifica);
 		
-		//add verifica
+		//add verifica se o vlaor informado possui na conta
 		
+		
+		Query bd = new Query(con);
 		
 		
 		
@@ -60,7 +64,7 @@ public class TelaSeguroVida extends JFrame {
 				
 				conta.setSeguro(seguro);
 				
-				
+				bd.instanciaSeguro(conta);
 			}
 		});
 		
