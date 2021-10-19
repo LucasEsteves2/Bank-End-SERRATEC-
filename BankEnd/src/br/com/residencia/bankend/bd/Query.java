@@ -18,6 +18,7 @@ import br.com.residencia.bankend.contas.Comprovante;
 import br.com.residencia.bankend.contas.ContaCorrente;
 import br.com.residencia.bankend.contas.ContaPoupanca;
 import br.com.residencia.bankend.contas.Contas;
+import br.com.residencia.bankend.contas.SeguroVida;
 import br.com.residencia.bankend.contas.Tributos;
 import br.com.residencia.bankend.funcionarios.Diretor;
 import br.com.residencia.bankend.funcionarios.Funcionario;
@@ -640,7 +641,7 @@ public class Query {
 		}
 	}
 
-	//ordena por nome
+	// ordena por nome
 	public void addAllClientes(ClienteTableModel tabelaContas) {
 
 		ArrayList<Contas> listaContas = new ArrayList<Contas>();
@@ -734,6 +735,57 @@ public class Query {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
+
+	public Contas verificaSeguro(Contas conta) {
+		try {
+			st = conexao.prepareStatement("Select *from seguroVida where id_Conta = ?");
+			st.setInt(1, conta.getId());
+			st.execute();
+
+			rs = st.getResultSet();
+			if (rs.next()) {
+				
+				int idSeguro = rs.getInt("idSeguro");
+				double taxa= rs.getDouble("taxa");	
+				double valor = rs.getDouble("valor");
+				
+				SeguroVida seguro = new SeguroVida(valor);
+				seguro.setTaxa(taxa);
+				seguro.setValor(valor);
+			
+				conta.setSeguro(seguro);
+				
+				
+			}
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return conta;
+
+	}
+
+	public void instanciaSeguro(Contas conta) {
+		try {
+
+			st = conexao.prepareStatement("INSERT INTO (taxa,valor,ativo,id_conta) VALUES(?,?,?,?");
+			st.setDouble(1, conta.getSeguro().getTaxa());
+			st.setDouble(2, conta.getSeguro().getValor());
+			st.setInt(3, 1);
+			st.setInt(4, conta.getId());
+			st.execute();
+			
+			
+			
+			
+
+		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}

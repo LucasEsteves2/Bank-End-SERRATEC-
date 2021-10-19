@@ -23,6 +23,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.border.EtchedBorder;
 import javax.swing.border.MatteBorder;
 
+import br.com.residencia.bankend.bd.Query;
 import br.com.residencia.bankend.contas.Contas;
 import br.com.residencia.bankend.visual.TelaLogin;
 
@@ -30,8 +31,10 @@ public class Menu extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
-
+	private Contas conta;
 	public Menu(Connection con, Contas conta) {
+		this.conta=conta;
+		
 		setIconImage(Toolkit.getDefaultToolkit()
 				.getImage(Menu.class.getResource("/br/com/residencia/bankend/imagens/hospital.png")));
 		setExtendedState(Frame.MAXIMIZED_BOTH);
@@ -88,7 +91,6 @@ public class Menu extends JFrame {
 		PainelVoltar.setLayout(null);
 
 		JLabel lblInicio = new JLabel("");
-	
 
 		lblInicio.setIcon(
 				new ImageIcon(Menu.class.getResource("/br/com/residencia/bankend/imagens/pagina-inicial (1).png")));
@@ -181,8 +183,19 @@ public class Menu extends JFrame {
 		lblMenu.setBounds(6, 11, 232, 714);
 		panel.add(lblMenu);
 
+		Query bd = new Query(con);
+
+		// verifica se o cliente logado tem seguro de vida
+
 		
-		
+	
+		if (!bd.verificaSeguro(conta)) {
+			cadastraSeguro();
+			
+		} else {
+			System.out.println("seguro de vida caralho");
+		}
+
 		// Click no botao Conta
 
 		painelConta.addMouseListener(new MouseAdapter() {
@@ -205,8 +218,8 @@ public class Menu extends JFrame {
 				dispose();
 			}
 		});
-		
-		//escutador btn Seguro
+
+		// escutador btn Seguro
 		painelSeguro.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -215,13 +228,12 @@ public class Menu extends JFrame {
 				dispose();
 			}
 		});
-		
-		
-			//btn fechar
+
+		// btn fechar
 		PainelFechar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				
+
 				int i = JOptionPane.showConfirmDialog(null, "Deseja Encerrar o programa?", "Finalizar",
 						JOptionPane.OK_CANCEL_OPTION);
 
@@ -239,10 +251,31 @@ public class Menu extends JFrame {
 				}
 			}
 		});
-		
-		
-		
-		
-		
+
 	}
+
+	public void cadastraSeguro()  {
+		
+	
+		
+		int i = JOptionPane.showConfirmDialog(null, "Deseja criar um seguro de vida?", "BANK END", JOptionPane.OK_CANCEL_OPTION);
+
+		// se clicar em sim
+		if (i == JOptionPane.YES_OPTION) {
+
+			System.out.println("Clicou em Sim");
+			TelaSeguroVida telaSeguro = new TelaSeguroVida(conta);
+			telaSeguro.setVisible(true);
+
+		}
+		// se clicar em nao
+
+		else if (i == JOptionPane.CANCEL_OPTION) {
+
+			System.out.println("Clicou em Não");
+
+		}
+
+	}
+
 }

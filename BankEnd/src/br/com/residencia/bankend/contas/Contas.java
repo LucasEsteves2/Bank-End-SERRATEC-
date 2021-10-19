@@ -9,6 +9,8 @@ import br.com.residencia.bankend.clientes.Cliente;
 	protected String tipo;
 	protected Double saldo;
 	protected Cliente cliente;
+
+
 	protected SeguroVida seguro;
 	protected Integer id;
 
@@ -50,6 +52,9 @@ import br.com.residencia.bankend.clientes.Cliente;
 		}
 	}
 
+	public void setSeguro(SeguroVida seguro) {
+		this.seguro = seguro;
+	}
 	public boolean transferencia(Contas destinatario, double valor) {
 
 		if (this.saldo >= valor) {
