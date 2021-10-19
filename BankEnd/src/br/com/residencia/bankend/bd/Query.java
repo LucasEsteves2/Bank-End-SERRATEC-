@@ -366,8 +366,7 @@ public class Query {
 				st.setInt(1, qtdTransf + 1);
 				st.setInt(2, remetente.getId());
 				st.executeUpdate();
-				
-				
+
 				totalTributo(remetente);
 			}
 
@@ -384,7 +383,7 @@ public class Query {
 
 	}
 
-	public void deposito(Contas contaDestinatario, double valor,Contas remetente) {
+	public void deposito(Contas contaDestinatario, double valor, Contas remetente) {
 
 		try {
 
@@ -412,10 +411,9 @@ public class Query {
 				st.setInt(1, qtdTransf + 1);
 				st.setInt(2, remetente.getId());
 				st.executeUpdate();
-				
-				
+
 				totalTributo(remetente);
-				
+
 			}
 
 		} catch (SQLException e) {
@@ -642,81 +640,51 @@ public class Query {
 		}
 	}
 
+	//ordena por nome
 	public void addAllClientes(ClienteTableModel tabelaContas) {
 
 		ArrayList<Contas> listaContas = new ArrayList<Contas>();
 
-		ArrayList<Cliente> clientes = new ArrayList<>();
-
 		try {
-			// pegando todos os clientes
-			st = conexao.prepareStatement("select *from cliente");
 
+			// pegando todas as contas e ordenando
+			st = conexao.prepareStatement("SELECT *FROM CONTAS,cliente where idcliente=id_cliente ORDER BY nome DESC");
 			st.execute();
 
 			rs = st.getResultSet();
 
 			while (rs.next()) {
-				int id = rs.getInt("IDCliente");
+
+				// cliente
+				int idCliente = rs.getInt("IDCliente");
 				String nome = rs.getString("nome");
 				String sobrenome = rs.getString("sobrenome");
 				String cpf = rs.getString("cpf");
 
-				Cliente cliente = new Cliente(nome, sobrenome, null, cpf, null, id);
+				Cliente cliente = new Cliente(nome, sobrenome, null, cpf, null, idCliente);
 
-				clientes.add(cliente);
-
-			}
-
-			// pegando todas as contas
-			st = conexao.prepareStatement("SELECT *FROM CONTAS ");
-			st.execute();
-
-			rs = st.getResultSet();
-
-			while (rs.next()) {
-
+				// dados conta
 				int id = rs.getInt("IDConta");
 				String agencia = rs.getString("agencia");
 				String tipo = rs.getString("tipo");
-				int id_Cliente = rs.getInt("ID_cliente");
 				String numero = rs.getString("numero");
 				// verificando o tipo
 
 				if (tipo.equals("poupanca")) {
 
-					// associando o cliente a sua conta
-					for (Cliente x : clientes) {
-						int idCliente = x.getId();
+					ContaPoupanca poupanca = new ContaPoupanca(agencia, numero, tipo, null, cliente, null, id);
 
-						if (idCliente == id_Cliente) {
-							ContaPoupanca poupanca = new ContaPoupanca(agencia, numero, tipo, null, x, null, id);
-
-							listaContas.add(poupanca);
-							tabelaContas.adicionarLinha(poupanca);
-
-						}
-
-					}
+					listaContas.add(poupanca);
+					tabelaContas.adicionarLinha(poupanca);
 
 				}
 
 				if (tipo.equals("corrente")) {
 
-					// percorrendo todos os clientes
-					for (Cliente x : clientes) {
-						int idCliente = x.getId();
+					ContaCorrente corrente = new ContaCorrente(agencia, numero, tipo, null, cliente, null, id);
 
-						if (idCliente == id_Cliente) {
-
-							ContaCorrente corrente = new ContaCorrente(agencia, numero, tipo, null, x, null, id);
-
-							listaContas.add(corrente);
-							tabelaContas.adicionarLinha(corrente);
-
-						}
-
-					}
+					listaContas.add(corrente);
+					tabelaContas.adicionarLinha(corrente);
 
 				}
 
