@@ -380,17 +380,19 @@ public class MinhaConta extends JFrame {
 		lblSobrenome.add(btnRendimento);
 		
 		
-		
-		btnRendimento.addActionListener(new ActionListener() {
-			
+
+		btnRendimento.addMouseListener(new MouseAdapter() {
 			@Override
-			public void actionPerformed(ActionEvent e) {
-				 Rendimento rendi = new Rendimento(con,conta);
+			public void mouseClicked(MouseEvent e) {
+
+				Rendimento rendi = new Rendimento(con,conta);
 				 rendi.setVisible(true);
-				 
-				
+
 			}
 		});
+		
+		
+		
 		
 		
 		imgExibirSaldo.addMouseListener(new MouseAdapter() {
