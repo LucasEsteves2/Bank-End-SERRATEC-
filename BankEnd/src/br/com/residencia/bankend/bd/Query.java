@@ -713,7 +713,7 @@ public class Query {
 
 	}
 
-	// ordena por nomeeeee
+	// ordena por nomeeee2e
 	public void trazerRelatorio(ArrayList<Contas> listaContas, Funcionario fun) {
 
 		try {
