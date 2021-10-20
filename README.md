@@ -1,5 +1,5 @@
 <div align="center">
-<i><h6>Exercicio Banco [SERRATEC]
+<i><h6>Sistema Bancario desenvolvido para a avaliação final da disciplina de poo SERRATEC
 </div>
 <a name="back-to-top">
 
@@ -11,7 +11,7 @@
 
  <p>
     <h2 align="center">
- Sistema Bancario Poo
+Bank End
   </h2>
   </p> 
   </br>
