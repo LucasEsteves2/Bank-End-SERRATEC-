@@ -16,6 +16,8 @@ import br.com.residencia.bankend.contas.Contas;
 
 public class Rendimento extends JFrame {
 
+	
+	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTextField txt1;
 	private JTextField txt2;

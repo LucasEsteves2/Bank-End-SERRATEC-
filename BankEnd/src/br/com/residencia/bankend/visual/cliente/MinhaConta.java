@@ -7,8 +7,6 @@ import java.awt.Label;
 import java.awt.Panel;
 import java.awt.SystemColor;
 import java.awt.Toolkit;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.sql.Connection;
@@ -43,7 +41,7 @@ public class MinhaConta extends JFrame {
 		this.conta = conta;
 		this.con = con;
 
-		setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\Esteves\\Downloads\\banco.png"));
+		setIconImage(Toolkit.getDefaultToolkit().getImage(MinhaConta.class.getResource("/br/com/residencia/bankend/imagens/banco.png")));
 		setExtendedState(Frame.MAXIMIZED_BOTH);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
@@ -71,7 +69,7 @@ public class MinhaConta extends JFrame {
 		imgPaciente.setHorizontalTextPosition(SwingConstants.CENTER);
 		imgPaciente.setHorizontalAlignment(SwingConstants.CENTER);
 		imgPaciente.setIcon(
-				new ImageIcon("C:\\Users\\Esteves\\Downloads\\seguro-de-vida.png"));
+				new ImageIcon(MinhaConta.class.getResource("/br/com/residencia/bankend/imagens/seguro-de-vida.png")));
 		imgPaciente.setBounds(23, 12, 32, 32);
 		painelSeguro.add(imgPaciente);
 
@@ -80,12 +78,12 @@ public class MinhaConta extends JFrame {
 		painelSeguro.add(lblNewLabel_2);
 		lblNewLabel_2.setBackground(new Color(0, 255, 0));
 
-		JLabel txtMedico = new JLabel("Seguro de vida");
-		txtMedico.setHorizontalTextPosition(SwingConstants.CENTER);
-		txtMedico.setHorizontalAlignment(SwingConstants.CENTER);
-		txtMedico.setBounds(68, 16, 114, 22);
-		txtMedico.setFont(new Font("Segoe UI", Font.BOLD, 16));
-		painelSeguro.add(txtMedico);
+		JLabel txtSeguro = new JLabel("Seguro de vida");
+		txtSeguro.setHorizontalTextPosition(SwingConstants.CENTER);
+		txtSeguro.setHorizontalAlignment(SwingConstants.CENTER);
+		txtSeguro.setBounds(68, 16, 114, 22);
+		txtSeguro.setFont(new Font("Segoe UI", Font.BOLD, 16));
+		painelSeguro.add(txtSeguro);
 
 		Panel PainelVoltar = new Panel();
 		PainelVoltar.setBackground(new Color(248, 248, 255));
@@ -100,11 +98,11 @@ public class MinhaConta extends JFrame {
 		lblInicio.setBounds(10, -1, 29, 30);
 		PainelVoltar.add(lblInicio);
 
-		JLabel lblNewLabel_5 = new JLabel("Home");
+		JLabel lblNewLabel_5 = new JLabel("Home>Minha conta");
 		lblNewLabel_5.setForeground(UIManager.getColor("Button.foreground"));
 		lblNewLabel_5.setBackground(new Color(0, 0, 255));
 		lblNewLabel_5.setFont(new Font("Tahoma", Font.BOLD, 11));
-		lblNewLabel_5.setBounds(37, 10, 46, 14);
+		lblNewLabel_5.setBounds(37, 10, 111, 14);
 		PainelVoltar.add(lblNewLabel_5);
 
 		JPanel PainelFechar = new JPanel();
@@ -133,13 +131,13 @@ public class MinhaConta extends JFrame {
 		painelConta = new JPanel();
 		painelConta.setBorder(new MatteBorder(2, 1, 1, 1, (Color) new Color(0, 0, 0)));
 		painelConta.setLayout(null);
-		painelConta.setBackground(Color.LIGHT_GRAY);
+		painelConta.setBackground(new Color(253, 245, 230));
 		painelConta.setBounds(-1, 140, 246, 56);
 		panel.add(painelConta);
 
 		JLabel imgPaciente_1_1 = new JLabel("");
 		imgPaciente_1_1.setIcon(
-				new ImageIcon("C:\\Users\\Esteves\\Downloads\\cartao-de-credito (1).png"));
+				new ImageIcon(MinhaConta.class.getResource("/br/com/residencia/bankend/imagens/cartao-de-credito (1).png")));
 		imgPaciente_1_1.setBounds(23, 12, 32, 32);
 		painelConta.add(imgPaciente_1_1);
 
@@ -148,10 +146,10 @@ public class MinhaConta extends JFrame {
 		lblNewLabel_2_1_1.setBounds(79, 16, 0, 0);
 		painelConta.add(lblNewLabel_2_1_1);
 
-		JLabel txtMedico_1_1 = new JLabel("Minha Conta");
-		txtMedico_1_1.setFont(new Font("Segoe UI", Font.BOLD, 16));
-		txtMedico_1_1.setBounds(68, 16, 115, 22);
-		painelConta.add(txtMedico_1_1);
+		JLabel txtMinhAcc = new JLabel("Minha Conta");
+		txtMinhAcc.setFont(new Font("Segoe UI", Font.BOLD, 16));
+		txtMinhAcc.setBounds(68, 16, 115, 22);
+		painelConta.add(txtMinhAcc);
 		
 		JLabel lblLogo = new JLabel("");
 		lblLogo.setBounds(10, -180, 421, 225);
@@ -167,7 +165,7 @@ public class MinhaConta extends JFrame {
 
 		JLabel imgPaciente_1 = new JLabel("");
 		imgPaciente_1.setIcon(
-				new ImageIcon("C:\\Users\\Esteves\\Downloads\\atm.png"));
+				new ImageIcon(MinhaConta.class.getResource("/br/com/residencia/bankend/imagens/atm.png")));
 		imgPaciente_1.setBounds(23, 12, 32, 32);
 		painelTransferencia.add(imgPaciente_1);
 
@@ -176,13 +174,13 @@ public class MinhaConta extends JFrame {
 		lblNewLabel_2_1.setBounds(79, 16, 0, 0);
 		painelTransferencia.add(lblNewLabel_2_1);
 
-		JLabel txtMedico_1 = new JLabel("Transa\u00E7\u00F5es");
-		txtMedico_1.setFont(new Font("Segoe UI", Font.BOLD, 16));
-		txtMedico_1.setBounds(68, 16, 103, 22);
-		painelTransferencia.add(txtMedico_1);
+		JLabel txtTransações = new JLabel("Transa\u00E7\u00F5es");
+		txtTransações.setFont(new Font("Segoe UI", Font.BOLD, 16));
+		txtTransações.setBounds(68, 16, 103, 22);
+		painelTransferencia.add(txtTransações);
 		
 		JLabel lblLogo_1 = new JLabel("");
-		lblLogo_1.setIcon(new ImageIcon("C:\\Users\\Esteves\\Pictures\\BANKEND\\mauqina\\logo.png"));
+		lblLogo_1.setIcon(new ImageIcon(MinhaConta.class.getResource("/br/com/residencia/bankend/imagens/logo.png")));
 		lblLogo_1.setHorizontalAlignment(SwingConstants.CENTER);
 		lblLogo_1.setBounds(4, 11, 238, 130);
 		panel.add(lblLogo_1);
@@ -336,11 +334,6 @@ public class MinhaConta extends JFrame {
 		btnRendimento.setVisible(false);
 		btnRendimento.setBounds(526, 377, 120, 32);
 		lblSobrenome.add(btnRendimento);
-		
-		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\Esteves\\Pictures\\Nova pasta\\card2.png"));
-		lblNewLabel.setBounds(-29, 406, 638, 365);
-		lblSobrenome.add(lblNewLabel);
 
 		btnRendimento.addMouseListener(new MouseAdapter() {
 			@Override
@@ -441,14 +434,14 @@ public class MinhaConta extends JFrame {
 			}
 		});
 
+		// escutador btn Seguro
 		painelSeguro.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				Deposito telaDeposito = new Deposito(con, conta);
-				telaDeposito.setVisible(true);
-				dispose();
+				TelaSeguroVida seguro = new TelaSeguroVida(conta, con);
+				seguro.setLocationRelativeTo(null);
+				seguro.setVisible(true);
 			}
 		});
-
 	}
 }

@@ -1,10 +1,7 @@
 package br.com.residencia.bankend.utility;
 
-import java.sql.Connection;
 import java.util.ArrayList;
 
-import javax.swing.JOptionPane;
-import javax.swing.JTable;
 import javax.swing.table.AbstractTableModel;
 
 import br.com.residencia.bankend.contas.Contas;

@@ -19,7 +19,6 @@ import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.MatteBorder;
 
-import br.com.residencia.bankend.bd.Query;
 import br.com.residencia.bankend.contas.Contas;
 import br.com.residencia.bankend.visual.TelaLogin;
 
@@ -33,7 +32,7 @@ public class Menu extends JFrame {
 	public Menu(Connection con, Contas conta) {
 		this.conta = conta;
 		this.con = con;
-		setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\Esteves\\Downloads\\banco.png"));
+		setIconImage(Toolkit.getDefaultToolkit().getImage(Menu.class.getResource("/br/com/residencia/bankend/imagens/banco.png")));
 		setExtendedState(Frame.MAXIMIZED_BOTH);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
@@ -45,7 +44,7 @@ public class Menu extends JFrame {
 		
 		JLabel lblLogo = new JLabel("");
 		lblLogo.setHorizontalAlignment(SwingConstants.CENTER);
-		lblLogo.setIcon(new ImageIcon("C:\\Users\\Esteves\\Pictures\\BANKEND\\mauqina\\logo.png"));
+		lblLogo.setIcon(new ImageIcon(Menu.class.getResource("/br/com/residencia/bankend/imagens/logo.png")));
 		lblLogo.setBounds(0, 0, 238, 130);
 		contentPane.add(lblLogo);
 
@@ -66,7 +65,7 @@ public class Menu extends JFrame {
 		JLabel imgPaciente = new JLabel("");
 		imgPaciente.setHorizontalTextPosition(SwingConstants.CENTER);
 		imgPaciente.setHorizontalAlignment(SwingConstants.CENTER);
-		imgPaciente.setIcon(new ImageIcon("C:\\Users\\Esteves\\Downloads\\seguro-de-vida.png"));
+		imgPaciente.setIcon(new ImageIcon(Menu.class.getResource("/br/com/residencia/bankend/imagens/seguro-de-vida.png")));
 		imgPaciente.setBounds(23, 12, 32, 32);
 		painelSeguro.add(imgPaciente);
 
@@ -133,7 +132,7 @@ public class Menu extends JFrame {
 		panel.add(painelConta);
 
 		JLabel imgPaciente_1_1 = new JLabel("");
-		imgPaciente_1_1.setIcon(new ImageIcon("C:\\Users\\Esteves\\Downloads\\cartao-de-credito (1).png"));
+		imgPaciente_1_1.setIcon(new ImageIcon(Menu.class.getResource("/br/com/residencia/bankend/imagens/cartao-de-credito (1).png")));
 		imgPaciente_1_1.setBounds(23, 12, 32, 32);
 		painelConta.add(imgPaciente_1_1);
 
@@ -156,7 +155,7 @@ public class Menu extends JFrame {
 		panel.add(painelTransacao);
 
 		JLabel imgPaciente_1 = new JLabel("");
-		imgPaciente_1.setIcon(new ImageIcon("C:\\Users\\Esteves\\Downloads\\atm.png"));
+		imgPaciente_1.setIcon(new ImageIcon(Menu.class.getResource("/br/com/residencia/bankend/imagens/atm.png")));
 		imgPaciente_1.setBounds(23, 12, 32, 32);
 		painelTransacao.add(imgPaciente_1);
 
@@ -172,11 +171,10 @@ public class Menu extends JFrame {
 
 		JLabel lblBackground = new JLabel("");
 		lblBackground.setIcon(
-				new ImageIcon("C:\\Users\\Esteves\\Pictures\\Nova pasta\\Sem T\u00EDtulo-3.jpg"));
+				new ImageIcon(Menu.class.getResource("/br/com/residencia/bankend/imagens/Sem T\u00EDtulo-3.jpg")));
 		lblBackground.setBounds(235, 28, 1139, 677);
 		contentPane.add(lblBackground);
 
-		Query bd = new Query(con);
 
 		// verifica se o cliente logado tem seguro de vida
 

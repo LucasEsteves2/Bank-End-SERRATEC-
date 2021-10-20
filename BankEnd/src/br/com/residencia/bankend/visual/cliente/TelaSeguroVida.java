@@ -22,7 +22,6 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.sql.Connection;
 import javax.swing.SwingConstants;
-import java.awt.SystemColor;
 
 public class TelaSeguroVida extends JFrame {
 
@@ -31,7 +30,7 @@ public class TelaSeguroVida extends JFrame {
 	private JTextField txtValor;
 
 	public TelaSeguroVida(Contas conta, Connection con) {
-		setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\Esteves\\Desktop\\plano-de-saude.png"));
+		setIconImage(Toolkit.getDefaultToolkit().getImage(TelaSeguroVida.class.getResource("/br/com/residencia/bankend/imagens/plano-de-saude.png")));
 		setTitle("Seguro de vida");
 		setResizable(false);
 
@@ -83,7 +82,7 @@ public class TelaSeguroVida extends JFrame {
 		contentPane.add(pnlCor);
 		pnlCor.setLayout(null);
 		JLabel background = new JLabel("\r\n");
-		background.setIcon(new ImageIcon("C:\\Users\\Esteves\\Pictures\\BANKEND\\mauqina\\seguri.jpg"));
+		background.setIcon(new ImageIcon(TelaSeguroVida.class.getResource("/br/com/residencia/bankend/imagens/seguri.jpg")));
 		background.setBounds(-3, 44, 496, 370);
 		contentPane.add(background);
 		pnlCor.setVisible(false);

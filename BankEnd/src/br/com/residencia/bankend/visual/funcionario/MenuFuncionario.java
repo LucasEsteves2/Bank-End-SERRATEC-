@@ -12,6 +12,7 @@ import java.sql.Connection;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.UIManager;
@@ -19,7 +20,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.border.MatteBorder;
 
 import br.com.residencia.bankend.funcionarios.Funcionario;
-import javax.swing.JButton;
+import br.com.residencia.bankend.visual.TelaLogin;
 
 public class MenuFuncionario extends JFrame {
 
@@ -27,12 +28,12 @@ public class MenuFuncionario extends JFrame {
 	private JPanel contentPane;
 
 	public MenuFuncionario(Connection con, Funcionario fun) {
+		setTitle("Bank End Administrador");
 
 		verificaPermissao(fun);
 
 		// visual
-		setIconImage(Toolkit.getDefaultToolkit()
-				.getImage(MenuFuncionario.class.getResource("/br/com/residencia/bankend/imagens/hospital.png")));
+		setIconImage(Toolkit.getDefaultToolkit().getImage(MenuFuncionario.class.getResource("/br/com/residencia/bankend/imagens/banco.png")));
 		setExtendedState(Frame.MAXIMIZED_BOTH);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
@@ -50,7 +51,7 @@ public class MenuFuncionario extends JFrame {
 
 		Panel PainelVoltar = new Panel();
 		PainelVoltar.setBackground(new Color(248, 248, 255));
-		PainelVoltar.setBounds(235, 0, 1139, 26);
+		PainelVoltar.setBounds(234, 0, 1140, 26);
 		contentPane.add(PainelVoltar);
 		PainelVoltar.setLayout(null);
 
@@ -76,7 +77,7 @@ public class MenuFuncionario extends JFrame {
 		
 		JLabel lblLogo = new JLabel("");
 		lblLogo.setHorizontalAlignment(SwingConstants.CENTER);
-		lblLogo.setIcon(new ImageIcon("C:\\Users\\Esteves\\Pictures\\BANKEND\\mauqina\\logo.png"));
+		lblLogo.setIcon(new ImageIcon(MenuFuncionario.class.getResource("/br/com/residencia/bankend/imagens/logo.png")));
 		lblLogo.setBounds(-1, 11, 239, 133);
 		panel.add(lblLogo);
 
@@ -112,7 +113,7 @@ public class MenuFuncionario extends JFrame {
 		panel.add(painelRelatorios);
 
 		JLabel imgPaciente_1_1 = new JLabel("");
-		imgPaciente_1_1.setIcon(new ImageIcon("C:\\Users\\Esteves\\Downloads\\relatorio.png"));
+		imgPaciente_1_1.setIcon(new ImageIcon(MenuFuncionario.class.getResource("/br/com/residencia/bankend/imagens/relatorio.png")));
 		imgPaciente_1_1.setBounds(23, 12, 32, 32);
 		painelRelatorios.add(imgPaciente_1_1);
 
@@ -136,7 +137,7 @@ public class MenuFuncionario extends JFrame {
 
 		JLabel imgPaciente_1 = new JLabel("");
 		imgPaciente_1.setIcon(
-				new ImageIcon("C:\\Users\\Esteves\\Downloads\\cliente.png"));
+				new ImageIcon(MenuFuncionario.class.getResource("/br/com/residencia/bankend/imagens/cliente.png")));
 		imgPaciente_1.setBounds(23, 12, 32, 32);
 		painelClientes.add(imgPaciente_1);
 
@@ -151,9 +152,32 @@ public class MenuFuncionario extends JFrame {
 		painelClientes.add(txtClientes);
 
 		JLabel lblBackground = new JLabel("");
-		lblBackground.setIcon(new ImageIcon("C:\\Users\\Esteves\\Pictures\\BANKEND\\mauqina\\12332.jpg"));
+		lblBackground.setIcon(new ImageIcon(MenuFuncionario.class.getResource("/br/com/residencia/bankend/imagens/12332.jpg")));
 		lblBackground.setBounds(235, 28, 1134, 711);
 		contentPane.add(lblBackground);
+
+		// btn fechar
+		PainelFechar.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+
+				int i = JOptionPane.showConfirmDialog(null, "Deseja Encerrar o programa?", "Finalizar",
+						JOptionPane.OK_CANCEL_OPTION);
+
+				if (i == JOptionPane.YES_OPTION) {
+					System.out.println("Clicou em Sim");
+
+					TelaLogin login = new TelaLogin(con);
+					login.setVisible(true);
+					dispose();
+
+				} else if (i == JOptionPane.CANCEL_OPTION) {
+
+					System.out.println("Clicou em Não");
+
+				}
+			}
+		});
 
 		
 		painelRelatorios.addMouseListener(new MouseAdapter() {

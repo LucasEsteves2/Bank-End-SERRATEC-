@@ -18,8 +18,6 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
-import javax.swing.border.LineBorder;
-
 import br.com.residencia.bankend.bd.Query;
 import br.com.residencia.bankend.contas.Comprovante;
 import br.com.residencia.bankend.contas.ContaCorrente;
@@ -35,11 +33,8 @@ public class Saque extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
-	private String login;
-	private String senha;
 	private Connection con;
 	private JTextField txtValor;
-	private Contas contaDestinatario = null;
 	private Contas contaRemetente = null;
 	ContaCorrente corrente = null;
 	private ContaPoupanca poupanca = null;
@@ -62,7 +57,6 @@ public class Saque extends JFrame {
 	private JLabel lblSair;
 	private JLabel lblCaixaSaldo;
 	private Double valorSaque;
-	private JProgressBar progressBar;
 
 	public Saque(Connection conexao, Contas contaRemetenteV) {
 		this.con = conexao;
@@ -89,11 +83,6 @@ public class Saque extends JFrame {
 		lblCaixaEletronico.setHorizontalTextPosition(SwingConstants.CENTER);
 		lblCaixaEletronico.setBounds(239, 367, 120, 33);
 		contentPane.add(lblCaixaEletronico);
-
-		progressBar = new JProgressBar();
-		progressBar.setBackground(Color.GREEN);
-		progressBar.setBounds(1125, 312, 120, 19);
-		contentPane.add(progressBar);
 
 		lblCaixaSaldo = new JLabel("10000");
 		lblCaixaSaldo.setForeground(new Color(0, 128, 0));
@@ -273,7 +262,8 @@ public class Saque extends JFrame {
 
 		imgMaquina = new JLabel("");
 		imgMaquina.setBackground(Color.WHITE);
-		imgMaquina.setIcon(new ImageIcon("C:\\Users\\Esteves\\Pictures\\BANKEND\\maquinaComfundo.png"));
+		imgMaquina.setIcon(
+				new ImageIcon(Saque.class.getResource("/br/com/residencia/bankend/imagens/maquinaComfundo.png")));
 		imgMaquina.setBounds(915, -536, 1026, 1913);
 		contentPane.add(imgMaquina);
 
@@ -284,18 +274,21 @@ public class Saque extends JFrame {
 		contentPane.add(lbl1);
 
 		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\Esteves\\Pictures\\card222323.png"));
+		lblNewLabel
+				.setIcon(new ImageIcon(Saque.class.getResource("/br/com/residencia/bankend/imagens/card222323.png")));
 		lblNewLabel.setBounds(512, 143, 638, 365);
 		contentPane.add(lblNewLabel);
 
 		lblSair = new JLabel("");
 
-		lblSair.setIcon(new ImageIcon("C:\\Users\\Esteves\\Downloads\\botao-de-seta-para-a-esquerda-do-teclado.png"));
+		lblSair.setIcon(new ImageIcon(Saque.class
+				.getResource("/br/com/residencia/bankend/imagens/botao-de-seta-para-a-esquerda-do-teclado.png")));
 		lblSair.setBounds(14, 642, 59, 53);
 		contentPane.add(lblSair);
 
 		JLabel ImgBackground = new JLabel("");
-		ImgBackground.setIcon(new ImageIcon("C:\\Users\\Esteves\\Pictures\\2133232232323.jpg"));
+		ImgBackground.setIcon(
+				new ImageIcon(Saque.class.getResource("/br/com/residencia/bankend/imagens/2133232232323.jpg")));
 		ImgBackground.setBounds(0, 0, 1375, 705);
 		contentPane.add(ImgBackground);
 		lblNomeRecibo.setVisible(false);
@@ -370,7 +363,7 @@ public class Saque extends JFrame {
 
 	public boolean mensagemContinuar(JLabel imgMaquina) {
 
-		String nome = contaRemetente.getCliente().getNome();
+		contaRemetente.getCliente().getNome();
 		String valor = txtValor.getText();
 
 		int i = JOptionPane.showConfirmDialog(null, "Valor do saque: " + valor + "$\n \n \t \t \t  Deseja continuar?",
@@ -396,11 +389,12 @@ public class Saque extends JFrame {
 
 	public void confirmarTransacao(Query bd) {
 
-		String nome = contaRemetente.getCliente().getNome();
+		contaRemetente.getCliente().getNome();
 		String valor = txtValor.getText();
 
-		int i = JOptionPane.showConfirmDialog(null, "Valor do saque: " + valor + "$\n Taxa:0.10 $\n \n \t \t \t  Deseja continuar?",
-				"Saque", JOptionPane.OK_CANCEL_OPTION);
+		int i = JOptionPane.showConfirmDialog(null,
+				"Valor do saque: " + valor + "$\n Taxa:0.10 $\n \n \t \t \t  Deseja continuar?", "Saque",
+				JOptionPane.OK_CANCEL_OPTION);
 		// se clicar em sim
 		if (i == JOptionPane.YES_OPTION) {
 
@@ -475,10 +469,6 @@ public class Saque extends JFrame {
 		// convertendo para string e limitando as casas
 		String caixaSaldo = String.format("%.2f", contaRemetente.getSaldo());
 		lblCaixaSaldo.setText(caixaSaldo + "$");
-		
-		
-		new Temporizador().start();
-
 
 		System.out.println("Saque de " + valorSaque + "$ feito com suceso!!");
 		exibeCupomFiscal();
@@ -497,7 +487,7 @@ public class Saque extends JFrame {
 		String nome1 = contaRemetente.getCliente().getNome();
 		String sobrenome = contaRemetente.getCliente().getSobreNome();
 
-		imgMaquina.setIcon(new ImageIcon("C:\\Users\\Esteves\\Pictures\\BANKEND\\macahdoo98.png"));
+		imgMaquina.setIcon(new ImageIcon(Transferencia.class.getResource("/br/com/residencia/bankend/imagens/macahdoo988.png")));
 		lblCupomNome.setText("Titular:" + nome1 + " " + sobrenome);
 		lblCupomContaa.setText("Conta" + contaRemetente.getNumero());
 		lblCupomFavorecido.setText("Favorecido");
@@ -515,26 +505,4 @@ public class Saque extends JFrame {
 		}
 	}
 
-	public class Temporizador extends Thread {
-
-		public void run() {
-
-			while (progressBar.getValue() < 1000) {
-
-				try {
-					sleep(30);
-					progressBar.setValue(progressBar.getValue() + 10);
-					System.out.println();
-
-				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			}
-
-			JOptionPane.showMessageDialog(null, "E-mail de confirmação enviado para o e-mail do paciente!!",
-					"Paciente Validado", JOptionPane.INFORMATION_MESSAGE);
-			dispose();
-		}
-	}
 }

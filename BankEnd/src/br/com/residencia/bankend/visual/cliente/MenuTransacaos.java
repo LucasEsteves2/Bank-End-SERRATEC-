@@ -1,26 +1,16 @@
 package br.com.residencia.bankend.visual.cliente;
 
-import java.awt.Color;
-import java.awt.Font;
 import java.awt.Frame;
 import java.awt.Toolkit;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.sql.Connection;
 
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
-import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
-import br.com.residencia.bankend.bd.Query;
 import br.com.residencia.bankend.contas.ContaCorrente;
-import br.com.residencia.bankend.contas.ContaPoupanca;
 import br.com.residencia.bankend.contas.Contas;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -29,18 +19,10 @@ public class MenuTransacaos extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
-	private String login;
-	private String senha;
-	private Connection con;
-	private Contas contaDestinatario = null;
-	private Contas contaRemetente = null;
 	ContaCorrente corrente = null;
-	private ContaPoupanca poupanca = null;
-
+	
+	
 	public MenuTransacaos(Connection conexao, Contas contaRemetente) {
-		this.con = conexao;
-		this.contaRemetente = contaRemetente;
-
 		setIconImage(Toolkit.getDefaultToolkit()
 				.getImage(MenuTransacaos.class.getResource("/br/com/residencia/bankend/imagens/cadeado-trancado.png")));
 		setExtendedState(Frame.MAXIMIZED_BOTH);
@@ -53,7 +35,7 @@ public class MenuTransacaos extends JFrame {
 
 		JLabel lblVoltar = new JLabel("New label");
 
-		lblVoltar.setIcon(new ImageIcon("C:\\Users\\Esteves\\Downloads\\botao-de-seta-para-a-esquerda-do-teclado.png"));
+		lblVoltar.setIcon(new ImageIcon(MenuTransacaos.class.getResource("/br/com/residencia/bankend/imagens/botao-de-seta-para-a-esquerda-do-teclado.png")));
 		lblVoltar.setBounds(0, 616, 46, 89);
 		contentPane.add(lblVoltar);
 
@@ -73,7 +55,7 @@ public class MenuTransacaos extends JFrame {
 		contentPane.add(lblTransferencia);
 
 		JLabel ImgBackground = new JLabel("");
-		ImgBackground.setIcon(new ImageIcon("C:\\Users\\Esteves\\Pictures\\BANKEND\\backzada.jpg"));
+		ImgBackground.setIcon(new ImageIcon(MenuTransacaos.class.getResource("/br/com/residencia/bankend/imagens/backzada.jpg")));
 		ImgBackground.setBounds(0, 0, 1375, 705);
 		contentPane.add(ImgBackground);
 

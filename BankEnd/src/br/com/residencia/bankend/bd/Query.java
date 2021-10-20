@@ -1,18 +1,11 @@
 package br.com.residencia.bankend.bd;
 
-import java.awt.TextArea;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.text.DecimalFormat;
 import java.util.ArrayList;
-import java.util.Set;
-import java.util.TreeSet;
-
-import javax.swing.JOptionPane;
-
 import br.com.residencia.bankend.clientes.Cliente;
 import br.com.residencia.bankend.contas.Comprovante;
 import br.com.residencia.bankend.contas.ContaCorrente;

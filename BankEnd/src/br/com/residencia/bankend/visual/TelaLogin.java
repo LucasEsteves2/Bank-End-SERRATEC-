@@ -9,7 +9,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.Connection;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Calendar;
 
 import javax.swing.ImageIcon;
@@ -24,12 +23,10 @@ import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
-import br.com.residencia.bankend.bd.Conexao;
 import br.com.residencia.bankend.bd.Query;
 import br.com.residencia.bankend.clientes.Cliente;
 import br.com.residencia.bankend.contas.Contas;
 import br.com.residencia.bankend.funcionarios.Funcionario;
-import br.com.residencia.bankend.funcionarios.Presidente;
 import br.com.residencia.bankend.visual.cliente.Menu;
 import br.com.residencia.bankend.visual.funcionario.MenuFuncionario;
 
@@ -99,7 +96,7 @@ public class TelaLogin extends JFrame {
 
 		String timeStamp = new SimpleDateFormat("dd/MM/yyyy").format(Calendar.getInstance().getTime());
 		JLabel lblCadastrarNovo = new JLabel(timeStamp);
-		lblCadastrarNovo.setIcon(new ImageIcon("C:\\Users\\Esteves\\Downloads\\data-limite.png"));
+		lblCadastrarNovo.setIcon(new ImageIcon(TelaLogin.class.getResource("/br/com/residencia/bankend/imagens/data-limite.png")));
 
 		lblCadastrarNovo.setFont(new Font("Tahoma", Font.BOLD, 12));
 		lblCadastrarNovo.setBounds(899, 507, 156, 32);
@@ -114,7 +111,7 @@ public class TelaLogin extends JFrame {
 
 		JLabel ImgBackground = new JLabel("");
 		ImgBackground.setBounds(0, 0, 1375, 705);
-		ImgBackground.setIcon(new ImageIcon("C:\\Users\\Esteves\\Pictures\\Nova pasta\\login2.jpg"));
+		ImgBackground.setIcon(new ImageIcon(TelaLogin.class.getResource("/br/com/residencia/bankend/imagens/login2.jpg")));
 		contentPane.add(ImgBackground);
 
 		Query bd = new Query(con);

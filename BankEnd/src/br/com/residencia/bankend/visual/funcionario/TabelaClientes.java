@@ -11,11 +11,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JSeparator;
 import javax.swing.border.EmptyBorder;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.sql.Connection;
@@ -25,21 +22,14 @@ import javax.swing.JTable;
 import javax.swing.JScrollPane;
 import javax.swing.JButton;
 import javax.swing.JTextField;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
 import javax.swing.SwingConstants;
-import javax.swing.border.LineBorder;
 import javax.swing.border.MatteBorder;
 
 import br.com.residencia.bankend.bd.Query;
-import br.com.residencia.bankend.contas.ContaCorrente;
 import br.com.residencia.bankend.contas.Contas;
 import br.com.residencia.bankend.funcionarios.Funcionario;
 import br.com.residencia.bankend.utility.ClienteTableModel;
 import br.com.residencia.bankend.visual.TelaLogin;
-
-import javax.swing.UIManager;
-import java.awt.ComponentOrientation;
 
 public class TabelaClientes extends JFrame {
 
@@ -47,15 +37,13 @@ public class TabelaClientes extends JFrame {
 	private JPanel contentPane;
 	private JTable jTabelaPaciente;
 	private JTextField txtPesquisar;
+	@SuppressWarnings("unused")
 	private ArrayList<Contas> pacientes = new ArrayList<>();
-	private Connection con;
-
 	ClienteTableModel paciente_tableModel = new ClienteTableModel();
 
 	public TabelaClientes(Connection con,Funcionario fun) {
-		setTitle("Pacientes");
+		setTitle("Bank End");
 
-		this.con = con;
 		setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\Esteves\\Desktop\\banco.png"));
 		setExtendedState(Frame.MAXIMIZED_BOTH);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -128,7 +116,7 @@ public class TabelaClientes extends JFrame {
 		panel.add(painelRelatorios);
 
 		JLabel imgPaciente_1_1 = new JLabel("");
-		imgPaciente_1_1.setIcon(new ImageIcon("C:\\Users\\Esteves\\Downloads\\relatorio.png"));
+		imgPaciente_1_1.setIcon(new ImageIcon(TabelaClientes.class.getResource("/br/com/residencia/bankend/imagens/relatorio.png")));
 		imgPaciente_1_1.setBounds(23, 12, 32, 32);
 		painelRelatorios.add(imgPaciente_1_1);
 
@@ -150,7 +138,7 @@ public class TabelaClientes extends JFrame {
 		panel.add(painelClientes);
 
 		JLabel imgPaciente_1 = new JLabel("");
-		imgPaciente_1.setIcon(new ImageIcon("C:\\Users\\Esteves\\Downloads\\cliente.png"));
+		imgPaciente_1.setIcon(new ImageIcon(TabelaClientes.class.getResource("/br/com/residencia/bankend/imagens/cliente.png")));
 		imgPaciente_1.setBounds(23, 12, 32, 32);
 		painelClientes.add(imgPaciente_1);
 
@@ -171,7 +159,7 @@ public class TabelaClientes extends JFrame {
 		JLabel painelRelatorios_2 = new JLabel("");
 		painelRelatorios_2.setHorizontalAlignment(SwingConstants.CENTER);
 		painelRelatorios_2.setHorizontalTextPosition(SwingConstants.CENTER);
-		painelRelatorios_2.setIcon(new ImageIcon("C:\\Users\\Esteves\\Pictures\\BANKEND\\mauqina\\logo.png"));
+		painelRelatorios_2.setIcon(new ImageIcon(TabelaClientes.class.getResource("/br/com/residencia/bankend/imagens/logo.png")));
 		painelRelatorios_2.setBounds(-1, 11, 244, 130);
 		panel.add(painelRelatorios_2);
 
@@ -271,7 +259,6 @@ public class TabelaClientes extends JFrame {
 
 		JLabel lblBackground = new JLabel("");
 		lblBackground.setBackground(new Color(245, 245, 245));
-		lblBackground.setIcon(new ImageIcon(TabelaClientes.class.getResource("/br/com/residencia/bankend/imagens/aaaaaaaaaaaaaaa.jpg")));
 		lblBackground.setBounds(0, 0, 1129, 681);
 		panel_1.add(lblBackground);
 

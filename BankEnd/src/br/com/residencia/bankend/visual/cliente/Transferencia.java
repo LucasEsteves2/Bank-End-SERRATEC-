@@ -33,8 +33,6 @@ public class Transferencia extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
-	private String login;
-	private String senha;
 	private Connection con;
 	private JTextField txtCartao;
 	private JTextField txtValor;
@@ -262,7 +260,7 @@ public class Transferencia extends JFrame {
 
 		imgMaquina = new JLabel("");
 		imgMaquina.setBackground(Color.WHITE);
-		imgMaquina.setIcon(new ImageIcon("C:\\Users\\Esteves\\Pictures\\BANKEND\\maquinaComfundo.png"));
+		imgMaquina.setIcon(new ImageIcon(Transferencia.class.getResource("/br/com/residencia/bankend/imagens/maquinaComfundo.png")));
 		imgMaquina.setBounds(921, -424, 1026, 1913);
 		contentPane.add(imgMaquina);
 
@@ -278,13 +276,13 @@ public class Transferencia extends JFrame {
 		contentPane.add(txtCartao);
 
 		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\Esteves\\Pictures\\card222323.png"));
+		lblNewLabel.setIcon(new ImageIcon(Transferencia.class.getResource("/br/com/residencia/bankend/imagens/card222323.png")));
 		lblNewLabel.setBounds(512, 143, 638, 365);
 		contentPane.add(lblNewLabel);
 
 		lblSair = new JLabel("");
 
-		lblSair.setIcon(new ImageIcon("C:\\Users\\Esteves\\Downloads\\botao-de-seta-para-a-esquerda-do-teclado.png"));
+		lblSair.setIcon(new ImageIcon(Transferencia.class.getResource("/br/com/residencia/bankend/imagens/botao-de-seta-para-a-esquerda-do-teclado.png")));
 		lblSair.setBounds(14, 642, 59, 53);
 		contentPane.add(lblSair);
 
@@ -305,7 +303,7 @@ public class Transferencia extends JFrame {
 		contentPane.add(lblCaixaEletronico);
 
 		ImgBackground = new JLabel("");
-		ImgBackground.setIcon(new ImageIcon("C:\\Users\\Esteves\\Pictures\\2133232232323.jpg"));
+		ImgBackground.setIcon(new ImageIcon(Transferencia.class.getResource("/br/com/residencia/bankend/imagens/2133232232323.jpg")));
 		ImgBackground.setBounds(0, 0, 1375, 705);
 		contentPane.add(ImgBackground);
 
@@ -603,14 +601,15 @@ public class Transferencia extends JFrame {
 
 	public void exibeCupomFiscal() {
 
+		
 		lblValor.setVisible(false);
 		txtValor.setVisible(false);
 		txtValor.setText("");
 
+		
 		String nome1 = contaDestinatario.getCliente().getNome();
 		String sobrenome = contaDestinatario.getCliente().getSobreNome();
-
-		imgMaquina.setIcon(new ImageIcon("C:\\Users\\Esteves\\Pictures\\BANKEND\\macahdoo98.png"));
+		imgMaquina.setIcon(new ImageIcon(Transferencia.class.getResource("/br/com/residencia/bankend/imagens/macahdoo988.png")));
 		lblCupomNome.setText("Titular:" + nome1 + " " + sobrenome);
 		lblCupomContaa.setText("Conta:" + contaDestinatario.getNumero());
 		lblCupomFavorecido.setText("Favorecido");
