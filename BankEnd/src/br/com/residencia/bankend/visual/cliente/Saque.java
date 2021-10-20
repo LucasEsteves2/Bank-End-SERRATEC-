@@ -493,7 +493,7 @@ public class Saque extends JFrame {
 		lblCupomFavorecido.setText("Favorecido");
 		lblCupomTipoConta.setText("Transferencia em Conta:");
 		lblCupomAgencia.setText("Agencia: " + contaRemetente.getAgencia());
-
+//aa
 	}
 
 	public void geraComprovante() {
