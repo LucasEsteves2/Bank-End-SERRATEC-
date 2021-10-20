@@ -278,7 +278,7 @@ public class TelaRelatorios extends JFrame {
 			System.out.println("Bem vindo Diretor ");
 
 			// metodo que pega todas os nomes/cpf/agencia e armazena dentro de uma lista
-			bd.trazerRelatorio(conta);
+			bd.trazerRelatorio(conta,fun);
 			// metodo que adiciona no componente
 			bd.addDadosRelatorios(funcionario_tableModel, conta);
 			lblFotoCargo.setText("DIRETOR");
@@ -289,7 +289,7 @@ public class TelaRelatorios extends JFrame {
 			System.out.println("Bem vindo Presidente");
 			lblValorTotal.setVisible(true);
 			// retorna todas as cotnas na minha lista
-			bd.trazerRelatorio(conta);
+			bd.trazerRelatorio(conta,fun);
 
 			// Metodo responsavel por instanciar todos os clientes no Jtable
 			bd.addDadosRelatorios(funcionario_tableModel, conta);
