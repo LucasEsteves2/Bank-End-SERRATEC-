@@ -278,8 +278,10 @@ public class TelaRelatorios extends JFrame {
 			bd.addDadosRelatorios(funcionario_tableModel, conta);
 
 			Double saldoTotal = bd.valorTotal();
-
-			lblValorTotal.setText("VALOR TOTAL: " + saldoTotal.toString() + "$");
+			
+			String valorTotal = String.format("%.2f", saldoTotal);
+			
+			lblValorTotal.setText("VALOR TOTAL: " + valorTotal + "$");
 
 			lblValorTotal.setVisible(true);
 			lblFotoCargo.setText("PRESIDENTE");
