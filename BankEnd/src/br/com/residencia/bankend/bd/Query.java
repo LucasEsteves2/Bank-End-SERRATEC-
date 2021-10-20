@@ -421,7 +421,7 @@ public class Query {
 			st.executeUpdate();
 
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			System.out.println("informe um valor aceito");
 			e.printStackTrace();
 		}
 

@@ -33,7 +33,7 @@ import br.com.residencia.bankend.clientes.Cliente;
 	}
 
 	public boolean saque(double valor,Contas remetente) {
-		if (remetente.saldo >= valor) {
+		if (remetente.saldo >= valor && valor>0) {
 			remetente.saldo = remetente.saldo - valor;
 
 			return true;
@@ -57,7 +57,7 @@ import br.com.residencia.bankend.clientes.Cliente;
 	}
 	public boolean transferencia(Contas destinatario, double valor) {
 
-		if (this.saldo >= valor) {
+		if (this.saldo >= valor && valor>0) {
 			destinatario.saldo = destinatario.saldo + valor;
 			this.saldo = this.saldo - valor;
 			

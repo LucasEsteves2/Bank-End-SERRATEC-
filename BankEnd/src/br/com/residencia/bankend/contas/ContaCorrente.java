@@ -24,7 +24,7 @@ public class ContaCorrente extends Contas {
 	public boolean saque(double valor,Contas remetente) {
 	
 		
-		if (remetente.saldo >= (valor + 0.10)) {
+		if (remetente.saldo >= (valor + 0.10)&& valor>0) {
 			remetente.saldo = (remetente.saldo - 0.10)- valor ;
 
 			return true;
@@ -48,7 +48,7 @@ public class ContaCorrente extends Contas {
 	@Override
 	public boolean transferencia(Contas destinatario, double valor) {
 
-		if (this.saldo >= (valor+0.20)) {
+		if (this.saldo >= (valor+0.20) &&valor>0) {
 			destinatario.saldo = destinatario.saldo + valor;
 			this.saldo = (this.saldo-0.20) - valor;
 			return true;

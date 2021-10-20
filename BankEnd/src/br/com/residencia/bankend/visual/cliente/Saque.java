@@ -62,8 +62,7 @@ public class Saque extends JFrame {
 		this.con = conexao;
 		this.contaRemetente = contaRemetenteV;
 
-		setIconImage(Toolkit.getDefaultToolkit()
-				.getImage(Saque.class.getResource("/br/com/residencia/bankend/imagens/cadeado-trancado.png")));
+		setIconImage(Toolkit.getDefaultToolkit().getImage(Saque.class.getResource("/br/com/residencia/bankend/imagens/caixa.png")));
 		setExtendedState(Frame.MAXIMIZED_BOTH);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);

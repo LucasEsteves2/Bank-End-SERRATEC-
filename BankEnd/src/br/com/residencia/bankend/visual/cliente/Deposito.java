@@ -67,8 +67,7 @@ public class Deposito extends JFrame {
 		this.con = conexao;
 		this.contaRemetente = contaRemetenteV;
 
-		setIconImage(Toolkit.getDefaultToolkit()
-				.getImage(Deposito.class.getResource("/br/com/residencia/bankend/imagens/cadeado-trancado.png")));
+		setIconImage(Toolkit.getDefaultToolkit().getImage(Deposito.class.getResource("/br/com/residencia/bankend/imagens/caixa.png")));
 		setExtendedState(Frame.MAXIMIZED_BOTH);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
@@ -416,13 +415,15 @@ public class Deposito extends JFrame {
 			}
 		});
 
+		
 		// botao da maquina
 		btnVerde.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
-				// se o campo de valor nao for nulo e o valor
+				
+				 // se o campo de valor nao for nulo e o valor
 				if (!txtValor.getText().trim().equals("")) { // metodo que confirma
 					confirmarTransacao(bd);
 				}
