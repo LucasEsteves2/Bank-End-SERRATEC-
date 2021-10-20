@@ -32,7 +32,8 @@ public class Menu extends JFrame {
 	public Menu(Connection con, Contas conta) {
 		this.conta = conta;
 		this.con = con;
-		setIconImage(Toolkit.getDefaultToolkit().getImage(Menu.class.getResource("/br/com/residencia/bankend/imagens/banco.png")));
+		setIconImage(Toolkit.getDefaultToolkit()
+				.getImage(Menu.class.getResource("/br/com/residencia/bankend/imagens/banco.png")));
 		setExtendedState(Frame.MAXIMIZED_BOTH);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
@@ -41,7 +42,7 @@ public class Menu extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
+
 		JLabel lblLogo = new JLabel("");
 		lblLogo.setHorizontalAlignment(SwingConstants.CENTER);
 		lblLogo.setIcon(new ImageIcon(Menu.class.getResource("/br/com/residencia/bankend/imagens/logo.png")));
@@ -65,7 +66,8 @@ public class Menu extends JFrame {
 		JLabel imgPaciente = new JLabel("");
 		imgPaciente.setHorizontalTextPosition(SwingConstants.CENTER);
 		imgPaciente.setHorizontalAlignment(SwingConstants.CENTER);
-		imgPaciente.setIcon(new ImageIcon(Menu.class.getResource("/br/com/residencia/bankend/imagens/seguro-de-vida.png")));
+		imgPaciente.setIcon(
+				new ImageIcon(Menu.class.getResource("/br/com/residencia/bankend/imagens/seguro-de-vida.png")));
 		imgPaciente.setBounds(23, 12, 32, 32);
 		painelSeguro.add(imgPaciente);
 
@@ -132,7 +134,8 @@ public class Menu extends JFrame {
 		panel.add(painelConta);
 
 		JLabel imgPaciente_1_1 = new JLabel("");
-		imgPaciente_1_1.setIcon(new ImageIcon(Menu.class.getResource("/br/com/residencia/bankend/imagens/cartao-de-credito (1).png")));
+		imgPaciente_1_1.setIcon(
+				new ImageIcon(Menu.class.getResource("/br/com/residencia/bankend/imagens/cartao-de-credito (1).png")));
 		imgPaciente_1_1.setBounds(23, 12, 32, 32);
 		painelConta.add(imgPaciente_1_1);
 
@@ -175,14 +178,13 @@ public class Menu extends JFrame {
 		lblBackground.setBounds(235, 28, 1139, 677);
 		contentPane.add(lblBackground);
 
-
 		// verifica se o cliente logado tem seguro de vida
 
 		if (conta.getSeguro() == null) {
 			cadastraSeguro();
 
 		} else {
-			System.out.println("seguro de vida caralho");
+			System.out.println("Cliente ja Possui um seguro de vida");
 		}
 
 		// Click no botao Conta
@@ -192,6 +194,17 @@ public class Menu extends JFrame {
 				MinhaConta telaConta = new MinhaConta(con, conta);
 				telaConta.setVisible(true);
 				dispose();
+			}
+
+			@Override
+			public void mouseEntered(MouseEvent e) {
+
+				painelConta.setBackground(new Color(224, 255, 255));
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+				painelConta.setBackground(Color.WHITE);
 			}
 		});
 
@@ -205,6 +218,21 @@ public class Menu extends JFrame {
 				telaTransacao.setVisible(true);
 				dispose();
 			}
+			
+			
+			@Override
+			public void mouseEntered(MouseEvent e) {
+
+				painelTransacao.setBackground(new Color(224, 255, 255));
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+				painelTransacao.setBackground(Color.WHITE);
+			}
+			
+			
+			
 		});
 
 		// escutador btn Seguro
@@ -215,6 +243,18 @@ public class Menu extends JFrame {
 				seguro.setLocationRelativeTo(null);
 				seguro.setVisible(true);
 			}
+
+			@Override
+			public void mouseEntered(MouseEvent e) {
+
+				painelSeguro.setBackground(new Color(224, 255, 255));
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+				painelSeguro.setBackground(Color.WHITE);
+			}
+
 		});
 
 		// btn fechar
@@ -238,6 +278,20 @@ public class Menu extends JFrame {
 
 				}
 			}
+			
+			
+			@Override
+			public void mouseEntered(MouseEvent e) {
+
+				PainelFechar.setBackground(new Color(224, 255, 255));
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+				PainelFechar.setBackground(Color.WHITE);
+			}
+			
+			
 		});
 
 	}

@@ -143,7 +143,7 @@ public class Saque extends JFrame {
 		contentPane.add(lbl2);
 
 		JButton btnAmarelo = new JButton("");
-		btnAmarelo.setIcon(new ImageIcon("C:\\Users\\Esteves\\Downloads\\atencao.png"));
+		btnAmarelo.setIcon(new ImageIcon(Saque.class.getResource("/br/com/residencia/bankend/imagens/atencao.png")));
 		btnAmarelo.setBackground(Color.YELLOW);
 		btnAmarelo.setBounds(1164, 536, 48, 22);
 		contentPane.add(btnAmarelo);
@@ -160,7 +160,7 @@ public class Saque extends JFrame {
 		contentPane.add(lblNome);
 
 		JButton btnVerde = new JButton("");
-		btnVerde.setIcon(new ImageIcon("C:\\Users\\Esteves\\Downloads\\marca-de-verificacao (2).png"));
+		btnVerde.setIcon(new ImageIcon(Saque.class.getResource("/br/com/residencia/bankend/imagens/marca-de-verificacao (2).png")));
 		btnVerde.setBackground(new Color(50, 205, 50));
 		btnVerde.setBounds(1225, 536, 48, 22);
 		contentPane.add(btnVerde);
@@ -184,7 +184,7 @@ public class Saque extends JFrame {
 		contentPane.add(btnAs);
 
 		JButton btnVermelho = new JButton("");
-		btnVermelho.setIcon(new ImageIcon("C:\\Users\\Esteves\\Downloads\\cancelar.png"));
+		btnVermelho.setIcon(new ImageIcon(Saque.class.getResource("/br/com/residencia/bankend/imagens/cancelar2.png")));
 		btnVermelho.setBackground(new Color(220, 20, 60));
 		btnVermelho.setBounds(1105, 536, 50, 22);
 		contentPane.add(btnVermelho);
@@ -487,13 +487,13 @@ public class Saque extends JFrame {
 		String nome1 = contaRemetente.getCliente().getNome();
 		String sobrenome = contaRemetente.getCliente().getSobreNome();
 
-		imgMaquina.setIcon(new ImageIcon(Transferencia.class.getResource("/br/com/residencia/bankend/imagens/macahdoo988.png")));
+		imgMaquina.setIcon(new ImageIcon(Transferencia.class.getResource("/br/com/residencia/bankend/imagens/mauqinaVerde.png")));
 		lblCupomNome.setText("Titular:" + nome1 + " " + sobrenome);
 		lblCupomContaa.setText("Conta" + contaRemetente.getNumero());
 		lblCupomFavorecido.setText("Favorecido");
 		lblCupomTipoConta.setText("Transferencia em Conta:");
 		lblCupomAgencia.setText("Agencia: " + contaRemetente.getAgencia());
-//aa
+
 	}
 
 	public void geraComprovante() {

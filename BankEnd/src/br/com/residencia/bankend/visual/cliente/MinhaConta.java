@@ -131,7 +131,7 @@ public class MinhaConta extends JFrame {
 		painelConta = new JPanel();
 		painelConta.setBorder(new MatteBorder(2, 1, 1, 1, (Color) new Color(0, 0, 0)));
 		painelConta.setLayout(null);
-		painelConta.setBackground(new Color(253, 245, 230));
+		painelConta.setBackground(new Color(230, 230, 250));
 		painelConta.setBounds(-1, 140, 246, 56);
 		panel.add(painelConta);
 
@@ -430,6 +430,7 @@ public class MinhaConta extends JFrame {
 
 				MenuTransacaos telaTransacao = new MenuTransacaos(con, conta);
 				telaTransacao.setVisible(true);
+				dispose();
 
 			}
 		});

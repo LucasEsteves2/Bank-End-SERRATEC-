@@ -117,7 +117,7 @@ public class TelaRelatorios extends JFrame {
 		JPanel PainelConsulta = new JPanel();
 		PainelConsulta.setBorder(new MatteBorder(2, 1, 1, 1, (Color) new Color(0, 0, 0)));
 		PainelConsulta.setLayout(null);
-		PainelConsulta.setBackground(new Color(240, 248, 255));
+		PainelConsulta.setBackground(new Color(255, 255, 224));
 		PainelConsulta.setBounds(-1, 140, 246, 56);
 		panel.add(PainelConsulta);
 
@@ -290,6 +290,62 @@ public class TelaRelatorios extends JFrame {
 			break;
 		}
 
+
+
+		// btn fechar
+		PainelFechar.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+
+				int i = JOptionPane.showConfirmDialog(null, "Deseja Encerrar o programa?", "Finalizar",
+						JOptionPane.OK_CANCEL_OPTION);
+
+				if (i == JOptionPane.YES_OPTION) {
+					System.out.println("Clicou em Sim");
+
+					TelaLogin login = new TelaLogin(con);
+					login.setVisible(true);
+					dispose();
+
+				} else if (i == JOptionPane.CANCEL_OPTION) {
+
+					System.out.println("Clicou em Não");
+
+				}
+			}
+
+			@Override
+			public void mouseEntered(MouseEvent e) {
+
+				PainelFechar.setBackground(new Color(224, 255, 255));
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+				PainelFechar.setBackground(Color.WHITE);
+			}
+		});
+
+		painelRelatorios.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+
+				TelaRelatorios relatorio = new TelaRelatorios(con, fun);
+				relatorio.setLocationRelativeTo(null);
+				relatorio.setVisible(true);
+			}
+
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				painelRelatorios.setBackground(new Color(224, 255, 255));
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+				painelRelatorios.setBackground(Color.WHITE);
+			}
+		});
+
 		painelClientes.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -299,43 +355,18 @@ public class TelaRelatorios extends JFrame {
 				clientes.setVisible(true);
 
 			}
-		});
 
-		lblInicio.addMouseListener(new MouseAdapter() {
 			@Override
-			public void mouseClicked(MouseEvent e) {
+			public void mouseEntered(MouseEvent e) {
+				painelClientes.setBackground(new Color(224, 255, 255));
+			}
 
-				MenuFuncionario telaFuncionario = new MenuFuncionario(con, fun);
-				telaFuncionario.setVisible(true);
-				dispose();
-
+			@Override
+			public void mouseExited(MouseEvent e) {
+				painelClientes.setBackground(Color.WHITE);
 			}
 		});
-		
-		// btn fechar
-				PainelFechar.addMouseListener(new MouseAdapter() {
-					@Override
-					public void mouseClicked(MouseEvent e) {
 
-						int i = JOptionPane.showConfirmDialog(null, "Deseja Encerrar o programa?", "Finalizar",
-								JOptionPane.OK_CANCEL_OPTION);
-
-						if (i == JOptionPane.YES_OPTION) {
-							System.out.println("Clicou em Sim");
-
-							TelaLogin login = new TelaLogin(con);
-							login.setVisible(true);
-							dispose();
-
-						} else if (i == JOptionPane.CANCEL_OPTION) {
-
-							System.out.println("Clicou em Não");
-
-						}
-					}
-				});
-
-			}
-
+	}
 	
 }

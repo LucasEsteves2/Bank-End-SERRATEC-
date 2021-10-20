@@ -136,7 +136,7 @@ public class Transferencia extends JFrame {
 		contentPane.add(lbl2);
 
 		JButton btnAmarelo = new JButton("");
-		btnAmarelo.setIcon(new ImageIcon("C:\\Users\\Esteves\\Downloads\\atencao.png"));
+		btnAmarelo.setIcon(new ImageIcon(Transferencia.class.getResource("/br/com/residencia/bankend/imagens/atencao.png")));
 		btnAmarelo.setBackground(Color.YELLOW);
 		btnAmarelo.setBounds(1170, 648, 48, 22);
 		contentPane.add(btnAmarelo);
@@ -153,7 +153,7 @@ public class Transferencia extends JFrame {
 		contentPane.add(lblNome);
 
 		JButton btnVerde = new JButton("");
-		btnVerde.setIcon(new ImageIcon("C:\\Users\\Esteves\\Downloads\\marca-de-verificacao (2).png"));
+		btnVerde.setIcon(new ImageIcon(Transferencia.class.getResource("/br/com/residencia/bankend/imagens/marca-de-verificacao (2).png")));
 		btnVerde.setBackground(new Color(50, 205, 50));
 		btnVerde.setBounds(1231, 648, 48, 22);
 		contentPane.add(btnVerde);
@@ -177,7 +177,7 @@ public class Transferencia extends JFrame {
 		contentPane.add(btnAs);
 
 		JButton btnVermelho = new JButton("");
-		btnVermelho.setIcon(new ImageIcon("C:\\Users\\Esteves\\Downloads\\cancelar.png"));
+		btnVermelho.setIcon(new ImageIcon(Transferencia.class.getResource("/br/com/residencia/bankend/imagens/cancelar2.png")));
 		btnVermelho.setBackground(new Color(220, 20, 60));
 		btnVermelho.setBounds(1111, 648, 50, 22);
 		contentPane.add(btnVermelho);
@@ -609,7 +609,8 @@ public class Transferencia extends JFrame {
 		
 		String nome1 = contaDestinatario.getCliente().getNome();
 		String sobrenome = contaDestinatario.getCliente().getSobreNome();
-		imgMaquina.setIcon(new ImageIcon(Transferencia.class.getResource("/br/com/residencia/bankend/imagens/macahdoo988.png")));
+		imgMaquina.setIcon(new ImageIcon(Transferencia.class.getResource("/br/com/residencia/bankend/imagens/mauqinaVerde.png")));
+
 		lblCupomNome.setText("Titular:" + nome1 + " " + sobrenome);
 		lblCupomContaa.setText("Conta:" + contaDestinatario.getNumero());
 		lblCupomFavorecido.setText("Favorecido");

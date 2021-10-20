@@ -33,7 +33,8 @@ public class MenuFuncionario extends JFrame {
 		verificaPermissao(fun);
 
 		// visual
-		setIconImage(Toolkit.getDefaultToolkit().getImage(MenuFuncionario.class.getResource("/br/com/residencia/bankend/imagens/banco.png")));
+		setIconImage(Toolkit.getDefaultToolkit()
+				.getImage(MenuFuncionario.class.getResource("/br/com/residencia/bankend/imagens/banco.png")));
 		setExtendedState(Frame.MAXIMIZED_BOTH);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
@@ -68,16 +69,17 @@ public class MenuFuncionario extends JFrame {
 		lblNewLabel_5.setFont(new Font("Tahoma", Font.BOLD, 11));
 		lblNewLabel_5.setBounds(37, 10, 46, 14);
 		PainelVoltar.add(lblNewLabel_5);
-		
+
 		JLabel lblNewLabel = new JLabel("MODO ADMINISTRADOR");
 		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 11));
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setBounds(0, 7, 1129, 14);
 		PainelVoltar.add(lblNewLabel);
-		
+
 		JLabel lblLogo = new JLabel("");
 		lblLogo.setHorizontalAlignment(SwingConstants.CENTER);
-		lblLogo.setIcon(new ImageIcon(MenuFuncionario.class.getResource("/br/com/residencia/bankend/imagens/logo.png")));
+		lblLogo.setIcon(
+				new ImageIcon(MenuFuncionario.class.getResource("/br/com/residencia/bankend/imagens/logo.png")));
 		lblLogo.setBounds(-1, 11, 239, 133);
 		panel.add(lblLogo);
 
@@ -113,7 +115,8 @@ public class MenuFuncionario extends JFrame {
 		panel.add(painelRelatorios);
 
 		JLabel imgPaciente_1_1 = new JLabel("");
-		imgPaciente_1_1.setIcon(new ImageIcon(MenuFuncionario.class.getResource("/br/com/residencia/bankend/imagens/relatorio.png")));
+		imgPaciente_1_1.setIcon(
+				new ImageIcon(MenuFuncionario.class.getResource("/br/com/residencia/bankend/imagens/relatorio.png")));
 		imgPaciente_1_1.setBounds(23, 12, 32, 32);
 		painelRelatorios.add(imgPaciente_1_1);
 
@@ -152,7 +155,8 @@ public class MenuFuncionario extends JFrame {
 		painelClientes.add(txtClientes);
 
 		JLabel lblBackground = new JLabel("");
-		lblBackground.setIcon(new ImageIcon(MenuFuncionario.class.getResource("/br/com/residencia/bankend/imagens/12332.jpg")));
+		lblBackground.setIcon(
+				new ImageIcon(MenuFuncionario.class.getResource("/br/com/residencia/bankend/imagens/12332.jpg")));
 		lblBackground.setBounds(235, 28, 1134, 711);
 		contentPane.add(lblBackground);
 
@@ -177,34 +181,62 @@ public class MenuFuncionario extends JFrame {
 
 				}
 			}
+
+			@Override
+			public void mouseEntered(MouseEvent e) {
+
+				PainelFechar.setBackground(new Color(224, 255, 255));
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+				PainelFechar.setBackground(Color.WHITE);
+			}
 		});
 
-		
 		painelRelatorios.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				
+
 				TelaRelatorios relatorio = new TelaRelatorios(con, fun);
 				relatorio.setLocationRelativeTo(null);
 				relatorio.setVisible(true);
 			}
+
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				painelRelatorios.setBackground(new Color(224, 255, 255));
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+				painelRelatorios.setBackground(Color.WHITE);
+			}
 		});
-		
+
 		painelClientes.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				
+
 				TabelaClientes clientes = new TabelaClientes(con, fun);
 				clientes.setLocationRelativeTo(null);
 				clientes.setVisible(true);
-				
-				
+
+			}
+
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				painelClientes.setBackground(new Color(224, 255, 255));
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+				painelClientes.setBackground(Color.WHITE);
 			}
 		});
 
 	}
 
-	
 	// teste
 	public void verificaPermissao(Funcionario fun) {
 
